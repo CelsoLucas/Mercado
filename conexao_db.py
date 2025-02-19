@@ -14,6 +14,10 @@ class conexaoDB():
     def select_bd(self, comando):
         self.cursor.execute(comando)
         return self.cursor.fetchall()
+
+    def insert_bd(self, comando):
+        self.cursor.execute(comando)
+        return self.conexao.commit()
     
     def fechar_conexao(self):
         self.cursor.close()
