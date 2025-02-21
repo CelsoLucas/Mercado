@@ -11,7 +11,7 @@ class telaPrincipal(ctk.CTk):
         self.rowconfigure(1, weight=1)
         self.configure(fg_color="#DBDBDB")
         
-        self.img_logo = ctk.CTkImage(light_image=Image.open("imgs\logo_mercado.png"), size=(150, 100))
+        self.img_logo = ctk.CTkImage(light_image=Image.open("imgs/logo_mercado.png"), size=(150, 100))
 
         self.txt_logo = ctk.CTkLabel(self, text="", image=self.img_logo)
         self.txt_logo.grid(row=0, column=0, sticky="nw", padx=20, pady=(10, 0))

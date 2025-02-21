@@ -11,12 +11,16 @@ class conexaoDB():
 
         self.cursor = self.conexao.cursor()
 
-    def select_bd(self, comando):
-        self.cursor.execute(comando)
+    def select_bd(self, comando, valores):
+        self.cursor.execute(comando, valores)
         return self.cursor.fetchall()
 
-    def insert_bd(self, comando):
-        self.cursor.execute(comando)
+    def insert_bd(self, comando, valores):
+        self.cursor.execute(comando, valores)
+        return self.conexao.commit()
+    
+    def update_bd(self, comando, valores):
+        self.cursor.execute(comando, valores)
         return self.conexao.commit()
     
     def fechar_conexao(self):
