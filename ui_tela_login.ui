@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TelaLogin</class>
+ <widget class="QMainWindow" name="TelaLogin">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>942</width>
+    <height>1051</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">*{
+	background-color: rgb(0, 90, 255);
+	font-family: &quot;poppins&quot;;
+}
+#layout, #layout_user, #layout_img_login, #layout_senha, #txt_login, #icon_login{
+	background-color: rgb(240, 248, 255);
+	border-radius: 20px;
+}
+
+QLineEdit {
+    border: 2px solid #3498db;
+    border-radius: 20px;
+    outline: none;
+    font-size: 26px;
+    padding: 4px;
+    width: 100%;
+    background: white;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+QLineEdit:hover {
+    border: 2px solid #2980b9;
+    background-color: #f0f8ff;
+}
+
+QLineEdit:focus {
+    border: 2px solid #1c6ea4;
+    background-color: #e0f0ff;
+}
+
+QLineEdit::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+QPushButton {
+  background-color: rgb(0, 90, 255); /* Fundo transparente */
+  color: black; /* Cor do texto */
+  border-radius: 20px; /* Bordas arredondadas */
+  padding: 12px 24px; /* Espaçamento interno */
+  font-size: 16px; /* Tamanho da fonte */
+  cursor: pointer; /* Cursor de mão */
+  transition: background-color 0.3s, color 0.3s; /* Transição suave */
+}
+
+QPushButton:hover {
+  background-color: #F0F8FF;
+  border: 2px solid  rgb(0, 90, 255);
+  color: black; /* Cor do texto ao passar o mouse */
+}
+
+QPushButton:pressed {
+  background-color: #F0F8FF;
+  border: 2px solid  rgb(0, 90, 255);
+  color: black;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+     <widget class="QFrame" name="layout">
+      <property name="minimumSize">
+       <size>
+        <width>550</width>
+        <height>600</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QFrame" name="layout_img_login">
+         <property name="frameShape">
+          <enum>QFrame::Shape::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item alignment="Qt::AlignmentFlag::AlignHCenter">
+           <widget class="QLabel" name="icon_login">
+            <property name="maximumSize">
+             <size>
+              <width>150</width>
+              <height>150</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="txt_login">
+         <property name="styleSheet">
+          <string notr="true">font-size: 40px;
+font-weight: bold;</string>
+         </property>
+         <property name="text">
+          <string>LOGIN</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="layout_user">
+         <property name="frameShape">
+          <enum>QFrame::Shape::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLineEdit" name="input_user">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>Usuario</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="layout_senha">
+         <property name="frameShape">
+          <enum>QFrame::Shape::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QLineEdit" name="input_senha">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="echoMode">
+             <enum>QLineEdit::EchoMode::Password</enum>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>Senha</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+        <widget class="QPushButton" name="btn_login">
+         <property name="minimumSize">
+          <size>
+           <width>153</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>153</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Login</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+      <zorder>btn_login</zorder>
+      <zorder>txt_login</zorder>
+      <zorder>layout_user</zorder>
+      <zorder>layout_senha</zorder>
+      <zorder>layout_img_login</zorder>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
