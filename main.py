@@ -4,14 +4,13 @@ from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox
 import sys
 import mysql.connector
 
-
 class main(QMainWindow):
     def __init__(self):
         super().__init__()
         self.conexao = mysql.connector.connect(
             host="localhost",
-            user="celsadas",
-            password="33880188",
+            user="suporte",
+            password="suporte",
             database="mercado"
         )
         self.tela_login = Ui_TelaLogin()
@@ -21,8 +20,34 @@ class main(QMainWindow):
     def init_tela_principal(self):
         self.tela_principal = Ui_TelaPrincipal()
         self.tela_principal.setupUi(self)
+
         self.tela_principal.stackedWidget.setCurrentIndex(0)
+
         self.tela_principal.btn_sair.clicked.connect(self.init_tela_login)
+        self.tela_principal.btn_tela_principal.clicked.connect(self.telaprincipal)
+        self.tela_principal.btn_pdv.clicked.connect(self.telapdv)
+        self.tela_principal.btn_estoque.clicked.connect(self.telaestoque)
+        self.tela_principal.btn_relatorios.clicked.connect(self.telarelatorios)
+        self.tela_principal.btn_configuracoes.clicked.connect(self.telaconfiguracoes)
+
+
+    def telaprincipal(self):
+        self.tela_principal.stackedWidget.setCurrentIndex(0)
+
+    def telapdv(self):
+        self.tela_principal.stackedWidget.setCurrentIndex(1)
+        self.tela_principal.stackedWidget_2.setCurrentIndex(0)    
+        
+    def telaestoque(self):
+        self.tela_principal.stackedWidget.setCurrentIndex(2)
+        self.tela_principal.stackedWidget_3.setCurrentIndex(0)
+
+    def telarelatorios(self):
+        self.tela_principal.stackedWidget.setCurrentIndex(3)
+
+    def telaconfiguracoes(self):
+        self.tela_principal.stackedWidget.setCurrentIndex(4)
+
         
     def init_tela_login(self):
         self.tela_login.setupUi(self)
@@ -40,8 +65,6 @@ class main(QMainWindow):
             return
         
         senha_armazenada, foto_perfil = resultado
-
-        print("Senha armazenada (hash):", senha_armazenada)
         
         comando_senha = "SELECT SHA2(%s, 256)"
         cursor.execute(comando_senha, (self.tela_login.input_senha.text(),))
@@ -52,8 +75,6 @@ class main(QMainWindow):
             return
 
         senha_digitada_hash = resultado_senha[0]
-
-        print("Senha digitada (hash):", senha_digitada_hash)
         
         if senha_digitada_hash != senha_armazenada:
             QMessageBox.warning(self, "Erro", "Senha inválida!")

@@ -77,28 +77,28 @@ class Ui_TelaPrincipal(object):
 "	border-radius: 10px\n"
 "}\n"
 "\n"
-"#btn_adc_produto, #btn_finalizar_compra, #btn_adc_carrinho, #btn_adc_categoria, #btn_procurar_ft_adc_usuario, #btn_adc_usuario,#btn_adc_categoria_2{\n"
+"#btn_adc_produto, #btn_finalizar_compra, #btn_adc_carrinho, #btn_adc_categoria, #btn_procurar_ft_adc_usuario, #btn_adc_usuario,#btn_adc_categoria_2, #btn_adc_user{\n"
 "	  background-color: #005AFF; /* Fundo transparente */\n"
-" 	 color: black; /* Cor do texto */\n"
+" 	 color: #F0F8FF; /* Cor do texto */\n"
 "  	border-radius: 20px; /* Bordas arredondadas */\n"
 "  	padding: 12px 24px; /* Espa\u00e7amento interno */\n"
 "  font-size: 24px; /* Tamanho da fonte */\n"
 "  cursor: pointer; /* Cursor de m\u00e3o */\n"
 "  transition: background-color 0.3s, color 0.3s; /* Transi\u00e7\u00e3o suave */\n"
 "}\n"
-"#btn_adc_produto:hover, #btn_finalizar_compra:hover, #btn_adc_carrinho:hover, #btn_adc_categoria:hover, #btn_procurar_ft_adc_usuario:hover, #btn_adc_usuario:hover, #btn_adc_categoria_2:hover{\n"
+"#btn_adc_produto:hover, #btn_finalizar_compra:hover, #btn_adc_carrinho:hover, #btn_adc_categoria:hover, #btn_procurar_ft_adc_usuario:hover, #btn_adc_usuario:hover, #btn_adc_categoria_2:hover,  #btn_adc_user:hover{\n"
 "  background-color: #F0F8FF;\n"
-"  border: 2px solid #005AFF;\n"
-"  co"
-                        "lor: black; /* Cor do texto ao passar o mouse */\n"
+""
+                        "  border: 2px solid #005AFF;\n"
+"  color: black; /* Cor do texto ao passar o mouse */\n"
 "}\n"
 "\n"
-"#btn_adc_produto:pressed, #btn_finalizar_compra:pressed, #btn_adc_carrinho:pressed, #btn_adc_categoria:pressed, #btn_procurar_ft_adc_usuario:pressed, #btn_adc_usuario:pressed, btn_adc_categoria_2:pressed{\n"
+"#btn_adc_produto:pressed, #btn_finalizar_compra:pressed, #btn_adc_carrinho:pressed, #btn_adc_categoria:pressed, #btn_procurar_ft_adc_usuario:pressed, #btn_adc_usuario:pressed, btn_adc_categoria_2:pressed,  #btn_adc_user:pressed{\n"
 "  background-color: #F0F8FF;\n"
 "  border: 2px solid #005AFF;\n"
 "  color: black; /* Cor do texto ao passar o mouse */\n"
 "}\n"
-"\n"
+"/*\n"
 "#input_forma_pagamento{\n"
 "	border: 2px solid #3498db;\n"
 "    border-top-left-radius: 0px;\n"
@@ -108,7 +108,7 @@ class Ui_TelaPrincipal(object):
 "    outline: none;\n"
 "    font-size: 26px;\n"
 "    font-weight: 600;\n"
-"    padding: 6px 12px; /* Ajuste do espa\u00e7amento interno */\n"
+"    padding: 6px 12px;\n"
 "    width: 100%;\n"
 "    background: white;\n"
 "    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;\n"
@@ -118,9 +118,9 @@ class Ui_TelaPrincipal(object):
 "    padding: 6px;\n"
 "    text-align: center;\n"
 "}\n"
-"\n"
-"#input_forma_"
-                        "pagamento:hover {\n"
+""
+                        "\n"
+"#input_forma_pagamento:hover {\n"
 "    border: 2px solid #2980b9;\n"
 "    background-color: #f0f8ff;\n"
 "}\n"
@@ -134,7 +134,7 @@ class Ui_TelaPrincipal(object):
 "    width: 30px;\n"
 "}\n"
 "#input_forma_pagamento::down-arrow {\n"
-"    image: url(:/icons/down-arrow.png); /* Substitua pelo caminho da sua seta */\n"
+"    image: url(:/icons/down-arrow.png);\n"
 "    width: 16px;\n"
 "    height: 16px;\n"
 "}\n"
@@ -150,16 +150,15 @@ class Ui_TelaPrincipal(object):
 "    border-top-right-radius: 20px;\n"
 "}\n"
 "\n"
-"/* Centraliza os itens do menu suspenso */\n"
 "#input_forma_pagamento QAbstractItemView::item {\n"
 "    padding: 8px;\n"
 "    text-align: center;\n"
 "}\n"
-""
-                        "\n"
+"*/\n"
 "QLineEdit {\n"
 "    border: 2px solid #3498db;\n"
-"    border-radius: 20px;\n"
+"    border-"
+                        "radius: 20px;\n"
 "    outline: none;\n"
 "    font-size: 26px;\n"
 "	font-weight: 600;\n"
@@ -192,12 +191,12 @@ class Ui_TelaPrincipal(object):
 "  font-size: 16px; /* Tamanho da fonte */\n"
 "  cursor: pointer; /* Cursor de m\u00e3o */\n"
 "  transition: background-color 0.3s, color 0.3s; /* Transi\u00e7\u00e3o suave */\n"
-"}"
-                        "\n"
+"}\n"
 "\n"
 "QPushButton:hover {\n"
 "  background-color: #005AFF;\n"
-"  border: 2px solid #F0F8FF;\n"
+""
+                        "  border: 2px solid #F0F8FF;\n"
 "  color: #F0F8FF; /* Cor do texto ao passar o mouse */\n"
 "}\n"
 "\n"
@@ -229,10 +228,10 @@ class Ui_TelaPrincipal(object):
 "    text-align: center;\n"
 "}\n"
 "\n"
-""
-                        "/* Hover */\n"
+"/* Hover */\n"
 "QComboBox:hover {\n"
-"    border: 2px solid #2980b9;\n"
+"    border: 2px solid #2980b"
+                        "9;\n"
 "    background-color: #f0f8ff;\n"
 "}\n"
 "\n"
@@ -265,12 +264,12 @@ class Ui_TelaPrincipal(object):
 "    selection-color: white;\n"
 "    border-bottom-left-radius: 20px;\n"
 "    border-bottom-right-radius: 20px;\n"
-"    border-top-left-ra"
-                        "dius: 0px;\n"
+"    border-top-left-radius: 0px;\n"
 "    border-top-right-radius: 0px;\n"
 "}\n"
 "\n"
-"/* Centraliza os itens do menu suspenso */\n"
+"/*"
+                        " Centraliza os itens do menu suspenso */\n"
 "QComboBox QAbstractItemView::item {\n"
 "    padding: 8px;\n"
 "    text-align: center;\n"
@@ -606,14 +605,12 @@ class Ui_TelaPrincipal(object):
 
         self.btn_pesquisar_produto = QPushButton(self.layout_pesquisar_produto)
         self.btn_pesquisar_produto.setObjectName(u"btn_pesquisar_produto")
-        self.btn_pesquisar_produto.setMaximumSize(QSize(50, 16777215))
         self.btn_pesquisar_produto.setStyleSheet(u"background-color: none;")
         icon6 = QIcon()
         icon6.addFile(u":/icons/search.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.btn_pesquisar_produto.setIcon(icon6)
-        self.btn_pesquisar_produto.setIconSize(QSize(25, 25))
 
-        self.horizontalLayout_5.addWidget(self.btn_pesquisar_produto, 0, Qt.AlignmentFlag.AlignRight)
+        self.horizontalLayout_5.addWidget(self.btn_pesquisar_produto)
 
         self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
@@ -624,6 +621,16 @@ class Ui_TelaPrincipal(object):
 
 
         self.verticalLayout_15.addWidget(self.tela_pdv_1_info_principal, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
+
+        self.txt_caso_nao_produto_encontrado = QLabel(self.tela_pdv_1)
+        self.txt_caso_nao_produto_encontrado.setObjectName(u"txt_caso_nao_produto_encontrado")
+        self.txt_caso_nao_produto_encontrado.setStyleSheet(u"font-size:20px;")
+
+        self.verticalLayout_15.addWidget(self.txt_caso_nao_produto_encontrado, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
+
+        self.verticalSpacer_8 = QSpacerItem(20, 200, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+
+        self.verticalLayout_15.addItem(self.verticalSpacer_8)
 
         self.stackedWidget_2.addWidget(self.tela_pdv_1)
         self.tela_pdv_2 = QWidget()
@@ -1249,6 +1256,7 @@ class Ui_TelaPrincipal(object):
 
         self.btn_adc_user = QPushButton(self.config_usuarios)
         self.btn_adc_user.setObjectName(u"btn_adc_user")
+        self.btn_adc_user.setMinimumSize(QSize(300, 0))
 
         self.verticalLayout_35.addWidget(self.btn_adc_user, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -1291,6 +1299,7 @@ class Ui_TelaPrincipal(object):
 
         self.btn_procurar_ft_adc_usuario = QPushButton(self.layout_adc_usuario)
         self.btn_procurar_ft_adc_usuario.setObjectName(u"btn_procurar_ft_adc_usuario")
+        self.btn_procurar_ft_adc_usuario.setMinimumSize(QSize(250, 0))
 
         self.gridLayout_3.addWidget(self.btn_procurar_ft_adc_usuario, 5, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
@@ -1411,12 +1420,12 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.stackedWidget.setCurrentIndex(4)
-        self.stackedWidget_2.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget_2.setCurrentIndex(0)
         self.input_forma_pagamento.setCurrentIndex(-1)
-        self.stackedWidget_3.setCurrentIndex(1)
+        self.stackedWidget_3.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
-        self.stackedWidget_4.setCurrentIndex(1)
+        self.stackedWidget_4.setCurrentIndex(0)
         self.stackedWidget_5.setCurrentIndex(1)
 
 
@@ -1443,6 +1452,7 @@ class Ui_TelaPrincipal(object):
         self.txt_vendas_mes_db.setText(QCoreApplication.translate("TelaPrincipal", u"TextLabel", None))
         self.input_pesquisar_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Procurar Produto", None))
         self.btn_pesquisar_produto.setText("")
+        self.txt_caso_nao_produto_encontrado.setText("")
         self.input_pesquisar_produto_2.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Procurar Produto", None))
         self.btn_pesquisar_produto_2.setText("")
         self.txt_nome_preco_produto.setText(QCoreApplication.translate("TelaPrincipal", u"Ma\u00e7\u00e3 R$1,00", None))
