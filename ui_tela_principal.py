@@ -20,13 +20,13 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
     QStackedWidget, QTabWidget, QTreeWidget, QTreeWidgetItem,
     QVBoxLayout, QWidget)
-# import imgs_rc
+from imgs import icons_rc
 
 class Ui_TelaPrincipal(object):
     def setupUi(self, TelaPrincipal):
         if not TelaPrincipal.objectName():
             TelaPrincipal.setObjectName(u"TelaPrincipal")
-        TelaPrincipal.resize(1178, 819)
+        TelaPrincipal.resize(1178, 834)
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

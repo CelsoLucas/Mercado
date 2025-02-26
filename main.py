@@ -21,9 +21,12 @@ class main(QMainWindow):
     def init_tela_principal(self):
         self.tela_principal = Ui_TelaPrincipal()
         self.tela_principal.setupUi(self)
+        self.tela_principal.stackedWidget.setCurrentIndex(0)
+        self.tela_principal.btn_sair.clicked.connect(self.init_tela_login)
         
     def init_tela_login(self):
         self.tela_login.setupUi(self)
+        self.tela_login.btn_login.clicked.connect(self.check_login)
 
     def check_login(self):
         cursor = self.conexao.cursor()

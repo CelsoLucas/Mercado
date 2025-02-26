@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1178</width>
-    <height>819</height>
+    <height>834</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -358,7 +358,7 @@ QComboBox QAbstractItemView::item {
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../ListadeExercicios/projeto_pyside/imgs.qrc">
+             <iconset resource="imgs/icons.qrc">
               <normaloff>:/icons/exit.png</normaloff>:/icons/exit.png</iconset>
             </property>
            </widget>
@@ -480,7 +480,7 @@ QComboBox QAbstractItemView::item {
                    <string>TELA PRINCIPAL</string>
                   </property>
                   <property name="icon">
-                   <iconset resource="../ListadeExercicios/projeto_pyside/imgs.qrc">
+                   <iconset resource="imgs/icons.qrc">
                     <normaloff>:/icons/home.png</normaloff>:/icons/home.png</iconset>
                   </property>
                  </widget>
@@ -500,7 +500,7 @@ QComboBox QAbstractItemView::item {
                    <string>PDV</string>
                   </property>
                   <property name="icon">
-                   <iconset resource="../ListadeExercicios/projeto_pyside/imgs.qrc">
+                   <iconset resource="imgs/icons.qrc">
                     <normaloff>:/icons/dollar.png</normaloff>:/icons/dollar.png</iconset>
                   </property>
                  </widget>
@@ -520,7 +520,7 @@ QComboBox QAbstractItemView::item {
                    <string>ESTOQUE</string>
                   </property>
                   <property name="icon">
-                   <iconset resource="../ListadeExercicios/projeto_pyside/imgs.qrc">
+                   <iconset resource="imgs/icons.qrc">
                     <normaloff>:/icons/box-open.png</normaloff>:/icons/box-open.png</iconset>
                   </property>
                  </widget>
@@ -540,7 +540,7 @@ QComboBox QAbstractItemView::item {
                    <string>RELATORIOS</string>
                   </property>
                   <property name="icon">
-                   <iconset resource="../ListadeExercicios/projeto_pyside/imgs.qrc">
+                   <iconset resource="imgs/icons.qrc">
                     <normaloff>:/icons/analytics.png</normaloff>:/icons/analytics.png</iconset>
                   </property>
                  </widget>
@@ -560,7 +560,7 @@ QComboBox QAbstractItemView::item {
                    <string>CONFIGURAÇÕES</string>
                   </property>
                   <property name="icon">
-                   <iconset resource="../ListadeExercicios/projeto_pyside/imgs.qrc">
+                   <iconset resource="imgs/icons.qrc">
                     <normaloff>:/icons/settings (1).png</normaloff>:/icons/settings (1).png</iconset>
                   </property>
                  </widget>
@@ -983,7 +983,7 @@ QComboBox QAbstractItemView::item {
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset resource="../ListadeExercicios/projeto_pyside/imgs.qrc">
+                           <iconset resource="imgs/icons.qrc">
                             <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
                           </property>
                           <property name="iconSize">
@@ -1115,7 +1115,7 @@ QComboBox QAbstractItemView::item {
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset resource="../ListadeExercicios/projeto_pyside/imgs.qrc">
+                           <iconset resource="imgs/icons.qrc">
                             <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
                           </property>
                           <property name="iconSize">
@@ -1203,7 +1203,7 @@ QComboBox QAbstractItemView::item {
                               <string/>
                              </property>
                              <property name="icon">
-                              <iconset resource="../ListadeExercicios/projeto_pyside/imgs.qrc">
+                              <iconset resource="imgs/icons.qrc">
                                <normaloff>:/icons/minus-circle.png</normaloff>:/icons/minus-circle.png</iconset>
                              </property>
                             </widget>
@@ -1227,7 +1227,7 @@ QComboBox QAbstractItemView::item {
                               <string/>
                              </property>
                              <property name="icon">
-                              <iconset resource="../ListadeExercicios/projeto_pyside/imgs.qrc">
+                              <iconset resource="imgs/icons.qrc">
                                <normaloff>:/icons/add.png</normaloff>:/icons/add.png</iconset>
                              </property>
                             </widget>
@@ -1256,7 +1256,7 @@ QComboBox QAbstractItemView::item {
                         <string>Adcionar ao Carrinho</string>
                        </property>
                        <property name="icon">
-                        <iconset resource="../ListadeExercicios/projeto_pyside/imgs.qrc">
+                        <iconset resource="imgs/icons.qrc">
                          <normaloff>:/icons/shopping-cart (1).png</normaloff>:/icons/shopping-cart (1).png</iconset>
                        </property>
                       </widget>
@@ -2623,7 +2623,7 @@ border-radius: 20px;</string>
   </widget>
  </widget>
  <resources>
-  <include location="../ListadeExercicios/projeto_pyside/imgs.qrc"/>
+  <include location="imgs/icons.qrc"/>
  </resources>
  <connections/>
 </ui>
