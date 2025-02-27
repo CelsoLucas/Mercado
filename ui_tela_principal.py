@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QMainWindow, QPushButton, QScrollArea, QSizePolicy,
     QSpacerItem, QStackedWidget, QTabWidget, QTreeWidget,
     QTreeWidgetItem, QVBoxLayout, QWidget)
-import icons_rc
+from imgs import icons_rc
 
 class Ui_TelaPrincipal(object):
     def setupUi(self, TelaPrincipal):

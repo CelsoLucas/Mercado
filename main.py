@@ -10,8 +10,8 @@ class main(QMainWindow):
         super().__init__()
         self.conexao = mysql.connector.connect(
             host="localhost",
-            user="celsadas",
-            password="33880188",
+            user="suporte",
+            password="suporte",
             database="mercado"
         )
         self.tela_login = Ui_TelaLogin()
