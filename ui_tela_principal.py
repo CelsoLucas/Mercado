@@ -17,16 +17,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QStackedWidget, QTabWidget, QTreeWidget, QTreeWidgetItem,
-    QVBoxLayout, QWidget)
-from imgs import icons_rc
+    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
+    QSpacerItem, QStackedWidget, QTabWidget, QTreeWidget,
+    QTreeWidgetItem, QVBoxLayout, QWidget)
+import icons_rc
 
 class Ui_TelaPrincipal(object):
     def setupUi(self, TelaPrincipal):
         if not TelaPrincipal.objectName():
             TelaPrincipal.setObjectName(u"TelaPrincipal")
-        TelaPrincipal.resize(1178, 834)
+        TelaPrincipal.resize(1260, 845)
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -425,6 +425,7 @@ class Ui_TelaPrincipal(object):
         self._info_principal.setObjectName(u"_info_principal")
         self.verticalLayout_5 = QVBoxLayout(self._info_principal)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(50, 50, 50, 50)
         self.stackedWidget = QStackedWidget(self._info_principal)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.telaprincipal = QWidget()
@@ -628,9 +629,17 @@ class Ui_TelaPrincipal(object):
 
         self.verticalLayout_15.addWidget(self.txt_caso_nao_produto_encontrado, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
 
-        self.verticalSpacer_8 = QSpacerItem(20, 200, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        self.scrollArea = QScrollArea(self.tela_pdv_1)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 63, 18))
+        self.horizontalLayout_13 = QHBoxLayout(self.scrollAreaWidgetContents)
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
-        self.verticalLayout_15.addItem(self.verticalSpacer_8)
+        self.verticalLayout_15.addWidget(self.scrollArea)
 
         self.stackedWidget_2.addWidget(self.tela_pdv_1)
         self.tela_pdv_2 = QWidget()
@@ -829,34 +838,8 @@ class Ui_TelaPrincipal(object):
 
         self.verticalLayout_22.addWidget(self.txt_nome_produto_1)
 
-        self.txt_nome_produto_2 = QLabel(self.layout_nome_preco_produto_2)
-        self.txt_nome_produto_2.setObjectName(u"txt_nome_produto_2")
-        self.txt_nome_produto_2.setStyleSheet(u"font-size: 20px;\n"
-"")
-
-        self.verticalLayout_22.addWidget(self.txt_nome_produto_2)
-
-        self.txt_nome_produto_3 = QLabel(self.layout_nome_preco_produto_2)
-        self.txt_nome_produto_3.setObjectName(u"txt_nome_produto_3")
-
-        self.verticalLayout_22.addWidget(self.txt_nome_produto_3)
-
-        self.txt_nome_produto_4 = QLabel(self.layout_nome_preco_produto_2)
-        self.txt_nome_produto_4.setObjectName(u"txt_nome_produto_4")
-
-        self.verticalLayout_22.addWidget(self.txt_nome_produto_4)
-
-        self.txt_nome_produto_5 = QLabel(self.layout_nome_preco_produto_2)
-        self.txt_nome_produto_5.setObjectName(u"txt_nome_produto_5")
-
-        self.verticalLayout_22.addWidget(self.txt_nome_produto_5)
-
 
         self.horizontalLayout_11.addWidget(self.layout_nome_preco_produto_2, 0, Qt.AlignmentFlag.AlignLeft)
-
-        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.horizontalLayout_11.addItem(self.horizontalSpacer_4)
 
         self.frame_3 = QFrame(self.layout_resultado_procurar_produto_1)
         self.frame_3.setObjectName(u"frame_3")
@@ -870,26 +853,6 @@ class Ui_TelaPrincipal(object):
         self.txt_quantidade_1.setStyleSheet(u"font-size: 20px;")
 
         self.verticalLayout_23.addWidget(self.txt_quantidade_1)
-
-        self.txt_quantidade_2 = QLabel(self.frame_3)
-        self.txt_quantidade_2.setObjectName(u"txt_quantidade_2")
-
-        self.verticalLayout_23.addWidget(self.txt_quantidade_2)
-
-        self.txt_quantidade_3 = QLabel(self.frame_3)
-        self.txt_quantidade_3.setObjectName(u"txt_quantidade_3")
-
-        self.verticalLayout_23.addWidget(self.txt_quantidade_3)
-
-        self.txt_quantidade_4 = QLabel(self.frame_3)
-        self.txt_quantidade_4.setObjectName(u"txt_quantidade_4")
-
-        self.verticalLayout_23.addWidget(self.txt_quantidade_4)
-
-        self.txt_quantidade_5 = QLabel(self.frame_3)
-        self.txt_quantidade_5.setObjectName(u"txt_quantidade_5")
-
-        self.verticalLayout_23.addWidget(self.txt_quantidade_5)
 
 
         self.horizontalLayout_11.addWidget(self.frame_3)
@@ -906,26 +869,6 @@ class Ui_TelaPrincipal(object):
         self.txt_valor_1.setStyleSheet(u"font-size: 20px;")
 
         self.verticalLayout_24.addWidget(self.txt_valor_1)
-
-        self.txt_valor_2 = QLabel(self.layout_valores_produtos)
-        self.txt_valor_2.setObjectName(u"txt_valor_2")
-
-        self.verticalLayout_24.addWidget(self.txt_valor_2)
-
-        self.txt_valor_3 = QLabel(self.layout_valores_produtos)
-        self.txt_valor_3.setObjectName(u"txt_valor_3")
-
-        self.verticalLayout_24.addWidget(self.txt_valor_3)
-
-        self.txt_valor_4 = QLabel(self.layout_valores_produtos)
-        self.txt_valor_4.setObjectName(u"txt_valor_4")
-
-        self.verticalLayout_24.addWidget(self.txt_valor_4)
-
-        self.txt_valor_15 = QLabel(self.layout_valores_produtos)
-        self.txt_valor_15.setObjectName(u"txt_valor_15")
-
-        self.verticalLayout_24.addWidget(self.txt_valor_15)
 
 
         self.horizontalLayout_11.addWidget(self.layout_valores_produtos)
@@ -1249,7 +1192,7 @@ class Ui_TelaPrincipal(object):
         QTreeWidgetItem(self.treeWidget_2)
         QTreeWidgetItem(self.treeWidget_2)
         self.treeWidget_2.setObjectName(u"treeWidget_2")
-        self.treeWidget_2.setMinimumSize(QSize(850, 600))
+        self.treeWidget_2.setMinimumSize(QSize(850, 300))
         self.treeWidget_2.setStyleSheet(u"")
 
         self.verticalLayout_35.addWidget(self.treeWidget_2, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
@@ -1421,7 +1364,7 @@ class Ui_TelaPrincipal(object):
         self.retranslateUi(TelaPrincipal)
 
         self.stackedWidget.setCurrentIndex(1)
-        self.stackedWidget_2.setCurrentIndex(0)
+        self.stackedWidget_2.setCurrentIndex(2)
         self.input_forma_pagamento.setCurrentIndex(-1)
         self.stackedWidget_3.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
@@ -1463,20 +1406,8 @@ class Ui_TelaPrincipal(object):
         self.input_pesquisar_produto_3.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Procurar Produto", None))
         self.btn_pesquisar_produto_3.setText("")
         self.txt_nome_produto_1.setText(QCoreApplication.translate("TelaPrincipal", u"Ma\u00e7\u00e3 ", None))
-        self.txt_nome_produto_2.setText(QCoreApplication.translate("TelaPrincipal", u"Banana", None))
-        self.txt_nome_produto_3.setText(QCoreApplication.translate("TelaPrincipal", u"Bolo", None))
-        self.txt_nome_produto_4.setText(QCoreApplication.translate("TelaPrincipal", u"Macarr\u00e3o", None))
-        self.txt_nome_produto_5.setText(QCoreApplication.translate("TelaPrincipal", u"Uva", None))
         self.txt_quantidade_1.setText(QCoreApplication.translate("TelaPrincipal", u"QTD. 01", None))
-        self.txt_quantidade_2.setText(QCoreApplication.translate("TelaPrincipal", u"QTD. 02", None))
-        self.txt_quantidade_3.setText(QCoreApplication.translate("TelaPrincipal", u"QTD. 03", None))
-        self.txt_quantidade_4.setText(QCoreApplication.translate("TelaPrincipal", u"QTD. 04", None))
-        self.txt_quantidade_5.setText(QCoreApplication.translate("TelaPrincipal", u"QTD. 05", None))
         self.txt_valor_1.setText(QCoreApplication.translate("TelaPrincipal", u"R$1,00", None))
-        self.txt_valor_2.setText(QCoreApplication.translate("TelaPrincipal", u"R$2,00", None))
-        self.txt_valor_3.setText(QCoreApplication.translate("TelaPrincipal", u"R$4,00", None))
-        self.txt_valor_4.setText(QCoreApplication.translate("TelaPrincipal", u"R$8,00", None))
-        self.txt_valor_15.setText(QCoreApplication.translate("TelaPrincipal", u"R$16,00", None))
         self.input_forma_pagamento.setItemText(0, QCoreApplication.translate("TelaPrincipal", u"Pix", None))
         self.input_forma_pagamento.setItemText(1, QCoreApplication.translate("TelaPrincipal", u"Cart\u00e3o de Cr\u00e9dito", None))
         self.input_forma_pagamento.setItemText(2, QCoreApplication.translate("TelaPrincipal", u"Cart\u00e3o de D\u00e9bito", None))

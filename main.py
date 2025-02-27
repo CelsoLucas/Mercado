@@ -3,14 +3,15 @@ from ui_tela_principal import Ui_TelaPrincipal
 from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox
 import sys
 import mysql.connector
+from cmdpdv import cmdPdv
 
 class main(QMainWindow):
     def __init__(self):
         super().__init__()
         self.conexao = mysql.connector.connect(
             host="localhost",
-            user="suporte",
-            password="suporte",
+            user="celsadas",
+            password="33880188",
             database="mercado"
         )
         self.tela_login = Ui_TelaLogin()
@@ -37,7 +38,22 @@ class main(QMainWindow):
     def telapdv(self):
         self.tela_principal.stackedWidget.setCurrentIndex(1)
         self.tela_principal.stackedWidget_2.setCurrentIndex(0)    
-        
+        self.pdv = cmdPdv(
+        self.tela_principal.btn_pesquisar_produto,
+        self.tela_principal.input_pesquisar_produto,
+        self.tela_principal.txt_caso_nao_produto_encontrado,
+        self.tela_principal.stackedWidget_2,
+        self.tela_principal.txt_quantidade,
+        self.tela_principal.txt_nome_preco_produto,
+        self.tela_principal,
+        self.tela_principal.txt_nome_produto_1,
+        self.tela_principal.txt_quantidade_1,
+        self.tela_principal.txt_valor_1)
+        self.tela_principal.btn_pesquisar_produto.clicked.connect(self.pdv.procurar_produto)
+        self.tela_principal.btn_menos.clicked.connect(self.pdv.menos)
+        self.tela_principal.btn_mais.clicked.connect(self.pdv.mais)
+
+
     def telaestoque(self):
         self.tela_principal.stackedWidget.setCurrentIndex(2)
         self.tela_principal.stackedWidget_3.setCurrentIndex(0)
@@ -61,7 +77,7 @@ class main(QMainWindow):
         resultado = cursor.fetchone()
         
         if not resultado:
-            QMessageBox.warning(self, "Erro", "Usuário inválido!")
+            QMessageBox.warning(None, "Erro", "Usuário inválido!")
             return
         
         senha_armazenada, foto_perfil = resultado
@@ -71,15 +87,15 @@ class main(QMainWindow):
         resultado_senha = cursor.fetchone()
 
         if not resultado_senha:
-            QMessageBox.warning(self, "Erro", "Erro ao gerar o hash da senha digitada!")
+            QMessageBox.warning(None, "Erro", "Erro ao gerar o hash da senha digitada!")
             return
 
         senha_digitada_hash = resultado_senha[0]
         
         if senha_digitada_hash != senha_armazenada:
-            QMessageBox.warning(self, "Erro", "Senha inválida!")
+            QMessageBox.warning(None, "Erro", "Senha inválida!")
         else:
-            QMessageBox.information(self, "Sucesso", f"Bem-vindo, {self.tela_login.input_user.text()}!")
+            QMessageBox.information(None, "Sucesso", f"Bem-vindo, {self.tela_login.input_user.text()}!")
             self.init_tela_principal()
             
         cursor.close()

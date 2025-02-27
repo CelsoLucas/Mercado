@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1178</width>
-    <height>834</height>
+    <width>1260</width>
+    <height>845</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -576,6 +576,18 @@ QComboBox QAbstractItemView::item {
        <item>
         <widget class="QWidget" name="_info_principal" native="true">
          <layout class="QVBoxLayout" name="verticalLayout_5">
+          <property name="leftMargin">
+           <number>50</number>
+          </property>
+          <property name="topMargin">
+           <number>50</number>
+          </property>
+          <property name="rightMargin">
+           <number>50</number>
+          </property>
+          <property name="bottomMargin">
+           <number>50</number>
+          </property>
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
@@ -865,7 +877,7 @@ QComboBox QAbstractItemView::item {
               <item>
                <widget class="QStackedWidget" name="stackedWidget_2">
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>2</number>
                 </property>
                 <widget class="QWidget" name="tela_pdv_1">
                  <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1011,20 +1023,22 @@ QComboBox QAbstractItemView::item {
                    </widget>
                   </item>
                   <item>
-                   <spacer name="verticalSpacer_8">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Vertical</enum>
+                   <widget class="QScrollArea" name="scrollArea">
+                    <property name="widgetResizable">
+                     <bool>true</bool>
                     </property>
-                    <property name="sizeType">
-                     <enum>QSizePolicy::Policy::Minimum</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>200</height>
-                     </size>
-                    </property>
-                   </spacer>
+                    <widget class="QWidget" name="scrollAreaWidgetContents">
+                     <property name="geometry">
+                      <rect>
+                       <x>0</x>
+                       <y>0</y>
+                       <width>63</width>
+                       <height>18</height>
+                      </rect>
+                     </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_13"/>
+                    </widget>
+                   </widget>
                   </item>
                  </layout>
                 </widget>
@@ -1450,53 +1464,8 @@ QComboBox QAbstractItemView::item {
                              </property>
                             </widget>
                            </item>
-                           <item>
-                            <widget class="QLabel" name="txt_nome_produto_2">
-                             <property name="styleSheet">
-                              <string notr="true">font-size: 20px;
-</string>
-                             </property>
-                             <property name="text">
-                              <string>Banana</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QLabel" name="txt_nome_produto_3">
-                             <property name="text">
-                              <string>Bolo</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QLabel" name="txt_nome_produto_4">
-                             <property name="text">
-                              <string>Macarrão</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QLabel" name="txt_nome_produto_5">
-                             <property name="text">
-                              <string>Uva</string>
-                             </property>
-                            </widget>
-                           </item>
                           </layout>
                          </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_4">
-                          <property name="orientation">
-                           <enum>Qt::Orientation::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
                         </item>
                         <item>
                          <widget class="QFrame" name="frame_3">
@@ -1517,34 +1486,6 @@ QComboBox QAbstractItemView::item {
                              </property>
                              <property name="text">
                               <string>QTD. 01</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QLabel" name="txt_quantidade_2">
-                             <property name="text">
-                              <string>QTD. 02</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QLabel" name="txt_quantidade_3">
-                             <property name="text">
-                              <string>QTD. 03</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QLabel" name="txt_quantidade_4">
-                             <property name="text">
-                              <string>QTD. 04</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QLabel" name="txt_quantidade_5">
-                             <property name="text">
-                              <string>QTD. 05</string>
                              </property>
                             </widget>
                            </item>
@@ -1570,34 +1511,6 @@ QComboBox QAbstractItemView::item {
                              </property>
                              <property name="text">
                               <string>R$1,00</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QLabel" name="txt_valor_2">
-                             <property name="text">
-                              <string>R$2,00</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QLabel" name="txt_valor_3">
-                             <property name="text">
-                              <string>R$4,00</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QLabel" name="txt_valor_4">
-                             <property name="text">
-                              <string>R$8,00</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QLabel" name="txt_valor_15">
-                             <property name="text">
-                              <string>R$16,00</string>
                              </property>
                             </widget>
                            </item>
@@ -2231,7 +2144,7 @@ border-radius: 20px;</string>
                         <property name="minimumSize">
                          <size>
                           <width>850</width>
-                          <height>600</height>
+                          <height>300</height>
                          </size>
                         </property>
                         <property name="styleSheet">

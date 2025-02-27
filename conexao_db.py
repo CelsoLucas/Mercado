@@ -9,7 +9,5 @@ class conexaoDB():
             database="mercado"
         )
     
-    def select_db(self, comando, valores):
-        cursor = self.conexao.cursor()
-        cursor.execute(comando, valores)
-        return cursor.fetchall()
+    def get_cursor(self):
+        return self.conexao.cursor()
