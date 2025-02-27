@@ -118,7 +118,7 @@ class cmdPdv():
                 border: 1px solid #dbdbdb;
                 padding: 10px;
             """)
-            card_frame.setFixedSize(500, 500)
+            card_frame.setFixedSize(400, 400)
 
             # Layout principal do card (vertical)
             card_layout = QVBoxLayout(card_frame)
@@ -132,12 +132,12 @@ class cmdPdv():
             
             # Carrega a imagem do produto
             imagem_label = QLabel()
-            imagem_label.setFixedSize(300, 300)
+            imagem_label.setFixedSize(200, 200)
             imagem_label.setStyleSheet("border: none;")
             if imagem:
                 pixmap = QPixmap(imagem)
                 if not pixmap.isNull():
-                    imagem_label.setPixmap(pixmap.scaled(300, 300, Qt.KeepAspectRatio, Qt.SmoothTransformation))
+                    imagem_label.setPixmap(pixmap.scaled(200, 200, Qt.KeepAspectRatio, Qt.SmoothTransformation))
                     imagem_label.setAlignment(Qt.AlignCenter)
                 else:
                     imagem_label.setText("Sem imagem")
