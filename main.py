@@ -1,18 +1,21 @@
 from ui_tela_login import Ui_TelaLogin
 from ui_tela_principal import Ui_TelaPrincipal
 from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox
+from PySide6.QtGui import QPixmap
 import sys
 import mysql.connector
 from cmdpdv import cmdPdv
 from cmdestoque import cmdEstoque
+from cmdconfiguracoes import cmdConfiguracoes
+from cmdconfiguracoes import cmdConfiguracoes
 
 class main(QMainWindow):
     def __init__(self):
         super().__init__()
         self.conexao = mysql.connector.connect(
             host="localhost",
-            user="celsadas",
-            password="33880188",
+            user="suporte",
+            password="suporte",
             database="mercado"
         )
         self.tela_login = Ui_TelaLogin()
@@ -61,19 +64,28 @@ class main(QMainWindow):
         self.estoque = cmdEstoque(self.tela_principal,
                                   self.tela_principal.input_pesquisar_produto_4,
                                   self.tela_principal.txt_caso_produto_nao_encontra_estoque,
-                                  self.tela_principal.treeWidget)
+                                  self.tela_principal.treeWidget,
+                                  self.tela_principal.input_nome_produto)
         self.tela_principal.btn_pesquisar_produto_4.clicked.connect(self.estoque.procurar_produto)
         self.tela_principal.btn_adc_produto_estoque.clicked.connect(self.estoque.tela_adc_produto)
         self.tela_principal.btn_procurar_ft_produto.clicked.connect(self.estoque.open_image)
-        self.tela_principal.btn_adc_produto.clicked.connect(self.estoque.adc_produto_estoque(self.tela_principal.input_nome_produto, self.tela_principal.input_preco_produto, self.tela_principal.input_quantidade_produto, self.tela_principal.input_categoria_produto))
+        self.tela_principal.btn_adc_produto.clicked.connect(lambda: self.estoque.adc_produto_estoque(self.tela_principal.input_nome_produto, self.tela_principal.input_preco_produto, self.tela_principal.input_quantidade_produto, self.tela_principal.input_categoria_produto))
 
     def telarelatorios(self):
         self.tela_principal.stackedWidget.setCurrentIndex(3)
 
     def telaconfiguracoes(self):
         self.tela_principal.stackedWidget.setCurrentIndex(4)
-
-        
+        self.config = cmdConfiguracoes(self.tela_principal.treeWidget_2, self.tela_principal)
+        self.tela_principal.btn_adc_user.clicked.connect(self.config.tela_adc_usuario)
+        self.tela_principal.btn_procurar_ft_adc_usuario.clicked.connect(self.config.open_image)
+        self.tela_principal.btn_adc_usuario.clicked.connect(lambda: self.config.adc_usuario(self.tela_principal.input_nome_adc_usuario,
+                                                                                    self.tela_principal.input_email_adc_usuario,
+                                                                                    self.tela_principal.input_senha_adc_usuario,
+                                                                                    self.tela_principal.input_cpf_adc_usuario,
+                                                                                    self.tela_principal.input_telefone_adc_usuario))
+        self.tela_principal.btn_adc_categoria.clicked.connect(self.config.tela_adc_categoria)
+        self.tela_principal.btn_adc_categoria_2.clicked.connect(lambda: self.config.adc_categoria(self.tela_principal.input_nome_adc_categoria))
     def init_tela_login(self):
         self.tela_login.setupUi(self)
         self.tela_login.btn_login.clicked.connect(self.check_login)
@@ -81,7 +93,7 @@ class main(QMainWindow):
     def check_login(self):
         cursor = self.conexao.cursor()
         
-        comando = "SELECT senha, img_local FROM usuarios WHERE nome_usu = %s"
+        comando = "SELECT senha, imagem FROM usuarios WHERE nome_usu = %s"
         cursor.execute(comando, (self.tela_login.input_user.text(),))
         resultado = cursor.fetchone()
         
@@ -104,6 +116,10 @@ class main(QMainWindow):
         if senha_digitada_hash != senha_armazenada:
             QMessageBox.warning(None, "Erro", "Senha inválida!")
         else:
+            if foto_perfil:
+                pixmap = QPixmap(foto_perfil)
+                self.tela_login.icon_login.setPixmap(pixmap)
+                self.tela_login.icon_login.setScaledContents(True)
             QMessageBox.information(None, "Sucesso", f"Bem-vindo, {self.tela_login.input_user.text()}!")
             self.init_tela_principal()
             

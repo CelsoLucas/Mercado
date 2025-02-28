@@ -591,7 +591,7 @@ QComboBox QAbstractItemView::item {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>2</number>
+             <number>4</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -1919,6 +1919,12 @@ QComboBox QAbstractItemView::item {
                          <height>0</height>
                         </size>
                        </property>
+                       <property name="editable">
+                        <bool>false</bool>
+                       </property>
+                       <property name="currentIndex">
+                        <number>-1</number>
+                       </property>
                        <property name="placeholderText">
                         <string>CATEGORIA</string>
                        </property>
@@ -2181,7 +2187,7 @@ border-radius: 20px;</string>
                         </property>
                         <column>
                          <property name="text">
-                          <string>Nome</string>
+                          <string>ID</string>
                          </property>
                          <property name="textAlignment">
                           <set>AlignCenter</set>
@@ -2189,7 +2195,15 @@ border-radius: 20px;</string>
                         </column>
                         <column>
                          <property name="text">
-                          <string>Email</string>
+                          <string>NOME</string>
+                         </property>
+                         <property name="textAlignment">
+                          <set>AlignCenter</set>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>EMAIL</string>
                          </property>
                          <property name="textAlignment">
                           <set>AlignCenter</set>
@@ -2205,104 +2219,12 @@ border-radius: 20px;</string>
                         </column>
                         <column>
                          <property name="text">
-                          <string>Idade</string>
+                          <string>TELEFONE</string>
                          </property>
                          <property name="textAlignment">
                           <set>AlignCenter</set>
                          </property>
                         </column>
-                        <column>
-                         <property name="text">
-                          <string>Data Contratação</string>
-                         </property>
-                         <property name="textAlignment">
-                          <set>AlignCenter</set>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>Sexo</string>
-                         </property>
-                         <property name="textAlignment">
-                          <set>AlignCenter</set>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>Cargo</string>
-                         </property>
-                         <property name="textAlignment">
-                          <set>AlignCenter</set>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>Local IMG</string>
-                         </property>
-                         <property name="textAlignment">
-                          <set>AlignCenter</set>
-                         </property>
-                        </column>
-                        <item>
-                         <property name="text">
-                          <string>1</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>New Item</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>New Item</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>New Item</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>New Item</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>New Item</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>New Item</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>New Item</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>New Item</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>New Item</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>New Item</string>
-                         </property>
-                        </item>
-                        <item>
-                         <property name="text">
-                          <string>New Item</string>
-                         </property>
-                        </item>
                        </widget>
                       </item>
                       <item alignment="Qt::AlignmentFlag::AlignHCenter">

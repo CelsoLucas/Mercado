@@ -30,7 +30,7 @@ class cmdPdv():
         cursor = self.conexao.get_cursor()
 
         valores = (self.resultado_busca_produto, self.resultado_busca_produto)
-        cursor.execute("SELECT nome, preco, quantidade FROM estoque WHERE nome = %s OR id = %s", valores)
+        cursor.execute("SELECT nome_produto, preco, quantidade FROM estoque WHERE nome = %s OR id = %s", valores)
 
         resultado = cursor.fetchone()
 
@@ -93,7 +93,7 @@ class cmdPdv():
 
         # Conecta ao banco de dados e busca todos os produtos
         cursor = self.conexao.get_cursor()
-        cursor.execute("SELECT nome, preco, quantidade, imagem FROM estoque")
+        cursor.execute("SELECT nome_produto, preco, quantidade, imagem FROM estoque")
         produtos = cursor.fetchall()
 
         if not produtos:

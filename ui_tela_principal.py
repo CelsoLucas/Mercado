@@ -1048,6 +1048,7 @@ class Ui_TelaPrincipal(object):
         self.input_categoria_produto.addItem("")
         self.input_categoria_produto.setObjectName(u"input_categoria_produto")
         self.input_categoria_produto.setMinimumSize(QSize(400, 0))
+        self.input_categoria_produto.setEditable(False)
 
         self.gridLayout_6.addWidget(self.input_categoria_produto, 2, 1, 1, 1)
 
@@ -1186,27 +1187,12 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_35.setObjectName(u"verticalLayout_35")
         self.treeWidget_2 = QTreeWidget(self.config_usuarios)
         __qtreewidgetitem1 = QTreeWidgetItem()
-        __qtreewidgetitem1.setTextAlignment(7, Qt.AlignCenter);
-        __qtreewidgetitem1.setTextAlignment(6, Qt.AlignCenter);
-        __qtreewidgetitem1.setTextAlignment(5, Qt.AlignCenter);
         __qtreewidgetitem1.setTextAlignment(4, Qt.AlignCenter);
         __qtreewidgetitem1.setTextAlignment(3, Qt.AlignCenter);
         __qtreewidgetitem1.setTextAlignment(2, Qt.AlignCenter);
         __qtreewidgetitem1.setTextAlignment(1, Qt.AlignCenter);
         __qtreewidgetitem1.setTextAlignment(0, Qt.AlignCenter);
         self.treeWidget_2.setHeaderItem(__qtreewidgetitem1)
-        QTreeWidgetItem(self.treeWidget_2)
-        QTreeWidgetItem(self.treeWidget_2)
-        QTreeWidgetItem(self.treeWidget_2)
-        QTreeWidgetItem(self.treeWidget_2)
-        QTreeWidgetItem(self.treeWidget_2)
-        QTreeWidgetItem(self.treeWidget_2)
-        QTreeWidgetItem(self.treeWidget_2)
-        QTreeWidgetItem(self.treeWidget_2)
-        QTreeWidgetItem(self.treeWidget_2)
-        QTreeWidgetItem(self.treeWidget_2)
-        QTreeWidgetItem(self.treeWidget_2)
-        QTreeWidgetItem(self.treeWidget_2)
         self.treeWidget_2.setObjectName(u"treeWidget_2")
         self.treeWidget_2.setMinimumSize(QSize(850, 300))
         self.treeWidget_2.setStyleSheet(u"")
@@ -1379,10 +1365,11 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(4)
         self.stackedWidget_2.setCurrentIndex(2)
         self.input_forma_pagamento.setCurrentIndex(-1)
         self.stackedWidget_3.setCurrentIndex(0)
+        self.input_categoria_produto.setCurrentIndex(-1)
         self.tabWidget.setCurrentIndex(0)
         self.stackedWidget_4.setCurrentIndex(0)
         self.stackedWidget_5.setCurrentIndex(1)
@@ -1461,43 +1448,11 @@ class Ui_TelaPrincipal(object):
         self.txt_lucro_prejuizo.setText(QCoreApplication.translate("TelaPrincipal", u"Lucro/Prejuizo", None))
         self.label_4.setText(QCoreApplication.translate("TelaPrincipal", u"TextLabel", None))
         ___qtreewidgetitem1 = self.treeWidget_2.headerItem()
-        ___qtreewidgetitem1.setText(7, QCoreApplication.translate("TelaPrincipal", u"Local IMG", None));
-        ___qtreewidgetitem1.setText(6, QCoreApplication.translate("TelaPrincipal", u"Cargo", None));
-        ___qtreewidgetitem1.setText(5, QCoreApplication.translate("TelaPrincipal", u"Sexo", None));
-        ___qtreewidgetitem1.setText(4, QCoreApplication.translate("TelaPrincipal", u"Data Contrata\u00e7\u00e3o", None));
-        ___qtreewidgetitem1.setText(3, QCoreApplication.translate("TelaPrincipal", u"Idade", None));
-        ___qtreewidgetitem1.setText(2, QCoreApplication.translate("TelaPrincipal", u"CPF", None));
-        ___qtreewidgetitem1.setText(1, QCoreApplication.translate("TelaPrincipal", u"Email", None));
-        ___qtreewidgetitem1.setText(0, QCoreApplication.translate("TelaPrincipal", u"Nome", None));
-
-        __sortingEnabled = self.treeWidget_2.isSortingEnabled()
-        self.treeWidget_2.setSortingEnabled(False)
-        ___qtreewidgetitem2 = self.treeWidget_2.topLevelItem(0)
-        ___qtreewidgetitem2.setText(0, QCoreApplication.translate("TelaPrincipal", u"1", None));
-        ___qtreewidgetitem3 = self.treeWidget_2.topLevelItem(1)
-        ___qtreewidgetitem3.setText(0, QCoreApplication.translate("TelaPrincipal", u"New Item", None));
-        ___qtreewidgetitem4 = self.treeWidget_2.topLevelItem(2)
-        ___qtreewidgetitem4.setText(0, QCoreApplication.translate("TelaPrincipal", u"New Item", None));
-        ___qtreewidgetitem5 = self.treeWidget_2.topLevelItem(3)
-        ___qtreewidgetitem5.setText(0, QCoreApplication.translate("TelaPrincipal", u"New Item", None));
-        ___qtreewidgetitem6 = self.treeWidget_2.topLevelItem(4)
-        ___qtreewidgetitem6.setText(0, QCoreApplication.translate("TelaPrincipal", u"New Item", None));
-        ___qtreewidgetitem7 = self.treeWidget_2.topLevelItem(5)
-        ___qtreewidgetitem7.setText(0, QCoreApplication.translate("TelaPrincipal", u"New Item", None));
-        ___qtreewidgetitem8 = self.treeWidget_2.topLevelItem(6)
-        ___qtreewidgetitem8.setText(0, QCoreApplication.translate("TelaPrincipal", u"New Item", None));
-        ___qtreewidgetitem9 = self.treeWidget_2.topLevelItem(7)
-        ___qtreewidgetitem9.setText(0, QCoreApplication.translate("TelaPrincipal", u"New Item", None));
-        ___qtreewidgetitem10 = self.treeWidget_2.topLevelItem(8)
-        ___qtreewidgetitem10.setText(0, QCoreApplication.translate("TelaPrincipal", u"New Item", None));
-        ___qtreewidgetitem11 = self.treeWidget_2.topLevelItem(9)
-        ___qtreewidgetitem11.setText(0, QCoreApplication.translate("TelaPrincipal", u"New Item", None));
-        ___qtreewidgetitem12 = self.treeWidget_2.topLevelItem(10)
-        ___qtreewidgetitem12.setText(0, QCoreApplication.translate("TelaPrincipal", u"New Item", None));
-        ___qtreewidgetitem13 = self.treeWidget_2.topLevelItem(11)
-        ___qtreewidgetitem13.setText(0, QCoreApplication.translate("TelaPrincipal", u"New Item", None));
-        self.treeWidget_2.setSortingEnabled(__sortingEnabled)
-
+        ___qtreewidgetitem1.setText(4, QCoreApplication.translate("TelaPrincipal", u"TELEFONE", None));
+        ___qtreewidgetitem1.setText(3, QCoreApplication.translate("TelaPrincipal", u"CPF", None));
+        ___qtreewidgetitem1.setText(2, QCoreApplication.translate("TelaPrincipal", u"EMAIL", None));
+        ___qtreewidgetitem1.setText(1, QCoreApplication.translate("TelaPrincipal", u"NOME", None));
+        ___qtreewidgetitem1.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
         self.btn_adc_user.setText(QCoreApplication.translate("TelaPrincipal", u"Adcionar Usuario", None))
         self.btn_adc_usuario.setText(QCoreApplication.translate("TelaPrincipal", u"Criar Usuario", None))
         self.input_senha_adc_usuario.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Senha", None))
@@ -1509,9 +1464,9 @@ class Ui_TelaPrincipal(object):
         self.input_cpf_adc_usuario.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"CPF", None))
         self.label_img_adc_usuario.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tela_config_1), QCoreApplication.translate("TelaPrincipal", u"Tab 1", None))
-        ___qtreewidgetitem14 = self.tabela_categoria.headerItem()
-        ___qtreewidgetitem14.setText(1, QCoreApplication.translate("TelaPrincipal", u"Categorias", None));
-        ___qtreewidgetitem14.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
+        ___qtreewidgetitem2 = self.tabela_categoria.headerItem()
+        ___qtreewidgetitem2.setText(1, QCoreApplication.translate("TelaPrincipal", u"Categorias", None));
+        ___qtreewidgetitem2.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
         self.btn_adc_categoria.setText(QCoreApplication.translate("TelaPrincipal", u"Adicionar Categoria", None))
         self.input_nome_adc_categoria.setInputMask("")
         self.input_nome_adc_categoria.setText("")
