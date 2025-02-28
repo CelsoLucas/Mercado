@@ -64,7 +64,7 @@
 	border-radius: 10px
 }
 
-#btn_adc_produto, #btn_finalizar_compra, #btn_adc_carrinho, #btn_adc_categoria, #btn_procurar_ft_adc_usuario, #btn_adc_usuario,#btn_adc_categoria_2, #btn_adc_user{
+#btn_adc_produto, #btn_finalizar_compra, #btn_adc_carrinho, #btn_adc_categoria, #btn_procurar_ft_adc_usuario, #btn_adc_usuario,#btn_adc_categoria_2, #btn_adc_user, #btn_procurar_ft_produto{
 	  background-color: #005AFF; /* Fundo transparente */
  	 color: #F0F8FF; /* Cor do texto */
   	border-radius: 20px; /* Bordas arredondadas */
@@ -73,13 +73,13 @@
   cursor: pointer; /* Cursor de mão */
   transition: background-color 0.3s, color 0.3s; /* Transição suave */
 }
-#btn_adc_produto:hover, #btn_finalizar_compra:hover, #btn_adc_carrinho:hover, #btn_adc_categoria:hover, #btn_procurar_ft_adc_usuario:hover, #btn_adc_usuario:hover, #btn_adc_categoria_2:hover,  #btn_adc_user:hover{
+#btn_adc_produto:hover, #btn_finalizar_compra:hover, #btn_adc_carrinho:hover, #btn_adc_categoria:hover, #btn_procurar_ft_adc_usuario:hover, #btn_adc_usuario:hover, #btn_adc_categoria_2:hover,  #btn_adc_user:hove, #btn_procurar_ft_produto:hover{
   background-color: #F0F8FF;
   border: 2px solid #005AFF;
   color: black; /* Cor do texto ao passar o mouse */
 }
 
-#btn_adc_produto:pressed, #btn_finalizar_compra:pressed, #btn_adc_carrinho:pressed, #btn_adc_categoria:pressed, #btn_procurar_ft_adc_usuario:pressed, #btn_adc_usuario:pressed, btn_adc_categoria_2:pressed,  #btn_adc_user:pressed{
+#btn_adc_produto:pressed, #btn_finalizar_compra:pressed, #btn_adc_carrinho:pressed, #btn_adc_categoria:pressed, #btn_procurar_ft_adc_usuario:pressed, #btn_adc_usuario:pressed, btn_adc_categoria_2:pressed,  #btn_adc_user:pressed, #btn_procurar_ft_produto:pressed{
   background-color: #F0F8FF;
   border: 2px solid #005AFF;
   color: black; /* Cor do texto ao passar o mouse */
@@ -591,7 +591,7 @@ QComboBox QAbstractItemView::item {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>1</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -1789,6 +1789,13 @@ QComboBox QAbstractItemView::item {
                    </widget>
                   </item>
                   <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="txt_caso_produto_nao_encontra_estoque">
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
                    <widget class="QTreeWidget" name="treeWidget">
                     <property name="minimumSize">
                      <size>
@@ -1836,6 +1843,14 @@ QComboBox QAbstractItemView::item {
                       <set>AlignCenter</set>
                      </property>
                     </column>
+                    <column>
+                     <property name="text">
+                      <string>IMAGEM</string>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
+                     </property>
+                    </column>
                    </widget>
                   </item>
                  </layout>
@@ -1844,8 +1859,8 @@ QComboBox QAbstractItemView::item {
                  <layout class="QVBoxLayout" name="verticalLayout_27">
                   <item>
                    <widget class="QWidget" name="widget" native="true">
-                    <layout class="QVBoxLayout" name="verticalLayout_28">
-                     <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                    <layout class="QGridLayout" name="gridLayout_6">
+                     <item row="0" column="0">
                       <widget class="QLineEdit" name="input_nome_produto">
                        <property name="minimumSize">
                         <size>
@@ -1861,7 +1876,23 @@ QComboBox QAbstractItemView::item {
                        </property>
                       </widget>
                      </item>
-                     <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                     <item row="2" column="0">
+                      <widget class="QLineEdit" name="input_quantidade_produto">
+                       <property name="minimumSize">
+                        <size>
+                         <width>400</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                       <property name="placeholderText">
+                        <string>QUANTIDADE</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
                       <widget class="QLineEdit" name="input_preco_produto">
                        <property name="minimumSize">
                         <size>
@@ -1880,23 +1911,7 @@ QComboBox QAbstractItemView::item {
                        </property>
                       </widget>
                      </item>
-                     <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                      <widget class="QLineEdit" name="input_quantidade_produto">
-                       <property name="minimumSize">
-                        <size>
-                         <width>400</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignmentFlag::AlignCenter</set>
-                       </property>
-                       <property name="placeholderText">
-                        <string>QUANTIDADE</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                     <item row="2" column="1">
                       <widget class="QComboBox" name="input_categoria_produto">
                        <property name="minimumSize">
                         <size>
@@ -1924,20 +1939,34 @@ QComboBox QAbstractItemView::item {
                        </item>
                       </widget>
                      </item>
-                     <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                      <widget class="QPushButton" name="btn_adc_produto">
-                       <property name="minimumSize">
-                        <size>
-                         <width>300</width>
-                         <height>0</height>
-                        </size>
-                       </property>
+                     <item row="4" column="0">
+                      <widget class="QPushButton" name="btn_procurar_ft_produto">
                        <property name="text">
-                        <string>Adcionar Produto</string>
+                        <string>Procurar Foto do Produto</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="1">
+                      <widget class="QLabel" name="img_produto_adc_estoque">
+                       <property name="text">
+                        <string/>
                        </property>
                       </widget>
                      </item>
                     </layout>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QPushButton" name="btn_adc_produto">
+                    <property name="minimumSize">
+                     <size>
+                      <width>300</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Adcionar Produto</string>
+                    </property>
                    </widget>
                   </item>
                  </layout>

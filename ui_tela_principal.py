@@ -77,7 +77,7 @@ class Ui_TelaPrincipal(object):
 "	border-radius: 10px\n"
 "}\n"
 "\n"
-"#btn_adc_produto, #btn_finalizar_compra, #btn_adc_carrinho, #btn_adc_categoria, #btn_procurar_ft_adc_usuario, #btn_adc_usuario,#btn_adc_categoria_2, #btn_adc_user{\n"
+"#btn_adc_produto, #btn_finalizar_compra, #btn_adc_carrinho, #btn_adc_categoria, #btn_procurar_ft_adc_usuario, #btn_adc_usuario,#btn_adc_categoria_2, #btn_adc_user, #btn_procurar_ft_produto{\n"
 "	  background-color: #005AFF; /* Fundo transparente */\n"
 " 	 color: #F0F8FF; /* Cor do texto */\n"
 "  	border-radius: 20px; /* Bordas arredondadas */\n"
@@ -86,14 +86,14 @@ class Ui_TelaPrincipal(object):
 "  cursor: pointer; /* Cursor de m\u00e3o */\n"
 "  transition: background-color 0.3s, color 0.3s; /* Transi\u00e7\u00e3o suave */\n"
 "}\n"
-"#btn_adc_produto:hover, #btn_finalizar_compra:hover, #btn_adc_carrinho:hover, #btn_adc_categoria:hover, #btn_procurar_ft_adc_usuario:hover, #btn_adc_usuario:hover, #btn_adc_categoria_2:hover,  #btn_adc_user:hover{\n"
+"#btn_adc_produto:hover, #btn_finalizar_compra:hover, #btn_adc_carrinho:hover, #btn_adc_categoria:hover, #btn_procurar_ft_adc_usuario:hover, #btn_adc_usuario:hover, #btn_adc_categoria_2:hover,  #btn_adc_user:hove, #btn_procu"
+                        "rar_ft_produto:hover{\n"
 "  background-color: #F0F8FF;\n"
-""
-                        "  border: 2px solid #005AFF;\n"
+"  border: 2px solid #005AFF;\n"
 "  color: black; /* Cor do texto ao passar o mouse */\n"
 "}\n"
 "\n"
-"#btn_adc_produto:pressed, #btn_finalizar_compra:pressed, #btn_adc_carrinho:pressed, #btn_adc_categoria:pressed, #btn_procurar_ft_adc_usuario:pressed, #btn_adc_usuario:pressed, btn_adc_categoria_2:pressed,  #btn_adc_user:pressed{\n"
+"#btn_adc_produto:pressed, #btn_finalizar_compra:pressed, #btn_adc_carrinho:pressed, #btn_adc_categoria:pressed, #btn_procurar_ft_adc_usuario:pressed, #btn_adc_usuario:pressed, btn_adc_categoria_2:pressed,  #btn_adc_user:pressed, #btn_procurar_ft_produto:pressed{\n"
 "  background-color: #F0F8FF;\n"
 "  border: 2px solid #005AFF;\n"
 "  color: black; /* Cor do texto ao passar o mouse */\n"
@@ -114,12 +114,12 @@ class Ui_TelaPrincipal(object):
 "    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;\n"
 "}\n"
 "\n"
-"#input_forma_pagamento::editable {\n"
+""
+                        "#input_forma_pagamento::editable {\n"
 "    padding: 6px;\n"
 "    text-align: center;\n"
 "}\n"
-""
-                        "\n"
+"\n"
 "#input_forma_pagamento:hover {\n"
 "    border: 2px solid #2980b9;\n"
 "    background-color: #f0f8ff;\n"
@@ -152,13 +152,13 @@ class Ui_TelaPrincipal(object):
 "\n"
 "#input_forma_pagamento QAbstractItemView::item {\n"
 "    padding: 8px;\n"
-"    text-align: center;\n"
+"    text"
+                        "-align: center;\n"
 "}\n"
 "*/\n"
 "QLineEdit {\n"
 "    border: 2px solid #3498db;\n"
-"    border-"
-                        "radius: 20px;\n"
+"    border-radius: 20px;\n"
 "    outline: none;\n"
 "    font-size: 26px;\n"
 "	font-weight: 600;\n"
@@ -190,13 +190,13 @@ class Ui_TelaPrincipal(object):
 "  padding: 12px 24px; /* Espa\u00e7amento interno */\n"
 "  font-size: 16px; /* Tamanho da fonte */\n"
 "  cursor: pointer; /* Cursor de m\u00e3o */\n"
-"  transition: background-color 0.3s, color 0.3s; /* Transi\u00e7\u00e3o suave */\n"
+"  transition: background-color 0.3s, color 0.3s; /* Transi"
+                        "\u00e7\u00e3o suave */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
 "  background-color: #005AFF;\n"
-""
-                        "  border: 2px solid #F0F8FF;\n"
+"  border: 2px solid #F0F8FF;\n"
 "  color: #F0F8FF; /* Cor do texto ao passar o mouse */\n"
 "}\n"
 "\n"
@@ -225,13 +225,13 @@ class Ui_TelaPrincipal(object):
 "/* Centraliza o texto */\n"
 "QComboBox::editable {\n"
 "    padding: 6px;\n"
-"    text-align: center;\n"
+"    text-a"
+                        "lign: center;\n"
 "}\n"
 "\n"
 "/* Hover */\n"
 "QComboBox:hover {\n"
-"    border: 2px solid #2980b"
-                        "9;\n"
+"    border: 2px solid #2980b9;\n"
 "    background-color: #f0f8ff;\n"
 "}\n"
 "\n"
@@ -263,13 +263,13 @@ class Ui_TelaPrincipal(object):
 "    selection-background-color: #1c6ea4;\n"
 "    selection-color: white;\n"
 "    border-bottom-left-radius: 20px;\n"
-"    border-bottom-right-radius: 20px;\n"
+"    border-bottom-right-radius: 20p"
+                        "x;\n"
 "    border-top-left-radius: 0px;\n"
 "    border-top-right-radius: 0px;\n"
 "}\n"
 "\n"
-"/*"
-                        " Centraliza os itens do menu suspenso */\n"
+"/* Centraliza os itens do menu suspenso */\n"
 "QComboBox QAbstractItemView::item {\n"
 "    padding: 8px;\n"
 "    text-align: center;\n"
@@ -993,8 +993,14 @@ class Ui_TelaPrincipal(object):
 
         self.verticalLayout_25.addWidget(self.layout_pesquisar_produto_estoque, 0, Qt.AlignmentFlag.AlignTop)
 
+        self.txt_caso_produto_nao_encontra_estoque = QLabel(self.tela_estoque_1)
+        self.txt_caso_produto_nao_encontra_estoque.setObjectName(u"txt_caso_produto_nao_encontra_estoque")
+
+        self.verticalLayout_25.addWidget(self.txt_caso_produto_nao_encontra_estoque, 0, Qt.AlignmentFlag.AlignHCenter)
+
         self.treeWidget = QTreeWidget(self.tela_estoque_1)
         __qtreewidgetitem = QTreeWidgetItem()
+        __qtreewidgetitem.setTextAlignment(5, Qt.AlignCenter);
         __qtreewidgetitem.setTextAlignment(4, Qt.AlignCenter);
         __qtreewidgetitem.setTextAlignment(3, Qt.AlignCenter);
         __qtreewidgetitem.setTextAlignment(2, Qt.AlignCenter);
@@ -1013,28 +1019,28 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_27.setObjectName(u"verticalLayout_27")
         self.widget = QWidget(self.tela_estoque_2)
         self.widget.setObjectName(u"widget")
-        self.verticalLayout_28 = QVBoxLayout(self.widget)
-        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
+        self.gridLayout_6 = QGridLayout(self.widget)
+        self.gridLayout_6.setObjectName(u"gridLayout_6")
         self.input_nome_produto = QLineEdit(self.widget)
         self.input_nome_produto.setObjectName(u"input_nome_produto")
         self.input_nome_produto.setMinimumSize(QSize(400, 0))
         self.input_nome_produto.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.verticalLayout_28.addWidget(self.input_nome_produto, 0, Qt.AlignmentFlag.AlignHCenter)
-
-        self.input_preco_produto = QLineEdit(self.widget)
-        self.input_preco_produto.setObjectName(u"input_preco_produto")
-        self.input_preco_produto.setMinimumSize(QSize(400, 0))
-        self.input_preco_produto.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.verticalLayout_28.addWidget(self.input_preco_produto, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_6.addWidget(self.input_nome_produto, 0, 0, 1, 1)
 
         self.input_quantidade_produto = QLineEdit(self.widget)
         self.input_quantidade_produto.setObjectName(u"input_quantidade_produto")
         self.input_quantidade_produto.setMinimumSize(QSize(400, 0))
         self.input_quantidade_produto.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.verticalLayout_28.addWidget(self.input_quantidade_produto, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_6.addWidget(self.input_quantidade_produto, 2, 0, 1, 1)
+
+        self.input_preco_produto = QLineEdit(self.widget)
+        self.input_preco_produto.setObjectName(u"input_preco_produto")
+        self.input_preco_produto.setMinimumSize(QSize(400, 0))
+        self.input_preco_produto.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.gridLayout_6.addWidget(self.input_preco_produto, 0, 1, 1, 1)
 
         self.input_categoria_produto = QComboBox(self.widget)
         self.input_categoria_produto.addItem("")
@@ -1043,16 +1049,26 @@ class Ui_TelaPrincipal(object):
         self.input_categoria_produto.setObjectName(u"input_categoria_produto")
         self.input_categoria_produto.setMinimumSize(QSize(400, 0))
 
-        self.verticalLayout_28.addWidget(self.input_categoria_produto, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_6.addWidget(self.input_categoria_produto, 2, 1, 1, 1)
 
-        self.btn_adc_produto = QPushButton(self.widget)
-        self.btn_adc_produto.setObjectName(u"btn_adc_produto")
-        self.btn_adc_produto.setMinimumSize(QSize(300, 0))
+        self.btn_procurar_ft_produto = QPushButton(self.widget)
+        self.btn_procurar_ft_produto.setObjectName(u"btn_procurar_ft_produto")
 
-        self.verticalLayout_28.addWidget(self.btn_adc_produto, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_6.addWidget(self.btn_procurar_ft_produto, 4, 0, 1, 1)
+
+        self.img_produto_adc_estoque = QLabel(self.widget)
+        self.img_produto_adc_estoque.setObjectName(u"img_produto_adc_estoque")
+
+        self.gridLayout_6.addWidget(self.img_produto_adc_estoque, 4, 1, 1, 1)
 
 
         self.verticalLayout_27.addWidget(self.widget)
+
+        self.btn_adc_produto = QPushButton(self.tela_estoque_2)
+        self.btn_adc_produto.setObjectName(u"btn_adc_produto")
+        self.btn_adc_produto.setMinimumSize(QSize(300, 0))
+
+        self.verticalLayout_27.addWidget(self.btn_adc_produto, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.stackedWidget_3.addWidget(self.tela_estoque_2)
 
@@ -1363,7 +1379,7 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
         self.stackedWidget_2.setCurrentIndex(2)
         self.input_forma_pagamento.setCurrentIndex(-1)
         self.stackedWidget_3.setCurrentIndex(0)
@@ -1420,21 +1436,25 @@ class Ui_TelaPrincipal(object):
         self.input_pesquisar_produto_4.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Procurar Produto", None))
         self.btn_pesquisar_produto_4.setText("")
         self.btn_adc_produto_estoque.setText("")
+        self.txt_caso_produto_nao_encontra_estoque.setText("")
         ___qtreewidgetitem = self.treeWidget.headerItem()
+        ___qtreewidgetitem.setText(5, QCoreApplication.translate("TelaPrincipal", u"IMAGEM", None));
         ___qtreewidgetitem.setText(4, QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None));
         ___qtreewidgetitem.setText(3, QCoreApplication.translate("TelaPrincipal", u"QUANTIDADE", None));
         ___qtreewidgetitem.setText(2, QCoreApplication.translate("TelaPrincipal", u"PRE\u00c7O", None));
         ___qtreewidgetitem.setText(1, QCoreApplication.translate("TelaPrincipal", u"NOME", None));
         ___qtreewidgetitem.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
         self.input_nome_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"NOME", None))
+        self.input_quantidade_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"QUANTIDADE", None))
         self.input_preco_produto.setInputMask("")
         self.input_preco_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"PRE\u00c7O UN.", None))
-        self.input_quantidade_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"QUANTIDADE", None))
         self.input_categoria_produto.setItemText(0, QCoreApplication.translate("TelaPrincipal", u"COMIDA", None))
         self.input_categoria_produto.setItemText(1, QCoreApplication.translate("TelaPrincipal", u"ROUPA", None))
         self.input_categoria_produto.setItemText(2, QCoreApplication.translate("TelaPrincipal", u"LIMPEZA", None))
 
         self.input_categoria_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None))
+        self.btn_procurar_ft_produto.setText(QCoreApplication.translate("TelaPrincipal", u"Procurar Foto do Produto", None))
+        self.img_produto_adc_estoque.setText("")
         self.btn_adc_produto.setText(QCoreApplication.translate("TelaPrincipal", u"Adcionar Produto", None))
         self.txt_produtos_mais_vendidos.setText(QCoreApplication.translate("TelaPrincipal", u"Produtos mais Vendidos", None))
         self.txt_vendas_ultimos_6_meses.setText(QCoreApplication.translate("TelaPrincipal", u"Vendas dos Ultimos 6 meses", None))

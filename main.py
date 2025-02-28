@@ -4,14 +4,15 @@ from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox
 import sys
 import mysql.connector
 from cmdpdv import cmdPdv
+from cmdestoque import cmdEstoque
 
 class main(QMainWindow):
     def __init__(self):
         super().__init__()
         self.conexao = mysql.connector.connect(
             host="localhost",
-            user="suporte",
-            password="suporte",
+            user="celsadas",
+            password="33880188",
             database="mercado"
         )
         self.tela_login = Ui_TelaLogin()
@@ -57,6 +58,11 @@ class main(QMainWindow):
     def telaestoque(self):
         self.tela_principal.stackedWidget.setCurrentIndex(2)
         self.tela_principal.stackedWidget_3.setCurrentIndex(0)
+        self.estoque = cmdEstoque(self.tela_principal,
+                                  self.tela_principal.input_pesquisar_produto_4,
+                                  self.tela_principal.txt_caso_produto_nao_encontra_estoque,
+                                  self.tela_principal.treeWidget)
+        self.tela_principal.btn_pesquisar_produto_4.clicked.connect(self.estoque.procurar_produto)
 
     def telarelatorios(self):
         self.tela_principal.stackedWidget.setCurrentIndex(3)

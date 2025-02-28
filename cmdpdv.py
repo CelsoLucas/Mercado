@@ -20,7 +20,6 @@ class cmdPdv():
         self.adc_card()
 
     def procurar_produto(self):
-        print("foi")
 
         self.resultado_busca_produto = self.tela_principal.input_pesquisar_produto.text()
         
