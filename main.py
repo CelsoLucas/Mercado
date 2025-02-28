@@ -63,6 +63,9 @@ class main(QMainWindow):
                                   self.tela_principal.txt_caso_produto_nao_encontra_estoque,
                                   self.tela_principal.treeWidget)
         self.tela_principal.btn_pesquisar_produto_4.clicked.connect(self.estoque.procurar_produto)
+        self.tela_principal.btn_adc_produto_estoque.clicked.connect(self.estoque.tela_adc_produto)
+        self.tela_principal.btn_procurar_ft_produto.clicked.connect(self.estoque.open_image)
+        self.tela_principal.btn_adc_produto.clicked.connect(self.estoque.adc_produto_estoque(self.tela_principal.input_nome_produto, self.tela_principal.input_preco_produto, self.tela_principal.input_quantidade_produto, self.tela_principal.input_categoria_produto))
 
     def telarelatorios(self):
         self.tela_principal.stackedWidget.setCurrentIndex(3)
