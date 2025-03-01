@@ -14,29 +14,34 @@ class cmdConfiguracoes():
         self.mostrar_usuarios()
         self.mostrar_categoria()
         self.tela_principal.stackedWidget_5.setCurrentIndex(0)
+        self.tela_principal.stackedWidget_4.setCurrentIndex(0)
 
     def mostrar_usuarios(self):
         cursor = self.conexao.get_cursor()
-        cursor.execute("select id, nome_usu, email, cpf, telefone from usuarios")
+        cursor.execute("select id_usuario, nome, email, cpf, telefone, ativo from usuarios")
         resultado = cursor.fetchall()
 
         tree = self.tela_principal.treeWidget_2
         tree.clear()
 
         for i in resultado:
-            id, nome, email, cpf, telefone = i
+            id, nome, email, cpf, telefone, ativo = i
             item = QTreeWidgetItem(tree)
             item.setText(0, str(id))  
             item.setText(1, nome)  
             item.setText(2, str(email))  
             item.setText(3, str(cpf))  
             item.setText(4, str(telefone))
+            item.setText(5, str(ativo))
+
 
             item.setTextAlignment(0, Qt.AlignCenter)
             item.setTextAlignment(1, Qt.AlignCenter)
             item.setTextAlignment(2, Qt.AlignCenter)
             item.setTextAlignment(3, Qt.AlignCenter)
             item.setTextAlignment(4, Qt.AlignCenter)
+            item.setTextAlignment(5, Qt.AlignCenter)
+
 
             tree.addTopLevelItem(item)
 
@@ -79,7 +84,7 @@ class cmdConfiguracoes():
         
         cursor = self.conexao.get_cursor()
         nome = input_nome_adc_usuario.text()
-        comando = "select nome_usu from usuarios where nome_usu = %s"
+        comando = "select nome from usuarios where nome = %s"
         cursor.execute(comando, (nome,))
         resultado = cursor.fetchone()
         if resultado:
@@ -116,8 +121,8 @@ class cmdConfiguracoes():
         
         relative_path = os.path.relpath(self.new_file_path, os.getcwd()).replace("\\", "/")
 
-        comando = "insert into usuarios (nome_usu, email, senha, cpf, telefone, imagem) values (%s, %s, sha2(%s, 256), %s, %s, %s)"
-        dados = (nome, email, senha, cpf, telefone, relative_path)
+        comando = "insert into usuarios (nome, email, cpf, telefone, senha, foto) values (%s, %s, %s, %s, sha2(%s, 256), %s)"
+        dados = (nome, email, cpf, telefone, senha, relative_path)
 
         cursor.execute(comando, dados)
         self.conexao.commit()
@@ -210,3 +215,4 @@ class cmdConfiguracoes():
 
         self.mostrar_categoria()
 
+    

@@ -6,18 +6,20 @@ import os
 import shutil
 
 class cmdEstoque():
-    def __init__(self, tela_principal, input_pesquisar_produto_4, txt_caso_produto_nao_encontra_estoque, treeview, input_nome_produto):
+    def __init__(self, tela_principal, input_pesquisar_produto_4, txt_caso_produto_nao_encontra_estoque, treeview, input_nome_produto, input_categoria_produto):
         self.tela_principal = tela_principal
         self.input_pesquisar_produto_4 = input_pesquisar_produto_4
         self.txt_caso_produto_nao_encontra_estoque = txt_caso_produto_nao_encontra_estoque
         self.nome = input_nome_produto.text()
         self.treeview = treeview
+        self.input_categoria_produto = input_categoria_produto
         self.conexao = conexaoDB()
         self.mostrar_estoque()
+        self.carregar_categorias()
 
     def mostrar_estoque(self):
         cursor = self.conexao.get_cursor()
-        cursor.execute("select id_estoque, nome_produto, preco, quantidade, categorias.nome_categoria, imagem from estoque join categorias on estoque.categoria = categorias.id_categorias")
+        cursor.execute("select id_produto, nome_produto, preco, quantidade, categorias.nome_categoria, imagem from estoque join categorias on estoque.categoria = categorias.id_categorias")
         resultado = cursor.fetchall()
 
         tree = self.tela_principal.treeWidget
@@ -55,7 +57,7 @@ class cmdEstoque():
         cursor = self.conexao.get_cursor()
 
         valores = (self.resultado_busca_produto, self.resultado_busca_produto)
-        cursor.execute("select id_estoque, nome_produto, preco, quantidade, categorias.nome_categoria, imagem from estoque join categorias on estoque.categoria = categorias.id_categorias where nome_produto = %s or id_estoque = %s", valores)
+        cursor.execute("select id_produto, nome_produto, preco, quantidade, categorias.nome_categoria, imagem from estoque join categorias on estoque.categoria = categorias.id_categorias where nome_produto = %s or id_produto = %s", valores)
 
         resultado = cursor.fetchone()
 
@@ -87,6 +89,29 @@ class cmdEstoque():
     def tela_adc_produto(self):
         self.tela_principal.stackedWidget_3.setCurrentIndex(1)
         self.tela_principal.input_categoria_produto.setCurrentIndex(-1)  # Remove a seleção inicial
+
+    def carregar_categorias(self):
+        cursor = self.conexao.get_cursor()
+        try:
+            # Buscar todas as categorias
+            comando = "SELECT id_categorias, nome_categoria FROM categorias ORDER BY id_categorias"
+            cursor.execute(comando)
+            categorias = cursor.fetchall()
+            
+            # Limpar combobox antes de adicionar
+            self.input_categoria_produto.clear()
+            
+            # Adicionar categorias ao combobox
+            for id_cat, nome_cat in categorias:
+                self.input_categoria_produto.addItem(nome_cat, id_cat)  # Texto visível e dado associado
+            
+            # Opcional: definir um item padrão
+            self.input_categoria_produto.setCurrentIndex(-1)  # Nenhum selecionado por padrão
+            
+        except Exception as e:
+            QMessageBox.warning(None, "Erro", f"Erro ao carregar categorias: {e}")
+        finally:
+            cursor.close()
 
     def adc_produto_estoque(self, input_nome_produto, input_preco_produto, input_quantidade_produto, input_categoria_produto):
         cursor = self.conexao.get_cursor()

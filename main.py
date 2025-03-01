@@ -1,6 +1,6 @@
 from ui_tela_login import Ui_TelaLogin
 from ui_tela_principal import Ui_TelaPrincipal
-from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox
+from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QVBoxLayout
 from PySide6.QtGui import QPixmap
 import sys
 import mysql.connector
@@ -8,16 +8,14 @@ from cmdpdv import cmdPdv
 from cmdestoque import cmdEstoque
 from cmdconfiguracoes import cmdConfiguracoes
 from cmdconfiguracoes import cmdConfiguracoes
+from conexao_db import conexaoDB
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 
 class main(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.conexao = mysql.connector.connect(
-            host="localhost",
-            user="suporte",
-            password="suporte",
-            database="mercado"
-        )
+        self.conexao = conexaoDB()
         self.tela_login = Ui_TelaLogin()
         self.tela_login.setupUi(self)
         self.tela_login.btn_login.clicked.connect(self.check_login)
@@ -65,7 +63,8 @@ class main(QMainWindow):
                                   self.tela_principal.input_pesquisar_produto_4,
                                   self.tela_principal.txt_caso_produto_nao_encontra_estoque,
                                   self.tela_principal.treeWidget,
-                                  self.tela_principal.input_nome_produto)
+                                  self.tela_principal.input_nome_produto,
+                                  self.tela_principal.input_categoria_produto)
         self.tela_principal.btn_pesquisar_produto_4.clicked.connect(self.estoque.procurar_produto)
         self.tela_principal.btn_adc_produto_estoque.clicked.connect(self.estoque.tela_adc_produto)
         self.tela_principal.btn_procurar_ft_produto.clicked.connect(self.estoque.open_image)
@@ -91,9 +90,9 @@ class main(QMainWindow):
         self.tela_login.btn_login.clicked.connect(self.check_login)
 
     def check_login(self):
-        cursor = self.conexao.cursor()
+        cursor = self.conexao.get_cursor()
         
-        comando = "SELECT senha, imagem FROM usuarios WHERE nome_usu = %s"
+        comando = "SELECT senha, foto FROM usuarios WHERE nome = %s"
         cursor.execute(comando, (self.tela_login.input_user.text(),))
         resultado = cursor.fetchone()
         
@@ -124,8 +123,6 @@ class main(QMainWindow):
             self.init_tela_principal()
             
         cursor.close()
-
-
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)
