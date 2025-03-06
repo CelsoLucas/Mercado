@@ -1013,12 +1013,12 @@ class Ui_TelaPrincipal(object):
         self.widget.setObjectName(u"widget")
         self.gridLayout_6 = QGridLayout(self.widget)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.input_nome_produto = QLineEdit(self.widget)
-        self.input_nome_produto.setObjectName(u"input_nome_produto")
-        self.input_nome_produto.setMinimumSize(QSize(400, 0))
-        self.input_nome_produto.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.input_preco_produto = QLineEdit(self.widget)
+        self.input_preco_produto.setObjectName(u"input_preco_produto")
+        self.input_preco_produto.setMinimumSize(QSize(400, 0))
+        self.input_preco_produto.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.gridLayout_6.addWidget(self.input_nome_produto, 0, 0, 1, 1)
+        self.gridLayout_6.addWidget(self.input_preco_produto, 0, 1, 1, 1)
 
         self.input_quantidade_produto = QLineEdit(self.widget)
         self.input_quantidade_produto.setObjectName(u"input_quantidade_produto")
@@ -1027,12 +1027,12 @@ class Ui_TelaPrincipal(object):
 
         self.gridLayout_6.addWidget(self.input_quantidade_produto, 2, 0, 1, 1)
 
-        self.input_preco_produto = QLineEdit(self.widget)
-        self.input_preco_produto.setObjectName(u"input_preco_produto")
-        self.input_preco_produto.setMinimumSize(QSize(400, 0))
-        self.input_preco_produto.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.input_nome_produto = QLineEdit(self.widget)
+        self.input_nome_produto.setObjectName(u"input_nome_produto")
+        self.input_nome_produto.setMinimumSize(QSize(400, 0))
+        self.input_nome_produto.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.gridLayout_6.addWidget(self.input_preco_produto, 0, 1, 1, 1)
+        self.gridLayout_6.addWidget(self.input_nome_produto, 0, 0, 1, 1)
 
         self.input_categoria_produto = QComboBox(self.widget)
         self.input_categoria_produto.setObjectName(u"input_categoria_produto")
@@ -1040,16 +1040,6 @@ class Ui_TelaPrincipal(object):
         self.input_categoria_produto.setEditable(False)
 
         self.gridLayout_6.addWidget(self.input_categoria_produto, 2, 1, 1, 1)
-
-        self.btn_procurar_ft_produto = QPushButton(self.widget)
-        self.btn_procurar_ft_produto.setObjectName(u"btn_procurar_ft_produto")
-
-        self.gridLayout_6.addWidget(self.btn_procurar_ft_produto, 4, 0, 1, 1)
-
-        self.img_produto_adc_estoque = QLabel(self.widget)
-        self.img_produto_adc_estoque.setObjectName(u"img_produto_adc_estoque")
-
-        self.gridLayout_6.addWidget(self.img_produto_adc_estoque, 4, 1, 1, 1)
 
 
         self.verticalLayout_27.addWidget(self.widget)
@@ -1444,12 +1434,12 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(2)
         self.stackedWidget_2.setCurrentIndex(0)
         self.input_forma_pagamento.setCurrentIndex(-1)
-        self.stackedWidget_3.setCurrentIndex(0)
+        self.stackedWidget_3.setCurrentIndex(1)
         self.input_categoria_produto.setCurrentIndex(-1)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         self.stackedWidget_4.setCurrentIndex(0)
         self.stackedWidget_6.setCurrentIndex(0)
         self.stackedWidget_5.setCurrentIndex(0)
@@ -1511,13 +1501,11 @@ class Ui_TelaPrincipal(object):
         ___qtreewidgetitem.setText(2, QCoreApplication.translate("TelaPrincipal", u"PRE\u00c7O", None));
         ___qtreewidgetitem.setText(1, QCoreApplication.translate("TelaPrincipal", u"NOME", None));
         ___qtreewidgetitem.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
-        self.input_nome_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"NOME", None))
-        self.input_quantidade_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"QUANTIDADE", None))
         self.input_preco_produto.setInputMask("")
         self.input_preco_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"PRE\u00c7O UN.", None))
+        self.input_quantidade_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"QUANTIDADE", None))
+        self.input_nome_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"NOME", None))
         self.input_categoria_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None))
-        self.btn_procurar_ft_produto.setText(QCoreApplication.translate("TelaPrincipal", u"Procurar Foto do Produto", None))
-        self.img_produto_adc_estoque.setText("")
         self.btn_adc_produto.setText(QCoreApplication.translate("TelaPrincipal", u"Adcionar Produto", None))
         self.txt_produtos_mais_vendidos.setText(QCoreApplication.translate("TelaPrincipal", u"Produtos mais Vendidos", None))
         self.label_produtos_mais_vendidos.setText("")
@@ -1553,7 +1541,7 @@ class Ui_TelaPrincipal(object):
         self.btn_adc_forma_pagamento_2.setText(QCoreApplication.translate("TelaPrincipal", u"Criar Forma de Pagamento", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tela_config_3), QCoreApplication.translate("TelaPrincipal", u"Page", None))
         ___qtreewidgetitem3 = self.tabela_categoria.headerItem()
-        ___qtreewidgetitem3.setText(1, QCoreApplication.translate("TelaPrincipal", u"FORMA DE PAGAMENTO", None));
+        ___qtreewidgetitem3.setText(1, QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None));
         ___qtreewidgetitem3.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
         self.btn_adc_categoria.setText(QCoreApplication.translate("TelaPrincipal", u"Adicionar Categoria", None))
         self.input_nome_adc_categoria.setInputMask("")

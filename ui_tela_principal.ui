@@ -591,7 +591,7 @@ QComboBox QAbstractItemView::item {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>4</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -1627,7 +1627,7 @@ QComboBox QAbstractItemView::item {
               <item>
                <widget class="QStackedWidget" name="stackedWidget_3">
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="tela_estoque_1">
                  <layout class="QVBoxLayout" name="verticalLayout_25">
@@ -1855,38 +1855,6 @@ QComboBox QAbstractItemView::item {
                   <item>
                    <widget class="QWidget" name="widget" native="true">
                     <layout class="QGridLayout" name="gridLayout_6">
-                     <item row="0" column="0">
-                      <widget class="QLineEdit" name="input_nome_produto">
-                       <property name="minimumSize">
-                        <size>
-                         <width>400</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignmentFlag::AlignCenter</set>
-                       </property>
-                       <property name="placeholderText">
-                        <string>NOME</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="0">
-                      <widget class="QLineEdit" name="input_quantidade_produto">
-                       <property name="minimumSize">
-                        <size>
-                         <width>400</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignmentFlag::AlignCenter</set>
-                       </property>
-                       <property name="placeholderText">
-                        <string>QUANTIDADE</string>
-                       </property>
-                      </widget>
-                     </item>
                      <item row="0" column="1">
                       <widget class="QLineEdit" name="input_preco_produto">
                        <property name="minimumSize">
@@ -1906,6 +1874,38 @@ QComboBox QAbstractItemView::item {
                        </property>
                       </widget>
                      </item>
+                     <item row="2" column="0">
+                      <widget class="QLineEdit" name="input_quantidade_produto">
+                       <property name="minimumSize">
+                        <size>
+                         <width>400</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                       <property name="placeholderText">
+                        <string>QUANTIDADE</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="QLineEdit" name="input_nome_produto">
+                       <property name="minimumSize">
+                        <size>
+                         <width>400</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                       <property name="placeholderText">
+                        <string>NOME</string>
+                       </property>
+                      </widget>
+                     </item>
                      <item row="2" column="1">
                       <widget class="QComboBox" name="input_categoria_produto">
                        <property name="minimumSize">
@@ -1922,20 +1922,6 @@ QComboBox QAbstractItemView::item {
                        </property>
                        <property name="placeholderText">
                         <string>CATEGORIA</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="4" column="0">
-                      <widget class="QPushButton" name="btn_procurar_ft_produto">
-                       <property name="text">
-                        <string>Procurar Foto do Produto</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="4" column="1">
-                      <widget class="QLabel" name="img_produto_adc_estoque">
-                       <property name="text">
-                        <string/>
                        </property>
                       </widget>
                      </item>

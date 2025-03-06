@@ -26,7 +26,6 @@ CREATE TABLE estoque (
     preco DECIMAL(10, 2) NOT NULL,
     quantidade INT NOT NULL DEFAULT 0,
     categoria INT NOT NULL,
-    imagem VARCHAR(255),
     data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (categoria) REFERENCES categorias(id_categorias) ON DELETE RESTRICT
 );
@@ -58,3 +57,6 @@ CREATE TABLE itens_venda (
 
 INSERT INTO usuarios (nome, email, cpf, telefone, senha, foto, ativo) 
 VALUES ('Admin', 'admin@email.com', '000.000.000-00', '(00) 00000-0000', SHA2('admin', 256), NULL, true);
+
+
+select * from estoque;
