@@ -103,17 +103,21 @@ class cmdEstoque():
         cursor.close()
 
     def adc_produto_estoque(self, input_nome_produto, input_preco_produto, input_quantidade_produto, input_categoria_produto):
+
         self.nome = input_nome_produto.text()
+
         if not self.nome:
             QMessageBox.warning(None, "Erro", "Digite o nome do produto!")
             return
+        
         cursor = self.conexao.get_cursor()
         comando = "SELECT nome_produto FROM estoque where nome_produto = %s"
         cursor.execute(comando, (self.nome, ))
         resultado = cursor.fetchone()
-        print(resultado)
-        if self.nome in resultado:
+
+        if resultado and self.nome == resultado[0]:
             QMessageBox.warning(None, "Erro", f"Produto com nome '{self.nome}' já cadastrado!")
+            cursor.close()
             return
 
         preco = input_preco_produto.text()
@@ -131,7 +135,6 @@ class cmdEstoque():
             QMessageBox.warning(None, "Erro", "Selecione uma categoria!")
             return
 
-        print(categoria_index)
         comando = "SELECT id_categorias FROM categorias WHERE id_categorias = %s"
         cursor.execute(comando, (categoria_index,))  # Passa um número, não o texto
         resultado = cursor.fetchone()
@@ -151,5 +154,7 @@ class cmdEstoque():
         cursor.close()
         self.mostrar_estoque()
         self.tela_principal.stackedWidget_3.setCurrentIndex(0)
-
+        input_nome_produto.setText("")
+        input_preco_produto.setText("")
+        input_quantidade_produto.setText("")
     
