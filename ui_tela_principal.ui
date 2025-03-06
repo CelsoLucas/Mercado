@@ -591,7 +591,7 @@ QComboBox QAbstractItemView::item {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>3</number>
+             <number>4</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -2196,7 +2196,7 @@ border-radius: 20px;</string>
               <item>
                <widget class="QTabWidget" name="tabWidget">
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>2</number>
                 </property>
                 <widget class="QWidget" name="tela_config_1">
                  <attribute name="title">
@@ -2565,7 +2565,7 @@ border-radius: 20px;</string>
                            </column>
                            <column>
                             <property name="text">
-                             <string>FORMA DE PAGAMENTO</string>
+                             <string>CATEGORIA</string>
                             </property>
                             <property name="textAlignment">
                              <set>AlignCenter</set>
