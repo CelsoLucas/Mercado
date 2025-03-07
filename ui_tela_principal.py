@@ -682,6 +682,11 @@ class Ui_TelaPrincipal(object):
 
         self.verticalLayout_18.addWidget(self.layout_pesquisar_produto_2, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
 
+        self.txt_caso_nao_produto_encontrado2 = QLabel(self.tela_pdv_2_info_principal)
+        self.txt_caso_nao_produto_encontrado2.setObjectName(u"txt_caso_nao_produto_encontrado2")
+
+        self.verticalLayout_18.addWidget(self.txt_caso_nao_produto_encontrado2, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
+
         self.resultado_pesquisa_produto = QWidget(self.tela_pdv_2_info_principal)
         self.resultado_pesquisa_produto.setObjectName(u"resultado_pesquisa_produto")
         sizePolicy1.setHeightForWidth(self.resultado_pesquisa_produto.sizePolicy().hasHeightForWidth())
@@ -742,6 +747,10 @@ class Ui_TelaPrincipal(object):
 
 
         self.verticalLayout_18.addWidget(self.resultado_pesquisa_produto, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
+
+        self.verticalSpacer_12 = QSpacerItem(20, 300, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_18.addItem(self.verticalSpacer_12)
 
         self.btn_adc_carrinho = QPushButton(self.tela_pdv_2_info_principal)
         self.btn_adc_carrinho.setObjectName(u"btn_adc_carrinho")
@@ -811,6 +820,11 @@ class Ui_TelaPrincipal(object):
 
         self.verticalLayout_21.addWidget(self.layout_pesquisar_produto_3, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
 
+        self.txt_caso_nao_produto_encontrado3 = QLabel(self.tela_pdv_3_info_principal_4)
+        self.txt_caso_nao_produto_encontrado3.setObjectName(u"txt_caso_nao_produto_encontrado3")
+
+        self.verticalLayout_21.addWidget(self.txt_caso_nao_produto_encontrado3, 0, Qt.AlignmentFlag.AlignHCenter)
+
         self.layout_resultado_procurar_produto_1 = QWidget(self.tela_pdv_3_info_principal_4)
         self.layout_resultado_procurar_produto_1.setObjectName(u"layout_resultado_procurar_produto_1")
         sizePolicy1.setHeightForWidth(self.layout_resultado_procurar_produto_1.sizePolicy().hasHeightForWidth())
@@ -877,10 +891,6 @@ class Ui_TelaPrincipal(object):
         self.horizontalLayout_31 = QHBoxLayout(self.layout_total_forma_pagamento)
         self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
         self.input_forma_pagamento = QComboBox(self.layout_total_forma_pagamento)
-        self.input_forma_pagamento.addItem("")
-        self.input_forma_pagamento.addItem("")
-        self.input_forma_pagamento.addItem("")
-        self.input_forma_pagamento.addItem("")
         self.input_forma_pagamento.setObjectName(u"input_forma_pagamento")
         self.input_forma_pagamento.setMinimumSize(QSize(260, 0))
         self.input_forma_pagamento.setStyleSheet(u"font-size: 20px;")
@@ -889,17 +899,23 @@ class Ui_TelaPrincipal(object):
 
         self.horizontalLayout_31.addWidget(self.input_forma_pagamento, 0, Qt.AlignmentFlag.AlignLeft)
 
+        self.input_quantia_dinheiro = QLineEdit(self.layout_total_forma_pagamento)
+        self.input_quantia_dinheiro.setObjectName(u"input_quantia_dinheiro")
+        self.input_quantia_dinheiro.setMinimumSize(QSize(300, 0))
+
+        self.horizontalLayout_31.addWidget(self.input_quantia_dinheiro, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
+
         self.frame_11 = QFrame(self.layout_total_forma_pagamento)
         self.frame_11.setObjectName(u"frame_11")
         self.frame_11.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_11.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_32 = QHBoxLayout(self.frame_11)
         self.horizontalLayout_32.setObjectName(u"horizontalLayout_32")
-        self.label_14 = QLabel(self.frame_11)
-        self.label_14.setObjectName(u"label_14")
-        self.label_14.setStyleSheet(u"font-size: 20px;")
+        self.txt_total_pagar = QLabel(self.frame_11)
+        self.txt_total_pagar.setObjectName(u"txt_total_pagar")
+        self.txt_total_pagar.setStyleSheet(u"font-size: 20px;")
 
-        self.horizontalLayout_32.addWidget(self.label_14, 0, Qt.AlignmentFlag.AlignRight)
+        self.horizontalLayout_32.addWidget(self.txt_total_pagar, 0, Qt.AlignmentFlag.AlignRight)
 
 
         self.horizontalLayout_31.addWidget(self.frame_11, 0, Qt.AlignmentFlag.AlignRight)
@@ -1437,14 +1453,14 @@ class Ui_TelaPrincipal(object):
         self.retranslateUi(TelaPrincipal)
 
         self.stackedWidget.setCurrentIndex(1)
-        self.stackedWidget_2.setCurrentIndex(1)
+        self.stackedWidget_2.setCurrentIndex(2)
         self.input_forma_pagamento.setCurrentIndex(-1)
         self.stackedWidget_3.setCurrentIndex(0)
         self.input_categoria_produto.setCurrentIndex(-1)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         self.stackedWidget_4.setCurrentIndex(0)
-        self.stackedWidget_6.setCurrentIndex(0)
-        self.stackedWidget_5.setCurrentIndex(0)
+        self.stackedWidget_6.setCurrentIndex(1)
+        self.stackedWidget_5.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(TelaPrincipal)
@@ -1473,6 +1489,7 @@ class Ui_TelaPrincipal(object):
         self.txt_caso_nao_produto_encontrado.setText("")
         self.input_pesquisar_produto_2.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Procurar Produto", None))
         self.btn_pesquisar_produto_2.setText("")
+        self.txt_caso_nao_produto_encontrado2.setText("")
         self.txt_nome_preco_produto.setText("")
         self.btn_menos.setText("")
         self.txt_quantidade.setText("")
@@ -1480,17 +1497,14 @@ class Ui_TelaPrincipal(object):
         self.btn_adc_carrinho.setText(QCoreApplication.translate("TelaPrincipal", u"Adcionar ao Carrinho", None))
         self.input_pesquisar_produto_3.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Procurar Produto", None))
         self.btn_pesquisar_produto_3.setText("")
+        self.txt_caso_nao_produto_encontrado3.setText("")
         self.txt_nome_produto_1.setText("")
         self.txt_quantidade_1.setText("")
         self.txt_valor_1.setText("")
-        self.input_forma_pagamento.setItemText(0, QCoreApplication.translate("TelaPrincipal", u"Pix", None))
-        self.input_forma_pagamento.setItemText(1, QCoreApplication.translate("TelaPrincipal", u"Cart\u00e3o de Cr\u00e9dito", None))
-        self.input_forma_pagamento.setItemText(2, QCoreApplication.translate("TelaPrincipal", u"Cart\u00e3o de D\u00e9bito", None))
-        self.input_forma_pagamento.setItemText(3, QCoreApplication.translate("TelaPrincipal", u"Dinheiro", None))
-
         self.input_forma_pagamento.setCurrentText("")
         self.input_forma_pagamento.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Forma de Pagamento", None))
-        self.label_14.setText(QCoreApplication.translate("TelaPrincipal", u" TOTAL R$55,00", None))
+        self.input_quantia_dinheiro.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Quantia em Dinheiro", None))
+        self.txt_total_pagar.setText("")
         self.btn_finalizar_compra.setText(QCoreApplication.translate("TelaPrincipal", u"Finalizar Compra", None))
         self.input_pesquisar_produto_4.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Procurar Produto", None))
         self.btn_pesquisar_produto_4.setText("")

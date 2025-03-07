@@ -50,12 +50,16 @@ class main(QMainWindow):
         self.tela_principal,
         self.tela_principal.txt_nome_produto_1,
         self.tela_principal.txt_quantidade_1,
-        self.tela_principal.txt_valor_1)
+        self.tela_principal.txt_valor_1,
+        self.tela_principal.txt_total_pagar,
+        self.tela_principal.input_forma_pagamento,
+        self.tela_principal.input_quantia_dinheiro)
         self.tela_principal.btn_pesquisar_produto.clicked.connect(self.pdv.procurar_produto)
         self.tela_principal.btn_menos.clicked.connect(self.pdv.menos)
         self.tela_principal.btn_mais.clicked.connect(self.pdv.mais)
-        self.tela_principal.btn_adc_carrinho.connect(self.pdv.adc_carrinho)
-
+        self.tela_principal.btn_adc_carrinho.clicked.connect(self.pdv.adc_carrinho)
+        self.tela_principal.btn_pesquisar_produto_3.clicked.connect(self.pdv.procurar_produto)
+        self.tela_principal.btn_finalizar_compra.clicked.connect(self.pdv.validar_compra)
 
     def telaestoque(self):
         self.tela_principal.stackedWidget.setCurrentIndex(2)
@@ -79,12 +83,14 @@ class main(QMainWindow):
         self.tela_principal.btn_adc_user.clicked.connect(self.config.tela_adc_usuario)
         self.tela_principal.btn_procurar_ft_adc_usuario.clicked.connect(self.config.open_image)
         self.tela_principal.btn_adc_usuario.clicked.connect(lambda: self.config.adc_usuario(self.tela_principal.input_nome_adc_usuario,
-                                                                                    self.tela_principal.input_email_adc_usuario,
-                                                                                    self.tela_principal.input_senha_adc_usuario,
-                                                                                    self.tela_principal.input_cpf_adc_usuario,
-                                                                                    self.tela_principal.input_telefone_adc_usuario))
+                           self.tela_principal.input_email_adc_usuario,
+                           self.tela_principal.input_senha_adc_usuario,
+                           self.tela_principal.input_cpf_adc_usuario,
+                           self.tela_principal.input_telefone_adc_usuario))
         self.tela_principal.btn_adc_categoria.clicked.connect(self.config.tela_adc_categoria)
         self.tela_principal.btn_adc_categoria_2.clicked.connect(lambda: self.config.adc_categoria(self.tela_principal.input_nome_adc_categoria))
+        self.tela_principal.btn_adc_forma_pagamento.clicked.connect(self.config.tela_adc_formapagamento)
+        self.tela_principal.btn_adc_forma_pagamento_2.clicked.connect(lambda: self.config.adc_forma_pagamento(self.tela_principal.input_nome_adc_forma_pagamento))
     def init_tela_login(self):
         self.tela_login.setupUi(self)
         self.tela_login.btn_login.clicked.connect(self.check_login)

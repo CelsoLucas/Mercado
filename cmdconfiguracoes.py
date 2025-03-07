@@ -13,6 +13,7 @@ class cmdConfiguracoes():
         self.tela_principal = tela_principal
         self.mostrar_usuarios()
         self.mostrar_categoria()
+        self.mostrar_formapagamento()
         self.tela_principal.tabWidget.setCurrentIndex(0)
         self.tela_principal.stackedWidget_5.setCurrentIndex(0)
         self.tela_principal.stackedWidget_4.setCurrentIndex(0)
@@ -174,6 +175,8 @@ class cmdConfiguracoes():
     def tela_adc_categoria(self):
         self.tela_principal.stackedWidget_5.setCurrentIndex(1)
 
+    def tela_adc_formapagamento(self):
+        self.tela_principal.stackedWidget_6.setCurrentIndex(1)
 
     def mostrar_categoria(self):
         cursor = self.conexao.get_cursor()
@@ -216,4 +219,49 @@ class cmdConfiguracoes():
 
         self.mostrar_categoria()
 
-    
+    def mostrar_formapagamento(self):
+        cursor = self.conexao.get_cursor()
+        cursor.execute("SELECT id_forma_pagamento, forma_pagamento FROM formapagamento ORDER BY id_forma_pagamento ASC")
+        resultado = cursor.fetchall()
+
+        tree = self.tela_principal.tabela_forma_pagamento
+        tree.clear()
+
+        for i in resultado:
+            id, nome,= i
+            item = QTreeWidgetItem(tree)
+            item.setText(0, str(id))  
+            item.setText(1, nome)  
+
+            item.setTextAlignment(0, Qt.AlignCenter)
+            item.setTextAlignment(1, Qt.AlignCenter)
+
+            tree.addTopLevelItem(item)
+
+        cursor.close()
+
+    def adc_forma_pagamento(self, input_nome_adc_forma_pagamento):
+        nome = input_nome_adc_forma_pagamento.text().strip()
+
+        if not nome:
+            QMessageBox.warning(None, "Erro", "Digite uma forma de pagamento válida!")
+            return
+
+        cursor = self.conexao.get_cursor()
+
+        comando = "SELECT forma_pagamento FROM formapagamento WHERE forma_pagamento = %s"
+        cursor.execute(comando, (nome,))
+        if cursor.fetchone():
+            QMessageBox.warning(None, "Erro", "Forma de pagamento já cadastrada!")
+            cursor.close()
+            return
+
+        comando = "INSERT INTO formapagamento (forma_pagamento) VALUES (%s)"
+        dados = (nome,)
+        cursor.execute(comando, dados)
+        self.conexao.commit()
+        cursor.close()
+
+        QMessageBox.information(None, "Sucesso", "Forma de pagamento cadastrada com sucesso!")
+        self.tela_principal.stackedWidget_6.setCurrentIndex(0)
+        self.mostrar_formapagamento()
