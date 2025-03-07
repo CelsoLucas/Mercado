@@ -720,9 +720,11 @@ class Ui_TelaPrincipal(object):
 
         self.horizontalLayout_9.addWidget(self.btn_menos)
 
-        self.txt_quantidade = QLabel(self.layout_quant_produto)
+        self.txt_quantidade = QLineEdit(self.layout_quant_produto)
         self.txt_quantidade.setObjectName(u"txt_quantidade")
-        self.txt_quantidade.setStyleSheet(u"font-size: 20px;")
+        self.txt_quantidade.setMaximumSize(QSize(50, 16777215))
+        self.txt_quantidade.setStyleSheet(u"background-color: transparent;\n"
+"border: none;")
 
         self.horizontalLayout_9.addWidget(self.txt_quantidade)
 
@@ -991,8 +993,8 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_25.addWidget(self.txt_caso_produto_nao_encontra_estoque, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.treeWidget = QTreeWidget(self.tela_estoque_1)
+        self.treeWidget.headerItem().setText(4, "")
         __qtreewidgetitem = QTreeWidgetItem()
-        __qtreewidgetitem.setTextAlignment(5, Qt.AlignCenter);
         __qtreewidgetitem.setTextAlignment(4, Qt.AlignCenter);
         __qtreewidgetitem.setTextAlignment(3, Qt.AlignCenter);
         __qtreewidgetitem.setTextAlignment(2, Qt.AlignCenter);
@@ -1434,12 +1436,12 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.stackedWidget.setCurrentIndex(2)
-        self.stackedWidget_2.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget_2.setCurrentIndex(1)
         self.input_forma_pagamento.setCurrentIndex(-1)
-        self.stackedWidget_3.setCurrentIndex(1)
+        self.stackedWidget_3.setCurrentIndex(0)
         self.input_categoria_produto.setCurrentIndex(-1)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         self.stackedWidget_4.setCurrentIndex(0)
         self.stackedWidget_6.setCurrentIndex(0)
         self.stackedWidget_5.setCurrentIndex(0)
@@ -1471,16 +1473,16 @@ class Ui_TelaPrincipal(object):
         self.txt_caso_nao_produto_encontrado.setText("")
         self.input_pesquisar_produto_2.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Procurar Produto", None))
         self.btn_pesquisar_produto_2.setText("")
-        self.txt_nome_preco_produto.setText(QCoreApplication.translate("TelaPrincipal", u"Ma\u00e7\u00e3 R$1,00", None))
+        self.txt_nome_preco_produto.setText("")
         self.btn_menos.setText("")
-        self.txt_quantidade.setText(QCoreApplication.translate("TelaPrincipal", u"  01", None))
+        self.txt_quantidade.setText("")
         self.btn_mais.setText("")
         self.btn_adc_carrinho.setText(QCoreApplication.translate("TelaPrincipal", u"Adcionar ao Carrinho", None))
         self.input_pesquisar_produto_3.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Procurar Produto", None))
         self.btn_pesquisar_produto_3.setText("")
-        self.txt_nome_produto_1.setText(QCoreApplication.translate("TelaPrincipal", u"Ma\u00e7\u00e3 ", None))
-        self.txt_quantidade_1.setText(QCoreApplication.translate("TelaPrincipal", u"QTD. 01", None))
-        self.txt_valor_1.setText(QCoreApplication.translate("TelaPrincipal", u"R$1,00", None))
+        self.txt_nome_produto_1.setText("")
+        self.txt_quantidade_1.setText("")
+        self.txt_valor_1.setText("")
         self.input_forma_pagamento.setItemText(0, QCoreApplication.translate("TelaPrincipal", u"Pix", None))
         self.input_forma_pagamento.setItemText(1, QCoreApplication.translate("TelaPrincipal", u"Cart\u00e3o de Cr\u00e9dito", None))
         self.input_forma_pagamento.setItemText(2, QCoreApplication.translate("TelaPrincipal", u"Cart\u00e3o de D\u00e9bito", None))
@@ -1495,8 +1497,6 @@ class Ui_TelaPrincipal(object):
         self.btn_adc_produto_estoque.setText("")
         self.txt_caso_produto_nao_encontra_estoque.setText("")
         ___qtreewidgetitem = self.treeWidget.headerItem()
-        ___qtreewidgetitem.setText(5, QCoreApplication.translate("TelaPrincipal", u"IMAGEM", None));
-        ___qtreewidgetitem.setText(4, QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None));
         ___qtreewidgetitem.setText(3, QCoreApplication.translate("TelaPrincipal", u"QUANTIDADE", None));
         ___qtreewidgetitem.setText(2, QCoreApplication.translate("TelaPrincipal", u"PRE\u00c7O", None));
         ___qtreewidgetitem.setText(1, QCoreApplication.translate("TelaPrincipal", u"NOME", None));

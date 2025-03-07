@@ -54,6 +54,7 @@ class main(QMainWindow):
         self.tela_principal.btn_pesquisar_produto.clicked.connect(self.pdv.procurar_produto)
         self.tela_principal.btn_menos.clicked.connect(self.pdv.menos)
         self.tela_principal.btn_mais.clicked.connect(self.pdv.mais)
+        self.tela_principal.btn_adc_carrinho.connect(self.pdv.adc_carrinho)
 
 
     def telaestoque(self):

@@ -13,6 +13,7 @@ class cmdConfiguracoes():
         self.tela_principal = tela_principal
         self.mostrar_usuarios()
         self.mostrar_categoria()
+        self.tela_principal.tabWidget.setCurrentIndex(0)
         self.tela_principal.stackedWidget_5.setCurrentIndex(0)
         self.tela_principal.stackedWidget_4.setCurrentIndex(0)
 

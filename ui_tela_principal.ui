@@ -591,7 +591,7 @@ QComboBox QAbstractItemView::item {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>2</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -877,7 +877,7 @@ QComboBox QAbstractItemView::item {
               <item>
                <widget class="QStackedWidget" name="stackedWidget_2">
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="tela_pdv_1">
                  <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1200,7 +1200,7 @@ QComboBox QAbstractItemView::item {
                               <string notr="true">font-size:20px;</string>
                              </property>
                              <property name="text">
-                              <string>Maçã R$1,00</string>
+                              <string/>
                              </property>
                             </widget>
                            </item>
@@ -1231,12 +1231,19 @@ QComboBox QAbstractItemView::item {
                             </widget>
                            </item>
                            <item>
-                            <widget class="QLabel" name="txt_quantidade">
+                            <widget class="QLineEdit" name="txt_quantidade">
+                             <property name="maximumSize">
+                              <size>
+                               <width>50</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
                              <property name="styleSheet">
-                              <string notr="true">font-size: 20px;</string>
+                              <string notr="true">background-color: transparent;
+border: none;</string>
                              </property>
                              <property name="text">
-                              <string>  01</string>
+                              <string/>
                              </property>
                             </widget>
                            </item>
@@ -1455,7 +1462,7 @@ QComboBox QAbstractItemView::item {
                               <string notr="true">font-size:20px;</string>
                              </property>
                              <property name="text">
-                              <string>Maçã </string>
+                              <string/>
                              </property>
                             </widget>
                            </item>
@@ -1480,7 +1487,7 @@ QComboBox QAbstractItemView::item {
                               <string notr="true">font-size: 20px;</string>
                              </property>
                              <property name="text">
-                              <string>QTD. 01</string>
+                              <string/>
                              </property>
                             </widget>
                            </item>
@@ -1505,7 +1512,7 @@ QComboBox QAbstractItemView::item {
                               <string notr="true">font-size: 20px;</string>
                              </property>
                              <property name="text">
-                              <string>R$1,00</string>
+                              <string/>
                              </property>
                             </widget>
                            </item>
@@ -1627,7 +1634,7 @@ QComboBox QAbstractItemView::item {
               <item>
                <widget class="QStackedWidget" name="stackedWidget_3">
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="tela_estoque_1">
                  <layout class="QVBoxLayout" name="verticalLayout_25">
@@ -1832,15 +1839,7 @@ QComboBox QAbstractItemView::item {
                     </column>
                     <column>
                      <property name="text">
-                      <string>CATEGORIA</string>
-                     </property>
-                     <property name="textAlignment">
-                      <set>AlignCenter</set>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>IMAGEM</string>
+                      <string/>
                      </property>
                      <property name="textAlignment">
                       <set>AlignCenter</set>
@@ -2182,7 +2181,7 @@ border-radius: 20px;</string>
               <item>
                <widget class="QTabWidget" name="tabWidget">
                 <property name="currentIndex">
-                 <number>2</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="tela_config_1">
                  <attribute name="title">

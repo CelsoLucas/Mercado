@@ -1,6 +1,6 @@
 from conexao_db import conexaoDB
 from PySide6.QtWidgets import QFrame, QVBoxLayout, QLabel, QHBoxLayout, QWidget, QPushButton, QScrollArea, QGridLayout, QMessageBox
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import QIntValidator
 from PySide6.QtCore import Qt, QSize
 
 class cmdPdv():
@@ -16,7 +16,7 @@ class cmdPdv():
         self.txt_valor_1 = txt_valor_1
         self.tela_principal = tela_pincipal
         self.conexao = conexaoDB()
-        self.carrinho = 0
+        self.carrinho = []
 
     def procurar_produto(self):
 
@@ -39,27 +39,35 @@ class cmdPdv():
             self.nome, self.preco, self.quantidade = resultado
             self.tela_principal.stackedWidget_2.setCurrentIndex(1)
             self.tela_principal.txt_nome_preco_produto.setText(f"{self.nome} R${self.preco:.2f}")
-            self.tela_principal.txt_quantidade.setText("0")
+            self.tela_principal.txt_quantidade.setText("1")
             
         cursor.close()
     
     def menos(self):
         quantidade = int(self.txt_quantidade.text())
 
-        if quantidade == 0:
-            QMessageBox.warning(None, "Erro", "Não pode diminuir mais")
+        if quantidade <= 1:
+            QMessageBox.warning(None, "Erro", f"Quantidade Minima é 1")
+            self.tela_principal.txt_quantidade.setText("1")
         else:
             quantidade -= 1
             self.txt_quantidade.setText(f"{quantidade}")
-        self.carrinho.append(self.nome, self.preco, self.quantidade)
-
 
     def mais(self):
         quantidade = int(self.txt_quantidade.text())
 
         if quantidade >= self.quantidade:
-            QMessageBox.warning(None, "Erro", "Não pode aumentar mais")
+            QMessageBox.warning(None, "Erro", f"Quantidade Indisponivel no Estoque, Você pode pedir no maximo {self.quantidade}")
         else:
             quantidade += 1
             self.txt_quantidade.setText(f"{quantidade}")
+
+    def adc_carrinho(self):
+        self.carrinho.append(self.nome)
+        self.carrinho.append(self.preco)
+        quantidade = self.txt_quantidade.Text()
+        self.carrinho.append(quantidade)
+        print(self.carrinho)
+        self.stackedWidget_2.setCurrentIndex(2)
+
 
