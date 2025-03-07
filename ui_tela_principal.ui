@@ -877,7 +877,7 @@ QComboBox QAbstractItemView::item {
               <item>
                <widget class="QStackedWidget" name="stackedWidget_2">
                 <property name="currentIndex">
-                 <number>2</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="tela_pdv_1">
                  <layout class="QVBoxLayout" name="verticalLayout_15">
