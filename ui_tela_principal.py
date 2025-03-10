@@ -482,6 +482,9 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
         self.txt_vendas_semana = QLabel(self.frame_vendas_semana)
         self.txt_vendas_semana.setObjectName(u"txt_vendas_semana")
+        self.txt_vendas_semana.setTextFormat(Qt.TextFormat.AutoText)
+        self.txt_vendas_semana.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.txt_vendas_semana.setWordWrap(True)
 
         self.verticalLayout_12.addWidget(self.txt_vendas_semana, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
 
@@ -1009,7 +1012,6 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_25.addWidget(self.txt_caso_produto_nao_encontra_estoque, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.treeWidget = QTreeWidget(self.tela_estoque_1)
-        self.treeWidget.headerItem().setText(4, "")
         __qtreewidgetitem = QTreeWidgetItem()
         __qtreewidgetitem.setTextAlignment(4, Qt.AlignCenter);
         __qtreewidgetitem.setTextAlignment(3, Qt.AlignCenter);
@@ -1127,16 +1129,16 @@ class Ui_TelaPrincipal(object):
 
         self.verticalLayout_29.addWidget(self.txt_vendas_ultimos_6_meses, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
 
-        self.frame_2 = QFrame(self.layout_relatorios_1)
-        self.frame_2.setObjectName(u"frame_2")
-        sizePolicy1.setHeightForWidth(self.frame_2.sizePolicy().hasHeightForWidth())
-        self.frame_2.setSizePolicy(sizePolicy1)
-        self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_40 = QVBoxLayout(self.frame_2)
+        self.frame_vendas_ultimos_seis_meses = QFrame(self.layout_relatorios_1)
+        self.frame_vendas_ultimos_seis_meses.setObjectName(u"frame_vendas_ultimos_seis_meses")
+        sizePolicy1.setHeightForWidth(self.frame_vendas_ultimos_seis_meses.sizePolicy().hasHeightForWidth())
+        self.frame_vendas_ultimos_seis_meses.setSizePolicy(sizePolicy1)
+        self.frame_vendas_ultimos_seis_meses.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_vendas_ultimos_seis_meses.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_40 = QVBoxLayout(self.frame_vendas_ultimos_seis_meses)
         self.verticalLayout_40.setObjectName(u"verticalLayout_40")
 
-        self.verticalLayout_29.addWidget(self.frame_2)
+        self.verticalLayout_29.addWidget(self.frame_vendas_ultimos_seis_meses)
 
 
         self.gridLayout_2.addWidget(self.layout_relatorios_1, 1, 0, 1, 3)
@@ -1452,14 +1454,14 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.stackedWidget.setCurrentIndex(1)
-        self.stackedWidget_2.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget_2.setCurrentIndex(0)
         self.input_forma_pagamento.setCurrentIndex(-1)
         self.stackedWidget_3.setCurrentIndex(0)
         self.input_categoria_produto.setCurrentIndex(-1)
-        self.tabWidget.setCurrentIndex(1)
-        self.stackedWidget_4.setCurrentIndex(0)
-        self.stackedWidget_6.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(2)
+        self.stackedWidget_4.setCurrentIndex(1)
+        self.stackedWidget_6.setCurrentIndex(0)
         self.stackedWidget_5.setCurrentIndex(1)
 
 
@@ -1468,8 +1470,8 @@ class Ui_TelaPrincipal(object):
 
     def retranslateUi(self, TelaPrincipal):
         TelaPrincipal.setWindowTitle(QCoreApplication.translate("TelaPrincipal", u"MainWindow", None))
-        self.img_logo.setText(QCoreApplication.translate("TelaPrincipal", u"TextLabel", None))
-        self.txt_ola_user.setText(QCoreApplication.translate("TelaPrincipal", u"Ol\u00e1, Admin", None))
+        self.img_logo.setText(QCoreApplication.translate("TelaPrincipal", u"Mercado do Celsadas", None))
+        self.txt_ola_user.setText("")
         self.btn_sair.setText("")
         self.btn_tela_principal.setText(QCoreApplication.translate("TelaPrincipal", u"TELA PRINCIPAL", None))
         self.btn_pdv.setText(QCoreApplication.translate("TelaPrincipal", u"PDV", None))
@@ -1477,13 +1479,13 @@ class Ui_TelaPrincipal(object):
         self.btn_relatorios.setText(QCoreApplication.translate("TelaPrincipal", u"RELATORIOS", None))
         self.btn_configuracoes.setText(QCoreApplication.translate("TelaPrincipal", u"CONFIGURA\u00c7\u00d5ES", None))
         self.txt_produtos_baixo_estoque.setText(QCoreApplication.translate("TelaPrincipal", u"Produtos com Baixo Estoque", None))
-        self.txt_produtos_baixo_estoque_db.setText(QCoreApplication.translate("TelaPrincipal", u"TextLabel", None))
-        self.txt_vendas_semana.setText(QCoreApplication.translate("TelaPrincipal", u"Vendas da Semana", None))
-        self.txt_vendas_semana_db.setText(QCoreApplication.translate("TelaPrincipal", u"TextLabel", None))
-        self.txt_vendasdia.setText(QCoreApplication.translate("TelaPrincipal", u"Vendas do Dia", None))
-        self.txt_vendas_dia_db.setText(QCoreApplication.translate("TelaPrincipal", u"TextLabel", None))
-        self.txt_vendas_mes.setText(QCoreApplication.translate("TelaPrincipal", u"Vendas do M\u00eas", None))
-        self.txt_vendas_mes_db.setText(QCoreApplication.translate("TelaPrincipal", u"TextLabel", None))
+        self.txt_produtos_baixo_estoque_db.setText("")
+        self.txt_vendas_semana.setText(QCoreApplication.translate("TelaPrincipal", u"Total de Vendas dos Ultimos 6 dias", None))
+        self.txt_vendas_semana_db.setText("")
+        self.txt_vendasdia.setText(QCoreApplication.translate("TelaPrincipal", u"Total de Vendas do Dia", None))
+        self.txt_vendas_dia_db.setText("")
+        self.txt_vendas_mes.setText(QCoreApplication.translate("TelaPrincipal", u"Total de Vendas do M\u00eas", None))
+        self.txt_vendas_mes_db.setText("")
         self.input_pesquisar_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Procurar Produto", None))
         self.btn_pesquisar_produto.setText("")
         self.txt_caso_nao_produto_encontrado.setText("")
@@ -1511,6 +1513,7 @@ class Ui_TelaPrincipal(object):
         self.btn_adc_produto_estoque.setText("")
         self.txt_caso_produto_nao_encontra_estoque.setText("")
         ___qtreewidgetitem = self.treeWidget.headerItem()
+        ___qtreewidgetitem.setText(4, QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None));
         ___qtreewidgetitem.setText(3, QCoreApplication.translate("TelaPrincipal", u"QUANTIDADE", None));
         ___qtreewidgetitem.setText(2, QCoreApplication.translate("TelaPrincipal", u"PRE\u00c7O", None));
         ___qtreewidgetitem.setText(1, QCoreApplication.translate("TelaPrincipal", u"NOME", None));

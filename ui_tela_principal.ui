@@ -310,7 +310,7 @@ QComboBox QAbstractItemView::item {
           <item>
            <widget class="QLabel" name="img_logo">
             <property name="text">
-             <string>TextLabel</string>
+             <string>Mercado do Celsadas</string>
             </property>
            </widget>
           </item>
@@ -341,7 +341,7 @@ QComboBox QAbstractItemView::item {
           <item>
            <widget class="QLabel" name="txt_ola_user">
             <property name="text">
-             <string>Olá, Admin</string>
+             <string/>
             </property>
            </widget>
           </item>
@@ -591,7 +591,7 @@ QComboBox QAbstractItemView::item {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>1</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -634,7 +634,7 @@ QComboBox QAbstractItemView::item {
                     <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter">
                      <widget class="QLabel" name="txt_produtos_baixo_estoque_db">
                       <property name="text">
-                       <string>TextLabel</string>
+                       <string/>
                       </property>
                      </widget>
                     </item>
@@ -696,14 +696,23 @@ QComboBox QAbstractItemView::item {
                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
                      <widget class="QLabel" name="txt_vendas_semana">
                       <property name="text">
-                       <string>Vendas da Semana</string>
+                       <string>Total de Vendas dos Ultimos 6 dias</string>
+                      </property>
+                      <property name="textFormat">
+                       <enum>Qt::TextFormat::AutoText</enum>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
                       </property>
                      </widget>
                     </item>
                     <item alignment="Qt::AlignmentFlag::AlignHCenter">
                      <widget class="QLabel" name="txt_vendas_semana_db">
                       <property name="text">
-                       <string>TextLabel</string>
+                       <string/>
                       </property>
                      </widget>
                     </item>
@@ -749,14 +758,14 @@ QComboBox QAbstractItemView::item {
                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
                      <widget class="QLabel" name="txt_vendasdia">
                       <property name="text">
-                       <string>Vendas do Dia</string>
+                       <string>Total de Vendas do Dia</string>
                       </property>
                      </widget>
                     </item>
                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
                      <widget class="QLabel" name="txt_vendas_dia_db">
                       <property name="text">
-                       <string>TextLabel</string>
+                       <string/>
                       </property>
                      </widget>
                     </item>
@@ -834,14 +843,14 @@ QComboBox QAbstractItemView::item {
                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
                      <widget class="QLabel" name="txt_vendas_mes">
                       <property name="text">
-                       <string>Vendas do Mês</string>
+                       <string>Total de Vendas do Mês</string>
                       </property>
                      </widget>
                     </item>
                     <item alignment="Qt::AlignmentFlag::AlignHCenter">
                      <widget class="QLabel" name="txt_vendas_mes_db">
                       <property name="text">
-                       <string>TextLabel</string>
+                       <string/>
                       </property>
                      </widget>
                     </item>
@@ -1862,7 +1871,7 @@ border: none;</string>
                     </column>
                     <column>
                      <property name="text">
-                      <string/>
+                      <string>CATEGORIA</string>
                      </property>
                      <property name="textAlignment">
                       <set>AlignCenter</set>
@@ -2072,7 +2081,7 @@ border-radius: 20px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="frame_2">
+                     <widget class="QFrame" name="frame_vendas_ultimos_seis_meses">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                         <horstretch>0</horstretch>
@@ -2204,7 +2213,7 @@ border-radius: 20px;</string>
               <item>
                <widget class="QTabWidget" name="tabWidget">
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>2</number>
                 </property>
                 <widget class="QWidget" name="tela_config_1">
                  <attribute name="title">
@@ -2214,7 +2223,7 @@ border-radius: 20px;</string>
                   <item>
                    <widget class="QStackedWidget" name="stackedWidget_4">
                     <property name="currentIndex">
-                     <number>0</number>
+                     <number>1</number>
                     </property>
                     <widget class="QWidget" name="config_usuarios">
                      <layout class="QVBoxLayout" name="verticalLayout_35">
@@ -2449,7 +2458,7 @@ border-radius: 20px;</string>
                   <item>
                    <widget class="QStackedWidget" name="stackedWidget_6">
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="page_3">
                      <layout class="QVBoxLayout" name="verticalLayout_28">

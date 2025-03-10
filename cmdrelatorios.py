@@ -1,79 +1,92 @@
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from PySide6.QtWidgets import QVBoxLayout
+from datetime import datetime
 from conexao_db import conexaoDB
 
 class cmdRelatorios():
-    def __init__(self):
+    def __init__(self, tela_principal):
         self.conexao = conexaoDB()
+        self.tela_principal = tela_principal
     
-    def mostrar_relatorios(self):
-        # Mudar para a tela de relatórios
-        self.ui.stackedWidget.setCurrentIndex(3)
-        
-        # Conectar ao banco de dados e buscar os dados
+    def vendas_ultimos_seis_meses(self):
         cursor = self.conexao.get_cursor()
+        try:
+            # Consulta para os últimos 6 meses
+            comando = """
+                SELECT YEAR(data_venda) AS ano, MONTH(data_venda) AS mes, SUM(valor_total) AS total
+                FROM vendas
+                WHERE data_venda >= DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)
+                GROUP BY YEAR(data_venda), MONTH(data_venda)
+                ORDER BY ano, mes
+            """
+            cursor.execute(comando)
+            resultados = cursor.fetchall()
 
-        # Executar a consulta SQL
-        query = """
-        SELECT 
-            YEAR(data_venda) AS ano,
-            MONTH(data_venda) AS mes,
-            SUM(valor_total) AS total_vendas
-        FROM 
-            vendas
-        WHERE 
-            data_venda >= DATE_SUB('2025-02-28', INTERVAL 6 MONTH)
-        GROUP BY 
-            YEAR(data_venda), MONTH(data_venda)
-        ORDER BY 
-            ano DESC, mes DESC;
-        """
-        cursor.execute(query)
-        resultados = cursor.fetchall()
+            # Preparar dados para o gráfico
+            meses = []
+            valores = []
+            for ano, mes, total in resultados:
+                # Converter ano e mês para formato legível (ex.: "Out/2024")
+                data = datetime(ano, mes, 1)
+                meses.append(data.strftime("%b/%Y"))  # Ex.: "Out/2024"
+                valores.append(float(total) if total is not None else 0.0)
 
-        # Fechar a conexão
-        cursor.close()
-        self.conexao.close()
+            # Preencher meses sem vendas com zeros para garantir 6 pontos
+            hoje = datetime.now()
+            meses_completos = []
+            valores_completos = []
+            for i in range(5, -1, -1):  # Últimos 6 meses, do mais antigo ao atual
+                mes_esperado = (hoje.month - i) % 12 or 12
+                ano_esperado = hoje.year - (1 if hoje.month - i <= 0 else 0)
+                mes_label = datetime(ano_esperado, mes_esperado, 1).strftime("%b/%Y")
+                meses_completos.append(mes_label)
+                if mes_label in meses:
+                    idx = meses.index(mes_label)
+                    valores_completos.append(valores[idx])
+                else:
+                    valores_completos.append(0.0)
 
-        # Processar os dados
-        meses = []
-        vendas = []
-        meses_nome = {
-            1: 'Jan', 2: 'Fev', 3: 'Mar', 4: 'Abr', 5: 'Mai', 6: 'Jun',
-            7: 'Jul', 8: 'Ago', 9: 'Set', 10: 'Out', 11: 'Nov', 12: 'Dez'
-        }
+            # Criar o gráfico
+            fig, ax = plt.subplots(figsize=(6, 4))  # Ajuste o tamanho conforme o frame
+            ax.plot(meses_completos, valores_completos, marker='o', linestyle='-', color='b')
+            ax.set_title("Vendas dos Últimos 6 Meses")
+            ax.set_xlabel("Mês")
+            ax.set_ylabel("Total de Vendas (R$)")
+            ax.grid(True)
+            plt.xticks(rotation=45, ha="right")
+            plt.tight_layout()
 
-        for ano, mes, total in resultados:
-            meses.append(f"{meses_nome[mes]}/{str(ano)[-2:]}")
-            vendas.append(float(total))
+            # Integrar o gráfico ao frame existente
+            canvas = FigureCanvas(fig)
 
-        # Criar o gráfico
-        fig, ax = plt.subplots(figsize=(6, 4))  # Ajustar o tamanho para caber na label
-        ax.plot(meses, vendas, marker='o', linestyle='-', color='b', label='Vendas')
-        ax.set_title('Vendas dos Últimos 6 Meses', fontsize=12)
-        ax.set_xlabel('Mês/Ano', fontsize=10)
-        ax.set_ylabel('Total de Vendas (R$)', fontsize=10)
-        ax.grid(True)
-        ax.legend()
+            # Limpar o layout existente do frame (se houver) e adicionar o gráfico
+            if self.tela_principal.frame_vendas_ultimos_seis_meses.layout() is not None:
+                # Remover widgets existentes no layout
+                while self.tela_principal.frame_vendas_ultimos_seis_meses.layout().count():
+                    item = self.tela_principal.frame_vendas_ultimos_seis_meses.layout().takeAt(0)
+                    widget = item.widget()
+                    if widget is not None:
+                        widget.deleteLater()
+            else:
+                # Se não houver layout, criar um novo
+                QVBoxLayout(self.tela_principal.frame_vendas_ultimos_seis_meses)
 
-        # Adicionar rótulos aos pontos
-        for i, venda in enumerate(vendas):
-            ax.text(meses[i], venda, f'R$ {venda:.2f}', ha='center', va='bottom', fontsize=8)
+            self.tela_principal.frame_vendas_ultimos_seis_meses.layout().addWidget(canvas)
 
-        # Integrar o gráfico na label_vendas_ultimos_6_meses
-        canvas = FigureCanvas(fig)
-        self.ui.label_vendas_ultimos_6_meses.setMinimumSize(600, 400)  # Ajustar tamanho mínimo
-        layout = self.ui.label_vendas_ultimos_6_meses.layout()
-        if layout is not None:
-            # Limpar layout existente, se houver
-            while layout.count():
-                child = layout.takeAt(0)
-                if child.widget():
-                    child.widget().deleteLater()
-        else:
-            # Criar um novo layout se não existir
-            from PySide6.QtWidgets import QVBoxLayout
-            layout = QVBoxLayout(self.ui.label_vendas_ultimos_6_meses)
-        
-        layout.addWidget(canvas)
-        canvas.draw()
+        except Exception as e:
+            print(f"Erro ao criar gráfico de vendas dos últimos 6 meses: {str(e)}")
+            # Em caso de erro, exibir mensagem no frame
+            from PySide6.QtWidgets import QLabel
+            label = QLabel("Erro ao carregar gráfico de vendas")
+            if self.tela_principal.frame_vendas_ultimos_seis_meses.layout() is not None:
+                while self.tela_principal.frame_vendas_ultimos_seis_meses.layout().count():
+                    item = self.tela_principal.frame_vendas_ultimos_seis_meses.layout().takeAt(0)
+                    widget = item.widget()
+                    if widget is not None:
+                        widget.deleteLater()
+            else:
+                QVBoxLayout(self.tela_principal.frame_vendas_ultimos_seis_meses)
+            self.tela_principal.frame_vendas_ultimos_seis_meses.layout().addWidget(label)
+        finally:
+            cursor.close()

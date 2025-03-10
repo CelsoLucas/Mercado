@@ -17,6 +17,8 @@ class cmdConfiguracoes():
         self.tela_principal.tabWidget.setCurrentIndex(0)
         self.tela_principal.stackedWidget_5.setCurrentIndex(0)
         self.tela_principal.stackedWidget_4.setCurrentIndex(0)
+        self.tela_principal.stackedWidget_6.setCurrentIndex(0)
+
 
     def mostrar_usuarios(self):
         cursor = self.conexao.get_cursor()
@@ -171,12 +173,20 @@ class cmdConfiguracoes():
     
     def tela_adc_usuario(self):
         self.tela_principal.stackedWidget_4.setCurrentIndex(1)
+        self.tela_principal.input_nome_adc_usuario.setText("")
+        self.tela_principal.input_email_adc_usuario.setText("")
+        self.tela_principal.input_senha_adc_usuario.setText("")
+        self.tela_principal.input_cpf_adc_usuario.setText("")
+        self.tela_principal.input_telefone_adc_usuario.setText("")
+
     
     def tela_adc_categoria(self):
         self.tela_principal.stackedWidget_5.setCurrentIndex(1)
+        self.tela_principal.input_nome_adc_categoria.setText("")
 
     def tela_adc_formapagamento(self):
         self.tela_principal.stackedWidget_6.setCurrentIndex(1)
+        self.tela_principal.input_nome_adc_forma_pagamento.setText("")
 
     def mostrar_categoria(self):
         cursor = self.conexao.get_cursor()

@@ -4,7 +4,7 @@ from PySide6.QtGui import QIntValidator
 from PySide6.QtCore import Qt, QSize
 
 class cmdPdv():
-    def __init__(self, btn_pesquisar_produto, input_pesquisar_produto, txt_caso_nao_produto_encontrado, stackedWidget_2, txt_quantidade, txt_nome_preco_produto, tela_pincipal, txt_nome_produto_1, txt_quantidade_1, txt_valor_1, txt_total_pagar, input_forma_pagamento, input_quantia_dinheiro):
+    def __init__(self, btn_pesquisar_produto, input_pesquisar_produto, txt_caso_nao_produto_encontrado, stackedWidget_2, txt_quantidade, txt_nome_preco_produto, tela_pincipal, txt_nome_produto_1, txt_quantidade_1, txt_valor_1, txt_total_pagar, input_forma_pagamento, input_quantia_dinheiro, tela_login):
         self.btn_pesquisar_produto = btn_pesquisar_produto
         self.input_pesquisar_produto = input_pesquisar_produto
         self.txt_caso_nao_produto_encontrado = txt_caso_nao_produto_encontrado
@@ -27,7 +27,8 @@ class cmdPdv():
         self.tot = 0
         self.carrinho = []
         self.carregar_formapagamento()
-        self.input_forma_pagamento.currentTextChanged.connect(self.atualizar_visibilidade_quantia)  # Conexão do sinal
+        self.input_forma_pagamento.currentTextChanged.connect(self.atualizar_visibilidade_quantia)
+        self.tela_login = tela_login
 
     def procurar_produto(self):
 
@@ -91,9 +92,9 @@ class cmdPdv():
         self.suporte_carrinho.append(self.preco)
         quantidade = self.txt_quantidade.text()
         self.suporte_carrinho.append(quantidade)
-        print(self.carrinho)
         self.stackedWidget_2.setCurrentIndex(2)
         self.mostrar_carrinho()
+
 
     def mostrar_carrinho(self):
         self.nome1 = ""
@@ -127,7 +128,7 @@ class cmdPdv():
 
     def carregar_formapagamento(self):
         cursor = self.conexao.get_cursor()
-            # Buscar todas as categorias
+
         comando = "SELECT id_forma_pagamento, forma_pagamento FROM formapagamento ORDER BY id_forma_pagamento"
         cursor.execute(comando)
         formapagamento = cursor.fetchall()
@@ -148,7 +149,8 @@ class cmdPdv():
             self.input_quantia_dinheiro.setVisible(False)
 
     def validar_compra(self):
-        self.atualizar_visibilidade_quantia()  # Garante que o input esteja visível se "Dinheiro" for selecionado
+        self.atualizar_visibilidade_quantia()  
+
         if self.input_forma_pagamento.currentText() == "Dinheiro":
             quant_dinheiro = float(self.input_quantia_dinheiro.text()) if self.input_quantia_dinheiro.text() else 0.0
             if quant_dinheiro < self.tot:
@@ -161,6 +163,49 @@ class cmdPdv():
                 QMessageBox.information(None, "Sucesso", f"Obrigado por comprar no Mercado do Celso! Seu Troco é R${(quant_dinheiro - self.tot):.2f}")
         else:
             QMessageBox.information(None, "Sucesso", "Obrigado por comprar no Mercado do Celso!")
+
+        id_forma_pagamento = self.input_forma_pagamento.currentData()
+        if id_forma_pagamento is None:
+            QMessageBox.warning(None, "Erro", "Selecione uma forma de pagamento!")
+            return
+         
+        cursor = self.conexao.get_cursor()
+        comando = "select id_usuario from usuarios where nome = %s"
+        cursor.execute(comando, (self.tela_principal.txt_ola_user.text(),))
+        id_user = cursor.fetchone()
+
+        comando = "insert into vendas (id_usuario, valor_total, id_forma_pagamento) values (%s, %s, %s)"
+        valores = (int(id_user[0]), float(self.tot), int(id_forma_pagamento))        
+        cursor.execute(comando, valores)
+        self.conexao.commit()
+        cursor.close()
+
+        cursor = self.conexao.get_cursor()
+
+        comando = "SELECT LAST_INSERT_ID();"
+        cursor.execute(comando)
+        id_venda = cursor.fetchone()[0] 
+
+        for i in self.carrinho:
+            nome = i[0]
+            preco = i[1]
+            quantidade = i[2]
+
+            comando = "select id_produto from estoque where nome_produto = %s"
+            cursor.execute(comando, (nome,))
+            id_prod = cursor.fetchone()[0]
+
+            comando = """INSERT INTO itens_venda (id_venda, id_produto, quantidade, preco_unitario)
+                          VALUES (%s, %s, %s, %s)"""
+            valores = (id_venda, id_prod, quantidade, preco)
+            cursor.execute(comando, valores)
+            self.conexao.commit()
+
+            comando = "UPDATE estoque SET quantidade = quantidade - %s WHERE id_produto = %s"
+            valores = (quantidade, id_prod)
+            cursor.execute(comando, valores)
+            self.conexao.commit()
+
         self.input_pesquisar_produto.setText("")
         self.txt_quantidade.setText("")
         self.input_quantia_dinheiro.setText("")

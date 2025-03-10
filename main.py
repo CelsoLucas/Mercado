@@ -4,13 +4,13 @@ from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QVBoxLayou
 from PySide6.QtGui import QPixmap
 import sys
 import mysql.connector
+from cmdpaginaprincipal import cmdPaginaPrincipal
 from cmdpdv import cmdPdv
 from cmdestoque import cmdEstoque
-from cmdconfiguracoes import cmdConfiguracoes
+from cmdrelatorios import cmdRelatorios
 from cmdconfiguracoes import cmdConfiguracoes
 from conexao_db import conexaoDB
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+
 
 class main(QMainWindow):
     def __init__(self):
@@ -23,6 +23,8 @@ class main(QMainWindow):
     def init_tela_principal(self):
         self.tela_principal = Ui_TelaPrincipal()
         self.tela_principal.setupUi(self)
+        
+        self.tela_principal.txt_ola_user.setText(f"{self.user}")
 
         self.tela_principal.stackedWidget.setCurrentIndex(0)
 
@@ -33,9 +35,20 @@ class main(QMainWindow):
         self.tela_principal.btn_relatorios.clicked.connect(self.telarelatorios)
         self.tela_principal.btn_configuracoes.clicked.connect(self.telaconfiguracoes)
 
+        self.telaprin = cmdPaginaPrincipal(self.tela_principal)
+        self.telaprin.grafico_vendas_dia()
+        self.telaprin.grafico_vendas_semana()
+        self.telaprin.grafico_vendas_mes()
+        self.telaprin.produtos_baixo_estoque()
+
 
     def telaprincipal(self):
         self.tela_principal.stackedWidget.setCurrentIndex(0)
+        self.telaprin = cmdPaginaPrincipal(self.tela_principal)
+        self.telaprin.grafico_vendas_dia()
+        self.telaprin.grafico_vendas_semana()
+        self.telaprin.grafico_vendas_mes()
+        self.telaprin.produtos_baixo_estoque()
 
     def telapdv(self):
         self.tela_principal.stackedWidget.setCurrentIndex(1)
@@ -53,7 +66,8 @@ class main(QMainWindow):
         self.tela_principal.txt_valor_1,
         self.tela_principal.txt_total_pagar,
         self.tela_principal.input_forma_pagamento,
-        self.tela_principal.input_quantia_dinheiro)
+        self.tela_principal.input_quantia_dinheiro,
+        self.tela_login)
         self.tela_principal.btn_pesquisar_produto.clicked.connect(self.pdv.procurar_produto)
         self.tela_principal.btn_menos.clicked.connect(self.pdv.menos)
         self.tela_principal.btn_mais.clicked.connect(self.pdv.mais)
@@ -76,6 +90,8 @@ class main(QMainWindow):
 
     def telarelatorios(self):
         self.tela_principal.stackedWidget.setCurrentIndex(3)
+        self.relatorios = cmdRelatorios(self.tela_principal)
+        self.relatorios.vendas_ultimos_seis_meses()
 
     def telaconfiguracoes(self):
         self.tela_principal.stackedWidget.setCurrentIndex(4)
@@ -96,10 +112,12 @@ class main(QMainWindow):
         self.tela_login.btn_login.clicked.connect(self.check_login)
 
     def check_login(self):
+
+        self.user = self.tela_login.input_user.text()
         cursor = self.conexao.get_cursor()
         
         comando = "SELECT senha, foto FROM usuarios WHERE nome = %s"
-        cursor.execute(comando, (self.tela_login.input_user.text(),))
+        cursor.execute(comando, (self.user,))
         resultado = cursor.fetchone()
         
         if not resultado:
