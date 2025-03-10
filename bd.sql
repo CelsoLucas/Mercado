@@ -37,7 +37,7 @@ create table formapagamento(
 CREATE TABLE vendas (
     id_venda INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
-    data_venda DATETIME DEFAULT CURRENT_TIMESTAMP,
+    data_venda DATETIME DEFAULT current_date,
     valor_total DECIMAL(10, 2) NOT NULL,
 	id_forma_pagamento int,
     foreign key (id_forma_pagamento) references formapagamento(id_forma_pagamento),
@@ -58,5 +58,9 @@ CREATE TABLE itens_venda (
 INSERT INTO usuarios (nome, email, cpf, telefone, senha, foto, ativo) 
 VALUES ('Admin', 'admin@email.com', '000.000.000-00', '(00) 00000-0000', SHA2('admin', 256), NULL, true);
 
-
+select * from categorias;
+select * from formapagamento;
 select * from estoque;
+select * from usuarios;
+select * from vendas;
+select * from itens_venda;
