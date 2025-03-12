@@ -10,7 +10,7 @@ from cmdestoque import cmdEstoque
 from cmdrelatorios import cmdRelatorios
 from cmdconfiguracoes import cmdConfiguracoes
 from conexao_db import conexaoDB
-
+    
 
 class main(QMainWindow):
     def __init__(self):
