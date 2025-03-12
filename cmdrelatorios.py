@@ -8,8 +8,7 @@ class cmdRelatorios():
     def __init__(self, tela_principal):
         self.conexao = conexaoDB()
         self.tela_principal = tela_principal
-        self.vendas_ultimos_seis_meses()
-        self.total_faturado()
+        self.canvas_produtos = None  # Para o gráfico de produtos mais vendidos
 
     def vendas_ultimos_seis_meses(self):
         cursor = self.conexao.get_cursor()
@@ -105,9 +104,61 @@ class cmdRelatorios():
         comando = "select sum(valor_total) from vendas"
         cursor.execute(comando)
         resultado = cursor.fetchone()[0]
-        if resultado == None:
+        try:
+            self.tela_principal.label_faturamento.setText(f"R$ {resultado:.2f}")
+        except TypeError:
             self.tela_principal.label_faturamento.setText("R$ 00,00")
-        self.tela_principal.label_faturamento.setText(f"R$ {resultado:.2f}")
 
     def produtos_mais_vendidos(self):
-        pass
+        cursor = self.conexao.get_cursor()
+
+        comando = """
+            SELECT e.nome_produto, SUM(iv.quantidade) AS total_vendido
+            FROM estoque e
+            JOIN itens_venda iv ON e.id_produto = iv.id_produto
+            JOIN vendas v ON iv.id_venda = v.id_venda
+            GROUP BY e.id_produto, e.nome_produto
+            ORDER BY total_vendido DESC
+            LIMIT 5
+        """
+        cursor.execute(comando)
+        resultados = cursor.fetchall()
+
+        produtos = []
+        quantidades = []
+        for nome_produto, total_vendido in resultados:
+            produtos.append(nome_produto)
+            quantidades.append(int(total_vendido) if total_vendido is not None else 0)
+
+        if not produtos:
+            if hasattr(self.tela_principal, 'label_produtos_mais_vendidos'):
+                self.tela_principal.label_produtos_mais_vendidos.setText("Nenhum dado disponível")
+            return
+
+        fig, ax = plt.subplots(figsize=(6, 3), dpi=100)
+        ax.barh(produtos, quantidades, color='#e76f51', edgecolor='#264653', linewidth=1.5)
+        ax.set_xlim(0)
+        ax.set_xlabel("Quantidade Vendida", fontsize=12, color='#495057')
+        ax.set_facecolor('#f8f9fa')
+        fig.patch.set_facecolor('#ffffff')
+        ax.grid(True, linestyle='--', alpha=0.6, color='#adb5bd')
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+        ax.spines['left'].set_color('#dee2e6')
+        ax.spines['bottom'].set_color('#dee2e6')
+        plt.yticks(rotation=90)
+        plt.tight_layout()
+
+        if self.canvas_produtos is not None:
+            layout = self.tela_principal.frame_produtos_mais_vendidos.layout()
+            if layout is not None:
+                layout.removeWidget(self.canvas_produtos)
+                self.canvas_produtos.deleteLater()
+
+        self.canvas_produtos = FigureCanvas(fig)
+        layout = self.tela_principal.frame_produtos_mais_vendidos.layout()
+        if layout is None:
+            layout = QVBoxLayout(self.tela_principal.frame_produtos_mais_vendidos)
+            self.tela_principal.frame_produtos_mais_vendidos.setLayout(layout)
+        layout.addWidget(self.canvas_produtos)
+

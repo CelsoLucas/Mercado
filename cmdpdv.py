@@ -136,7 +136,7 @@ class cmdPdv():
         self.input_forma_pagamento.clear()
             
         for id_cat, nome_cat in formapagamento:
-            self.input_forma_pagamento.addItem(nome_cat, id_cat)  # Texto visível e dado associado
+            self.input_forma_pagamento.addItem(nome_cat, id_cat)  
             
         self.input_forma_pagamento.setCurrentIndex(-1) 
             

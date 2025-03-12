@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="icons">
     <file>add.png</file>
+    <file>Designer.jpeg</file>
     <file>analytics.png</file>
     <file>box-open.png</file>
     <file>dollar.png</file>

@@ -2,8 +2,6 @@ from conexao_db import conexaoDB
 from PySide6.QtWidgets import QTreeWidgetItem, QMessageBox, QFileDialog
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap
-import os
-import shutil
 
 class cmdEstoque():
     def __init__(self, tela_principal, input_pesquisar_produto_4, txt_caso_produto_nao_encontra_estoque, treeview, input_nome_produto, input_categoria_produto):
@@ -84,11 +82,10 @@ class cmdEstoque():
     
     def tela_adc_produto(self):
         self.tela_principal.stackedWidget_3.setCurrentIndex(1)
-        self.tela_principal.input_categoria_produto.setCurrentIndex(-1)  # Remove a seleção inicial
+        self.tela_principal.input_categoria_produto.setCurrentIndex(-1) 
 
     def carregar_categorias(self):
         cursor = self.conexao.get_cursor()
-            # Buscar todas as categorias
         comando = "SELECT id_categorias, nome_categoria FROM categorias ORDER BY id_categorias"
         cursor.execute(comando)
         categorias = cursor.fetchall()
@@ -96,14 +93,13 @@ class cmdEstoque():
         self.input_categoria_produto.clear()
             
         for id_cat, nome_cat in categorias:
-            self.input_categoria_produto.addItem(nome_cat, id_cat)  # Texto visível e dado associado
+            self.input_categoria_produto.addItem(nome_cat, id_cat)  
             
         self.input_categoria_produto.setCurrentIndex(-1) 
             
         cursor.close()
 
     def adc_produto_estoque(self, input_nome_produto, input_preco_produto, input_quantidade_produto, input_categoria_produto):
-
         self.nome = input_nome_produto.text()
 
         if not self.nome:
@@ -115,28 +111,31 @@ class cmdEstoque():
         cursor.execute(comando, (self.nome, ))
         resultado = cursor.fetchone()
 
-        if resultado and self.nome == resultado[0]:
-            QMessageBox.warning(None, "Erro", f"Produto com nome '{self.nome}' já cadastrado!")
-            cursor.close()
-            return
+        try:
+            if self.nome == resultado[0]:
+                QMessageBox.warning(None, "Erro", f"Produto com nome '{self.nome}' já cadastrado!")
+                cursor.close()
+                return
+        except TypeError:
+                self.nome = input_nome_produto.text()
 
         preco = input_preco_produto.text()
-        if not preco:
+        if not preco or int(preco) <= 0:
             QMessageBox.warning(None, "Erro", "Digite um valor válido!")
             return
 
         quant = input_quantidade_produto.text()
-        if not quant:
+        if not quant or int(quant) <= 0:
             QMessageBox.warning(None, "Erro", "Digite uma quantidade válida!")
             return
 
         categoria_index = input_categoria_produto.currentIndex() + 1
-        if not categoria_index:   # Verifica se é 0, o que é incorreto aqui
+        if not categoria_index:   
             QMessageBox.warning(None, "Erro", "Selecione uma categoria!")
             return
 
         comando = "SELECT id_categorias FROM categorias WHERE id_categorias = %s"
-        cursor.execute(comando, (categoria_index,))  # Passa um número, não o texto
+        cursor.execute(comando, (categoria_index,)) 
         resultado = cursor.fetchone()
         if not resultado:
             QMessageBox.warning(None, "Erro", "Categoria não encontrada!")

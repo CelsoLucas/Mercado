@@ -92,6 +92,8 @@ class main(QMainWindow):
         self.tela_principal.stackedWidget.setCurrentIndex(3)
         self.relatorios = cmdRelatorios(self.tela_principal)
         self.relatorios.vendas_ultimos_seis_meses()
+        self.relatorios.total_faturado()
+        self.relatorios.produtos_mais_vendidos()
 
     def telaconfiguracoes(self):
         self.tela_principal.stackedWidget.setCurrentIndex(4)

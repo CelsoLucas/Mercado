@@ -591,7 +591,7 @@ QComboBox QAbstractItemView::item {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>3</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -882,771 +882,122 @@ QComboBox QAbstractItemView::item {
              <property name="styleSheet">
               <string notr="true"/>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_8">
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
               <item>
                <widget class="QStackedWidget" name="stackedWidget_2">
-                <property name="currentIndex">
-                 <number>0</number>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
-                <widget class="QWidget" name="tela_pdv_1">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <widget class="QWidget" name="lado_esquerdo_pdv_2"/>
+                <widget class="QWidget" name="lado_esquerdo_pdv_1">
+                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <item alignment="Qt::AlignmentFlag::AlignTop">
+                   <widget class="QFrame" name="frame_2">
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_6">
+                     <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                      <widget class="QComboBox" name="input_pdv_categoria">
+                       <property name="placeholderText">
+                        <string>TODOS</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QScrollArea" name="scrollArea">
+                    <property name="widgetResizable">
+                     <bool>true</bool>
+                    </property>
+                    <widget class="QWidget" name="scrollAreaWidgetContents">
+                     <property name="geometry">
+                      <rect>
+                       <x>0</x>
+                       <y>0</y>
+                       <width>423</width>
+                       <height>547</height>
+                      </rect>
+                     </property>
+                    </widget>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+              <item>
+               <widget class="QStackedWidget" name="stackedWidget_6">
+                <property name="minimumSize">
+                 <size>
+                  <width>300</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>600</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(57, 192, 255);</string>
+                </property>
+                <widget class="QWidget" name="page_5">
                  <layout class="QVBoxLayout" name="verticalLayout_15">
-                  <property name="spacing">
-                   <number>6</number>
-                  </property>
-                  <property name="leftMargin">
-                   <number>9</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>9</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>9</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>9</number>
-                  </property>
-                  <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
-                   <widget class="QWidget" name="tela_pdv_1_info_principal" native="true">
+                  <item>
+                   <widget class="QTreeWidget" name="treeWidget_3">
+                    <column>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="frame_3">
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
                     <layout class="QVBoxLayout" name="verticalLayout_16">
-                     <property name="spacing">
-                      <number>0</number>
-                     </property>
-                     <property name="leftMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="bottomMargin">
-                      <number>0</number>
-                     </property>
-                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
-                      <widget class="QFrame" name="layout_pesquisar_produto">
-                       <property name="minimumSize">
-                        <size>
-                         <width>500</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>700</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
-                       <property name="frameShape">
-                        <enum>QFrame::Shape::StyledPanel</enum>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Shadow::Raised</enum>
-                       </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_5">
-                        <item>
-                         <spacer name="horizontalSpacer">
-                          <property name="orientation">
-                           <enum>Qt::Orientation::Horizontal</enum>
-                          </property>
-                          <property name="sizeType">
-                           <enum>QSizePolicy::Policy::Minimum</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>80</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                        <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-                         <widget class="QLineEdit" name="input_pesquisar_produto">
-                          <property name="minimumSize">
-                           <size>
-                            <width>400</width>
-                            <height>0</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignmentFlag::AlignCenter</set>
-                          </property>
-                          <property name="placeholderText">
-                           <string>Procurar Produto</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QPushButton" name="btn_pesquisar_produto">
-                          <property name="styleSheet">
-                           <string notr="true">background-color: none;</string>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                          <property name="icon">
-                           <iconset resource="imgs/icons.qrc">
-                            <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_6">
-                          <property name="orientation">
-                           <enum>Qt::Orientation::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
-                   <widget class="QLabel" name="txt_caso_nao_produto_encontrado">
-                    <property name="styleSheet">
-                     <string notr="true">font-size:20px;</string>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="verticalSpacer_8">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </widget>
-                <widget class="QWidget" name="tela_pdv_2">
-                 <layout class="QVBoxLayout" name="verticalLayout_17">
-                  <item>
-                   <widget class="QWidget" name="tela_pdv_2_info_principal" native="true">
-                    <layout class="QVBoxLayout" name="verticalLayout_18">
-                     <property name="spacing">
-                      <number>0</number>
-                     </property>
-                     <property name="leftMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="bottomMargin">
-                      <number>0</number>
-                     </property>
-                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
-                      <widget class="QFrame" name="layout_pesquisar_produto_2">
-                       <property name="minimumSize">
-                        <size>
-                         <width>500</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>700</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
-                       <property name="frameShape">
-                        <enum>QFrame::Shape::StyledPanel</enum>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Shadow::Raised</enum>
-                       </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_6">
-                        <item>
-                         <spacer name="horizontalSpacer_2">
-                          <property name="orientation">
-                           <enum>Qt::Orientation::Horizontal</enum>
-                          </property>
-                          <property name="sizeType">
-                           <enum>QSizePolicy::Policy::Minimum</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>80</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                        <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-                         <widget class="QLineEdit" name="input_pesquisar_produto_2">
-                          <property name="minimumSize">
-                           <size>
-                            <width>400</width>
-                            <height>0</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignmentFlag::AlignCenter</set>
-                          </property>
-                          <property name="placeholderText">
-                           <string>Procurar Produto</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item alignment="Qt::AlignmentFlag::AlignRight">
-                         <widget class="QPushButton" name="btn_pesquisar_produto_2">
-                          <property name="maximumSize">
-                           <size>
-                            <width>50</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: none;</string>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                          <property name="icon">
-                           <iconset resource="imgs/icons.qrc">
-                            <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
-                          </property>
-                          <property name="iconSize">
-                           <size>
-                            <width>25</width>
-                            <height>25</height>
-                           </size>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_7">
-                          <property name="orientation">
-                           <enum>Qt::Orientation::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
-                      <widget class="QLabel" name="txt_caso_nao_produto_encontrado2">
+                     <item>
+                      <widget class="QLabel" name="label">
                        <property name="text">
-                        <string/>
+                        <string>TextLabel</string>
                        </property>
-                      </widget>
-                     </item>
-                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
-                      <widget class="QWidget" name="resultado_pesquisa_produto" native="true">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>350</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_8">
-                        <item>
-                         <widget class="QFrame" name="layout_nome_preco_produto">
-                          <property name="frameShape">
-                           <enum>QFrame::Shape::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Shadow::Raised</enum>
-                          </property>
-                          <layout class="QHBoxLayout" name="horizontalLayout_7">
-                           <item>
-                            <widget class="QLabel" name="txt_nome_preco_produto">
-                             <property name="styleSheet">
-                              <string notr="true">font-size:20px;</string>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QFrame" name="layout_quant_produto">
-                          <property name="frameShape">
-                           <enum>QFrame::Shape::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Shadow::Raised</enum>
-                          </property>
-                          <layout class="QHBoxLayout" name="horizontalLayout_9">
-                           <item>
-                            <widget class="QPushButton" name="btn_menos">
-                             <property name="styleSheet">
-                              <string notr="true">background-color: none;</string>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="icon">
-                              <iconset resource="imgs/icons.qrc">
-                               <normaloff>:/icons/minus-circle.png</normaloff>:/icons/minus-circle.png</iconset>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QLineEdit" name="txt_quantidade">
-                             <property name="maximumSize">
-                              <size>
-                               <width>50</width>
-                               <height>16777215</height>
-                              </size>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color: transparent;
-border: none;</string>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QPushButton" name="btn_mais">
-                             <property name="styleSheet">
-                              <string notr="true">background-color: none;</string>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="icon">
-                              <iconset resource="imgs/icons.qrc">
-                               <normaloff>:/icons/add.png</normaloff>:/icons/add.png</iconset>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </item>
-                       </layout>
                       </widget>
                      </item>
                      <item>
-                      <spacer name="verticalSpacer_12">
-                       <property name="orientation">
-                        <enum>Qt::Orientation::Vertical</enum>
-                       </property>
-                       <property name="sizeType">
-                        <enum>QSizePolicy::Policy::Fixed</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>20</width>
-                         <height>300</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                     <item alignment="Qt::AlignmentFlag::AlignRight">
-                      <widget class="QPushButton" name="btn_adc_carrinho">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>200</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>Adcionar ao Carrinho</string>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="imgs/icons.qrc">
-                         <normaloff>:/icons/shopping-cart (1).png</normaloff>:/icons/shopping-cart (1).png</iconset>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-                <widget class="QWidget" name="tela_pdv_3">
-                 <layout class="QVBoxLayout" name="verticalLayout_19">
-                  <item>
-                   <widget class="QWidget" name="tela_pdv_3_info_principal_4" native="true">
-                    <layout class="QVBoxLayout" name="verticalLayout_21">
-                     <property name="spacing">
-                      <number>0</number>
-                     </property>
-                     <property name="leftMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="bottomMargin">
-                      <number>0</number>
-                     </property>
-                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
-                      <widget class="QFrame" name="layout_pesquisar_produto_3">
-                       <property name="minimumSize">
-                        <size>
-                         <width>500</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>700</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
+                      <widget class="QFrame" name="frame_4">
                        <property name="frameShape">
                         <enum>QFrame::Shape::StyledPanel</enum>
                        </property>
                        <property name="frameShadow">
                         <enum>QFrame::Shadow::Raised</enum>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_10">
+                       <layout class="QVBoxLayout" name="verticalLayout_17">
                         <item>
-                         <spacer name="horizontalSpacer_3">
-                          <property name="orientation">
-                           <enum>Qt::Orientation::Horizontal</enum>
-                          </property>
-                          <property name="sizeType">
-                           <enum>QSizePolicy::Policy::Minimum</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>80</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                        <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-                         <widget class="QLineEdit" name="input_pesquisar_produto_3">
-                          <property name="minimumSize">
-                           <size>
-                            <width>400</width>
-                            <height>0</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignmentFlag::AlignCenter</set>
-                          </property>
-                          <property name="placeholderText">
-                           <string>Procurar Produto</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item alignment="Qt::AlignmentFlag::AlignRight">
-                         <widget class="QPushButton" name="btn_pesquisar_produto_3">
-                          <property name="maximumSize">
-                           <size>
-                            <width>50</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: none;</string>
-                          </property>
+                         <widget class="QLabel" name="label_2">
                           <property name="text">
-                           <string/>
+                           <string>TextLabel</string>
                           </property>
-                          <property name="icon">
-                           <iconset>
-                            <normalon>:/icons/search.png</normalon>
-                           </iconset>
-                          </property>
-                          <property name="iconSize">
-                           <size>
-                            <width>25</width>
-                            <height>25</height>
-                           </size>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_8">
-                          <property name="orientation">
-                           <enum>Qt::Orientation::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                      <widget class="QLabel" name="txt_caso_nao_produto_encontrado3">
-                       <property name="text">
-                        <string/>
-                       </property>
-                      </widget>
-                     </item>
-                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-                      <widget class="QWidget" name="layout_resultado_procurar_produto_1" native="true">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>350</width>
-                         <height>300</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_11">
-                        <item alignment="Qt::AlignmentFlag::AlignLeft">
-                         <widget class="QFrame" name="layout_nome_preco_produto_2">
-                          <property name="styleSheet">
-                           <string notr="true">font-size:20px;</string>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::Shape::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Shadow::Raised</enum>
-                          </property>
-                          <layout class="QVBoxLayout" name="verticalLayout_22">
-                           <item>
-                            <widget class="QLabel" name="txt_nome_produto_1">
-                             <property name="styleSheet">
-                              <string notr="true">font-size:20px;</string>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QFrame" name="frame_3">
-                          <property name="styleSheet">
-                           <string notr="true">font-size:20px;</string>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::Shape::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Shadow::Raised</enum>
-                          </property>
-                          <layout class="QVBoxLayout" name="verticalLayout_23">
-                           <item>
-                            <widget class="QLabel" name="txt_quantidade_1">
-                             <property name="styleSheet">
-                              <string notr="true">font-size: 20px;</string>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QFrame" name="layout_valores_produtos">
-                          <property name="styleSheet">
-                           <string notr="true">font-size:20px;</string>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::Shape::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Shadow::Raised</enum>
-                          </property>
-                          <layout class="QVBoxLayout" name="verticalLayout_24">
-                           <item>
-                            <widget class="QLabel" name="txt_valor_1">
-                             <property name="styleSheet">
-                              <string notr="true">font-size: 20px;</string>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
                          </widget>
                         </item>
                        </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QFrame" name="layout_total_forma_pagamento">
-                       <property name="frameShape">
-                        <enum>QFrame::Shape::StyledPanel</enum>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Shadow::Raised</enum>
-                       </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_31">
-                        <item alignment="Qt::AlignmentFlag::AlignLeft">
-                         <widget class="QComboBox" name="input_forma_pagamento">
-                          <property name="minimumSize">
-                           <size>
-                            <width>260</width>
-                            <height>0</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">font-size: 20px;</string>
-                          </property>
-                          <property name="editable">
-                           <bool>false</bool>
-                          </property>
-                          <property name="currentText">
-                           <string/>
-                          </property>
-                          <property name="currentIndex">
-                           <number>-1</number>
-                          </property>
-                          <property name="maxVisibleItems">
-                           <number>10</number>
-                          </property>
-                          <property name="placeholderText">
-                           <string>Forma de Pagamento</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-                         <widget class="QLineEdit" name="input_quantia_dinheiro">
-                          <property name="minimumSize">
-                           <size>
-                            <width>300</width>
-                            <height>0</height>
-                           </size>
-                          </property>
-                          <property name="placeholderText">
-                           <string>Quantia em Dinheiro</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item alignment="Qt::AlignmentFlag::AlignRight">
-                         <widget class="QFrame" name="frame_11">
-                          <property name="frameShape">
-                           <enum>QFrame::Shape::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Shadow::Raised</enum>
-                          </property>
-                          <layout class="QHBoxLayout" name="horizontalLayout_32">
-                           <item alignment="Qt::AlignmentFlag::AlignRight">
-                            <widget class="QLabel" name="txt_total_pagar">
-                             <property name="styleSheet">
-                              <string notr="true">font-size: 20px;</string>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                      <widget class="QPushButton" name="btn_finalizar_compra">
-                       <property name="minimumSize">
-                        <size>
-                         <width>300</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>Finalizar Compra</string>
-                       </property>
                       </widget>
                      </item>
                     </layout>
@@ -1654,6 +1005,7 @@ border: none;</string>
                   </item>
                  </layout>
                 </widget>
+                <widget class="QWidget" name="page_6"/>
                </widget>
               </item>
              </layout>
@@ -1968,7 +1320,7 @@ border: none;</string>
                      </size>
                     </property>
                     <property name="text">
-                     <string>Adcionar Produto</string>
+                     <string>Adicionar Produto</string>
                     </property>
                    </widget>
                   </item>
@@ -2020,9 +1372,15 @@ border: none;</string>
                  </item>
                  <item row="3" column="1">
                   <widget class="QFrame" name="layout_relatorios_3">
-                   <property name="maximumSize">
+                   <property name="minimumSize">
                     <size>
                      <width>300</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>500</width>
                      <height>300</height>
                     </size>
                    </property>
@@ -2045,16 +1403,20 @@ border-radius: 20px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLabel" name="label_produtos_mais_vendidos">
+                     <widget class="QFrame" name="frame_produtos_mais_vendidos">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                         <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
                       </property>
-                      <property name="text">
-                       <string/>
+                      <property name="frameShape">
+                       <enum>QFrame::Shape::StyledPanel</enum>
                       </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Shadow::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_41"/>
                      </widget>
                     </item>
                    </layout>
@@ -2126,7 +1488,7 @@ border-radius: 20px;</string>
                       </property>
                      </widget>
                     </item>
-                    <item>
+                    <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
                      <widget class="QLabel" name="label_faturamento">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -2164,7 +1526,7 @@ border-radius: 20px;</string>
                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
                      <widget class="QLabel" name="label_4">
                       <property name="text">
-                       <string>TextLabel</string>
+                       <string>Formas de Pagamento Usadas</string>
                       </property>
                      </widget>
                     </item>
@@ -2213,7 +1575,7 @@ border-radius: 20px;</string>
               <item>
                <widget class="QTabWidget" name="tabWidget">
                 <property name="currentIndex">
-                 <number>2</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="tela_config_1">
                  <attribute name="title">
@@ -2223,7 +1585,7 @@ border-radius: 20px;</string>
                   <item>
                    <widget class="QStackedWidget" name="stackedWidget_4">
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="config_usuarios">
                      <layout class="QVBoxLayout" name="verticalLayout_35">
@@ -2289,7 +1651,7 @@ border-radius: 20px;</string>
                          </size>
                         </property>
                         <property name="text">
-                         <string>Adcionar Usuario</string>
+                         <string>Adicionar Usuario</string>
                         </property>
                        </widget>
                       </item>
@@ -2438,105 +1800,6 @@ border-radius: 20px;</string>
                           <widget class="QLabel" name="label_img_adc_usuario">
                            <property name="text">
                             <string/>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-                <widget class="QWidget" name="tela_config_3">
-                 <attribute name="title">
-                  <string>Page</string>
-                 </attribute>
-                 <layout class="QVBoxLayout" name="verticalLayout_20">
-                  <item>
-                   <widget class="QStackedWidget" name="stackedWidget_6">
-                    <property name="currentIndex">
-                     <number>0</number>
-                    </property>
-                    <widget class="QWidget" name="page_3">
-                     <layout class="QVBoxLayout" name="verticalLayout_28">
-                      <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-                       <widget class="QTreeWidget" name="tabela_forma_pagamento">
-                        <property name="minimumSize">
-                         <size>
-                          <width>400</width>
-                          <height>300</height>
-                         </size>
-                        </property>
-                        <column>
-                         <property name="text">
-                          <string>ID</string>
-                         </property>
-                         <property name="textAlignment">
-                          <set>AlignCenter</set>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>FORMA DE PAGAMENTO</string>
-                         </property>
-                         <property name="textAlignment">
-                          <set>AlignCenter</set>
-                         </property>
-                        </column>
-                       </widget>
-                      </item>
-                      <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                       <widget class="QPushButton" name="btn_adc_forma_pagamento">
-                        <property name="text">
-                         <string>ADCIONAR FORMA DE PAGAMENTO</string>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                    <widget class="QWidget" name="page_4">
-                     <layout class="QVBoxLayout" name="verticalLayout_34">
-                      <item>
-                       <widget class="QFrame" name="layout_adc_categoria_2">
-                        <property name="frameShape">
-                         <enum>QFrame::Shape::StyledPanel</enum>
-                        </property>
-                        <property name="frameShadow">
-                         <enum>QFrame::Shadow::Raised</enum>
-                        </property>
-                        <layout class="QGridLayout" name="gridLayout_7">
-                         <item row="0" column="0">
-                          <widget class="QLineEdit" name="input_nome_adc_forma_pagamento">
-                           <property name="maximumSize">
-                            <size>
-                             <width>400</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="inputMask">
-                            <string/>
-                           </property>
-                           <property name="text">
-                            <string/>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                           <property name="placeholderText">
-                            <string>Forma de Pagamento</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="0">
-                          <widget class="QPushButton" name="btn_adc_forma_pagamento_2">
-                           <property name="text">
-                            <string>Criar Forma de Pagamento</string>
                            </property>
                           </widget>
                          </item>

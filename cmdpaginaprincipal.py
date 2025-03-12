@@ -11,7 +11,10 @@ class cmdPaginaPrincipal():
         comando = "select sum(valor_total) from vendas where data_venda = current_date"
         cursor.execute(comando)
         resultado = cursor.fetchone()[0]
-        self.tela_principal.txt_vendas_dia_db.setText(f"R$ {float(resultado):.2f}")
+        try:
+            self.tela_principal.txt_vendas_dia_db.setText(f"R$ {float(resultado):.2f}")
+        except TypeError:
+                self.tela_principal.txt_vendas_dia_db.setText(f"R$ 00,00")
 
     def grafico_vendas_semana(self):
         cursor = self.conexao.get_cursor()
@@ -20,8 +23,11 @@ class cmdPaginaPrincipal():
                   """
         cursor.execute(comando)
         resultado = cursor.fetchone()[0]
-        self.tela_principal.txt_vendas_semana_db.setText(f"R$ {float(resultado):.2f}")
-        
+        try:
+            self.tela_principal.txt_vendas_semana_db.setText(f"R$ {float(resultado):.2f}")
+        except TypeError:
+            self.tela_principal.txt_vendas_semana_db.setText(f"R$ 00,00")
+
     def grafico_vendas_mes(self):
         cursor = self.conexao.get_cursor()
         comando = """SELECT SUM(valor_total) FROM vendas 
@@ -30,8 +36,10 @@ class cmdPaginaPrincipal():
                   """
         cursor.execute(comando)
         resultado = cursor.fetchone()[0]
-        self.tela_principal.txt_vendas_mes_db.setText(f"R$ {float(resultado):.2f}")  
-
+        try:
+            self.tela_principal.txt_vendas_mes_db.setText(f"R$ {float(resultado):.2f}")  
+        except TypeError:
+            self.tela_principal.txt_vendas_mes_db.setText(f"R$ 00,00")
     def produtos_baixo_estoque(self):
         cursor = self.conexao.get_cursor()
         comando = """SELECT nome_produto, quantidade FROM estoque
