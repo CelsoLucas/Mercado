@@ -1,14 +1,13 @@
+from datetime import datetime
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from PySide6.QtWidgets import QVBoxLayout
-from datetime import datetime
 from conexao_db import conexaoDB
 
 class cmdRelatorios():
     def __init__(self, tela_principal):
         self.conexao = conexaoDB()
         self.tela_principal = tela_principal
-    
     def vendas_ultimos_seis_meses(self):
         cursor = self.conexao.get_cursor()
         try:
@@ -27,9 +26,8 @@ class cmdRelatorios():
             meses = []
             valores = []
             for ano, mes, total in resultados:
-                # Converter ano e mês para formato legível (ex.: "Out/2024")
                 data = datetime(ano, mes, 1)
-                meses.append(data.strftime("%b/%Y"))  # Ex.: "Out/2024"
+                meses.append(data.strftime("%b/%Y"))
                 valores.append(float(total) if total is not None else 0.0)
 
             # Preencher meses sem vendas com zeros para garantir 6 pontos
@@ -47,36 +45,63 @@ class cmdRelatorios():
                 else:
                     valores_completos.append(0.0)
 
-            # Criar o gráfico
-            fig, ax = plt.subplots(figsize=(6, 4))  # Ajuste o tamanho conforme o frame
-            ax.plot(meses_completos, valores_completos, marker='o', linestyle='-', color='b')
-            ax.set_title("Vendas dos Últimos 6 Meses")
-            ax.set_xlabel("Mês")
-            ax.set_ylabel("Total de Vendas (R$)")
-            ax.grid(True)
-            plt.xticks(rotation=45, ha="right")
+            # Criar o gráfico com design moderno
+            fig, ax = plt.subplots(figsize=(8, 5), dpi=100)
+            
+            # Estilizar a linha e os marcadores
+            ax.plot(
+                meses_completos, 
+                valores_completos, 
+                marker='o', 
+                linestyle='-', 
+                color='#2a9d8f',  # Verde azulado elegante
+                linewidth=2.5, 
+                markersize=8,
+                markeredgecolor='#264653',  # Bordas escuras nos marcadores
+                markeredgewidth=1.5
+            )
+
+            # Personalizar o fundo e bordas
+            ax.set_facecolor('#f8f9fa')  # Fundo cinza claro
+            fig.patch.set_facecolor('#ffffff')  # Fundo externo branco
+
+            # Configurar títulos e rótulos
+            ax.set_xlabel("Mês", fontsize=12, color='#495057')
+            ax.set_ylabel("Total de Vendas (R$)", fontsize=12, color='#495057')
+
+            # Estilizar a grade
+            ax.grid(True, linestyle='--', alpha=0.6, color='#adb5bd')
+
+            # Ajustar os ticks do eixo X
+            plt.xticks(rotation=45, ha="right", fontsize=10, color='#495057')
+            plt.yticks(fontsize=10, color='#495057')
+
+            # Remover bordas desnecessárias (estilo minimalista)
+            ax.spines['top'].set_visible(False)
+            ax.spines['right'].set_visible(False)
+            ax.spines['left'].set_color('#dee2e6')
+            ax.spines['bottom'].set_color('#dee2e6')
+
+            # Ajustar layout
             plt.tight_layout()
 
-            # Integrar o gráfico ao frame existente
+            # Integrar o gráfico ao frame
             canvas = FigureCanvas(fig)
 
-            # Limpar o layout existente do frame (se houver) e adicionar o gráfico
+            # Limpar o layout existente do frame
             if self.tela_principal.frame_vendas_ultimos_seis_meses.layout() is not None:
-                # Remover widgets existentes no layout
                 while self.tela_principal.frame_vendas_ultimos_seis_meses.layout().count():
                     item = self.tela_principal.frame_vendas_ultimos_seis_meses.layout().takeAt(0)
                     widget = item.widget()
                     if widget is not None:
                         widget.deleteLater()
             else:
-                # Se não houver layout, criar um novo
                 QVBoxLayout(self.tela_principal.frame_vendas_ultimos_seis_meses)
 
             self.tela_principal.frame_vendas_ultimos_seis_meses.layout().addWidget(canvas)
 
         except Exception as e:
             print(f"Erro ao criar gráfico de vendas dos últimos 6 meses: {str(e)}")
-            # Em caso de erro, exibir mensagem no frame
             from PySide6.QtWidgets import QLabel
             label = QLabel("Erro ao carregar gráfico de vendas")
             if self.tela_principal.frame_vendas_ultimos_seis_meses.layout() is not None:
