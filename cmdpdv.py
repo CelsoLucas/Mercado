@@ -11,51 +11,44 @@ class cmdPdv():
         self.tela_principal.stackedWidget_2.setCurrentIndex(0)
         self.tela_principal.stackedWidget_6.setCurrentIndex(0)
         self.carrinho = []
+        self.tela_principal.input_pdv_forma_pagamento.setCurrentIndex(-1)
         self.adc_card()
         self.mostrar_carrinho()
         self.tela_principal.input_pdv_forma_pagamento.currentTextChanged.connect(self.forma_pagamento)
 
     def adc_card(self):
-        # Obter o QScrollArea (mostruario_cards2_2)
         scroll_area = self.tela_principal.mostruario_cards2_2
         if not isinstance(scroll_area, QScrollArea):
             print("Erro: mostruario_cards2_2 não é um QScrollArea!")
             return
 
-        # Criar o widget interno para o ScrollArea (apenas se necessário)
         content_widget = scroll_area.widget()
         if content_widget is None:
             content_widget = QWidget()
             scroll_area.setWidget(content_widget)
             scroll_area.setWidgetResizable(True)
 
-        # Criar ou substituir o QGridLayout
         existing_layout = content_widget.layout()
         if existing_layout:
-            # Remover o layout existente
             for i in reversed(range(existing_layout.count())):
                 item = existing_layout.takeAt(i)
                 if item.widget():
                     item.widget().deleteLater()
-            content_widget.setLayout(None)  # Limpar o layout existente
+            content_widget.setLayout(None)
         grid_layout = QGridLayout(content_widget)
         content_widget.setLayout(grid_layout)
 
-        # Buscar produtos do banco de dados
-        cursor = self.conexao.get_cursor()  # Garantir que o cursor retorna dicionários
+        cursor = self.conexao.get_cursor() 
         cursor.execute("SELECT id_produto, nome_produto, preco, imagem FROM estoque")
         produtos = cursor.fetchall()
         cursor.close()
 
-        # Adicionar cards ao grid layout (3 colunas)
         row = 0
         col = 0
         for produto in produtos:
-            # Verificar se o produto é um dicionário ou tupla
             if isinstance(produto, dict):
                 card = self.criar_card(produto)
             else:
-                # Se for tupla, mapear índices para colunas
                 card = self.criar_card({
                     'id_produto': produto[0],
                     'nome_produto': produto[1],
@@ -64,42 +57,37 @@ class cmdPdv():
                 })
             grid_layout.addWidget(card, row, col)
             col += 1
-            if col > 2:  # Limite de 3 colunas por linha
+            if col > 2:  
                 col = 0
                 row += 1
 
     def criar_card(self, produto):
-        # Widget personalizado para cada card
         card = QWidget()
-        card.setFixedSize(175, 300)  # Tamanho fixo do card
+        card.setFixedSize(175, 300) 
         layout = QVBoxLayout(card)
         layout.setAlignment(Qt.AlignCenter)
 
-        # Exibir a imagem do produto
         imagem_label = QLabel()
-        pixmap = QPixmap(produto['imagem'])  # Certifique-se de que o caminho da imagem esteja correto
+        pixmap = QPixmap(produto['imagem'])  
         if pixmap.isNull():
-            pixmap = QPixmap("default_image.png")  # Imagem padrão caso a imagem não seja carregada
-        # Redimensionar a imagem para 160x160, mantendo a proporção
+            pixmap = QPixmap("default_image.png")  
+
         pixmap = pixmap.scaled(100, 100, Qt.KeepAspectRatio, Qt.SmoothTransformation)
         imagem_label.setPixmap(pixmap)
-        imagem_label.setAlignment(Qt.AlignCenter)  # Garantir que a imagem esteja centralizada no QLabel
+        imagem_label.setAlignment(Qt.AlignCenter) 
         layout.addWidget(imagem_label)
 
-        # Nome do produto
         nome_label = QLabel(produto['nome_produto'])
         nome_label.setAlignment(Qt.AlignCenter)
         nome_label.setWordWrap(True)  # Permitir quebra de texto
         nome_label.setStyleSheet("font-size: 12px;")  # Ajustar o tamanho da fonte
         layout.addWidget(nome_label)
 
-        # Preço do produto
         preco_label = QLabel(f"R$ {produto['preco']:.2f}")
         preco_label.setAlignment(Qt.AlignCenter)
-        preco_label.setStyleSheet("font-size: 12px; font-weight: bold;")  # Ajustar o tamanho e estilo da fonte
+        preco_label.setStyleSheet("font-size: 12px; font-weight: bold;")
         layout.addWidget(preco_label)
 
-        # Botão Comprar
         comprar_button = QPushButton("Comprar")
         comprar_button.setStyleSheet("""
             QPushButton {
@@ -176,13 +164,10 @@ class cmdPdv():
 
 
     def mostrar_carrinho(self):
-        # Referência ao QTreeWidget
         tabela = self.tela_principal.tabela_carrinho
         
-        # Limpar o conteúdo atual da tabela, mantendo os cabeçalhos
         tabela.clear()
         
-        # Verificar se o número de colunas está correto (deve ser 4 agora)
         if tabela.columnCount() != 4:
             print("Erro: O QTreeWidget deve ter 4 colunas (Nome, Preço, Quantidade, Total)")
             return
@@ -196,7 +181,7 @@ class cmdPdv():
             total_item = preco * quantidade  
             total_geral += total_item  
             
-            linha = QTreeWidgetItem([nome, f"R$ {preco:.2f}", str(quantidade), f"R$ {total_item:.2f}"])
+            linha = QTreeWidgetItem([nome, str(quantidade), f"R$ {preco:.2f}", f"R$ {total_item:.2f}"])
             tabela.addTopLevelItem(linha)
         
         for i in range(4):
@@ -214,10 +199,12 @@ class cmdPdv():
                 item.widget().deleteLater()
 
         if forma == "Pix":
-            pass
-            # img = QLabel()
-            # pixmap = QPixmap("")
-            # frame.layout().addWidget(dinheiro_input)
+            qr_label = QLabel()
+            pixmap = QPixmap("imgs/qrcode.png")
+            pixmap = pixmap.scaled(200, 200, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            qr_label.setPixmap(pixmap)
+            qr_label.setAlignment(Qt.AlignCenter)
+            frame.layout().addWidget(qr_label)
         elif forma == "Dinheiro":
             dinheiro_input = QLineEdit()
             dinheiro_input.setPlaceholderText("Digite o valor em dinheiro")
@@ -225,6 +212,7 @@ class cmdPdv():
             dinheiro_input.setMaximumWidth(200) 
             
             frame.layout().addWidget(dinheiro_input)
-        else:
-            pass
+
+    def finalizar_compra(self):
+        pass
 
