@@ -2,6 +2,8 @@ from conexao_db import conexaoDB
 from PySide6.QtWidgets import QTreeWidgetItem, QMessageBox, QFileDialog
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap
+import os
+import shutil
 
 class cmdEstoque():
     def __init__(self, tela_principal, input_pesquisar_produto_4, txt_caso_produto_nao_encontra_estoque, treeview, input_nome_produto, input_categoria_produto):
@@ -143,8 +145,9 @@ class cmdEstoque():
         categoria_id = resultado[0] 
 
 
-        query = "INSERT INTO estoque (nome_produto, preco, quantidade, categoria) VALUES (%s, %s, %s, %s)"
-        valores = (self.nome, preco, quant, categoria_id)
+        relative_path = os.path.relpath(self.new_file_path, os.getcwd()).replace("\\", "/")
+        query = "INSERT INTO estoque (nome_produto, preco, quantidade, categoria, imagem) VALUES (%s, %s, %s, %s, %s)"
+        valores = (self.nome, preco, quant, categoria_id, relative_path)
         cursor.execute(query, valores)
         self.conexao.commit()
 
@@ -153,7 +156,31 @@ class cmdEstoque():
         cursor.close()
         self.mostrar_estoque()
         self.tela_principal.stackedWidget_3.setCurrentIndex(0)
-        input_nome_produto.setText("")
-        input_preco_produto.setText("")
-        input_quantidade_produto.setText("")
-    
+
+    def open_image(self):
+        file_dialog = QFileDialog()
+        file_path, _ = file_dialog.getOpenFileName(None, "Open Image", "", "Images(*.png *.xpm *.jpg *.jpeg *.bmp);;All Files (*)")
+
+        if file_path:
+            # Define the destination directory
+            save_dir = "imgs/foto_produtos"  # Corrected to a single, intended directory
+            
+            # Create the directory if it doesn’t exist
+            if not os.path.exists(save_dir):
+                os.makedirs(save_dir)
+            
+            # Get the original filename
+            original_filename = os.path.basename(file_path)
+           
+            # Define the new file path using only save_dir
+            self.new_file_path = os.path.join(save_dir, original_filename)
+            print(f"Copying from {file_path} to {self.new_file_path}")  # Debug print
+                
+            # Copy the image
+            shutil.copy(file_path, self.new_file_path)
+
+            # Display the image in the UI using absolute path for reliability
+            absolute_path = os.path.abspath(self.new_file_path)
+            pixmap = QPixmap(absolute_path)
+            self.tela_principal.img_produto_estoque.setPixmap(pixmap)
+            self.tela_principal.img_produto_estoque.setScaledContents(True)

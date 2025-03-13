@@ -52,28 +52,12 @@ class main(QMainWindow):
 
     def telapdv(self):
         self.tela_principal.stackedWidget.setCurrentIndex(1)
-        self.tela_principal.stackedWidget_2.setCurrentIndex(0)    
-        self.pdv = cmdPdv(
-        self.tela_principal.btn_pesquisar_produto,
-        self.tela_principal.input_pesquisar_produto,
-        self.tela_principal.txt_caso_nao_produto_encontrado,
-        self.tela_principal.stackedWidget_2,
-        self.tela_principal.txt_quantidade,
-        self.tela_principal.txt_nome_preco_produto,
-        self.tela_principal,
-        self.tela_principal.txt_nome_produto_1,
-        self.tela_principal.txt_quantidade_1,
-        self.tela_principal.txt_valor_1,
-        self.tela_principal.txt_total_pagar,
-        self.tela_principal.input_forma_pagamento,
-        self.tela_principal.input_quantia_dinheiro,
-        self.tela_login)
-        self.tela_principal.btn_pesquisar_produto.clicked.connect(self.pdv.procurar_produto)
-        self.tela_principal.btn_menos.clicked.connect(self.pdv.menos)
-        self.tela_principal.btn_mais.clicked.connect(self.pdv.mais)
+        self.pdv = cmdPdv(self.tela_principal)
+        self.tela_principal.stackedWidget_2.setCurrentIndex(0)
+        self.tela_principal.stackedWidget_6.setCurrentIndex(0)
+        self.tela_principal.btn_pdv_mais.clicked.connect(self.pdv.mais)
+        self.tela_principal.btn_pdv_menos.clicked.connect(self.pdv.menos)
         self.tela_principal.btn_adc_carrinho.clicked.connect(self.pdv.adc_carrinho)
-        self.tela_principal.btn_pesquisar_produto_3.clicked.connect(self.pdv.procurar_produto)
-        self.tela_principal.btn_finalizar_compra.clicked.connect(self.pdv.validar_compra)
 
     def telaestoque(self):
         self.tela_principal.stackedWidget.setCurrentIndex(2)
@@ -86,6 +70,7 @@ class main(QMainWindow):
                                   self.tela_principal.input_categoria_produto)
         self.tela_principal.btn_pesquisar_produto_4.clicked.connect(self.estoque.procurar_produto)
         self.tela_principal.btn_adc_produto_estoque.clicked.connect(self.estoque.tela_adc_produto)
+        self.tela_principal.btn_adc_foto_produto.clicked.connect(self.estoque.open_image)
         self.tela_principal.btn_adc_produto.clicked.connect(lambda: self.estoque.adc_produto_estoque(self.tela_principal.input_nome_produto, self.tela_principal.input_preco_produto, self.tela_principal.input_quantidade_produto, self.tela_principal.input_categoria_produto))
 
     def telarelatorios(self):
@@ -107,8 +92,7 @@ class main(QMainWindow):
                            self.tela_principal.input_telefone_adc_usuario))
         self.tela_principal.btn_adc_categoria.clicked.connect(self.config.tela_adc_categoria)
         self.tela_principal.btn_adc_categoria_2.clicked.connect(lambda: self.config.adc_categoria(self.tela_principal.input_nome_adc_categoria))
-        self.tela_principal.btn_adc_forma_pagamento.clicked.connect(self.config.tela_adc_formapagamento)
-        self.tela_principal.btn_adc_forma_pagamento_2.clicked.connect(lambda: self.config.adc_forma_pagamento(self.tela_principal.input_nome_adc_forma_pagamento))
+
     def init_tela_login(self):
         self.tela_login.setupUi(self)
         self.tela_login.btn_login.clicked.connect(self.check_login)
