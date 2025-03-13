@@ -894,7 +894,107 @@ QComboBox QAbstractItemView::item {
                 <property name="styleSheet">
                  <string notr="true"/>
                 </property>
-                <widget class="QWidget" name="lado_esquerdo_pdv_2"/>
+                <property name="currentIndex">
+                 <number>1</number>
+                </property>
+                <widget class="QWidget" name="lado_esquerdo_pdv_2">
+                 <layout class="QVBoxLayout" name="verticalLayout_20">
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+                   <widget class="QFrame" name="layout_lado_estquerdo">
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_7">
+                     <item alignment="Qt::AlignmentFlag::AlignVCenter">
+                      <widget class="QFrame" name="layout_nome_quant">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_8">
+                        <item>
+                         <widget class="QLabel" name="txt_pdv_nome">
+                          <property name="text">
+                           <string/>
+                          </property>
+                         </widget>
+                        </item>
+                        <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                         <widget class="QLabel" name="txt_pdv_quant">
+                          <property name="text">
+                           <string/>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item alignment="Qt::AlignmentFlag::AlignVCenter">
+                      <widget class="QFrame" name="layout_btn_menos">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_9">
+                        <item>
+                         <widget class="QPushButton" name="btn_pdv_menos">
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="imgs/icons.qrc">
+                            <normaloff>:/icons/minus-circle.png</normaloff>:/icons/minus-circle.png</iconset>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="input_pdv_quant"/>
+                     </item>
+                     <item alignment="Qt::AlignmentFlag::AlignVCenter">
+                      <widget class="QFrame" name="layout_btn_mais">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_10">
+                        <item>
+                         <widget class="QPushButton" name="btn_pdv_mais">
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="imgs/icons.qrc">
+                            <normaloff>:/icons/add.png</normaloff>:/icons/add.png</iconset>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="pushButton_3">
+                    <property name="text">
+                     <string>Adicionar ao Carrinho</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
                 <widget class="QWidget" name="lado_esquerdo_pdv_1">
                  <layout class="QVBoxLayout" name="verticalLayout_8">
                   <item alignment="Qt::AlignmentFlag::AlignTop">
@@ -906,6 +1006,20 @@ QComboBox QAbstractItemView::item {
                      <enum>QFrame::Shadow::Raised</enum>
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_6">
+                     <item>
+                      <widget class="QLineEdit" name="input_pdv_produto"/>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_pesquisar_produto">
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="imgs/icons.qrc">
+                         <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
+                       </property>
+                      </widget>
+                     </item>
                      <item alignment="Qt::AlignmentFlag::AlignHCenter">
                       <widget class="QComboBox" name="input_pdv_categoria">
                        <property name="placeholderText">
@@ -926,7 +1040,7 @@ QComboBox QAbstractItemView::item {
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>423</width>
+                       <width>404</width>
                        <height>547</height>
                       </rect>
                      </property>
@@ -954,19 +1068,46 @@ QComboBox QAbstractItemView::item {
                 <property name="styleSheet">
                  <string notr="true">background-color: rgb(57, 192, 255);</string>
                 </property>
-                <widget class="QWidget" name="page_5">
+                <property name="currentIndex">
+                 <number>0</number>
+                </property>
+                <widget class="QWidget" name="lado_direito_pdv_1">
                  <layout class="QVBoxLayout" name="verticalLayout_15">
                   <item>
                    <widget class="QTreeWidget" name="treeWidget_3">
                     <column>
                      <property name="text">
-                      <string/>
+                      <string>Produto</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Qtd.</string>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Preço Un.</string>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Total</string>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
                      </property>
                     </column>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QFrame" name="frame_3">
+                   <widget class="QFrame" name="layout_valor_total">
                     <property name="frameShape">
                      <enum>QFrame::Shape::StyledPanel</enum>
                     </property>
@@ -975,9 +1116,9 @@ QComboBox QAbstractItemView::item {
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_16">
                      <item>
-                      <widget class="QLabel" name="label">
+                      <widget class="QLabel" name="txt_valor_total_texto">
                        <property name="text">
-                        <string>TextLabel</string>
+                        <string>Valor Total</string>
                        </property>
                       </widget>
                      </item>
@@ -991,9 +1132,9 @@ QComboBox QAbstractItemView::item {
                        </property>
                        <layout class="QVBoxLayout" name="verticalLayout_17">
                         <item>
-                         <widget class="QLabel" name="label_2">
+                         <widget class="QLabel" name="txt_valor_total">
                           <property name="text">
-                           <string>TextLabel</string>
+                           <string/>
                           </property>
                          </widget>
                         </item>
@@ -1003,9 +1144,64 @@ QComboBox QAbstractItemView::item {
                     </layout>
                    </widget>
                   </item>
+                  <item>
+                   <widget class="QComboBox" name="input_pdv_forma_pagamento">
+                    <property name="placeholderText">
+                     <string>Forma de Pagamento</string>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Pix</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Débito</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Crédito</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Dinheiro</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="frame_pagamento">
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_18"/>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btn_finaliza_compra">
+                    <property name="text">
+                     <string>Finalizar Compra</string>
+                    </property>
+                   </widget>
+                  </item>
                  </layout>
                 </widget>
-                <widget class="QWidget" name="page_6"/>
+                <widget class="QWidget" name="page_6">
+                 <layout class="QVBoxLayout" name="verticalLayout_19">
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+                   <widget class="QLabel" name="label_6">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Compra Realizada! &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Obrigado Por Comprar no Mercado do Celsadas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
                </widget>
               </item>
              </layout>
