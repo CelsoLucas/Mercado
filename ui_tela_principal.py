@@ -611,7 +611,7 @@ class Ui_TelaPrincipal(object):
         self.mostruario_cards2_2.setWidgetResizable(True)
         self.mostruario_cards = QWidget()
         self.mostruario_cards.setObjectName(u"mostruario_cards")
-        self.mostruario_cards.setGeometry(QRect(0, 0, 516, 537))
+        self.mostruario_cards.setGeometry(QRect(0, 0, 63, 16))
         self.mostruario_cards2_2.setWidget(self.mostruario_cards)
 
         self.verticalLayout_8.addWidget(self.mostruario_cards2_2)
@@ -1151,12 +1151,14 @@ class Ui_TelaPrincipal(object):
 
         self.verticalLayout_32.addWidget(self.label_4, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
 
-        self.label_3 = QLabel(self.layout_relatorios_4)
-        self.label_3.setObjectName(u"label_3")
-        sizePolicy1.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
-        self.label_3.setSizePolicy(sizePolicy1)
+        self.frame_formas_pagamento = QFrame(self.layout_relatorios_4)
+        self.frame_formas_pagamento.setObjectName(u"frame_formas_pagamento")
+        sizePolicy1.setHeightForWidth(self.frame_formas_pagamento.sizePolicy().hasHeightForWidth())
+        self.frame_formas_pagamento.setSizePolicy(sizePolicy1)
+        self.frame_formas_pagamento.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_formas_pagamento.setFrameShadow(QFrame.Shadow.Raised)
 
-        self.verticalLayout_32.addWidget(self.label_3)
+        self.verticalLayout_32.addWidget(self.frame_formas_pagamento)
 
 
         self.gridLayout_2.addWidget(self.layout_relatorios_4, 3, 2, 1, 1)
@@ -1367,7 +1369,7 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(3)
         self.stackedWidget_2.setCurrentIndex(1)
         self.stackedWidget_6.setCurrentIndex(0)
         self.stackedWidget_3.setCurrentIndex(1)
@@ -1451,7 +1453,6 @@ class Ui_TelaPrincipal(object):
         self.txt_lucro_prejuizo.setText(QCoreApplication.translate("TelaPrincipal", u"Faturamento", None))
         self.label_faturamento.setText("")
         self.label_4.setText(QCoreApplication.translate("TelaPrincipal", u"Formas de Pagamento Usadas", None))
-        self.label_3.setText("")
         ___qtreewidgetitem2 = self.treeWidget_2.headerItem()
         ___qtreewidgetitem2.setText(4, QCoreApplication.translate("TelaPrincipal", u"TELEFONE", None));
         ___qtreewidgetitem2.setText(3, QCoreApplication.translate("TelaPrincipal", u"CPF", None));

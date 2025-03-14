@@ -1,164 +1,242 @@
-from datetime import datetime
+from conexao_db import conexaoDB
 import matplotlib.pyplot as plt
+from datetime import datetime, timedelta
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from PySide6.QtWidgets import QVBoxLayout
-from conexao_db import conexaoDB
 
 class cmdRelatorios():
     def __init__(self, tela_principal):
         self.conexao = conexaoDB()
         self.tela_principal = tela_principal
-        self.canvas_produtos = None  # Para o gráfico de produtos mais vendidos
+        self.vendas_ultimos_seis_meses()
+        self.faturamento()
+        self.produtos_mais_vendidos()
+        self.vendas_por_forma_pagamento()
 
+        
     def vendas_ultimos_seis_meses(self):
-        cursor = self.conexao.get_cursor()
+        cursor = None
+        try:
+            # Obter cursor da conexão
+            cursor = self.conexao.get_cursor()
 
-        # Consulta para os últimos 6 meses
-        comando = """
-            SELECT YEAR(data_venda) AS ano, MONTH(data_venda) AS mes, SUM(valor_total) AS total
-            FROM vendas
-            WHERE data_venda >= DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)
-            GROUP BY YEAR(data_venda), MONTH(data_venda)
-            ORDER BY ano, mes
-        """
-        cursor.execute(comando)
-        resultados = cursor.fetchall()
+            # Query para pegar as vendas dos últimos 6 meses agrupadas por mês
+            query = """
+                SELECT 
+                    DATE_FORMAT(data_venda, '%Y-%m') as mes,
+                    SUM(valor_total) as total_vendas
+                FROM vendas
+                WHERE data_venda >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
+                GROUP BY DATE_FORMAT(data_venda, '%Y-%m')
+                ORDER BY mes ASC
+            """
+            cursor.execute(query)
+            resultados = cursor.fetchall()
 
-        # Preparar dados para o gráfico
-        meses = []
-        valores = []
-        for ano, mes, total in resultados:
-            data = datetime(ano, mes, 1)
-            meses.append(data.strftime("%b/%Y"))
-            valores.append(float(total) if total is not None else 0.0)
+            # Processar os dados
+            meses = []
+            vendas = []
+            for mes, total in resultados:
+                meses.append(mes)
+                vendas.append(float(total))
 
-        # Preencher meses sem vendas com zeros para garantir 6 pontos
-        hoje = datetime.now()
-        meses_completos = []
-        valores_completos = []
-        for i in range(5, -1, -1):  # Últimos 6 meses, do mais antigo ao atual
-            mes_esperado = (hoje.month - i) % 12 or 12
-            ano_esperado = hoje.year - (1 if hoje.month - i <= 0 else 0)
-            mes_label = datetime(ano_esperado, mes_esperado, 1).strftime("%b/%Y")
-            meses_completos.append(mes_label)
-            if mes_label in meses:
-                idx = meses.index(mes_label)
-                valores_completos.append(valores[idx])
+            # Se não houver dados, criar dados zerados para 6 meses
+            if not meses:
+                hoje = datetime.now()
+                meses = [(hoje - timedelta(days=i*30)).strftime('%Y-%m') 
+                        for i in range(5, -1, -1)]
+                vendas = [0] * 6
+
+            # Criar o gráfico de barras
+            fig = plt.figure(figsize=(8, 4))
+            plt.bar(meses, vendas, color='skyblue')  # Alterado para gráfico de barras
+            
+            # Configurações do gráfico
+            plt.ylabel('Total de Vendas (R$)')
+            plt.ylim(0, max(vendas) * 1.1 if vendas else 100)  # Y começa em 0 até 110% do máximo
+            plt.grid(True, linestyle='--', alpha=0.7, axis='y')  # Grade apenas no eixo Y
+            
+            # Ajustar layout do gráfico
+            plt.tight_layout()
+
+            # Obter o frame da tela principal
+            frame = self.tela_principal.frame_vendas_ultimos_seis_meses
+            
+            # Criar ou obter o layout do frame
+            layout = frame.layout()
+            if layout is None:
+                layout = QVBoxLayout(frame)
             else:
-                valores_completos.append(0.0)
+                # Limpar o layout existente antes de adicionar o novo gráfico
+                while layout.count():
+                    item = layout.takeAt(0)
+                    widget = item.widget()
+                    if widget is not None:
+                        widget.deleteLater()
 
-        # Criar o gráfico com design moderno
-        fig, ax = plt.subplots(figsize=(4, 2), dpi=100)
+            # Criar canvas para PySide6 (Qt)
+            canvas = FigureCanvas(fig)
+            
+            # Adicionar o canvas ao layout
+            layout.addWidget(canvas)
+            canvas.draw()
 
-        # Criar gráfico de barras
-        ax.bar(
-            meses_completos, 
-            valores_completos, 
-            color='#2a9d8f',  # Verde azulado elegante
-            edgecolor='#264653',  # Bordas escuras
-            linewidth=1.5,
-        )
-
-        # Definir o limite inferior do eixo Y como 0 e deixar o superior automático
-        ax.set_ylim(0)  # Corrige para o formato correto: apenas o limite inferior
-
-        # Personalizar o fundo e bordas
-        ax.set_facecolor('#f8f9fa')  # Fundo cinza claro
-        fig.patch.set_facecolor('#ffffff')  # Fundo externo branco
-
-        # Configurar títulos e rótulos
-        ax.set_ylabel("Total de Vendas (R$)", fontsize=12, color='#495057')
-
-        # Estilizar a grade
-        ax.grid(True, linestyle='--', alpha=0.6, color='#adb5bd')
-
-        # Ajustar os ticks do eixo X
-        plt.yticks(fontsize=10, color='#495057')
-
-        # Remover bordas desnecessárias (estilo minimalista)
-        ax.spines['top'].set_visible(False)
-        ax.spines['right'].set_visible(False)
-        ax.spines['left'].set_color('#dee2e6')
-        ax.spines['bottom'].set_color('#dee2e6')
-
-        # Ajustar layout
-        plt.tight_layout()
-
-        # Integrar o gráfico ao frame
-        canvas = FigureCanvas(fig)
-
-        # Limpar o layout existente do frame
-        if self.tela_principal.frame_vendas_ultimos_seis_meses.layout() is not None:
-            while self.tela_principal.frame_vendas_ultimos_seis_meses.layout().count():
-                item = self.tela_principal.frame_vendas_ultimos_seis_meses.layout().takeAt(0)
-                widget = item.widget()
-                if widget is not None:
-                    widget.deleteLater()
-        else:
-            QVBoxLayout(self.tela_principal.frame_vendas_ultimos_seis_meses)
-
-        self.tela_principal.frame_vendas_ultimos_seis_meses.layout().addWidget(canvas)
-
-    def total_faturado(self):
+        except Exception as err:
+            print(f"Erro: {err}")
+        finally:
+            if cursor is not None:
+                cursor.close()
+    
+    def faturamento(self):
         cursor = self.conexao.get_cursor()
         comando = "select sum(valor_total) from vendas"
         cursor.execute(comando)
         resultado = cursor.fetchone()[0]
-        try:
-            self.tela_principal.label_faturamento.setText(f"R$ {resultado:.2f}")
-        except TypeError:
-            self.tela_principal.label_faturamento.setText("R$ 00,00")
+
+        self.tela_principal.label_faturamento.setText(f"R$ {resultado:.2f}")
 
     def produtos_mais_vendidos(self):
-        cursor = self.conexao.get_cursor()
+        cursor = None
+        try:
+            # Obter cursor da conexão
+            cursor = self.conexao.get_cursor()
 
-        comando = """
-            SELECT e.nome_produto, SUM(iv.quantidade) AS total_vendido
-            FROM estoque e
-            JOIN itens_venda iv ON e.id_produto = iv.id_produto
-            JOIN vendas v ON iv.id_venda = v.id_venda
-            GROUP BY e.id_produto, e.nome_produto
-            ORDER BY total_vendido DESC
-            LIMIT 5
-        """
-        cursor.execute(comando)
-        resultados = cursor.fetchall()
+            # Query para pegar os 5 produtos mais vendidos
+            query = """
+                SELECT 
+                    e.nome_produto,
+                    SUM(iv.quantidade) as total_vendido
+                FROM itens_venda iv
+                JOIN estoque e ON iv.id_produto = e.id_produto
+                GROUP BY iv.id_produto, e.nome_produto
+                ORDER BY total_vendido DESC
+                LIMIT 5
+            """
+            cursor.execute(query)
+            resultados = cursor.fetchall()
 
-        produtos = []
-        quantidades = []
-        for nome_produto, total_vendido in resultados:
-            produtos.append(nome_produto)
-            quantidades.append(int(total_vendido) if total_vendido is not None else 0)
+            # Processar os dados
+            produtos = []
+            quantidades = []
+            for nome, total in resultados:
+                produtos.append(nome)
+                quantidades.append(int(total))
 
-        if not produtos:
-            if hasattr(self.tela_principal, 'label_produtos_mais_vendidos'):
-                self.tela_principal.label_produtos_mais_vendidos.setText("Nenhum dado disponível")
-            return
+            # Se não houver dados, usar valores fictícios
+            if not produtos:
+                produtos = ["Produto 1", "Produto 2", "Produto 3", "Produto 4", "Produto 5"]
+                quantidades = [0, 0, 0, 0, 0]
 
-        fig, ax = plt.subplots(figsize=(6, 3), dpi=100)
-        ax.barh(produtos, quantidades, color='#e76f51', edgecolor='#264653', linewidth=1.5)
-        ax.set_xlim(0)
-        ax.set_xlabel("Quantidade Vendida", fontsize=12, color='#495057')
-        ax.set_facecolor('#f8f9fa')
-        fig.patch.set_facecolor('#ffffff')
-        ax.grid(True, linestyle='--', alpha=0.6, color='#adb5bd')
-        ax.spines['top'].set_visible(False)
-        ax.spines['right'].set_visible(False)
-        ax.spines['left'].set_color('#dee2e6')
-        ax.spines['bottom'].set_color('#dee2e6')
-        plt.yticks(rotation=90)
-        plt.tight_layout()
+            # Criar o gráfico de barras
+            fig = plt.figure(figsize=(8, 4))
+            plt.bar(produtos, quantidades, color='skyblue')
+            
+            # Configurações do gráfico
+            plt.ylabel('Quantidade Vendida')
+            plt.ylim(0, max(quantidades) * 1.1 if quantidades else 10)  # Y começa em 0 até 110% do máximo
+            plt.xticks(rotation=45, ha='right')  # Rotacionar nomes para melhor legibilidade
+            plt.grid(True, linestyle='--', alpha=0.7, axis='y')  # Grade apenas no eixo Y
+            
+            # Ajustar layout do gráfico
+            plt.tight_layout()
 
-        if self.canvas_produtos is not None:
-            layout = self.tela_principal.frame_produtos_mais_vendidos.layout()
-            if layout is not None:
-                layout.removeWidget(self.canvas_produtos)
-                self.canvas_produtos.deleteLater()
+            # Obter o frame da tela principal
+            frame = self.tela_principal.frame_produtos_mais_vendidos  # Reutilizando o mesmo frame
+            
+            # Criar ou obter o layout do frame
+            layout = frame.layout()
+            if layout is None:
+                layout = QVBoxLayout(frame)
+            else:
+                # Limpar o layout existente antes de adicionar o novo gráfico
+                while layout.count():
+                    item = layout.takeAt(0)
+                    widget = item.widget()
+                    if widget is not None:
+                        widget.deleteLater()
 
-        self.canvas_produtos = FigureCanvas(fig)
-        layout = self.tela_principal.frame_produtos_mais_vendidos.layout()
-        if layout is None:
-            layout = QVBoxLayout(self.tela_principal.frame_produtos_mais_vendidos)
-            self.tela_principal.frame_produtos_mais_vendidos.setLayout(layout)
-        layout.addWidget(self.canvas_produtos)
+            # Criar canvas para PySide6 (Qt)
+            canvas = FigureCanvas(fig)
+            
+            # Adicionar o canvas ao layout
+            layout.addWidget(canvas)
+            canvas.draw()
 
+        except Exception as err:
+            print(f"Erro: {err}")
+        finally:
+            if cursor is not None:
+                cursor.close()
+
+    def vendas_por_forma_pagamento(self):
+        cursor = None
+        try:
+            # Obter cursor da conexão
+            cursor = self.conexao.get_cursor()
+
+            # Query para contar vendas por forma de pagamento
+            query = """
+                SELECT 
+                    fp.forma_pagamento,
+                    COUNT(v.id_venda) as total_vendas
+                FROM vendas v
+                LEFT JOIN formapagamento fp ON v.id_forma_pagamento = fp.id_forma_pagamento
+                GROUP BY fp.id_forma_pagamento, fp.forma_pagamento
+            """
+            cursor.execute(query)
+            resultados = cursor.fetchall()
+
+            # Processar os dados
+            formas_pagamento = []
+            quantidades = []
+            for forma, total in resultados:
+                formas_pagamento.append(forma if forma else "Não especificado")
+                quantidades.append(int(total))
+
+            # Se não houver dados, usar valores fictícios
+            if not formas_pagamento:
+                formas_pagamento = ["Nenhuma venda registrada"]
+                quantidades = [0]
+
+            # Criar o gráfico de barras
+            fig = plt.figure(figsize=(8, 4))
+            plt.bar(formas_pagamento, quantidades, color='lightgreen')
+            
+            # Configurações do gráfico
+            plt.title('Vendas por Forma de Pagamento')
+            plt.xlabel('Forma de Pagamento')
+            plt.ylabel('Quantidade de Vendas')
+            plt.ylim(0, max(quantidades) * 1.1 if quantidades else 10)  # Y começa em 0 até 110% do máximo
+            plt.grid(True, linestyle='--', alpha=0.7, axis='y')  # Grade apenas no eixo Y
+            plt.xticks(rotation=45, ha='right')  # Rotacionar rótulos para melhor legibilidade
+            
+            # Ajustar layout do gráfico
+            plt.tight_layout()
+
+            # Obter o frame da tela principal
+            frame = self.tela_principal.frame_formas_pagamento
+            
+            # Criar ou obter o layout do frame
+            layout = frame.layout()
+            if layout is None:
+                layout = QVBoxLayout(frame)
+            else:
+                # Limpar o layout existente antes de adicionar o novo gráfico
+                while layout.count():
+                    item = layout.takeAt(0)
+                    widget = item.widget()
+                    if widget is not None:
+                        widget.deleteLater()
+
+            # Criar canvas para PySide6 (Qt)
+            canvas = FigureCanvas(fig)
+            
+            # Adicionar o canvas ao layout
+            layout.addWidget(canvas)
+            canvas.draw()
+
+        except Exception as err:
+            print(f"Erro: {err}")
+        finally:
+            if cursor is not None:
+                cursor.close()
