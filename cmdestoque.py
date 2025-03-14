@@ -10,6 +10,7 @@ class cmdEstoque():
         self.tela_principal = tela_principal
         self.tela_principal.input_categoria_produto.currentTextChanged.connect(self.categoria)
         self.conexao = conexaoDB()
+        self.new_file_path = ""
         self.mostrar_estoque()
         self.carregar_categorias()
 
@@ -89,7 +90,9 @@ class cmdEstoque():
         pixmap = QPixmap()
         self.tela_principal.img_produto_estoque.setPixmap(pixmap)
         self.tela_principal.stackedWidget_3.setCurrentIndex(1)
-        self.tela_principal.input_categoria_produto.setCurrentIndex(-1) 
+        self.tela_principal.input_categoria_produto.setCurrentIndex(-1)
+        self.tela_principal.txt_preco_estoque.setText("Preço Un.")
+        self.tela_principal.input_preco_produto.setPlaceholderText("PREÇO UN.")
 
     def carregar_categorias(self):
         cursor = self.conexao.get_cursor()
@@ -112,7 +115,9 @@ class cmdEstoque():
         if not self.nome:
             QMessageBox.warning(None, "Erro", "Digite o nome do produto!")
             return
-        
+        if self.nome and not self.nome.replace(" ", "").isalpha():
+            QMessageBox.warning(None, "Erro", "Apenas letras no Nome do Produto!")
+            return
         cursor = self.conexao.get_cursor()
         comando = "SELECT nome_produto FROM estoque where nome_produto = %s"
         cursor.execute(comando, (self.nome, ))
@@ -131,11 +136,17 @@ class cmdEstoque():
             return
 
         preco = self.tela_principal.input_preco_produto.text()
+        if preco and not preco.replace(" ", "").isdigit():
+            QMessageBox.warning(None, "Erro", "Valor Invalido!")
+            return
         if not preco or float(preco) <= 0:
             QMessageBox.warning(None, "Erro", "Digite um valor válido!")
             return
 
         quant = self.tela_principal.input_quantidade_produto.text()
+        if quant and not quant.replace(" ", "").isdigit():
+            QMessageBox.warning(None, "Erro", "Quantidade Invalida!")
+            return
         if not quant or int(quant) <= 0:
             QMessageBox.warning(None, "Erro", "Digite uma quantidade válida!")
             return
@@ -149,7 +160,10 @@ class cmdEstoque():
             QMessageBox.warning(None, "Erro", "Categoria não encontrada!")
             return
         categoria_id = resultado[0] 
-
+        
+        if self.new_file_path == "":
+            QMessageBox.warning(None, "Erro", "Adicione uma Imagem!")
+            return
         relative_path = os.path.relpath(self.new_file_path, os.getcwd()).replace("\\", "/")
         query = "INSERT INTO estoque (nome_produto, preco, quantidade, categoria, imagem) VALUES (%s, %s, %s, %s, %s)"
         valores = (self.nome, preco, quant, categoria_id, relative_path)
@@ -161,7 +175,7 @@ class cmdEstoque():
         cursor.close()
         self.mostrar_estoque()
         self.tela_principal.stackedWidget_3.setCurrentIndex(0)
-
+        
     def open_image(self):
         file_dialog = QFileDialog()
         file_path, _ = file_dialog.getOpenFileName(None, "Open Image", "", "Images(*.png *.xpm *.jpg *.jpeg *.bmp);;All Files (*)")
@@ -194,3 +208,5 @@ class cmdEstoque():
         if self.tela_principal.input_categoria_produto.currentText() == "HortiFruti" or self.tela_principal.input_categoria_produto.currentText() == "Fruta":
             self.tela_principal.txt_preco_estoque.setText("Valor do KG")
             self.tela_principal.input_preco_produto.setPlaceholderText("KG")
+            self.tela_principal.txt_quantidade_estoque.setText("Quantidade em KG")
+            self.tela_principal.input_quantidade_produto.setPlaceholderText("KG")

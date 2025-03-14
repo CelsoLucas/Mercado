@@ -79,13 +79,9 @@ class main(QMainWindow):
         self.config = cmdConfiguracoes(self.tela_principal.treeWidget_2, self.tela_principal)
         self.tela_principal.btn_adc_user.clicked.connect(self.config.tela_adc_usuario)
         self.tela_principal.btn_procurar_ft_adc_usuario.clicked.connect(self.config.open_image)
-        self.tela_principal.btn_adc_usuario.clicked.connect(lambda: self.config.adc_usuario(self.tela_principal.input_nome_adc_usuario,
-                           self.tela_principal.input_email_adc_usuario,
-                           self.tela_principal.input_senha_adc_usuario,
-                           self.tela_principal.input_cpf_adc_usuario,
-                           self.tela_principal.input_telefone_adc_usuario))
+        self.tela_principal.btn_adc_usuario.clicked.connect(self.config.adc_usuario)
         self.tela_principal.btn_adc_categoria.clicked.connect(self.config.tela_adc_categoria)
-        self.tela_principal.btn_adc_categoria_2.clicked.connect(lambda: self.config.adc_categoria(self.tela_principal.input_nome_adc_categoria))
+        self.tela_principal.btn_adc_categoria_2.clicked.connect(self.config.adc_categoria)
 
     def init_tela_login(self):
         self.tela_login.setupUi(self)

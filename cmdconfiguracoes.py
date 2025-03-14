@@ -11,6 +11,8 @@ class cmdConfiguracoes():
         self.conexao = conexaoDB()
         self.tree = tree
         self.tela_principal = tela_principal
+        self.new_file_path = ""
+        self.tela_principal.tabWidget.currentChanged.connect(self.on_tab_changed)
         self.mostrar_usuarios()
         self.mostrar_categoria()
         self.tela_principal.tabWidget.setCurrentIndex(0)
@@ -19,6 +21,11 @@ class cmdConfiguracoes():
         self.tela_principal.stackedWidget_6.setCurrentIndex(0)
 
 
+    def on_tab_changed(self, index):
+        if self.tela_principal.tabWidget.currentIndex() == 0:  
+            self.tela_principal.stackedWidget_4.setCurrentIndex(0)
+        elif self.tela_principal.tabWidget.currentIndex() == 1: 
+            self.tela_principal.stackedWidget_5.setCurrentIndex(0)
     def mostrar_usuarios(self):
         cursor = self.conexao.get_cursor()
         cursor.execute("select id_usuario, nome, email, cpf, telefone, ativo from usuarios")
@@ -83,18 +90,21 @@ class cmdConfiguracoes():
 
         return True
     
-    def adc_usuario(self, input_nome_adc_usuario, input_email_adc_usuario, input_senha_adc_usuario, input_cpf_adc_usuario, input_telefone_adc_usuario):
+    def adc_usuario(self):
         
         cursor = self.conexao.get_cursor()
-        nome = input_nome_adc_usuario.text()
+        nome = self.tela_principal.input_nome_adc_usuario.text()
         comando = "select nome from usuarios where nome = %s"
         cursor.execute(comando, (nome,))
         resultado = cursor.fetchone()
-        if resultado:
-            QMessageBox.warning(None, "error", "Nome de Usuario já cadastrado!")
+        if resultado == None:
+            self.nome = self.tela_principal.input_nome_adc_usuario.text()
+        else:
+            QMessageBox.warning(None, "Erro", f"Nome de Usuario ja Cdastrado!")
+            cursor.close()
             return
         
-        email = input_email_adc_usuario.text()
+        email = self.tela_principal.input_email_adc_usuario.text()
         email_valido = self.validar_email(email)
         if email_valido == False:
             QMessageBox.warning(None, "error", "Digite um email valido!")
@@ -107,9 +117,12 @@ class cmdConfiguracoes():
             QMessageBox.warning(None, "error", "Email já cadastrado!")
             return
         
-        senha = input_senha_adc_usuario.text()
+        senha = self.tela_principal.input_senha_adc_usuario.text()
 
-        cpf = input_cpf_adc_usuario.text()
+        cpf = self.tela_principal.input_cpf_adc_usuario.text()
+        if cpf and not cpf.replace(" ", "").isdigit():
+            QMessageBox.warning(None, "Erro", "CPF Invalido!")
+            return
         if not self.valida_cpf(cpf):
             QMessageBox.warning(None, "Erro", "Digite um CPF válido!")
             return
@@ -120,8 +133,14 @@ class cmdConfiguracoes():
             QMessageBox.warning(None, "Erro", "CPF já cadastrado!")
             return
 
-        telefone = input_telefone_adc_usuario.text()
+        telefone = self.tela_principal.input_telefone_adc_usuario.text()
+        if telefone and not telefone.replace(" ", "").isdigit():
+            QMessageBox.warning(None, "Erro", "telefone Invalido!")
+            return
         
+        if self.new_file_path == "":
+            QMessageBox.warning(None, "Erro", "Adicione uma Imagem!")
+            return
         relative_path = os.path.relpath(self.new_file_path, os.getcwd()).replace("\\", "/")
 
         comando = "insert into usuarios (nome, email, cpf, telefone, senha, foto) values (%s, %s, %s, %s, sha2(%s, 256), %s)"
@@ -204,9 +223,9 @@ class cmdConfiguracoes():
 
         cursor.close()
     
-    def adc_categoria(self, input_nome_adc_categoria):
+    def adc_categoria(self):
 
-        nome = input_nome_adc_categoria.text()
+        nome = self.tela_principal.input_nome_adc_categoria.text()
         if nome == "":
             QMessageBox.warning(None, "error", "Digite um nome valido!")
             return

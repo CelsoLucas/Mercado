@@ -2,7 +2,6 @@ from conexao_db import conexaoDB
 from PySide6.QtWidgets import QApplication, QScrollArea, QWidget, QVBoxLayout, QGridLayout, QLabel, QPushButton, QHBoxLayout, QMessageBox, QTreeWidgetItem, QLineEdit
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt
-from time import sleep
 
 class cmdPdv():
     def __init__(self, tela_principal):
@@ -12,54 +11,190 @@ class cmdPdv():
         self.tela_principal.stackedWidget_6.setCurrentIndex(0)
         self.carrinho = []
         self.tela_principal.input_pdv_forma_pagamento.setCurrentIndex(-1)
-        self.adc_card()
+        self.tela_principal.input_pdv_produto.textChanged.connect(self.filtrar_produtos_pesquisa)
+        self.tela_principal.input_pdv_categoria.currentTextChanged.connect(self.filtrar_produtos_categorias)
+        self.adc_card_normal()
+        self.adc_card_pesquisa()
+        self.adc_card_cat()
         self.mostrar_carrinho()
+        self.carregar_categorias()
+        self.tela_principal.input_pdv_produto.setText("")
         self.tela_principal.input_pdv_forma_pagamento.currentTextChanged.connect(self.forma_pagamento)
 
-    def adc_card(self):
-        scroll_area = self.tela_principal.mostruario_cards2_2
-        if not isinstance(scroll_area, QScrollArea):
-            print("Erro: mostruario_cards2_2 não é um QScrollArea!")
-            return
+    def carregar_categorias(self):
+        cursor = self.conexao.get_cursor()
+        comando = "select nome_categoria from categorias"
+        cursor.execute(comando)
+        resultado = cursor.fetchall()
+        self.tela_principal.input_pdv_categoria.clear()
+        for i in range(len(resultado)):
+            categoria = resultado[i][0]
+            self.tela_principal.input_pdv_categoria.addItem(f"{categoria}")
+        
+        self.tela_principal.input_pdv_categoria.setCurrentIndex(-1) 
+        cursor.close()
 
-        content_widget = scroll_area.widget()
-        if content_widget is None:
+    def adc_card_pesquisa(self):
+        self.filtrar_produtos_pesquisa("")
+        
+
+    def adc_card_cat(self):
+        self.filtrar_produtos_categorias() 
+
+    def adc_card_normal(self):
+        self.filtrar_produtos_normal(f"") 
+
+
+    def filtrar_produtos_normal(self, texto):
+        # Pegar a "vitrine" onde os cards aparecem
+        scroll_area = self.tela_principal.mostruario_cards2_2
+        content_widget = scroll_area.widget()  # Isso é como uma folha em branco onde os cards ficam
+
+        # Limpar tudo que estava na vitrine antes
+        if content_widget and content_widget.layout():  # Se já tem algo desenhado...
+            grid_layout = content_widget.layout()  # A "grade" onde os cards estão arrumados
+            while grid_layout.count():  # Enquanto tiver cards...
+                item = grid_layout.takeAt(0)  # Pega um card
+                if item.widget():  # Se for realmente um card...
+                    item.widget().deleteLater()  # Apaga ele da tela
+        else:
+            # Se a vitrine estava vazia, cria uma nova folha em branco
             content_widget = QWidget()
             scroll_area.setWidget(content_widget)
             scroll_area.setWidgetResizable(True)
-            grid_layout = QGridLayout(content_widget)
-        else:
-            grid_layout = content_widget.layout()
-            if grid_layout:
-                while grid_layout.count():
-                    item = grid_layout.takeAt(0)
-                    if item.widget():
-                        item.widget().deleteLater()
-            else:
-                grid_layout = QGridLayout(content_widget)
+            grid_layout = QGridLayout(content_widget)  # Faz uma grade nova
 
-        cursor = self.conexao.get_cursor() 
-        cursor.execute("SELECT id_produto, nome_produto, preco, imagem FROM estoque")
+        cursor = self.conexao.get_cursor()
+        comando = "select id_produto, nome_produto, preco, imagem from estoque where nome_produto like %s"
+        cursor.execute(comando, (f"%{texto}%",))
         produtos = cursor.fetchall()
         cursor.close()
 
         row = 0
         col = 0
         for produto in produtos:
-            if isinstance(produto, dict):
-                card = self.criar_card(produto)
-            else:
-                card = self.criar_card({
-                    'id_produto': produto[0],
-                    'nome_produto': produto[1],
-                    'preco': produto[2],
-                    'imagem': produto[3]
-                })
+            card = self.criar_card({
+                'id_produto' : produto[0],
+                'nome_produto' : produto[1],
+                'preco' : produto[2],
+                'imagem' : produto[3]
+            })
             grid_layout.addWidget(card, row, col)
             col += 1
-            if col > 2:  
+            if col > 2:
                 col = 0
                 row += 1
+
+        # Se não achar nada, mostrar um aviso
+        if not produtos:  # Se a lista estiver vazia...
+            sem_resultados = QLabel("Nenhum produto encontrado.")  # Cria um texto
+            sem_resultados.setAlignment(Qt.AlignCenter)  # Coloca no meio
+            sem_resultados.setStyleSheet("font-size: 14px; color: gray;")  # Deixa bonitinho
+            grid_layout.addWidget(sem_resultados, 0, 0, 1, 3)  # Mostra na grade
+
+    def filtrar_produtos_pesquisa(self, texto):
+        # Pegar a "vitrine" onde os cards aparecem
+        scroll_area = self.tela_principal.mostruario_cards2_2
+        content_widget = scroll_area.widget()  # Isso é como uma folha em branco onde os cards ficam
+
+        # Limpar tudo que estava na vitrine antes
+        if content_widget and content_widget.layout():  # Se já tem algo desenhado...
+            grid_layout = content_widget.layout()  # A "grade" onde os cards estão arrumados
+            while grid_layout.count():  # Enquanto tiver cards...
+                item = grid_layout.takeAt(0)  # Pega um card
+                if item.widget():  # Se for realmente um card...
+                    item.widget().deleteLater()  # Apaga ele da tela
+        else:
+            # Se a vitrine estava vazia, cria uma nova folha em branco
+            content_widget = QWidget()
+            scroll_area.setWidget(content_widget)
+            scroll_area.setWidgetResizable(True)
+            grid_layout = QGridLayout(content_widget)  # Faz uma grade nova
+
+        cursor = self.conexao.get_cursor()
+        comando = "select id_produto, nome_produto, preco, imagem from estoque where nome_produto like %s"
+        cursor.execute(comando, (f"%{texto}%",))
+        produtos = cursor.fetchall()
+        cursor.close()
+
+        row = 0
+        col = 0
+        for produto in produtos:
+            card = self.criar_card({
+                'id_produto' : produto[0],
+                'nome_produto' : produto[1],
+                'preco' : produto[2],
+                'imagem' : produto[3]
+            })
+            grid_layout.addWidget(card, row, col)
+            col += 1
+            if col > 2:
+                col = 0
+                row += 1
+
+        # Se não achar nada, mostrar um aviso
+        if not produtos:  # Se a lista estiver vazia...
+            sem_resultados = QLabel("Nenhum produto encontrado.")  # Cria um texto
+            sem_resultados.setAlignment(Qt.AlignCenter)  # Coloca no meio
+            sem_resultados.setStyleSheet("font-size: 14px; color: gray;")  # Deixa bonitinho
+            grid_layout.addWidget(sem_resultados, 0, 0, 1, 3)  # Mostra na grade
+
+    def filtrar_produtos_categorias(self):
+        
+        if self.tela_principal.input_pdv_categoria.currentIndex() == -1:
+            return
+        else:
+            # Pegar a "vitrine" onde os cards aparecem
+            scroll_area = self.tela_principal.mostruario_cards2_2
+            content_widget = scroll_area.widget()  # Isso é como uma folha em branco onde os cards ficam
+
+            # Limpar tudo que estava na vitrine antes
+            if content_widget and content_widget.layout():  # Se já tem algo desenhado...
+                grid_layout = content_widget.layout()  # A "grade" onde os cards estão arrumados
+                while grid_layout.count():  # Enquanto tiver cards...
+                    item = grid_layout.takeAt(0)  # Pega um card
+                    if item.widget():  # Se for realmente um card...
+                        item.widget().deleteLater()  # Apaga ele da tela
+            else:
+                # Se a vitrine estava vazia, cria uma nova folha em branco
+                content_widget = QWidget()
+                scroll_area.setWidget(content_widget)
+                scroll_area.setWidgetResizable(True)
+                grid_layout = QGridLayout(content_widget)  # Faz uma grade nova
+
+            cursor = self.conexao.get_cursor()
+            comando = "select id_categorias from categorias where nome_categoria = %s "
+            filtro_cat = self.tela_principal.input_pdv_categoria.currentText()
+            if filtro_cat == "" or filtro_cat == None:
+                return
+            cursor.execute(comando, (filtro_cat, ))
+            id_categoria = cursor.fetchone()[0]
+            comando = "select id_produto, nome_produto, preco, imagem from estoque where categoria = %s"
+            cursor.execute(comando, (id_categoria, ))
+            produtos = cursor.fetchall()
+            cursor.close()
+
+            row = 0
+            col = 0
+            for produto in produtos:
+                card = self.criar_card({
+                    'id_produto' : produto[0],
+                    'nome_produto' : produto[1],
+                    'preco' : produto[2],
+                    'imagem' : produto[3]
+                })
+                grid_layout.addWidget(card, row, col)
+                col += 1
+                if col > 2:
+                    col = 0
+                    row += 1
+
+            # Se não achar nada, mostrar um aviso
+            if not produtos:  # Se a lista estiver vazia...
+                sem_resultados = QLabel("Nenhum produto encontrado.")  # Cria um texto
+                sem_resultados.setAlignment(Qt.AlignCenter)  # Coloca no meio
+                sem_resultados.setStyleSheet("font-size: 14px; color: gray;")  # Deixa bonitinho
+                grid_layout.addWidget(sem_resultados, 0, 0, 1, 3)  # Mostra na grade
 
     def criar_card(self, produto):
         card = QWidget()
@@ -126,7 +261,7 @@ class cmdPdv():
             self.tela_principal.stackedWidget_2.setCurrentIndex(2)
             self.tela_principal.txt_pdv_nome_2.setText(f"{self.nome}")
             self.tela_principal.txt_pdv_valor_2.setText(f"R$ {self.preco} Kg")
-            self.tela_principal.input_pdv_quant_2.setText("00.00")
+            self.tela_principal.input_pdv_quant_2.setPlaceholderText("0.00")
         else:
             self.tela_principal.stackedWidget_2.setCurrentIndex(1)
             self.tela_principal.txt_pdv_nome.setText(f"{self.nome}")
@@ -170,6 +305,7 @@ class cmdPdv():
         print(self.carrinho)
         self.tela_principal.stackedWidget_2.setCurrentIndex(0)
         self.mostrar_carrinho()
+
 
 
     def mostrar_carrinho(self):
