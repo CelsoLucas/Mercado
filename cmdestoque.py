@@ -6,13 +6,9 @@ import os
 import shutil
 
 class cmdEstoque():
-    def __init__(self, tela_principal, input_pesquisar_produto_4, txt_caso_produto_nao_encontra_estoque, treeview, input_nome_produto, input_categoria_produto):
+    def __init__(self, tela_principal):
         self.tela_principal = tela_principal
-        self.input_pesquisar_produto_4 = input_pesquisar_produto_4
-        self.txt_caso_produto_nao_encontra_estoque = txt_caso_produto_nao_encontra_estoque
-        self.nome = input_nome_produto.text()
-        self.treeview = treeview
-        self.input_categoria_produto = input_categoria_produto
+        self.tela_principal.input_categoria_produto.currentTextChanged.connect(self.categoria)
         self.conexao = conexaoDB()
         self.mostrar_estoque()
         self.carregar_categorias()
@@ -30,7 +26,10 @@ class cmdEstoque():
             item = QTreeWidgetItem(tree)
             item.setText(0, str(id))  
             item.setText(1, nome)  
-            item.setText(2, str(preco))  
+            if categoria == "HortiFruti":
+                item.setText(2, f"R$ {str(preco)} KG")
+            else:
+                item.setText(2, f"R$ {str(preco)} UN.")  
             item.setText(3, str(quantidade))  
             item.setText(4, str(categoria))
 
@@ -83,6 +82,12 @@ class cmdEstoque():
         cursor.close()
     
     def tela_adc_produto(self):
+        self.tela_principal.input_nome_produto.setText("")
+        self.tela_principal.input_categoria_produto.setCurrentIndex(-1)
+        self.tela_principal.input_quantidade_produto.setText("")
+        self.tela_principal.input_preco_produto.setText("")
+        pixmap = QPixmap()
+        self.tela_principal.img_produto_estoque.setPixmap(pixmap)
         self.tela_principal.stackedWidget_3.setCurrentIndex(1)
         self.tela_principal.input_categoria_produto.setCurrentIndex(-1) 
 
@@ -92,17 +97,17 @@ class cmdEstoque():
         cursor.execute(comando)
         categorias = cursor.fetchall()
             
-        self.input_categoria_produto.clear()
+        self.tela_principal.input_categoria_produto.clear()
             
         for id_cat, nome_cat in categorias:
-            self.input_categoria_produto.addItem(nome_cat, id_cat)  
+            self.tela_principal.input_categoria_produto.addItem(nome_cat, id_cat)  
             
-        self.input_categoria_produto.setCurrentIndex(-1) 
+        self.tela_principal.input_categoria_produto.setCurrentIndex(-1) 
             
         cursor.close()
 
-    def adc_produto_estoque(self, input_nome_produto, input_preco_produto, input_quantidade_produto, input_categoria_produto):
-        self.nome = input_nome_produto.text()
+    def adc_produto_estoque(self):
+        self.nome = self.tela_principal.input_nome_produto.text()
 
         if not self.nome:
             QMessageBox.warning(None, "Erro", "Digite o nome do produto!")
@@ -113,28 +118,29 @@ class cmdEstoque():
         cursor.execute(comando, (self.nome, ))
         resultado = cursor.fetchone()
 
-        try:
-            if self.nome == resultado[0]:
-                QMessageBox.warning(None, "Erro", f"Produto com nome '{self.nome}' já cadastrado!")
-                cursor.close()
-                return
-        except TypeError:
-                self.nome = input_nome_produto.text()
+        if resultado == None:
+            self.nome = self.tela_principal.input_nome_produto.text()
+        else:
+            QMessageBox.warning(None, "Erro", f"Produto com nome '{self.nome}' já cadastrado!")
+            cursor.close()
+            return
 
-        preco = input_preco_produto.text()
-        if not preco or int(preco) <= 0:
+        categoria_index = self.tela_principal.input_categoria_produto.currentIndex() + 1
+        if not categoria_index:   
+            QMessageBox.warning(None, "Erro", "Selecione uma categoria!")
+            return
+
+        preco = self.tela_principal.input_preco_produto.text()
+        if not preco or float(preco) <= 0:
             QMessageBox.warning(None, "Erro", "Digite um valor válido!")
             return
 
-        quant = input_quantidade_produto.text()
+        quant = self.tela_principal.input_quantidade_produto.text()
         if not quant or int(quant) <= 0:
             QMessageBox.warning(None, "Erro", "Digite uma quantidade válida!")
             return
 
-        categoria_index = input_categoria_produto.currentIndex() + 1
-        if not categoria_index:   
-            QMessageBox.warning(None, "Erro", "Selecione uma categoria!")
-            return
+
 
         comando = "SELECT id_categorias FROM categorias WHERE id_categorias = %s"
         cursor.execute(comando, (categoria_index,)) 
@@ -143,7 +149,6 @@ class cmdEstoque():
             QMessageBox.warning(None, "Erro", "Categoria não encontrada!")
             return
         categoria_id = resultado[0] 
-
 
         relative_path = os.path.relpath(self.new_file_path, os.getcwd()).replace("\\", "/")
         query = "INSERT INTO estoque (nome_produto, preco, quantidade, categoria, imagem) VALUES (%s, %s, %s, %s, %s)"
@@ -184,3 +189,8 @@ class cmdEstoque():
             pixmap = QPixmap(absolute_path)
             self.tela_principal.img_produto_estoque.setPixmap(pixmap)
             self.tela_principal.img_produto_estoque.setScaledContents(True)
+
+    def categoria(self):
+        if self.tela_principal.input_categoria_produto.currentText() == "HortiFruti" or self.tela_principal.input_categoria_produto.currentText() == "Fruta":
+            self.tela_principal.txt_preco_estoque.setText("Valor do KG")
+            self.tela_principal.input_preco_produto.setPlaceholderText("KG")

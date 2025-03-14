@@ -2,7 +2,7 @@ from conexao_db import conexaoDB
 from PySide6.QtWidgets import QApplication, QScrollArea, QWidget, QVBoxLayout, QGridLayout, QLabel, QPushButton, QHBoxLayout, QMessageBox, QTreeWidgetItem, QLineEdit
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt
-import qrcode
+from time import sleep
 
 class cmdPdv():
     def __init__(self, tela_principal):
@@ -27,16 +27,16 @@ class cmdPdv():
             content_widget = QWidget()
             scroll_area.setWidget(content_widget)
             scroll_area.setWidgetResizable(True)
-
-        existing_layout = content_widget.layout()
-        if existing_layout:
-            for i in reversed(range(existing_layout.count())):
-                item = existing_layout.takeAt(i)
-                if item.widget():
-                    item.widget().deleteLater()
-            content_widget.setLayout(None)
-        grid_layout = QGridLayout(content_widget)
-        content_widget.setLayout(grid_layout)
+            grid_layout = QGridLayout(content_widget)
+        else:
+            grid_layout = content_widget.layout()
+            if grid_layout:
+                while grid_layout.count():
+                    item = grid_layout.takeAt(0)
+                    if item.widget():
+                        item.widget().deleteLater()
+            else:
+                grid_layout = QGridLayout(content_widget)
 
         cursor = self.conexao.get_cursor() 
         cursor.execute("SELECT id_produto, nome_produto, preco, imagem FROM estoque")
@@ -79,8 +79,8 @@ class cmdPdv():
 
         nome_label = QLabel(produto['nome_produto'])
         nome_label.setAlignment(Qt.AlignCenter)
-        nome_label.setWordWrap(True)  # Permitir quebra de texto
-        nome_label.setStyleSheet("font-size: 12px;")  # Ajustar o tamanho da fonte
+        nome_label.setWordWrap(True)  
+        nome_label.setStyleSheet("font-size: 12px;")  
         layout.addWidget(nome_label)
 
         preco_label = QLabel(f"R$ {produto['preco']:.2f}")
@@ -116,16 +116,22 @@ class cmdPdv():
         return card
 
     def escolher_quant(self, nome_produto):
-        self.tela_principal.stackedWidget_2.setCurrentIndex(1)
         cursor = self.conexao.get_cursor()
-        comando = "select id_produto, nome_produto, preco, quantidade from estoque where nome_produto = %s"
+        comando = "select id_produto, nome_produto, preco, quantidade, categoria from estoque where nome_produto = %s"
         cursor.execute(comando, (nome_produto,))
         resultado = cursor.fetchone()
-        self.id, self.nome, self.preco, self.quantidade = resultado
-
-        self.tela_principal.txt_pdv_nome.setText(f"{self.nome}")
-        self.tela_principal.txt_pdv_valor.setText(f"{self.preco}")
-        self.tela_principal.input_pdv_quant.setText("1")
+        self.id, self.nome, self.preco, self.quantidade, self.categoria = resultado
+        print(self.categoria)
+        if self.categoria == "HortiFruti" or self.categoria == 2:
+            self.tela_principal.stackedWidget_2.setCurrentIndex(2)
+            self.tela_principal.txt_pdv_nome_2.setText(f"{self.nome}")
+            self.tela_principal.txt_pdv_valor_2.setText(f"R$ {self.preco} Kg")
+            self.tela_principal.input_pdv_quant_2.setText("00.00")
+        else:
+            self.tela_principal.stackedWidget_2.setCurrentIndex(1)
+            self.tela_principal.txt_pdv_nome.setText(f"{self.nome}")
+            self.tela_principal.txt_pdv_valor.setText(f"R$ {self.preco} Un.")
+            self.tela_principal.input_pdv_quant.setText("1")
 
     def menos(self):
         if int(self.tela_principal.input_pdv_quant.text()) <= 1:
@@ -146,7 +152,10 @@ class cmdPdv():
             self.tela_principal.input_pdv_quant.setText(f"{cont}")
     
     def adc_carrinho(self):
-        quantidade = int(self.tela_principal.input_pdv_quant.text())
+        if self.categoria == "HortiFruti" or self.categoria == 2:
+            quantidade = float(self.tela_principal.input_pdv_quant_2.text())
+        else:
+            quantidade = int(self.tela_principal.input_pdv_quant.text())
         if quantidade <= 0:
             QMessageBox.warning(None, "error", "Quantidade Minima é 0")
             return
@@ -164,32 +173,33 @@ class cmdPdv():
 
 
     def mostrar_carrinho(self):
-        tabela = self.tela_principal.tabela_carrinho
+        self.tabela = self.tela_principal.tabela_carrinho
         
-        tabela.clear()
+        self.tabela.clear()
         
-        if tabela.columnCount() != 4:
+        if self.tabela.columnCount() != 4:
             print("Erro: O QTreeWidget deve ter 4 colunas (Nome, Preço, Quantidade, Total)")
             return
         
-        total_geral = 0
+        self.total_geral = 0
         
         for item in self.carrinho:
             nome = item[0]
             preco = float(item[1]) 
-            quantidade = int(item[2])  
+            quantidade = float(item[2])  
             total_item = preco * quantidade  
-            total_geral += total_item  
+            self.total_geral += total_item  
             
             linha = QTreeWidgetItem([nome, str(quantidade), f"R$ {preco:.2f}", f"R$ {total_item:.2f}"])
-            tabela.addTopLevelItem(linha)
+            self.tabela.addTopLevelItem(linha)
         
         for i in range(4):
-            tabela.resizeColumnToContents(i)
+            self.tabela.resizeColumnToContents(i)
         
-        self.tela_principal.txt_valor_total.setText(f"{total_geral}")
+        self.tela_principal.txt_valor_total.setText(f"R$ {self.total_geral:.2f}")
     
     def forma_pagamento(self):
+
         forma = self.tela_principal.input_pdv_forma_pagamento.currentText()
         frame = self.tela_principal.frame_pagamento
         
@@ -206,13 +216,91 @@ class cmdPdv():
             qr_label.setAlignment(Qt.AlignCenter)
             frame.layout().addWidget(qr_label)
         elif forma == "Dinheiro":
-            dinheiro_input = QLineEdit()
-            dinheiro_input.setPlaceholderText("Digite o valor em dinheiro")
-            dinheiro_input.setStyleSheet("font-size: 14px; padding: 5px;")
-            dinheiro_input.setMaximumWidth(200) 
+            self.dinheiro_input = QLineEdit()
+            self.dinheiro_input.setPlaceholderText("Digite o valor em dinheiro")
+            self.dinheiro_input.setStyleSheet("font-size: 14px; padding: 5px;")
+            self.dinheiro_input.setMaximumWidth(200) 
             
-            frame.layout().addWidget(dinheiro_input)
+            frame.layout().addWidget(self.dinheiro_input)
 
     def finalizar_compra(self):
-        pass
+
+        if self.carrinho == []:
+            QMessageBox.warning(None, "error", "Carrinho está Vazio!")
+            return
+
+        if self.tela_principal.input_pdv_forma_pagamento.currentText() == "Dinheiro":
+            if float(self.dinheiro_input.text()) < self.total_geral:
+                QMessageBox.warning(None, "error", "Quantidade de dinheiro menor que o total")
+                return
+                
+            elif float(self.dinheiro_input.text()) > self.total_geral:
+                troco = float(self.dinheiro_input.text()) - self.total_geral
+                self.dinheiro_txt = QLabel()
+                self.dinheiro_txt.setText(f"Troco: R$ {troco:.2f}")
+                self.dinheiro_txt.setStyleSheet("font-size: 14px; padding: 5px;")
+                self.dinheiro_txt.setMaximumWidth(200) 
+                frame = self.tela_principal.frame_pagamento
+                frame.layout().addWidget(self.dinheiro_txt)
+
+            else:
+                troco = float(self.dinheiro_input.text()) - self.total_geral
+                self.dinheiro_txt = QLabel()
+                self.dinheiro_txt.setText(f"Troco: R$ {troco:.2f}")
+                self.dinheiro_txt.setStyleSheet("font-size: 14px; padding: 5px;")
+                self.dinheiro_txt.setMaximumWidth(200) 
+                frame = self.tela_principal.frame_pagamento
+                frame.layout().addWidget(self.dinheiro_txt)
+
+
+        
+        cursor = self.conexao.get_cursor()
+        comando = "select id_usuario from usuarios where nome = %s"
+        cursor.execute(comando, (self.tela_principal.txt_ola_user.text(), ))
+        id_user = cursor.fetchone()[0]
+        cursor = self.conexao.get_cursor()
+        comando = "select id_forma_pagamento from formapagamento where forma_pagamento = %s"
+        cursor.execute(comando, (self.tela_principal.input_pdv_forma_pagamento.currentText(), ))
+        id_forma_pagamento = cursor.fetchone()[0]
+
+        comando = """insert into vendas (id_usuario, valor_total, id_forma_pagamento)
+                     values (%s, %s, %s)"""
+        valores = (int(id_user), float(self.total_geral), int(id_forma_pagamento))
+        cursor.execute(comando, valores)
+        self.conexao.commit()
+
+        comando = "SELECT id_venda FROM vendas ORDER BY id_venda DESC LIMIT 1"
+        cursor.execute(comando)
+        id_venda = cursor.fetchone()[0]
+
+        for i in self.carrinho:
+            nome = i[0]
+            preco = i[1]
+            quantidade = i[2]
+
+            cursor = self.conexao.get_cursor()
+            comando = "select id_produto from estoque where nome_produto = %s"
+            cursor.execute(comando, (nome,))
+            id_produto = cursor.fetchone()[0]
+
+            comando = """insert into itens_venda (id_venda, id_produto, quantidade, preco_unitario, subtotal)
+                         values (%s, %s, %s, %s, %s)"""
+            valores = (int(id_venda), int(id_produto), float(quantidade), float(preco), float(float(quantidade) * float(preco)))
+            cursor.execute(comando, valores)
+            self.conexao.commit()
+
+            comando = "select quantidade from estoque where nome_produto = %s"
+            cursor.execute(comando, (nome, ))
+            quantidade_estoque = cursor.fetchone()[0]
+
+            comando = "update estoque set quantidade = %s where nome_produto = %s"
+            valores = (quantidade_estoque - quantidade, nome)
+            cursor.execute(comando, valores)
+            self.conexao.commit()
+
+        QMessageBox.information(None, "Sucesso", "Obrigado por Comprar no Mercado do Celsadas")
+        self.tabela.clear()
+        self.tela_principal.txt_valor_total.setText("R$ 00,00")
+        self.tela_principal.input_pdv_forma_pagamento.setCurrentIndex(-1)
+        self.carrinho = []
 

@@ -10,7 +10,6 @@ from cmdestoque import cmdEstoque
 from cmdrelatorios import cmdRelatorios
 from cmdconfiguracoes import cmdConfiguracoes
 from conexao_db import conexaoDB
-    
 
 class main(QMainWindow):
     def __init__(self):
@@ -58,20 +57,17 @@ class main(QMainWindow):
         self.tela_principal.btn_pdv_mais.clicked.connect(self.pdv.mais)
         self.tela_principal.btn_pdv_menos.clicked.connect(self.pdv.menos)
         self.tela_principal.btn_adc_carrinho.clicked.connect(self.pdv.adc_carrinho)
+        self.tela_principal.btn_adc_carrinho_2.clicked.connect(self.pdv.adc_carrinho)
+        self.tela_principal.btn_finaliza_compra.clicked.connect(self.pdv.finalizar_compra)
 
     def telaestoque(self):
         self.tela_principal.stackedWidget.setCurrentIndex(2)
         self.tela_principal.stackedWidget_3.setCurrentIndex(0)
-        self.estoque = cmdEstoque(self.tela_principal,
-                                  self.tela_principal.input_pesquisar_produto_4,
-                                  self.tela_principal.txt_caso_produto_nao_encontra_estoque,
-                                  self.tela_principal.treeWidget,
-                                  self.tela_principal.input_nome_produto,
-                                  self.tela_principal.input_categoria_produto)
+        self.estoque = cmdEstoque(self.tela_principal)
         self.tela_principal.btn_pesquisar_produto_4.clicked.connect(self.estoque.procurar_produto)
         self.tela_principal.btn_adc_produto_estoque.clicked.connect(self.estoque.tela_adc_produto)
         self.tela_principal.btn_adc_foto_produto.clicked.connect(self.estoque.open_image)
-        self.tela_principal.btn_adc_produto.clicked.connect(lambda: self.estoque.adc_produto_estoque(self.tela_principal.input_nome_produto, self.tela_principal.input_preco_produto, self.tela_principal.input_quantidade_produto, self.tela_principal.input_categoria_produto))
+        self.tela_principal.btn_adc_produto.clicked.connect(self.estoque.adc_produto_estoque)
 
     def telarelatorios(self):
         self.tela_principal.stackedWidget.setCurrentIndex(3)

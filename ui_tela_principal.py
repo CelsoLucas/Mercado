@@ -26,7 +26,7 @@ class Ui_TelaPrincipal(object):
     def setupUi(self, TelaPrincipal):
         if not TelaPrincipal.objectName():
             TelaPrincipal.setObjectName(u"TelaPrincipal")
-        TelaPrincipal.resize(1260, 845)
+        TelaPrincipal.resize(1260, 835)
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -611,7 +611,7 @@ class Ui_TelaPrincipal(object):
         self.mostruario_cards2_2.setWidgetResizable(True)
         self.mostruario_cards = QWidget()
         self.mostruario_cards.setObjectName(u"mostruario_cards")
-        self.mostruario_cards.setGeometry(QRect(0, 0, 516, 547))
+        self.mostruario_cards.setGeometry(QRect(0, 0, 516, 537))
         self.mostruario_cards2_2.setWidget(self.mostruario_cards)
 
         self.verticalLayout_8.addWidget(self.mostruario_cards2_2)
@@ -694,6 +694,49 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_20.addWidget(self.btn_adc_carrinho)
 
         self.stackedWidget_2.addWidget(self.lado_esquerdo_pdv_2)
+        self.lado_esquerdo_pdv_3 = QWidget()
+        self.lado_esquerdo_pdv_3.setObjectName(u"lado_esquerdo_pdv_3")
+        self.verticalLayout_34 = QVBoxLayout(self.lado_esquerdo_pdv_3)
+        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
+        self.layout_lado_estquerdo_2 = QFrame(self.lado_esquerdo_pdv_3)
+        self.layout_lado_estquerdo_2.setObjectName(u"layout_lado_estquerdo_2")
+        self.layout_lado_estquerdo_2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_lado_estquerdo_2.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.layout_lado_estquerdo_2)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.layout_nome_quant_2 = QFrame(self.layout_lado_estquerdo_2)
+        self.layout_nome_quant_2.setObjectName(u"layout_nome_quant_2")
+        self.layout_nome_quant_2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_nome_quant_2.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_13 = QHBoxLayout(self.layout_nome_quant_2)
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.txt_pdv_nome_2 = QLabel(self.layout_nome_quant_2)
+        self.txt_pdv_nome_2.setObjectName(u"txt_pdv_nome_2")
+
+        self.horizontalLayout_13.addWidget(self.txt_pdv_nome_2)
+
+        self.txt_pdv_valor_2 = QLabel(self.layout_nome_quant_2)
+        self.txt_pdv_valor_2.setObjectName(u"txt_pdv_valor_2")
+
+        self.horizontalLayout_13.addWidget(self.txt_pdv_valor_2, 0, Qt.AlignmentFlag.AlignHCenter)
+
+
+        self.horizontalLayout_11.addWidget(self.layout_nome_quant_2, 0, Qt.AlignmentFlag.AlignVCenter)
+
+        self.input_pdv_quant_2 = QLineEdit(self.layout_lado_estquerdo_2)
+        self.input_pdv_quant_2.setObjectName(u"input_pdv_quant_2")
+
+        self.horizontalLayout_11.addWidget(self.input_pdv_quant_2)
+
+
+        self.verticalLayout_34.addWidget(self.layout_lado_estquerdo_2, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
+
+        self.btn_adc_carrinho_2 = QPushButton(self.lado_esquerdo_pdv_3)
+        self.btn_adc_carrinho_2.setObjectName(u"btn_adc_carrinho_2")
+
+        self.verticalLayout_34.addWidget(self.btn_adc_carrinho_2)
+
+        self.stackedWidget_2.addWidget(self.lado_esquerdo_pdv_3)
 
         self.horizontalLayout_5.addWidget(self.stackedWidget_2)
 
@@ -877,6 +920,49 @@ class Ui_TelaPrincipal(object):
         self.widget.setObjectName(u"widget")
         self.gridLayout_6 = QGridLayout(self.widget)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.frame_3 = QFrame(self.widget)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_21 = QVBoxLayout(self.frame_3)
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.txt_nome_estoque = QLabel(self.frame_3)
+        self.txt_nome_estoque.setObjectName(u"txt_nome_estoque")
+
+        self.verticalLayout_21.addWidget(self.txt_nome_estoque, 0, Qt.AlignmentFlag.AlignBottom)
+
+        self.input_nome_produto = QLineEdit(self.frame_3)
+        self.input_nome_produto.setObjectName(u"input_nome_produto")
+        self.input_nome_produto.setMinimumSize(QSize(400, 0))
+        self.input_nome_produto.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.verticalLayout_21.addWidget(self.input_nome_produto, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
+
+
+        self.gridLayout_6.addWidget(self.frame_3, 1, 0, 1, 1)
+
+        self.frame_8 = QFrame(self.widget)
+        self.frame_8.setObjectName(u"frame_8")
+        self.frame_8.setMaximumSize(QSize(200, 200))
+        self.frame_8.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_8.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_28 = QVBoxLayout(self.frame_8)
+        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
+        self.img_produto_estoque = QLabel(self.frame_8)
+        self.img_produto_estoque.setObjectName(u"img_produto_estoque")
+        self.img_produto_estoque.setMaximumSize(QSize(200, 200))
+        self.img_produto_estoque.setStyleSheet(u"boder: 1px solid;")
+
+        self.verticalLayout_28.addWidget(self.img_produto_estoque)
+
+
+        self.gridLayout_6.addWidget(self.frame_8, 4, 1, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+
+        self.btn_adc_foto_produto = QPushButton(self.widget)
+        self.btn_adc_foto_produto.setObjectName(u"btn_adc_foto_produto")
+
+        self.gridLayout_6.addWidget(self.btn_adc_foto_produto, 4, 0, 1, 1)
+
         self.frame_6 = QFrame(self.widget)
         self.frame_6.setObjectName(u"frame_6")
         self.frame_6.setFrameShape(QFrame.Shape.StyledPanel)
@@ -896,28 +982,7 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_23.addWidget(self.input_quantidade_produto, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
 
 
-        self.gridLayout_6.addWidget(self.frame_6, 1, 0, 1, 1)
-
-        self.frame_7 = QFrame(self.widget)
-        self.frame_7.setObjectName(u"frame_7")
-        self.frame_7.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_7.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_24 = QVBoxLayout(self.frame_7)
-        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
-        self.txt_categoria_estoque = QLabel(self.frame_7)
-        self.txt_categoria_estoque.setObjectName(u"txt_categoria_estoque")
-
-        self.verticalLayout_24.addWidget(self.txt_categoria_estoque)
-
-        self.input_categoria_produto = QComboBox(self.frame_7)
-        self.input_categoria_produto.setObjectName(u"input_categoria_produto")
-        self.input_categoria_produto.setMinimumSize(QSize(400, 0))
-        self.input_categoria_produto.setEditable(False)
-
-        self.verticalLayout_24.addWidget(self.input_categoria_produto, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
-
-
-        self.gridLayout_6.addWidget(self.frame_7, 1, 1, 1, 1)
+        self.gridLayout_6.addWidget(self.frame_6, 2, 0, 1, 1)
 
         self.frame_5 = QFrame(self.widget)
         self.frame_5.setObjectName(u"frame_5")
@@ -938,50 +1003,28 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_22.addWidget(self.input_preco_produto, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
 
 
-        self.gridLayout_6.addWidget(self.frame_5, 0, 1, 1, 1)
+        self.gridLayout_6.addWidget(self.frame_5, 2, 1, 1, 1)
 
-        self.frame_3 = QFrame(self.widget)
-        self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_21 = QVBoxLayout(self.frame_3)
-        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.txt_nome_estoque = QLabel(self.frame_3)
-        self.txt_nome_estoque.setObjectName(u"txt_nome_estoque")
+        self.frame_7 = QFrame(self.widget)
+        self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_7.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_24 = QVBoxLayout(self.frame_7)
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.txt_categoria_estoque = QLabel(self.frame_7)
+        self.txt_categoria_estoque.setObjectName(u"txt_categoria_estoque")
 
-        self.verticalLayout_21.addWidget(self.txt_nome_estoque, 0, Qt.AlignmentFlag.AlignBottom)
+        self.verticalLayout_24.addWidget(self.txt_categoria_estoque)
 
-        self.input_nome_produto = QLineEdit(self.frame_3)
-        self.input_nome_produto.setObjectName(u"input_nome_produto")
-        self.input_nome_produto.setMinimumSize(QSize(400, 0))
-        self.input_nome_produto.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.input_categoria_produto = QComboBox(self.frame_7)
+        self.input_categoria_produto.setObjectName(u"input_categoria_produto")
+        self.input_categoria_produto.setMinimumSize(QSize(400, 0))
+        self.input_categoria_produto.setEditable(False)
 
-        self.verticalLayout_21.addWidget(self.input_nome_produto, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
-
-
-        self.gridLayout_6.addWidget(self.frame_3, 0, 0, 1, 1)
-
-        self.btn_adc_foto_produto = QPushButton(self.widget)
-        self.btn_adc_foto_produto.setObjectName(u"btn_adc_foto_produto")
-
-        self.gridLayout_6.addWidget(self.btn_adc_foto_produto, 3, 0, 1, 1)
-
-        self.frame_8 = QFrame(self.widget)
-        self.frame_8.setObjectName(u"frame_8")
-        self.frame_8.setMaximumSize(QSize(200, 200))
-        self.frame_8.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_8.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_28 = QVBoxLayout(self.frame_8)
-        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
-        self.img_produto_estoque = QLabel(self.frame_8)
-        self.img_produto_estoque.setObjectName(u"img_produto_estoque")
-        self.img_produto_estoque.setMaximumSize(QSize(200, 200))
-        self.img_produto_estoque.setStyleSheet(u"boder: 1px solid;")
-
-        self.verticalLayout_28.addWidget(self.img_produto_estoque)
+        self.verticalLayout_24.addWidget(self.input_categoria_produto)
 
 
-        self.gridLayout_6.addWidget(self.frame_8, 3, 1, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_6.addWidget(self.frame_7, 1, 1, 1, 1)
 
 
         self.verticalLayout_27.addWidget(self.widget, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
@@ -1362,6 +1405,10 @@ class Ui_TelaPrincipal(object):
         self.btn_pdv_menos.setText("")
         self.btn_pdv_mais.setText("")
         self.btn_adc_carrinho.setText(QCoreApplication.translate("TelaPrincipal", u"Adicionar ao Carrinho", None))
+        self.txt_pdv_nome_2.setText("")
+        self.txt_pdv_valor_2.setText("")
+        self.input_pdv_quant_2.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"KG", None))
+        self.btn_adc_carrinho_2.setText(QCoreApplication.translate("TelaPrincipal", u"PushButton", None))
         ___qtreewidgetitem = self.tabela_carrinho.headerItem()
         ___qtreewidgetitem.setText(3, QCoreApplication.translate("TelaPrincipal", u"Total", None));
         ___qtreewidgetitem.setText(2, QCoreApplication.translate("TelaPrincipal", u"Pre\u00e7o Un.", None));
@@ -1387,17 +1434,17 @@ class Ui_TelaPrincipal(object):
         ___qtreewidgetitem1.setText(2, QCoreApplication.translate("TelaPrincipal", u"PRE\u00c7O", None));
         ___qtreewidgetitem1.setText(1, QCoreApplication.translate("TelaPrincipal", u"NOME", None));
         ___qtreewidgetitem1.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
+        self.txt_nome_estoque.setText(QCoreApplication.translate("TelaPrincipal", u"Nome", None))
+        self.input_nome_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"NOME", None))
+        self.img_produto_estoque.setText("")
+        self.btn_adc_foto_produto.setText(QCoreApplication.translate("TelaPrincipal", u"Adicionar Foto", None))
         self.txt_quantidade_estoque.setText(QCoreApplication.translate("TelaPrincipal", u"Quantidade", None))
         self.input_quantidade_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"QUANTIDADE", None))
-        self.txt_categoria_estoque.setText(QCoreApplication.translate("TelaPrincipal", u"Categoria", None))
-        self.input_categoria_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None))
         self.txt_preco_estoque.setText(QCoreApplication.translate("TelaPrincipal", u"Pre\u00e7o Un.", None))
         self.input_preco_produto.setInputMask("")
         self.input_preco_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"PRE\u00c7O UN.", None))
-        self.txt_nome_estoque.setText(QCoreApplication.translate("TelaPrincipal", u"Nome", None))
-        self.input_nome_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"NOME", None))
-        self.btn_adc_foto_produto.setText(QCoreApplication.translate("TelaPrincipal", u"Adicionar Foto", None))
-        self.img_produto_estoque.setText("")
+        self.txt_categoria_estoque.setText(QCoreApplication.translate("TelaPrincipal", u"Categoria", None))
+        self.input_categoria_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None))
         self.btn_adc_produto.setText(QCoreApplication.translate("TelaPrincipal", u"Adicionar Produto", None))
         self.txt_produtos_mais_vendidos.setText(QCoreApplication.translate("TelaPrincipal", u"Produtos mais Vendidos", None))
         self.txt_vendas_ultimos_6_meses.setText(QCoreApplication.translate("TelaPrincipal", u"Vendas dos Ultimos 6 meses", None))
