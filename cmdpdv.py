@@ -287,7 +287,7 @@ class cmdPdv():
             self.tela_principal.input_pdv_quant.setText(f"{cont}")
     
     def adc_carrinho(self):
-        if self.categoria == "HortiFruti" or self.categoria == 2:
+        if self.categoria == "HortiFruti":
             quantidade = float(self.tela_principal.input_pdv_quant_2.text())
         else:
             quantidade = int(self.tela_principal.input_pdv_quant.text())
