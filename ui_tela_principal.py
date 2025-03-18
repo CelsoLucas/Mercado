@@ -18,8 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QHBoxLayout, QHeaderView, QLabel, QLineEdit,
     QMainWindow, QPushButton, QScrollArea, QSizePolicy,
-    QSpacerItem, QStackedWidget, QTabWidget, QTreeWidget,
-    QTreeWidgetItem, QVBoxLayout, QWidget)
+    QSpacerItem, QStackedWidget, QTabWidget, QTextEdit,
+    QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget)
 from imgs import icons_rc
 
 class Ui_TelaPrincipal(object):
@@ -433,137 +433,688 @@ class Ui_TelaPrincipal(object):
         self.telaprincipal.setStyleSheet(u"")
         self.verticalLayout_6 = QVBoxLayout(self.telaprincipal)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.layout_tela_principal = QFrame(self.telaprincipal)
-        self.layout_tela_principal.setObjectName(u"layout_tela_principal")
-        self.layout_tela_principal.setStyleSheet(u"")
-        self.layout_tela_principal.setFrameShape(QFrame.Shape.StyledPanel)
-        self.layout_tela_principal.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout = QGridLayout(self.layout_tela_principal)
-        self.gridLayout.setObjectName(u"gridLayout")
-        self.frame_produtos_baixo_estoque = QFrame(self.layout_tela_principal)
-        self.frame_produtos_baixo_estoque.setObjectName(u"frame_produtos_baixo_estoque")
-        self.frame_produtos_baixo_estoque.setStyleSheet(u"	background-color: #dbdbdb;\n"
-"	border-radius: 20px;\n"
-"	font-size: 20px;")
-        self.frame_produtos_baixo_estoque.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_produtos_baixo_estoque.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_14 = QVBoxLayout(self.frame_produtos_baixo_estoque)
-        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.txt_produtos_baixo_estoque = QLabel(self.frame_produtos_baixo_estoque)
-        self.txt_produtos_baixo_estoque.setObjectName(u"txt_produtos_baixo_estoque")
-
-        self.verticalLayout_14.addWidget(self.txt_produtos_baixo_estoque, 0, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
-
-        self.txt_produtos_baixo_estoque_db = QLabel(self.frame_produtos_baixo_estoque)
-        self.txt_produtos_baixo_estoque_db.setObjectName(u"txt_produtos_baixo_estoque_db")
-
-        self.verticalLayout_14.addWidget(self.txt_produtos_baixo_estoque_db, 0, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.verticalSpacer_7 = QSpacerItem(20, 100, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
-
-        self.verticalLayout_14.addItem(self.verticalSpacer_7)
-
-
-        self.gridLayout.addWidget(self.frame_produtos_baixo_estoque, 3, 0, 1, 3)
-
-        self.verticalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout.addItem(self.verticalSpacer_3, 4, 1, 1, 1)
-
-        self.frame_vendas_semana = QFrame(self.layout_tela_principal)
-        self.frame_vendas_semana.setObjectName(u"frame_vendas_semana")
-        self.frame_vendas_semana.setMaximumSize(QSize(300, 300))
-        self.frame_vendas_semana.setStyleSheet(u"	background-color: #dbdbdb;\n"
-"	border-radius: 20px;\n"
-"	font-size: 20px;")
-        self.frame_vendas_semana.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_vendas_semana.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_12 = QVBoxLayout(self.frame_vendas_semana)
-        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
-        self.txt_vendas_semana = QLabel(self.frame_vendas_semana)
-        self.txt_vendas_semana.setObjectName(u"txt_vendas_semana")
-        self.txt_vendas_semana.setTextFormat(Qt.TextFormat.AutoText)
-        self.txt_vendas_semana.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.txt_vendas_semana.setWordWrap(True)
-
-        self.verticalLayout_12.addWidget(self.txt_vendas_semana, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
-
-        self.txt_vendas_semana_db = QLabel(self.frame_vendas_semana)
-        self.txt_vendas_semana_db.setObjectName(u"txt_vendas_semana_db")
-
-        self.verticalLayout_12.addWidget(self.txt_vendas_semana_db, 0, Qt.AlignmentFlag.AlignHCenter)
-
-        self.verticalSpacer_5 = QSpacerItem(20, 83, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
-
-        self.verticalLayout_12.addItem(self.verticalSpacer_5)
-
-
-        self.gridLayout.addWidget(self.frame_vendas_semana, 1, 1, 1, 1)
-
-        self.frame_vendas_dia = QFrame(self.layout_tela_principal)
-        self.frame_vendas_dia.setObjectName(u"frame_vendas_dia")
-        self.frame_vendas_dia.setMaximumSize(QSize(300, 300))
-        self.frame_vendas_dia.setStyleSheet(u"	background-color: #dbdbdb;\n"
-"	border-radius: 20px;\n"
-"	font-size: 20px;")
-        self.frame_vendas_dia.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_vendas_dia.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_11 = QVBoxLayout(self.frame_vendas_dia)
+        self.stackedWidget_7 = QStackedWidget(self.telaprincipal)
+        self.stackedWidget_7.setObjectName(u"stackedWidget_7")
+        self.tela_principal_opcs = QWidget()
+        self.tela_principal_opcs.setObjectName(u"tela_principal_opcs")
+        self.verticalLayout_11 = QVBoxLayout(self.tela_principal_opcs)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
-        self.txt_vendasdia = QLabel(self.frame_vendas_dia)
-        self.txt_vendasdia.setObjectName(u"txt_vendasdia")
+        self.layout_btn_opcs = QFrame(self.tela_principal_opcs)
+        self.layout_btn_opcs.setObjectName(u"layout_btn_opcs")
+        self.layout_btn_opcs.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_btn_opcs.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_12 = QVBoxLayout(self.layout_btn_opcs)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.frame_btn_abrir_fechar = QFrame(self.layout_btn_opcs)
+        self.frame_btn_abrir_fechar.setObjectName(u"frame_btn_abrir_fechar")
+        self.frame_btn_abrir_fechar.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_btn_abrir_fechar.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_14 = QHBoxLayout(self.frame_btn_abrir_fechar)
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.btn_abrir_caixa = QPushButton(self.frame_btn_abrir_fechar)
+        self.btn_abrir_caixa.setObjectName(u"btn_abrir_caixa")
 
-        self.verticalLayout_11.addWidget(self.txt_vendasdia, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
+        self.horizontalLayout_14.addWidget(self.btn_abrir_caixa)
 
-        self.txt_vendas_dia_db = QLabel(self.frame_vendas_dia)
-        self.txt_vendas_dia_db.setObjectName(u"txt_vendas_dia_db")
+        self.btn_fechar_caixa = QPushButton(self.frame_btn_abrir_fechar)
+        self.btn_fechar_caixa.setObjectName(u"btn_fechar_caixa")
 
-        self.verticalLayout_11.addWidget(self.txt_vendas_dia_db, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
-
-        self.verticalSpacer_4 = QSpacerItem(20, 100, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
-
-        self.verticalLayout_11.addItem(self.verticalSpacer_4)
+        self.horizontalLayout_14.addWidget(self.btn_fechar_caixa)
 
 
-        self.gridLayout.addWidget(self.frame_vendas_dia, 1, 0, 1, 1)
+        self.verticalLayout_12.addWidget(self.frame_btn_abrir_fechar)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        self.frame_btn_sangria_suprimento = QFrame(self.layout_btn_opcs)
+        self.frame_btn_sangria_suprimento.setObjectName(u"frame_btn_sangria_suprimento")
+        self.frame_btn_sangria_suprimento.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_btn_sangria_suprimento.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_15 = QHBoxLayout(self.frame_btn_sangria_suprimento)
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.btn_sangria = QPushButton(self.frame_btn_sangria_suprimento)
+        self.btn_sangria.setObjectName(u"btn_sangria")
 
-        self.gridLayout.addItem(self.verticalSpacer_2, 0, 1, 1, 1)
+        self.horizontalLayout_15.addWidget(self.btn_sangria)
 
-        self.verticalSpacer = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        self.btn_suprimento = QPushButton(self.frame_btn_sangria_suprimento)
+        self.btn_suprimento.setObjectName(u"btn_suprimento")
 
-        self.gridLayout.addItem(self.verticalSpacer, 2, 1, 1, 1)
+        self.horizontalLayout_15.addWidget(self.btn_suprimento)
 
-        self.frame_vendas_mes = QFrame(self.layout_tela_principal)
-        self.frame_vendas_mes.setObjectName(u"frame_vendas_mes")
-        self.frame_vendas_mes.setMaximumSize(QSize(300, 300))
-        self.frame_vendas_mes.setStyleSheet(u"	background-color: #dbdbdb;\n"
-"	border-radius: 20px;\n"
-"	font-size: 20px;")
-        self.frame_vendas_mes.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_vendas_mes.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_13 = QVBoxLayout(self.frame_vendas_mes)
+
+        self.verticalLayout_12.addWidget(self.frame_btn_sangria_suprimento)
+
+
+        self.verticalLayout_11.addWidget(self.layout_btn_opcs, 0, Qt.AlignmentFlag.AlignTop)
+
+        self.layout_txts = QFrame(self.tela_principal_opcs)
+        self.layout_txts.setObjectName(u"layout_txts")
+        self.layout_txts.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_txts.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_31 = QHBoxLayout(self.layout_txts)
+        self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
+        self.txt_resumo_mov = QLabel(self.layout_txts)
+        self.txt_resumo_mov.setObjectName(u"txt_resumo_mov")
+
+        self.horizontalLayout_31.addWidget(self.txt_resumo_mov)
+
+        self.txt_data = QLabel(self.layout_txts)
+        self.txt_data.setObjectName(u"txt_data")
+
+        self.horizontalLayout_31.addWidget(self.txt_data)
+
+        self.txt_abertura_db = QLabel(self.layout_txts)
+        self.txt_abertura_db.setObjectName(u"txt_abertura_db")
+
+        self.horizontalLayout_31.addWidget(self.txt_abertura_db)
+
+        self.txt_operador_db = QLabel(self.layout_txts)
+        self.txt_operador_db.setObjectName(u"txt_operador_db")
+
+        self.horizontalLayout_31.addWidget(self.txt_operador_db)
+
+
+        self.verticalLayout_11.addWidget(self.layout_txts)
+
+        self.layout_dados_mov = QFrame(self.tela_principal_opcs)
+        self.layout_dados_mov.setObjectName(u"layout_dados_mov")
+        sizePolicy1.setHeightForWidth(self.layout_dados_mov.sizePolicy().hasHeightForWidth())
+        self.layout_dados_mov.setSizePolicy(sizePolicy1)
+        self.layout_dados_mov.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_dados_mov.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_51 = QVBoxLayout(self.layout_dados_mov)
+        self.verticalLayout_51.setObjectName(u"verticalLayout_51")
+        self.layout_dados_sem_tabela = QFrame(self.layout_dados_mov)
+        self.layout_dados_sem_tabela.setObjectName(u"layout_dados_sem_tabela")
+        self.layout_dados_sem_tabela.setMinimumSize(QSize(0, 250))
+        self.layout_dados_sem_tabela.setMaximumSize(QSize(16777215, 400))
+        self.layout_dados_sem_tabela.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_dados_sem_tabela.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_18 = QHBoxLayout(self.layout_dados_sem_tabela)
+        self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
+        self.horizontalLayout_18.setContentsMargins(0, 0, 0, 0)
+        self.lado_esquerdo = QFrame(self.layout_dados_sem_tabela)
+        self.lado_esquerdo.setObjectName(u"lado_esquerdo")
+        self.lado_esquerdo.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.lado_esquerdo.setFrameShape(QFrame.Shape.StyledPanel)
+        self.lado_esquerdo.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_19 = QHBoxLayout(self.lado_esquerdo)
+        self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
+        self.lado_esquerdo_2 = QFrame(self.lado_esquerdo)
+        self.lado_esquerdo_2.setObjectName(u"lado_esquerdo_2")
+        self.lado_esquerdo_2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.lado_esquerdo_2.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_52 = QVBoxLayout(self.lado_esquerdo_2)
+        self.verticalLayout_52.setObjectName(u"verticalLayout_52")
+        self.verticalLayout_52.setContentsMargins(0, 0, 0, 0)
+        self.icon_recebimento_vendas = QLabel(self.lado_esquerdo_2)
+        self.icon_recebimento_vendas.setObjectName(u"icon_recebimento_vendas")
+
+        self.verticalLayout_52.addWidget(self.icon_recebimento_vendas)
+
+        self.txt_recebimento_vendas = QLabel(self.lado_esquerdo_2)
+        self.txt_recebimento_vendas.setObjectName(u"txt_recebimento_vendas")
+        self.txt_recebimento_vendas.setMaximumSize(QSize(16777215, 30))
+
+        self.verticalLayout_52.addWidget(self.txt_recebimento_vendas, 0, Qt.AlignmentFlag.AlignLeft)
+
+        self.txt_total_vendas_db = QLabel(self.lado_esquerdo_2)
+        self.txt_total_vendas_db.setObjectName(u"txt_total_vendas_db")
+        self.txt_total_vendas_db.setMaximumSize(QSize(16777215, 20))
+
+        self.verticalLayout_52.addWidget(self.txt_total_vendas_db, 0, Qt.AlignmentFlag.AlignLeft)
+
+        self.verticalSpacer_4 = QSpacerItem(20, 60, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_52.addItem(self.verticalSpacer_4)
+
+
+        self.horizontalLayout_19.addWidget(self.lado_esquerdo_2)
+
+        self.lado_esquerdo_3 = QFrame(self.lado_esquerdo)
+        self.lado_esquerdo_3.setObjectName(u"lado_esquerdo_3")
+        self.lado_esquerdo_3.setStyleSheet(u"")
+        self.lado_esquerdo_3.setFrameShape(QFrame.Shape.StyledPanel)
+        self.lado_esquerdo_3.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_53 = QVBoxLayout(self.lado_esquerdo_3)
+        self.verticalLayout_53.setSpacing(0)
+        self.verticalLayout_53.setObjectName(u"verticalLayout_53")
+        self.verticalLayout_53.setContentsMargins(0, 0, 0, 0)
+        self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_53.addItem(self.verticalSpacer_7)
+
+        self.layout_pix = QFrame(self.lado_esquerdo_3)
+        self.layout_pix.setObjectName(u"layout_pix")
+        self.layout_pix.setMaximumSize(QSize(16777215, 30))
+        self.layout_pix.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_pix.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_23 = QHBoxLayout(self.layout_pix)
+        self.horizontalLayout_23.setObjectName(u"horizontalLayout_23")
+        self.horizontalLayout_23.setContentsMargins(0, 0, 0, 0)
+        self.txt_pix = QLabel(self.layout_pix)
+        self.txt_pix.setObjectName(u"txt_pix")
+
+        self.horizontalLayout_23.addWidget(self.txt_pix)
+
+        self.txt_total_vendas_pix_db = QLabel(self.layout_pix)
+        self.txt_total_vendas_pix_db.setObjectName(u"txt_total_vendas_pix_db")
+
+        self.horizontalLayout_23.addWidget(self.txt_total_vendas_pix_db)
+
+
+        self.verticalLayout_53.addWidget(self.layout_pix)
+
+        self.layout_debito = QFrame(self.lado_esquerdo_3)
+        self.layout_debito.setObjectName(u"layout_debito")
+        self.layout_debito.setMaximumSize(QSize(16777215, 30))
+        self.layout_debito.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_debito.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_22 = QHBoxLayout(self.layout_debito)
+        self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
+        self.horizontalLayout_22.setContentsMargins(0, 0, 0, 0)
+        self.txt_debito = QLabel(self.layout_debito)
+        self.txt_debito.setObjectName(u"txt_debito")
+
+        self.horizontalLayout_22.addWidget(self.txt_debito)
+
+        self.txt_total_vendas_debito_db = QLabel(self.layout_debito)
+        self.txt_total_vendas_debito_db.setObjectName(u"txt_total_vendas_debito_db")
+
+        self.horizontalLayout_22.addWidget(self.txt_total_vendas_debito_db)
+
+
+        self.verticalLayout_53.addWidget(self.layout_debito)
+
+        self.layout_credito = QFrame(self.lado_esquerdo_3)
+        self.layout_credito.setObjectName(u"layout_credito")
+        self.layout_credito.setMaximumSize(QSize(16777215, 30))
+        self.layout_credito.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_credito.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_21 = QHBoxLayout(self.layout_credito)
+        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
+        self.horizontalLayout_21.setContentsMargins(0, 0, 0, 0)
+        self.txt_credito = QLabel(self.layout_credito)
+        self.txt_credito.setObjectName(u"txt_credito")
+
+        self.horizontalLayout_21.addWidget(self.txt_credito)
+
+        self.txt_total_vendas_credito_db = QLabel(self.layout_credito)
+        self.txt_total_vendas_credito_db.setObjectName(u"txt_total_vendas_credito_db")
+
+        self.horizontalLayout_21.addWidget(self.txt_total_vendas_credito_db)
+
+
+        self.verticalLayout_53.addWidget(self.layout_credito)
+
+        self.layout_dinheiro = QFrame(self.lado_esquerdo_3)
+        self.layout_dinheiro.setObjectName(u"layout_dinheiro")
+        self.layout_dinheiro.setMaximumSize(QSize(16777215, 30))
+        self.layout_dinheiro.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_dinheiro.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_20 = QHBoxLayout(self.layout_dinheiro)
+        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
+        self.horizontalLayout_20.setContentsMargins(0, 0, 0, 0)
+        self.txt_dinheiro = QLabel(self.layout_dinheiro)
+        self.txt_dinheiro.setObjectName(u"txt_dinheiro")
+
+        self.horizontalLayout_20.addWidget(self.txt_dinheiro)
+
+        self.txt_total_venda_dinheiro_db = QLabel(self.layout_dinheiro)
+        self.txt_total_venda_dinheiro_db.setObjectName(u"txt_total_venda_dinheiro_db")
+
+        self.horizontalLayout_20.addWidget(self.txt_total_venda_dinheiro_db)
+
+
+        self.verticalLayout_53.addWidget(self.layout_dinheiro)
+
+        self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_53.addItem(self.verticalSpacer_8)
+
+
+        self.horizontalLayout_19.addWidget(self.lado_esquerdo_3)
+
+
+        self.horizontalLayout_18.addWidget(self.lado_esquerdo)
+
+        self.lado_direito = QFrame(self.layout_dados_sem_tabela)
+        self.lado_direito.setObjectName(u"lado_direito")
+        self.lado_direito.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.lado_direito.setFrameShape(QFrame.Shape.StyledPanel)
+        self.lado_direito.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_24 = QHBoxLayout(self.lado_direito)
+        self.horizontalLayout_24.setObjectName(u"horizontalLayout_24")
+        self.lado_direito_2 = QFrame(self.lado_direito)
+        self.lado_direito_2.setObjectName(u"lado_direito_2")
+        self.lado_direito_2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.lado_direito_2.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_55 = QVBoxLayout(self.lado_direito_2)
+        self.verticalLayout_55.setObjectName(u"verticalLayout_55")
+        self.icon_mov_gaveta = QLabel(self.lado_direito_2)
+        self.icon_mov_gaveta.setObjectName(u"icon_mov_gaveta")
+
+        self.verticalLayout_55.addWidget(self.icon_mov_gaveta)
+
+        self.txt_mov_gaveta = QLabel(self.lado_direito_2)
+        self.txt_mov_gaveta.setObjectName(u"txt_mov_gaveta")
+        self.txt_mov_gaveta.setMaximumSize(QSize(16777215, 30))
+
+        self.verticalLayout_55.addWidget(self.txt_mov_gaveta, 0, Qt.AlignmentFlag.AlignLeft)
+
+        self.txt_total_gaveta_db = QLabel(self.lado_direito_2)
+        self.txt_total_gaveta_db.setObjectName(u"txt_total_gaveta_db")
+        self.txt_total_gaveta_db.setMaximumSize(QSize(16777215, 20))
+
+        self.verticalLayout_55.addWidget(self.txt_total_gaveta_db)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 60, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_55.addItem(self.verticalSpacer_3)
+
+
+        self.horizontalLayout_24.addWidget(self.lado_direito_2)
+
+        self.lado_direito_3 = QFrame(self.lado_direito)
+        self.lado_direito_3.setObjectName(u"lado_direito_3")
+        self.lado_direito_3.setFrameShape(QFrame.Shape.StyledPanel)
+        self.lado_direito_3.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_54 = QVBoxLayout(self.lado_direito_3)
+        self.verticalLayout_54.setObjectName(u"verticalLayout_54")
+        self.verticalLayout_54.setContentsMargins(0, 0, 0, 0)
+        self.verticalSpacer_5 = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_54.addItem(self.verticalSpacer_5)
+
+        self.layout_titulo = QFrame(self.lado_direito_3)
+        self.layout_titulo.setObjectName(u"layout_titulo")
+        self.layout_titulo.setMaximumSize(QSize(16777215, 30))
+        self.layout_titulo.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_titulo.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_26 = QHBoxLayout(self.layout_titulo)
+        self.horizontalLayout_26.setObjectName(u"horizontalLayout_26")
+        self.horizontalLayout_26.setContentsMargins(0, 0, 0, 0)
+        self.icon_adc = QLabel(self.layout_titulo)
+        self.icon_adc.setObjectName(u"icon_adc")
+        self.icon_adc.setStyleSheet(u"")
+
+        self.horizontalLayout_26.addWidget(self.icon_adc)
+
+        self.txt_adicoes = QLabel(self.layout_titulo)
+        self.txt_adicoes.setObjectName(u"txt_adicoes")
+
+        self.horizontalLayout_26.addWidget(self.txt_adicoes)
+
+
+        self.verticalLayout_54.addWidget(self.layout_titulo)
+
+        self.layout_saldo_inicial = QFrame(self.lado_direito_3)
+        self.layout_saldo_inicial.setObjectName(u"layout_saldo_inicial")
+        self.layout_saldo_inicial.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_saldo_inicial.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_27 = QHBoxLayout(self.layout_saldo_inicial)
+        self.horizontalLayout_27.setObjectName(u"horizontalLayout_27")
+        self.horizontalLayout_27.setContentsMargins(0, 0, 0, 0)
+        self.txt_saldo_inicial = QLabel(self.layout_saldo_inicial)
+        self.txt_saldo_inicial.setObjectName(u"txt_saldo_inicial")
+
+        self.horizontalLayout_27.addWidget(self.txt_saldo_inicial)
+
+        self.txt_saldo_inicial_db = QLabel(self.layout_saldo_inicial)
+        self.txt_saldo_inicial_db.setObjectName(u"txt_saldo_inicial_db")
+
+        self.horizontalLayout_27.addWidget(self.txt_saldo_inicial_db)
+
+
+        self.verticalLayout_54.addWidget(self.layout_saldo_inicial)
+
+        self.layout_vendas_dinheiro = QFrame(self.lado_direito_3)
+        self.layout_vendas_dinheiro.setObjectName(u"layout_vendas_dinheiro")
+        self.layout_vendas_dinheiro.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_vendas_dinheiro.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_28 = QHBoxLayout(self.layout_vendas_dinheiro)
+        self.horizontalLayout_28.setObjectName(u"horizontalLayout_28")
+        self.horizontalLayout_28.setContentsMargins(0, 0, 0, 0)
+        self.txt_vendas_dinheiro = QLabel(self.layout_vendas_dinheiro)
+        self.txt_vendas_dinheiro.setObjectName(u"txt_vendas_dinheiro")
+
+        self.horizontalLayout_28.addWidget(self.txt_vendas_dinheiro)
+
+        self.txt_vendas_dinheiro_db = QLabel(self.layout_vendas_dinheiro)
+        self.txt_vendas_dinheiro_db.setObjectName(u"txt_vendas_dinheiro_db")
+
+        self.horizontalLayout_28.addWidget(self.txt_vendas_dinheiro_db)
+
+
+        self.verticalLayout_54.addWidget(self.layout_vendas_dinheiro)
+
+        self.layout_suprimento = QFrame(self.lado_direito_3)
+        self.layout_suprimento.setObjectName(u"layout_suprimento")
+        self.layout_suprimento.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_suprimento.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_29 = QHBoxLayout(self.layout_suprimento)
+        self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
+        self.horizontalLayout_29.setContentsMargins(0, 0, 0, 0)
+        self.txt_suprimento = QLabel(self.layout_suprimento)
+        self.txt_suprimento.setObjectName(u"txt_suprimento")
+
+        self.horizontalLayout_29.addWidget(self.txt_suprimento)
+
+        self.txt_suprimento_db = QLabel(self.layout_suprimento)
+        self.txt_suprimento_db.setObjectName(u"txt_suprimento_db")
+
+        self.horizontalLayout_29.addWidget(self.txt_suprimento_db)
+
+
+        self.verticalLayout_54.addWidget(self.layout_suprimento)
+
+        self.layout_titulo_sangria = QFrame(self.lado_direito_3)
+        self.layout_titulo_sangria.setObjectName(u"layout_titulo_sangria")
+        self.layout_titulo_sangria.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_titulo_sangria.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_30 = QHBoxLayout(self.layout_titulo_sangria)
+        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
+        self.horizontalLayout_30.setContentsMargins(0, 0, 0, 0)
+        self.icnon_retirada = QLabel(self.layout_titulo_sangria)
+        self.icnon_retirada.setObjectName(u"icnon_retirada")
+
+        self.horizontalLayout_30.addWidget(self.icnon_retirada)
+
+        self.txt_retiradas = QLabel(self.layout_titulo_sangria)
+        self.txt_retiradas.setObjectName(u"txt_retiradas")
+
+        self.horizontalLayout_30.addWidget(self.txt_retiradas)
+
+
+        self.verticalLayout_54.addWidget(self.layout_titulo_sangria)
+
+        self.layout_sangria = QFrame(self.lado_direito_3)
+        self.layout_sangria.setObjectName(u"layout_sangria")
+        self.layout_sangria.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_sangria.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_25 = QHBoxLayout(self.layout_sangria)
+        self.horizontalLayout_25.setObjectName(u"horizontalLayout_25")
+        self.horizontalLayout_25.setContentsMargins(0, 0, 0, 0)
+        self.txt_sangria = QLabel(self.layout_sangria)
+        self.txt_sangria.setObjectName(u"txt_sangria")
+
+        self.horizontalLayout_25.addWidget(self.txt_sangria)
+
+        self.txt_total_sangria_db = QLabel(self.layout_sangria)
+        self.txt_total_sangria_db.setObjectName(u"txt_total_sangria_db")
+
+        self.horizontalLayout_25.addWidget(self.txt_total_sangria_db)
+
+
+        self.verticalLayout_54.addWidget(self.layout_sangria)
+
+        self.verticalSpacer_6 = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_54.addItem(self.verticalSpacer_6)
+
+
+        self.horizontalLayout_24.addWidget(self.lado_direito_3)
+
+
+        self.horizontalLayout_18.addWidget(self.lado_direito)
+
+
+        self.verticalLayout_51.addWidget(self.layout_dados_sem_tabela)
+
+        self.layout_hist_mov = QFrame(self.layout_dados_mov)
+        self.layout_hist_mov.setObjectName(u"layout_hist_mov")
+        self.layout_hist_mov.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_hist_mov.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_56 = QVBoxLayout(self.layout_hist_mov)
+        self.verticalLayout_56.setObjectName(u"verticalLayout_56")
+        self.tabela_hist_mov = QTreeWidget(self.layout_hist_mov)
+        __qtreewidgetitem = QTreeWidgetItem()
+        __qtreewidgetitem.setTextAlignment(4, Qt.AlignCenter);
+        __qtreewidgetitem.setTextAlignment(3, Qt.AlignCenter);
+        __qtreewidgetitem.setTextAlignment(2, Qt.AlignCenter);
+        __qtreewidgetitem.setTextAlignment(1, Qt.AlignCenter);
+        __qtreewidgetitem.setTextAlignment(0, Qt.AlignCenter);
+        self.tabela_hist_mov.setHeaderItem(__qtreewidgetitem)
+        self.tabela_hist_mov.setObjectName(u"tabela_hist_mov")
+        self.tabela_hist_mov.setMinimumSize(QSize(800, 0))
+
+        self.verticalLayout_56.addWidget(self.tabela_hist_mov)
+
+
+        self.verticalLayout_51.addWidget(self.layout_hist_mov)
+
+
+        self.verticalLayout_11.addWidget(self.layout_dados_mov)
+
+        self.stackedWidget_7.addWidget(self.tela_principal_opcs)
+        self.tela_principal_abrir_caixa = QWidget()
+        self.tela_principal_abrir_caixa.setObjectName(u"tela_principal_abrir_caixa")
+        self.verticalLayout_13 = QVBoxLayout(self.tela_principal_abrir_caixa)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.txt_vendas_mes = QLabel(self.frame_vendas_mes)
-        self.txt_vendas_mes.setObjectName(u"txt_vendas_mes")
+        self.frame_12 = QFrame(self.tela_principal_abrir_caixa)
+        self.frame_12.setObjectName(u"frame_12")
+        self.frame_12.setMinimumSize(QSize(300, 300))
+        self.frame_12.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_12.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_14 = QVBoxLayout(self.frame_12)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.txt_quantidade_caixa_abrir = QLabel(self.frame_12)
+        self.txt_quantidade_caixa_abrir.setObjectName(u"txt_quantidade_caixa_abrir")
 
-        self.verticalLayout_13.addWidget(self.txt_vendas_mes, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
+        self.verticalLayout_14.addWidget(self.txt_quantidade_caixa_abrir)
 
-        self.txt_vendas_mes_db = QLabel(self.frame_vendas_mes)
-        self.txt_vendas_mes_db.setObjectName(u"txt_vendas_mes_db")
+        self.input_quantidade_caixa_abrir = QLineEdit(self.frame_12)
+        self.input_quantidade_caixa_abrir.setObjectName(u"input_quantidade_caixa_abrir")
 
-        self.verticalLayout_13.addWidget(self.txt_vendas_mes_db, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.verticalLayout_14.addWidget(self.input_quantidade_caixa_abrir)
 
-        self.verticalSpacer_6 = QSpacerItem(20, 100, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        self.btn_confirmar_abrir = QPushButton(self.frame_12)
+        self.btn_confirmar_abrir.setObjectName(u"btn_confirmar_abrir")
 
-        self.verticalLayout_13.addItem(self.verticalSpacer_6)
-
-
-        self.gridLayout.addWidget(self.frame_vendas_mes, 1, 2, 1, 1)
+        self.verticalLayout_14.addWidget(self.btn_confirmar_abrir)
 
 
-        self.verticalLayout_6.addWidget(self.layout_tela_principal)
+        self.verticalLayout_13.addWidget(self.frame_12, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
+
+        self.stackedWidget_7.addWidget(self.tela_principal_abrir_caixa)
+        self.tela_principal_fechar_caixa = QWidget()
+        self.tela_principal_fechar_caixa.setObjectName(u"tela_principal_fechar_caixa")
+        self.verticalLayout_44 = QVBoxLayout(self.tela_principal_fechar_caixa)
+        self.verticalLayout_44.setObjectName(u"verticalLayout_44")
+        self.frame_13 = QFrame(self.tela_principal_fechar_caixa)
+        self.frame_13.setObjectName(u"frame_13")
+        self.frame_13.setMinimumSize(QSize(300, 300))
+        self.frame_13.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_13.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_43 = QVBoxLayout(self.frame_13)
+        self.verticalLayout_43.setObjectName(u"verticalLayout_43")
+        self.txt_quantidade_caixa_fechar = QLabel(self.frame_13)
+        self.txt_quantidade_caixa_fechar.setObjectName(u"txt_quantidade_caixa_fechar")
+
+        self.verticalLayout_43.addWidget(self.txt_quantidade_caixa_fechar)
+
+        self.input_quantidade_caixa_fechar = QLineEdit(self.frame_13)
+        self.input_quantidade_caixa_fechar.setObjectName(u"input_quantidade_caixa_fechar")
+
+        self.verticalLayout_43.addWidget(self.input_quantidade_caixa_fechar)
+
+        self.btn_confirmar_fechar = QPushButton(self.frame_13)
+        self.btn_confirmar_fechar.setObjectName(u"btn_confirmar_fechar")
+
+        self.verticalLayout_43.addWidget(self.btn_confirmar_fechar)
+
+
+        self.verticalLayout_44.addWidget(self.frame_13, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
+
+        self.stackedWidget_7.addWidget(self.tela_principal_fechar_caixa)
+        self.tela_principal_sangria = QWidget()
+        self.tela_principal_sangria.setObjectName(u"tela_principal_sangria")
+        self.verticalLayout_47 = QVBoxLayout(self.tela_principal_sangria)
+        self.verticalLayout_47.setObjectName(u"verticalLayout_47")
+        self.frame_14 = QFrame(self.tela_principal_sangria)
+        self.frame_14.setObjectName(u"frame_14")
+        self.frame_14.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_14.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_46 = QVBoxLayout(self.frame_14)
+        self.verticalLayout_46.setObjectName(u"verticalLayout_46")
+        self.txt_sangria_titulo = QLabel(self.frame_14)
+        self.txt_sangria_titulo.setObjectName(u"txt_sangria_titulo")
+        self.txt_sangria_titulo.setStyleSheet(u"font-size: 26px;")
+
+        self.verticalLayout_46.addWidget(self.txt_sangria_titulo, 0, Qt.AlignmentFlag.AlignTop)
+
+
+        self.verticalLayout_47.addWidget(self.frame_14, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
+
+        self.frame_15 = QFrame(self.tela_principal_sangria)
+        self.frame_15.setObjectName(u"frame_15")
+        self.frame_15.setMinimumSize(QSize(500, 400))
+        self.frame_15.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_15.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_45 = QVBoxLayout(self.frame_15)
+        self.verticalLayout_45.setObjectName(u"verticalLayout_45")
+        self.txt_valor_sangria = QLabel(self.frame_15)
+        self.txt_valor_sangria.setObjectName(u"txt_valor_sangria")
+
+        self.verticalLayout_45.addWidget(self.txt_valor_sangria)
+
+        self.input_valor_sangria = QLineEdit(self.frame_15)
+        self.input_valor_sangria.setObjectName(u"input_valor_sangria")
+
+        self.verticalLayout_45.addWidget(self.input_valor_sangria)
+
+        self.txt_vendedor_responsavel_sangria = QLabel(self.frame_15)
+        self.txt_vendedor_responsavel_sangria.setObjectName(u"txt_vendedor_responsavel_sangria")
+
+        self.verticalLayout_45.addWidget(self.txt_vendedor_responsavel_sangria)
+
+        self.input_vendedor_responsavel_sangria = QLineEdit(self.frame_15)
+        self.input_vendedor_responsavel_sangria.setObjectName(u"input_vendedor_responsavel_sangria")
+
+        self.verticalLayout_45.addWidget(self.input_vendedor_responsavel_sangria)
+
+        self.txt_obs_sangria = QLabel(self.frame_15)
+        self.txt_obs_sangria.setObjectName(u"txt_obs_sangria")
+
+        self.verticalLayout_45.addWidget(self.txt_obs_sangria)
+
+        self.input_obs_sangria = QTextEdit(self.frame_15)
+        self.input_obs_sangria.setObjectName(u"input_obs_sangria")
+
+        self.verticalLayout_45.addWidget(self.input_obs_sangria)
+
+        self.frame_16 = QFrame(self.frame_15)
+        self.frame_16.setObjectName(u"frame_16")
+        self.frame_16.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_16.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_16 = QHBoxLayout(self.frame_16)
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
+        self.btn_cancelar_sangria = QPushButton(self.frame_16)
+        self.btn_cancelar_sangria.setObjectName(u"btn_cancelar_sangria")
+
+        self.horizontalLayout_16.addWidget(self.btn_cancelar_sangria)
+
+        self.btn_confirmar_sangria = QPushButton(self.frame_16)
+        self.btn_confirmar_sangria.setObjectName(u"btn_confirmar_sangria")
+
+        self.horizontalLayout_16.addWidget(self.btn_confirmar_sangria)
+
+
+        self.verticalLayout_45.addWidget(self.frame_16)
+
+
+        self.verticalLayout_47.addWidget(self.frame_15, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
+
+        self.verticalSpacer = QSpacerItem(20, 150, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_47.addItem(self.verticalSpacer)
+
+        self.stackedWidget_7.addWidget(self.tela_principal_sangria)
+        self.tela_principal_suprimento = QWidget()
+        self.tela_principal_suprimento.setObjectName(u"tela_principal_suprimento")
+        self.verticalLayout_50 = QVBoxLayout(self.tela_principal_suprimento)
+        self.verticalLayout_50.setObjectName(u"verticalLayout_50")
+        self.frame_17 = QFrame(self.tela_principal_suprimento)
+        self.frame_17.setObjectName(u"frame_17")
+        self.frame_17.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_17.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_49 = QVBoxLayout(self.frame_17)
+        self.verticalLayout_49.setObjectName(u"verticalLayout_49")
+        self.txt_tirulo_suprimento = QLabel(self.frame_17)
+        self.txt_tirulo_suprimento.setObjectName(u"txt_tirulo_suprimento")
+        self.txt_tirulo_suprimento.setStyleSheet(u"font-size: 26px;")
+
+        self.verticalLayout_49.addWidget(self.txt_tirulo_suprimento)
+
+
+        self.verticalLayout_50.addWidget(self.frame_17, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
+
+        self.frame_18 = QFrame(self.tela_principal_suprimento)
+        self.frame_18.setObjectName(u"frame_18")
+        self.frame_18.setMinimumSize(QSize(500, 400))
+        self.frame_18.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_18.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_48 = QVBoxLayout(self.frame_18)
+        self.verticalLayout_48.setObjectName(u"verticalLayout_48")
+        self.txt_valor_suprimento = QLabel(self.frame_18)
+        self.txt_valor_suprimento.setObjectName(u"txt_valor_suprimento")
+        self.txt_valor_suprimento.setStyleSheet(u"")
+
+        self.verticalLayout_48.addWidget(self.txt_valor_suprimento)
+
+        self.input_valor_suprimento = QLineEdit(self.frame_18)
+        self.input_valor_suprimento.setObjectName(u"input_valor_suprimento")
+
+        self.verticalLayout_48.addWidget(self.input_valor_suprimento)
+
+        self.txt_vendedor_responsavel_suprimento = QLabel(self.frame_18)
+        self.txt_vendedor_responsavel_suprimento.setObjectName(u"txt_vendedor_responsavel_suprimento")
+
+        self.verticalLayout_48.addWidget(self.txt_vendedor_responsavel_suprimento)
+
+        self.input_vendedor_responsavel_suprimento = QLineEdit(self.frame_18)
+        self.input_vendedor_responsavel_suprimento.setObjectName(u"input_vendedor_responsavel_suprimento")
+
+        self.verticalLayout_48.addWidget(self.input_vendedor_responsavel_suprimento)
+
+        self.txt_obs_suprimento = QLabel(self.frame_18)
+        self.txt_obs_suprimento.setObjectName(u"txt_obs_suprimento")
+
+        self.verticalLayout_48.addWidget(self.txt_obs_suprimento)
+
+        self.input_obs_suprimento = QTextEdit(self.frame_18)
+        self.input_obs_suprimento.setObjectName(u"input_obs_suprimento")
+
+        self.verticalLayout_48.addWidget(self.input_obs_suprimento)
+
+        self.frame_19 = QFrame(self.frame_18)
+        self.frame_19.setObjectName(u"frame_19")
+        self.frame_19.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_19.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_17 = QHBoxLayout(self.frame_19)
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
+        self.btn_cancelar_suprimento = QPushButton(self.frame_19)
+        self.btn_cancelar_suprimento.setObjectName(u"btn_cancelar_suprimento")
+
+        self.horizontalLayout_17.addWidget(self.btn_cancelar_suprimento)
+
+        self.btn_confirmar_suprimento = QPushButton(self.frame_19)
+        self.btn_confirmar_suprimento.setObjectName(u"btn_confirmar_suprimento")
+
+        self.horizontalLayout_17.addWidget(self.btn_confirmar_suprimento)
+
+
+        self.verticalLayout_48.addWidget(self.frame_19)
+
+
+        self.verticalLayout_50.addWidget(self.frame_18, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 150, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_50.addItem(self.verticalSpacer_2)
+
+        self.stackedWidget_7.addWidget(self.tela_principal_suprimento)
+
+        self.verticalLayout_6.addWidget(self.stackedWidget_7)
 
         self.stackedWidget.addWidget(self.telaprincipal)
         self.telapdv = QWidget()
@@ -611,7 +1162,7 @@ class Ui_TelaPrincipal(object):
         self.mostruario_cards2_2.setWidgetResizable(True)
         self.mostruario_cards = QWidget()
         self.mostruario_cards.setObjectName(u"mostruario_cards")
-        self.mostruario_cards.setGeometry(QRect(0, 0, 63, 16))
+        self.mostruario_cards.setGeometry(QRect(0, 0, 516, 537))
         self.mostruario_cards2_2.setWidget(self.mostruario_cards)
 
         self.verticalLayout_8.addWidget(self.mostruario_cards2_2)
@@ -750,11 +1301,11 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_15 = QVBoxLayout(self.lado_direito_pdv_1)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.tabela_carrinho = QTreeWidget(self.lado_direito_pdv_1)
-        __qtreewidgetitem = QTreeWidgetItem()
-        __qtreewidgetitem.setTextAlignment(3, Qt.AlignCenter);
-        __qtreewidgetitem.setTextAlignment(2, Qt.AlignCenter);
-        __qtreewidgetitem.setTextAlignment(1, Qt.AlignCenter);
-        self.tabela_carrinho.setHeaderItem(__qtreewidgetitem)
+        __qtreewidgetitem1 = QTreeWidgetItem()
+        __qtreewidgetitem1.setTextAlignment(3, Qt.AlignCenter);
+        __qtreewidgetitem1.setTextAlignment(2, Qt.AlignCenter);
+        __qtreewidgetitem1.setTextAlignment(1, Qt.AlignCenter);
+        self.tabela_carrinho.setHeaderItem(__qtreewidgetitem1)
         self.tabela_carrinho.setObjectName(u"tabela_carrinho")
 
         self.verticalLayout_15.addWidget(self.tabela_carrinho, 0, Qt.AlignmentFlag.AlignVCenter)
@@ -899,13 +1450,13 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_25.addWidget(self.txt_caso_produto_nao_encontra_estoque, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.treeWidget = QTreeWidget(self.tela_estoque_1)
-        __qtreewidgetitem1 = QTreeWidgetItem()
-        __qtreewidgetitem1.setTextAlignment(4, Qt.AlignCenter);
-        __qtreewidgetitem1.setTextAlignment(3, Qt.AlignCenter);
-        __qtreewidgetitem1.setTextAlignment(2, Qt.AlignCenter);
-        __qtreewidgetitem1.setTextAlignment(1, Qt.AlignCenter);
-        __qtreewidgetitem1.setTextAlignment(0, Qt.AlignCenter);
-        self.treeWidget.setHeaderItem(__qtreewidgetitem1)
+        __qtreewidgetitem2 = QTreeWidgetItem()
+        __qtreewidgetitem2.setTextAlignment(4, Qt.AlignCenter);
+        __qtreewidgetitem2.setTextAlignment(3, Qt.AlignCenter);
+        __qtreewidgetitem2.setTextAlignment(2, Qt.AlignCenter);
+        __qtreewidgetitem2.setTextAlignment(1, Qt.AlignCenter);
+        __qtreewidgetitem2.setTextAlignment(0, Qt.AlignCenter);
+        self.treeWidget.setHeaderItem(__qtreewidgetitem2)
         self.treeWidget.setObjectName(u"treeWidget")
         self.treeWidget.setMinimumSize(QSize(600, 0))
 
@@ -1189,13 +1740,13 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_35 = QVBoxLayout(self.config_usuarios)
         self.verticalLayout_35.setObjectName(u"verticalLayout_35")
         self.treeWidget_2 = QTreeWidget(self.config_usuarios)
-        __qtreewidgetitem2 = QTreeWidgetItem()
-        __qtreewidgetitem2.setTextAlignment(4, Qt.AlignCenter);
-        __qtreewidgetitem2.setTextAlignment(3, Qt.AlignCenter);
-        __qtreewidgetitem2.setTextAlignment(2, Qt.AlignCenter);
-        __qtreewidgetitem2.setTextAlignment(1, Qt.AlignCenter);
-        __qtreewidgetitem2.setTextAlignment(0, Qt.AlignCenter);
-        self.treeWidget_2.setHeaderItem(__qtreewidgetitem2)
+        __qtreewidgetitem3 = QTreeWidgetItem()
+        __qtreewidgetitem3.setTextAlignment(4, Qt.AlignCenter);
+        __qtreewidgetitem3.setTextAlignment(3, Qt.AlignCenter);
+        __qtreewidgetitem3.setTextAlignment(2, Qt.AlignCenter);
+        __qtreewidgetitem3.setTextAlignment(1, Qt.AlignCenter);
+        __qtreewidgetitem3.setTextAlignment(0, Qt.AlignCenter);
+        self.treeWidget_2.setHeaderItem(__qtreewidgetitem3)
         self.treeWidget_2.setObjectName(u"treeWidget_2")
         self.treeWidget_2.setMinimumSize(QSize(850, 300))
         self.treeWidget_2.setStyleSheet(u"")
@@ -1303,10 +1854,10 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_38 = QVBoxLayout(self.widget_4)
         self.verticalLayout_38.setObjectName(u"verticalLayout_38")
         self.tabela_categoria = QTreeWidget(self.widget_4)
-        __qtreewidgetitem3 = QTreeWidgetItem()
-        __qtreewidgetitem3.setTextAlignment(1, Qt.AlignCenter);
-        __qtreewidgetitem3.setTextAlignment(0, Qt.AlignCenter);
-        self.tabela_categoria.setHeaderItem(__qtreewidgetitem3)
+        __qtreewidgetitem4 = QTreeWidgetItem()
+        __qtreewidgetitem4.setTextAlignment(1, Qt.AlignCenter);
+        __qtreewidgetitem4.setTextAlignment(0, Qt.AlignCenter);
+        self.tabela_categoria.setHeaderItem(__qtreewidgetitem4)
         self.tabela_categoria.setObjectName(u"tabela_categoria")
         self.tabela_categoria.setMinimumSize(QSize(400, 300))
 
@@ -1369,12 +1920,13 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.stackedWidget.setCurrentIndex(3)
-        self.stackedWidget_2.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget_7.setCurrentIndex(0)
+        self.stackedWidget_2.setCurrentIndex(2)
         self.stackedWidget_6.setCurrentIndex(0)
         self.stackedWidget_3.setCurrentIndex(1)
         self.input_categoria_produto.setCurrentIndex(-1)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         self.stackedWidget_4.setCurrentIndex(0)
         self.stackedWidget_5.setCurrentIndex(1)
 
@@ -1392,14 +1944,62 @@ class Ui_TelaPrincipal(object):
         self.btn_estoque.setText(QCoreApplication.translate("TelaPrincipal", u"ESTOQUE", None))
         self.btn_relatorios.setText(QCoreApplication.translate("TelaPrincipal", u"RELATORIOS", None))
         self.btn_configuracoes.setText(QCoreApplication.translate("TelaPrincipal", u"CONFIGURA\u00c7\u00d5ES", None))
-        self.txt_produtos_baixo_estoque.setText(QCoreApplication.translate("TelaPrincipal", u"Produtos com Baixo Estoque", None))
-        self.txt_produtos_baixo_estoque_db.setText("")
-        self.txt_vendas_semana.setText(QCoreApplication.translate("TelaPrincipal", u"Total de Vendas dos Ultimos 6 dias", None))
-        self.txt_vendas_semana_db.setText("")
-        self.txt_vendasdia.setText(QCoreApplication.translate("TelaPrincipal", u"Total de Vendas do Dia", None))
-        self.txt_vendas_dia_db.setText("")
-        self.txt_vendas_mes.setText(QCoreApplication.translate("TelaPrincipal", u"Total de Vendas do M\u00eas", None))
-        self.txt_vendas_mes_db.setText("")
+        self.btn_abrir_caixa.setText(QCoreApplication.translate("TelaPrincipal", u"Abrir Caixa", None))
+        self.btn_fechar_caixa.setText(QCoreApplication.translate("TelaPrincipal", u"Fechar Caixa", None))
+        self.btn_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Registrar Sangria", None))
+        self.btn_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Registrar Suprimento", None))
+        self.txt_resumo_mov.setText(QCoreApplication.translate("TelaPrincipal", u"Resumo da Movimenta\u00e7\u00e3o", None))
+        self.txt_data.setText(QCoreApplication.translate("TelaPrincipal", u"Data:", None))
+        self.txt_abertura_db.setText(QCoreApplication.translate("TelaPrincipal", u"Abertura:", None))
+        self.txt_operador_db.setText(QCoreApplication.translate("TelaPrincipal", u"Operador:", None))
+        self.icon_recebimento_vendas.setText(QCoreApplication.translate("TelaPrincipal", u"icon", None))
+        self.txt_recebimento_vendas.setText(QCoreApplication.translate("TelaPrincipal", u"Recebimentos de Vendas", None))
+        self.txt_total_vendas_db.setText(QCoreApplication.translate("TelaPrincipal", u"Total de Vendas: R$ 0,00", None))
+        self.txt_pix.setText(QCoreApplication.translate("TelaPrincipal", u"Pix", None))
+        self.txt_total_vendas_pix_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$ 0,00", None))
+        self.txt_debito.setText(QCoreApplication.translate("TelaPrincipal", u"D\u00e9bito", None))
+        self.txt_total_vendas_debito_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$0,00", None))
+        self.txt_credito.setText(QCoreApplication.translate("TelaPrincipal", u"Cr\u00e9dito", None))
+        self.txt_total_vendas_credito_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$0,00", None))
+        self.txt_dinheiro.setText(QCoreApplication.translate("TelaPrincipal", u"Dinheiro", None))
+        self.txt_total_venda_dinheiro_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$0,00", None))
+        self.icon_mov_gaveta.setText(QCoreApplication.translate("TelaPrincipal", u"img", None))
+        self.txt_mov_gaveta.setText(QCoreApplication.translate("TelaPrincipal", u"Movimenta\u00e7\u00e3o da Gaveta", None))
+        self.txt_total_gaveta_db.setText(QCoreApplication.translate("TelaPrincipal", u"Total em Gaveta: R$ 0,00", None))
+        self.icon_adc.setText(QCoreApplication.translate("TelaPrincipal", u"icon", None))
+        self.txt_adicoes.setText(QCoreApplication.translate("TelaPrincipal", u"Adi\u00e7\u00f5es", None))
+        self.txt_saldo_inicial.setText(QCoreApplication.translate("TelaPrincipal", u"Saldo Incial", None))
+        self.txt_saldo_inicial_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$ 0,00", None))
+        self.txt_vendas_dinheiro.setText(QCoreApplication.translate("TelaPrincipal", u"Vendas em Dinheiro", None))
+        self.txt_vendas_dinheiro_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$ 0,00", None))
+        self.txt_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Suprimento", None))
+        self.txt_suprimento_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$ 0,00", None))
+        self.icnon_retirada.setText(QCoreApplication.translate("TelaPrincipal", u"icon", None))
+        self.txt_retiradas.setText(QCoreApplication.translate("TelaPrincipal", u"Retiradas", None))
+        self.txt_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Sangria", None))
+        self.txt_total_sangria_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$ 0,00", None))
+        ___qtreewidgetitem = self.tabela_hist_mov.headerItem()
+        ___qtreewidgetitem.setText(4, QCoreApplication.translate("TelaPrincipal", u"Valor(R$)", None));
+        ___qtreewidgetitem.setText(3, QCoreApplication.translate("TelaPrincipal", u"Observa\u00e7\u00e3o", None));
+        ___qtreewidgetitem.setText(2, QCoreApplication.translate("TelaPrincipal", u"Forma de Pagamento", None));
+        ___qtreewidgetitem.setText(1, QCoreApplication.translate("TelaPrincipal", u"Descri\u00e7\u00e3o", None));
+        ___qtreewidgetitem.setText(0, QCoreApplication.translate("TelaPrincipal", u"Data e hora", None));
+        self.txt_quantidade_caixa_abrir.setText(QCoreApplication.translate("TelaPrincipal", u"Quantidade no Caixa", None))
+        self.btn_confirmar_abrir.setText(QCoreApplication.translate("TelaPrincipal", u"Confirmar", None))
+        self.txt_quantidade_caixa_fechar.setText(QCoreApplication.translate("TelaPrincipal", u"Quantidade no Caixa", None))
+        self.btn_confirmar_fechar.setText(QCoreApplication.translate("TelaPrincipal", u"Confirmar", None))
+        self.txt_sangria_titulo.setText(QCoreApplication.translate("TelaPrincipal", u"Registrar Sangria (retirada de dinheiro do caixa)", None))
+        self.txt_valor_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Valor da Sangria*", None))
+        self.txt_vendedor_responsavel_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Vendedor Respons\u00e1vel*", None))
+        self.txt_obs_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Observa\u00e7\u00e3o", None))
+        self.btn_cancelar_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Cancelar", None))
+        self.btn_confirmar_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Confirmar", None))
+        self.txt_tirulo_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Registrar Suprimento (adi\u00e7\u00e3o de dinheiro ao Caixa)", None))
+        self.txt_valor_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Valor do Suprimento*", None))
+        self.txt_vendedor_responsavel_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Vendedor Responsavel*", None))
+        self.txt_obs_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Observa\u00e7\u00e3o", None))
+        self.btn_cancelar_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Cancelar", None))
+        self.btn_confirmar_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Confirmar", None))
         self.btn_pesquisar_produto.setText("")
         self.input_pdv_categoria.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"TODOS", None))
         self.txt_pdv_nome.setText("")
@@ -1411,11 +2011,11 @@ class Ui_TelaPrincipal(object):
         self.txt_pdv_valor_2.setText("")
         self.input_pdv_quant_2.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"KG", None))
         self.btn_adc_carrinho_2.setText(QCoreApplication.translate("TelaPrincipal", u"PushButton", None))
-        ___qtreewidgetitem = self.tabela_carrinho.headerItem()
-        ___qtreewidgetitem.setText(3, QCoreApplication.translate("TelaPrincipal", u"Total", None));
-        ___qtreewidgetitem.setText(2, QCoreApplication.translate("TelaPrincipal", u"Pre\u00e7o Un.", None));
-        ___qtreewidgetitem.setText(1, QCoreApplication.translate("TelaPrincipal", u"Qtd.", None));
-        ___qtreewidgetitem.setText(0, QCoreApplication.translate("TelaPrincipal", u"Produto", None));
+        ___qtreewidgetitem1 = self.tabela_carrinho.headerItem()
+        ___qtreewidgetitem1.setText(3, QCoreApplication.translate("TelaPrincipal", u"Total", None));
+        ___qtreewidgetitem1.setText(2, QCoreApplication.translate("TelaPrincipal", u"Pre\u00e7o Un.", None));
+        ___qtreewidgetitem1.setText(1, QCoreApplication.translate("TelaPrincipal", u"Qtd.", None));
+        ___qtreewidgetitem1.setText(0, QCoreApplication.translate("TelaPrincipal", u"Produto", None));
         self.txt_valor_total_texto.setText(QCoreApplication.translate("TelaPrincipal", u"Valor Total", None))
         self.txt_valor_total.setText("")
         self.input_pdv_forma_pagamento.setItemText(0, QCoreApplication.translate("TelaPrincipal", u"Pix", None))
@@ -1430,12 +2030,12 @@ class Ui_TelaPrincipal(object):
         self.btn_pesquisar_produto_4.setText("")
         self.btn_adc_produto_estoque.setText("")
         self.txt_caso_produto_nao_encontra_estoque.setText("")
-        ___qtreewidgetitem1 = self.treeWidget.headerItem()
-        ___qtreewidgetitem1.setText(4, QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None));
-        ___qtreewidgetitem1.setText(3, QCoreApplication.translate("TelaPrincipal", u"QUANTIDADE", None));
-        ___qtreewidgetitem1.setText(2, QCoreApplication.translate("TelaPrincipal", u"PRE\u00c7O", None));
-        ___qtreewidgetitem1.setText(1, QCoreApplication.translate("TelaPrincipal", u"NOME", None));
-        ___qtreewidgetitem1.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
+        ___qtreewidgetitem2 = self.treeWidget.headerItem()
+        ___qtreewidgetitem2.setText(4, QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None));
+        ___qtreewidgetitem2.setText(3, QCoreApplication.translate("TelaPrincipal", u"QUANTIDADE", None));
+        ___qtreewidgetitem2.setText(2, QCoreApplication.translate("TelaPrincipal", u"PRE\u00c7O", None));
+        ___qtreewidgetitem2.setText(1, QCoreApplication.translate("TelaPrincipal", u"NOME", None));
+        ___qtreewidgetitem2.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
         self.txt_nome_estoque.setText(QCoreApplication.translate("TelaPrincipal", u"Nome", None))
         self.input_nome_produto.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"NOME", None))
         self.img_produto_estoque.setText("")
@@ -1453,12 +2053,12 @@ class Ui_TelaPrincipal(object):
         self.txt_lucro_prejuizo.setText(QCoreApplication.translate("TelaPrincipal", u"Faturamento", None))
         self.label_faturamento.setText("")
         self.label_4.setText(QCoreApplication.translate("TelaPrincipal", u"Formas de Pagamento Usadas", None))
-        ___qtreewidgetitem2 = self.treeWidget_2.headerItem()
-        ___qtreewidgetitem2.setText(4, QCoreApplication.translate("TelaPrincipal", u"TELEFONE", None));
-        ___qtreewidgetitem2.setText(3, QCoreApplication.translate("TelaPrincipal", u"CPF", None));
-        ___qtreewidgetitem2.setText(2, QCoreApplication.translate("TelaPrincipal", u"EMAIL", None));
-        ___qtreewidgetitem2.setText(1, QCoreApplication.translate("TelaPrincipal", u"NOME", None));
-        ___qtreewidgetitem2.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
+        ___qtreewidgetitem3 = self.treeWidget_2.headerItem()
+        ___qtreewidgetitem3.setText(4, QCoreApplication.translate("TelaPrincipal", u"TELEFONE", None));
+        ___qtreewidgetitem3.setText(3, QCoreApplication.translate("TelaPrincipal", u"CPF", None));
+        ___qtreewidgetitem3.setText(2, QCoreApplication.translate("TelaPrincipal", u"EMAIL", None));
+        ___qtreewidgetitem3.setText(1, QCoreApplication.translate("TelaPrincipal", u"NOME", None));
+        ___qtreewidgetitem3.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
         self.btn_adc_user.setText(QCoreApplication.translate("TelaPrincipal", u"Adicionar Usuario", None))
         self.btn_adc_usuario.setText(QCoreApplication.translate("TelaPrincipal", u"Criar Usuario", None))
         self.input_senha_adc_usuario.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Senha", None))
@@ -1470,9 +2070,9 @@ class Ui_TelaPrincipal(object):
         self.input_cpf_adc_usuario.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"CPF", None))
         self.label_img_adc_usuario.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tela_config_1), QCoreApplication.translate("TelaPrincipal", u"Tab 1", None))
-        ___qtreewidgetitem3 = self.tabela_categoria.headerItem()
-        ___qtreewidgetitem3.setText(1, QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None));
-        ___qtreewidgetitem3.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
+        ___qtreewidgetitem4 = self.tabela_categoria.headerItem()
+        ___qtreewidgetitem4.setText(1, QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None));
+        ___qtreewidgetitem4.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
         self.btn_adc_categoria.setText(QCoreApplication.translate("TelaPrincipal", u"Adicionar Categoria", None))
         self.input_nome_adc_categoria.setInputMask("")
         self.input_nome_adc_categoria.setText("")

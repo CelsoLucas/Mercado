@@ -34,20 +34,22 @@ class main(QMainWindow):
         self.tela_principal.btn_relatorios.clicked.connect(self.telarelatorios)
         self.tela_principal.btn_configuracoes.clicked.connect(self.telaconfiguracoes)
 
+                
         self.telaprin = cmdPaginaPrincipal(self.tela_principal)
-        self.telaprin.grafico_vendas_dia()
-        self.telaprin.grafico_vendas_semana()
-        self.telaprin.grafico_vendas_mes()
-        self.telaprin.produtos_baixo_estoque()
-
+        self.tela_principal.btn_abrir_caixa.clicked.connect(self.telaprin.tela_abrir_caixa)
+        self.tela_principal.btn_fechar_caixa.clicked.connect(self.telaprin.tela_fechar_caixa)
+        self.tela_principal.btn_sangria.clicked.connect(self.telaprin.tela_sangria)
+        self.tela_principal.btn_suprimento.clicked.connect(self.telaprin.tela_suprimento)
 
     def telaprincipal(self):
         self.tela_principal.stackedWidget.setCurrentIndex(0)
         self.telaprin = cmdPaginaPrincipal(self.tela_principal)
-        self.telaprin.grafico_vendas_dia()
-        self.telaprin.grafico_vendas_semana()
-        self.telaprin.grafico_vendas_mes()
-        self.telaprin.produtos_baixo_estoque()
+        self.tela_principal.btn_abrir_caixa.clicked.connect(self.telaprin.tela_abrir_caixa)
+        self.tela_principal.btn_fechar_caixa.clicked.connect(self.telaprin.tela_fechar_caixa)
+        self.tela_principal.btn_sangria.clicked.connect(self.telaprin.tela_sangria)
+        self.tela_principal.btn_suprimento.clicked.connect(self.telaprin.tela_suprimento)
+
+
 
     def telapdv(self):
         self.tela_principal.stackedWidget.setCurrentIndex(1)
