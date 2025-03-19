@@ -356,7 +356,7 @@
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>2</number>
+             <number>4</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -1825,7 +1825,7 @@
                   <item>
                    <widget class="QPushButton" name="btn_adc_carrinho_2">
                     <property name="text">
-                     <string>PushButton</string>
+                     <string>Adicionar ao Carrinho</string>
                     </property>
                    </widget>
                   </item>
@@ -1886,6 +1886,13 @@
                       <set>AlignCenter</set>
                      </property>
                     </column>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btn_remover_produto_carrinho">
+                    <property name="text">
+                     <string>Remover Produto do Carrinho</string>
+                    </property>
                    </widget>
                   </item>
                   <item alignment="Qt::AlignmentFlag::AlignVCenter">
@@ -2900,7 +2907,7 @@ border-radius: 20px;</string>
               <item>
                <widget class="QTabWidget" name="tabWidget">
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="tela_config_1">
                  <attribute name="title">
@@ -2910,7 +2917,7 @@ border-radius: 20px;</string>
                   <item>
                    <widget class="QStackedWidget" name="stackedWidget_4">
                     <property name="currentIndex">
-                     <number>0</number>
+                     <number>1</number>
                     </property>
                     <widget class="QWidget" name="config_usuarios">
                      <layout class="QVBoxLayout" name="verticalLayout_35">
@@ -2965,6 +2972,14 @@ border-radius: 20px;</string>
                           <set>AlignCenter</set>
                          </property>
                         </column>
+                        <column>
+                         <property name="text">
+                          <string>PERMISSÃO</string>
+                         </property>
+                         <property name="textAlignment">
+                          <set>AlignCenter</set>
+                         </property>
+                        </column>
                        </widget>
                       </item>
                       <item alignment="Qt::AlignmentFlag::AlignHCenter">
@@ -2993,61 +3008,266 @@ border-radius: 20px;</string>
                          <enum>QFrame::Shadow::Raised</enum>
                         </property>
                         <layout class="QGridLayout" name="gridLayout_3">
-                         <item row="7" column="0">
-                          <widget class="QPushButton" name="btn_adc_usuario">
-                           <property name="text">
-                            <string>Criar Usuario</string>
+                         <item row="3" column="0">
+                          <widget class="QFrame" name="frame_24">
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::StyledPanel</enum>
                            </property>
-                          </widget>
-                         </item>
-                         <item row="2" column="0">
-                          <widget class="QLineEdit" name="input_senha_adc_usuario">
-                           <property name="maximumSize">
-                            <size>
-                             <width>400</width>
-                             <height>16777215</height>
-                            </size>
+                           <property name="frameShadow">
+                            <enum>QFrame::Shadow::Raised</enum>
                            </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="echoMode">
-                            <enum>QLineEdit::EchoMode::Password</enum>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                           <property name="placeholderText">
-                            <string>Senha</string>
-                           </property>
+                           <layout class="QVBoxLayout" name="verticalLayout_65">
+                            <item>
+                             <widget class="QLabel" name="txt_senha">
+                              <property name="text">
+                               <string>Senha</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLineEdit" name="input_senha_adc_usuario">
+                              <property name="maximumSize">
+                               <size>
+                                <width>400</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true"/>
+                              </property>
+                              <property name="echoMode">
+                               <enum>QLineEdit::EchoMode::Password</enum>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignmentFlag::AlignCenter</set>
+                              </property>
+                              <property name="placeholderText">
+                               <string>Senha</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
                           </widget>
                          </item>
                          <item row="0" column="0">
-                          <widget class="QLineEdit" name="input_nome_adc_usuario">
-                           <property name="maximumSize">
-                            <size>
-                             <width>400</width>
-                             <height>16777215</height>
-                            </size>
+                          <widget class="QFrame" name="frame_22">
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::StyledPanel</enum>
                            </property>
-                           <property name="font">
-                            <font>
-                             <italic>false</italic>
-                             <fontweight>DemiBold</fontweight>
-                            </font>
+                           <property name="frameShadow">
+                            <enum>QFrame::Shadow::Raised</enum>
                            </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                           <property name="placeholderText">
-                            <string>Nome</string>
-                           </property>
+                           <layout class="QVBoxLayout" name="verticalLayout_63">
+                            <item>
+                             <widget class="QLabel" name="txt_nome">
+                              <property name="text">
+                               <string>Nome</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLineEdit" name="input_nome_adc_usuario">
+                              <property name="maximumSize">
+                               <size>
+                                <width>400</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <italic>false</italic>
+                                <fontweight>DemiBold</fontweight>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true"/>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignmentFlag::AlignCenter</set>
+                              </property>
+                              <property name="placeholderText">
+                               <string>Nome</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
                           </widget>
                          </item>
-                         <item row="5" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+                         <item row="0" column="1">
+                          <widget class="QFrame" name="frame_23">
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Shadow::Raised</enum>
+                           </property>
+                           <layout class="QVBoxLayout" name="verticalLayout_64">
+                            <item>
+                             <widget class="QLabel" name="txt_email">
+                              <property name="text">
+                               <string>Email</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLineEdit" name="input_email_adc_usuario">
+                              <property name="maximumSize">
+                               <size>
+                                <width>400</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true"/>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignmentFlag::AlignCenter</set>
+                              </property>
+                              <property name="placeholderText">
+                               <string>Email</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item row="3" column="1">
+                          <widget class="QFrame" name="frame_25">
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Shadow::Raised</enum>
+                           </property>
+                           <layout class="QVBoxLayout" name="verticalLayout_66">
+                            <item>
+                             <widget class="QLabel" name="txt_cpf">
+                              <property name="text">
+                               <string>CPF</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLineEdit" name="input_cpf_adc_usuario">
+                              <property name="maximumSize">
+                               <size>
+                                <width>400</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true"/>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignmentFlag::AlignCenter</set>
+                              </property>
+                              <property name="placeholderText">
+                               <string>CPF</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item row="4" column="1">
+                          <widget class="QFrame" name="frame_28">
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Shadow::Raised</enum>
+                           </property>
+                           <layout class="QVBoxLayout" name="verticalLayout_68">
+                            <item>
+                             <widget class="QLabel" name="txt_permissoes">
+                              <property name="text">
+                               <string>Permissões</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QFrame" name="frame_29">
+                              <property name="frameShape">
+                               <enum>QFrame::Shape::StyledPanel</enum>
+                              </property>
+                              <property name="frameShadow">
+                               <enum>QFrame::Shadow::Raised</enum>
+                              </property>
+                              <layout class="QHBoxLayout" name="horizontalLayout_33">
+                               <item>
+                                <widget class="QRadioButton" name="perm_n">
+                                 <property name="text">
+                                  <string>Não</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QRadioButton" name="perm_s">
+                                 <property name="text">
+                                  <string>Sim</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item row="4" column="0">
+                          <widget class="QFrame" name="frame_26">
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Shadow::Raised</enum>
+                           </property>
+                           <layout class="QVBoxLayout" name="verticalLayout_67">
+                            <item>
+                             <widget class="QLabel" name="txt_telefone">
+                              <property name="text">
+                               <string>Telefone</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLineEdit" name="input_telefone_adc_usuario">
+                              <property name="maximumSize">
+                               <size>
+                                <width>400</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true"/>
+                              </property>
+                              <property name="inputMask">
+                               <string/>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignmentFlag::AlignCenter</set>
+                              </property>
+                              <property name="placeholderText">
+                               <string>Telefone</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QFrame" name="frame_27">
+                        <property name="frameShape">
+                         <enum>QFrame::Shape::StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                         <enum>QFrame::Shadow::Raised</enum>
+                        </property>
+                        <layout class="QHBoxLayout" name="horizontalLayout_32">
+                         <item>
                           <widget class="QPushButton" name="btn_procurar_ft_adc_usuario">
                            <property name="minimumSize">
                             <size>
@@ -3055,79 +3275,38 @@ border-radius: 20px;</string>
                              <height>0</height>
                             </size>
                            </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>200</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Procurar Foto</string>
                            </property>
                           </widget>
                          </item>
-                         <item row="4" column="0">
-                          <widget class="QLineEdit" name="input_telefone_adc_usuario">
-                           <property name="maximumSize">
-                            <size>
-                             <width>400</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="inputMask">
-                            <string/>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                           <property name="placeholderText">
-                            <string>Telefone</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="0">
-                          <widget class="QLineEdit" name="input_email_adc_usuario">
-                           <property name="maximumSize">
-                            <size>
-                             <width>400</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                           <property name="placeholderText">
-                            <string>Email</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="3" column="0">
-                          <widget class="QLineEdit" name="input_cpf_adc_usuario">
-                           <property name="maximumSize">
-                            <size>
-                             <width>400</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignCenter</set>
-                           </property>
-                           <property name="placeholderText">
-                            <string>CPF</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="6" column="0">
+                         <item>
                           <widget class="QLabel" name="label_img_adc_usuario">
+                           <property name="maximumSize">
+                            <size>
+                             <width>200</width>
+                             <height>200</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string/>
                            </property>
                           </widget>
                          </item>
                         </layout>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="btn_adc_usuario">
+                        <property name="text">
+                         <string>Criar Usuario</string>
+                        </property>
                        </widget>
                       </item>
                      </layout>

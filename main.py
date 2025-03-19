@@ -61,6 +61,7 @@ class main(QMainWindow):
         self.tela_principal.btn_adc_carrinho.clicked.connect(self.pdv.adc_carrinho)
         self.tela_principal.btn_adc_carrinho_2.clicked.connect(self.pdv.adc_carrinho)
         self.tela_principal.btn_finaliza_compra.clicked.connect(self.pdv.finalizar_compra)
+        self.tela_principal.btn_remover_produto_carrinho.clicked.connect(self.pdv.remover_carrinho)
 
     def telaestoque(self):
         self.tela_principal.stackedWidget.setCurrentIndex(2)

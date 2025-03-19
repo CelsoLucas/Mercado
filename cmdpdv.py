@@ -1,5 +1,5 @@
 from conexao_db import conexaoDB
-from PySide6.QtWidgets import QApplication, QScrollArea, QWidget, QVBoxLayout, QGridLayout, QLabel, QPushButton, QHBoxLayout, QMessageBox, QTreeWidgetItem, QLineEdit
+from PySide6.QtWidgets import QApplication, QScrollArea, QWidget, QVBoxLayout, QGridLayout, QLabel, QPushButton, QHBoxLayout, QMessageBox, QTreeWidgetItem, QLineEdit, QInputDialog
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt
 
@@ -446,3 +446,40 @@ class cmdPdv():
         self.tela_principal.input_pdv_forma_pagamento.setCurrentIndex(-1)
         self.carrinho = []
 
+    def remover_carrinho(self):
+        if not self.carrinho:
+            QMessageBox.warning(None, "Erro", "Carrinho Vazio!")
+            return
+            
+        item_selecionado = self.tela_principal.tabela_carrinho.currentItem()
+        if item_selecionado is None:
+            QMessageBox.warning(None, "Erro", "Selecione um Produto")
+            return
+            
+        # Popup para pedir a senha com eco de senha (asteriscos)
+        senha, ok = QInputDialog.getText(
+            None,
+            "Confirmação de Remoção",
+            "Digite a senha para remover o item:",
+            echo=QLineEdit.Password  # Correção: Usa QLineEdit.Password
+        )
+        
+        if not ok or not senha:
+            QMessageBox.warning(None, "Erro", "Senha não fornecida!")
+            return
+        
+        senha_correta = "1234"  # Substitua pela sua lógica de validação
+        if senha != senha_correta:
+            QMessageBox.warning(None, "Erro", "Senha incorreta!")
+            return
+
+        index = self.tela_principal.tabela_carrinho.indexOfTopLevelItem(item_selecionado)
+        if index != -1:  # Verifica se o item foi encontrado
+            self.tela_principal.tabela_carrinho.takeTopLevelItem(index)
+            self.carrinho.pop(index)
+            
+            QMessageBox.information(None, "Sucesso", "Item removido do carrinho!")
+        else:
+            QMessageBox.warning(None, "Erro", "Falha ao localizar o item no carrinho!")
+        print(self.carrinho)
+        

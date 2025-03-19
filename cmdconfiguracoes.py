@@ -21,28 +21,29 @@ class cmdConfiguracoes():
         self.tela_principal.stackedWidget_6.setCurrentIndex(0)
 
 
-    def on_tab_changed(self, index):
+    def on_tab_changed(self):
         if self.tela_principal.tabWidget.currentIndex() == 0:  
             self.tela_principal.stackedWidget_4.setCurrentIndex(0)
         elif self.tela_principal.tabWidget.currentIndex() == 1: 
             self.tela_principal.stackedWidget_5.setCurrentIndex(0)
+
     def mostrar_usuarios(self):
         cursor = self.conexao.get_cursor()
-        cursor.execute("select id_usuario, nome, email, cpf, telefone, ativo from usuarios")
+        cursor.execute("select id_usuario, nome, email, cpf, telefone, perm from usuarios")
         resultado = cursor.fetchall()
 
         tree = self.tela_principal.treeWidget_2
         tree.clear()
 
         for i in resultado:
-            id, nome, email, cpf, telefone, ativo = i
+            id, nome, email, cpf, telefone, perm = i
             item = QTreeWidgetItem(tree)
             item.setText(0, str(id))  
             item.setText(1, nome)  
             item.setText(2, str(email))  
             item.setText(3, str(cpf))  
             item.setText(4, str(telefone))
-            item.setText(5, str(ativo))
+            item.setText(5, str(perm))
 
 
             item.setTextAlignment(0, Qt.AlignCenter)
@@ -138,13 +139,18 @@ class cmdConfiguracoes():
             QMessageBox.warning(None, "Erro", "telefone Invalido!")
             return
         
+        if self.tela_principal.perm_n.isChecked():
+            perm = "0"
+        elif self.tela_principal.perm_s.isChecked():
+            perm = "1"
+
         if self.new_file_path == "":
             QMessageBox.warning(None, "Erro", "Adicione uma Imagem!")
             return
         relative_path = os.path.relpath(self.new_file_path, os.getcwd()).replace("\\", "/")
 
-        comando = "insert into usuarios (nome, email, cpf, telefone, senha, foto) values (%s, %s, %s, %s, sha2(%s, 256), %s)"
-        dados = (nome, email, cpf, telefone, senha, relative_path)
+        comando = "insert into usuarios (nome, email, cpf, telefone, senha, perm, foto) values (%s, %s, %s, %s, sha2(%s, 256), %s, %s)"
+        dados = (nome, email, cpf, telefone, senha, perm, relative_path)
 
         cursor.execute(comando, dados)
         self.conexao.commit()

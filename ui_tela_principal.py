@@ -17,9 +17,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
-    QSpacerItem, QStackedWidget, QTabWidget, QTextEdit,
-    QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget)
+    QMainWindow, QPushButton, QRadioButton, QScrollArea,
+    QSizePolicy, QSpacerItem, QStackedWidget, QTabWidget,
+    QTextEdit, QTreeWidget, QTreeWidgetItem, QVBoxLayout,
+    QWidget)
 from imgs import icons_rc
 
 class Ui_TelaPrincipal(object):
@@ -1068,6 +1069,11 @@ class Ui_TelaPrincipal(object):
 
         self.verticalLayout_15.addWidget(self.tabela_carrinho, 0, Qt.AlignmentFlag.AlignVCenter)
 
+        self.btn_remover_produto_carrinho = QPushButton(self.lado_direito_pdv_1)
+        self.btn_remover_produto_carrinho.setObjectName(u"btn_remover_produto_carrinho")
+
+        self.verticalLayout_15.addWidget(self.btn_remover_produto_carrinho)
+
         self.layout_valor_total = QFrame(self.lado_direito_pdv_1)
         self.layout_valor_total.setObjectName(u"layout_valor_total")
         self.layout_valor_total.setFrameShape(QFrame.Shape.StyledPanel)
@@ -1632,6 +1638,7 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_35.setObjectName(u"verticalLayout_35")
         self.treeWidget_2 = QTreeWidget(self.config_usuarios)
         __qtreewidgetitem3 = QTreeWidgetItem()
+        __qtreewidgetitem3.setTextAlignment(5, Qt.AlignCenter);
         __qtreewidgetitem3.setTextAlignment(4, Qt.AlignCenter);
         __qtreewidgetitem3.setTextAlignment(3, Qt.AlignCenter);
         __qtreewidgetitem3.setTextAlignment(2, Qt.AlignCenter);
@@ -1661,21 +1668,41 @@ class Ui_TelaPrincipal(object):
         self.layout_adc_usuario.setFrameShadow(QFrame.Shadow.Raised)
         self.gridLayout_3 = QGridLayout(self.layout_adc_usuario)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.btn_adc_usuario = QPushButton(self.layout_adc_usuario)
-        self.btn_adc_usuario.setObjectName(u"btn_adc_usuario")
+        self.frame_24 = QFrame(self.layout_adc_usuario)
+        self.frame_24.setObjectName(u"frame_24")
+        self.frame_24.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_24.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_65 = QVBoxLayout(self.frame_24)
+        self.verticalLayout_65.setObjectName(u"verticalLayout_65")
+        self.txt_senha = QLabel(self.frame_24)
+        self.txt_senha.setObjectName(u"txt_senha")
 
-        self.gridLayout_3.addWidget(self.btn_adc_usuario, 7, 0, 1, 1)
+        self.verticalLayout_65.addWidget(self.txt_senha)
 
-        self.input_senha_adc_usuario = QLineEdit(self.layout_adc_usuario)
+        self.input_senha_adc_usuario = QLineEdit(self.frame_24)
         self.input_senha_adc_usuario.setObjectName(u"input_senha_adc_usuario")
         self.input_senha_adc_usuario.setMaximumSize(QSize(400, 16777215))
         self.input_senha_adc_usuario.setStyleSheet(u"")
         self.input_senha_adc_usuario.setEchoMode(QLineEdit.EchoMode.Password)
         self.input_senha_adc_usuario.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.gridLayout_3.addWidget(self.input_senha_adc_usuario, 2, 0, 1, 1)
+        self.verticalLayout_65.addWidget(self.input_senha_adc_usuario)
 
-        self.input_nome_adc_usuario = QLineEdit(self.layout_adc_usuario)
+
+        self.gridLayout_3.addWidget(self.frame_24, 3, 0, 1, 1)
+
+        self.frame_22 = QFrame(self.layout_adc_usuario)
+        self.frame_22.setObjectName(u"frame_22")
+        self.frame_22.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_22.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_63 = QVBoxLayout(self.frame_22)
+        self.verticalLayout_63.setObjectName(u"verticalLayout_63")
+        self.txt_nome = QLabel(self.frame_22)
+        self.txt_nome.setObjectName(u"txt_nome")
+
+        self.verticalLayout_63.addWidget(self.txt_nome)
+
+        self.input_nome_adc_usuario = QLineEdit(self.frame_22)
         self.input_nome_adc_usuario.setObjectName(u"input_nome_adc_usuario")
         self.input_nome_adc_usuario.setMaximumSize(QSize(400, 16777215))
         font = QFont()
@@ -1685,45 +1712,139 @@ class Ui_TelaPrincipal(object):
         self.input_nome_adc_usuario.setStyleSheet(u"")
         self.input_nome_adc_usuario.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.gridLayout_3.addWidget(self.input_nome_adc_usuario, 0, 0, 1, 1)
+        self.verticalLayout_63.addWidget(self.input_nome_adc_usuario)
 
-        self.btn_procurar_ft_adc_usuario = QPushButton(self.layout_adc_usuario)
-        self.btn_procurar_ft_adc_usuario.setObjectName(u"btn_procurar_ft_adc_usuario")
-        self.btn_procurar_ft_adc_usuario.setMinimumSize(QSize(250, 0))
 
-        self.gridLayout_3.addWidget(self.btn_procurar_ft_adc_usuario, 5, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_3.addWidget(self.frame_22, 0, 0, 1, 1)
 
-        self.input_telefone_adc_usuario = QLineEdit(self.layout_adc_usuario)
-        self.input_telefone_adc_usuario.setObjectName(u"input_telefone_adc_usuario")
-        self.input_telefone_adc_usuario.setMaximumSize(QSize(400, 16777215))
-        self.input_telefone_adc_usuario.setStyleSheet(u"")
-        self.input_telefone_adc_usuario.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.frame_23 = QFrame(self.layout_adc_usuario)
+        self.frame_23.setObjectName(u"frame_23")
+        self.frame_23.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_23.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_64 = QVBoxLayout(self.frame_23)
+        self.verticalLayout_64.setObjectName(u"verticalLayout_64")
+        self.txt_email = QLabel(self.frame_23)
+        self.txt_email.setObjectName(u"txt_email")
 
-        self.gridLayout_3.addWidget(self.input_telefone_adc_usuario, 4, 0, 1, 1)
+        self.verticalLayout_64.addWidget(self.txt_email)
 
-        self.input_email_adc_usuario = QLineEdit(self.layout_adc_usuario)
+        self.input_email_adc_usuario = QLineEdit(self.frame_23)
         self.input_email_adc_usuario.setObjectName(u"input_email_adc_usuario")
         self.input_email_adc_usuario.setMaximumSize(QSize(400, 16777215))
         self.input_email_adc_usuario.setStyleSheet(u"")
         self.input_email_adc_usuario.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.gridLayout_3.addWidget(self.input_email_adc_usuario, 1, 0, 1, 1)
+        self.verticalLayout_64.addWidget(self.input_email_adc_usuario)
 
-        self.input_cpf_adc_usuario = QLineEdit(self.layout_adc_usuario)
+
+        self.gridLayout_3.addWidget(self.frame_23, 0, 1, 1, 1)
+
+        self.frame_25 = QFrame(self.layout_adc_usuario)
+        self.frame_25.setObjectName(u"frame_25")
+        self.frame_25.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_25.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_66 = QVBoxLayout(self.frame_25)
+        self.verticalLayout_66.setObjectName(u"verticalLayout_66")
+        self.txt_cpf = QLabel(self.frame_25)
+        self.txt_cpf.setObjectName(u"txt_cpf")
+
+        self.verticalLayout_66.addWidget(self.txt_cpf)
+
+        self.input_cpf_adc_usuario = QLineEdit(self.frame_25)
         self.input_cpf_adc_usuario.setObjectName(u"input_cpf_adc_usuario")
         self.input_cpf_adc_usuario.setMaximumSize(QSize(400, 16777215))
         self.input_cpf_adc_usuario.setStyleSheet(u"")
         self.input_cpf_adc_usuario.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.gridLayout_3.addWidget(self.input_cpf_adc_usuario, 3, 0, 1, 1)
+        self.verticalLayout_66.addWidget(self.input_cpf_adc_usuario)
 
-        self.label_img_adc_usuario = QLabel(self.layout_adc_usuario)
-        self.label_img_adc_usuario.setObjectName(u"label_img_adc_usuario")
 
-        self.gridLayout_3.addWidget(self.label_img_adc_usuario, 6, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.frame_25, 3, 1, 1, 1)
+
+        self.frame_28 = QFrame(self.layout_adc_usuario)
+        self.frame_28.setObjectName(u"frame_28")
+        self.frame_28.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_28.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_68 = QVBoxLayout(self.frame_28)
+        self.verticalLayout_68.setObjectName(u"verticalLayout_68")
+        self.txt_permissoes = QLabel(self.frame_28)
+        self.txt_permissoes.setObjectName(u"txt_permissoes")
+
+        self.verticalLayout_68.addWidget(self.txt_permissoes)
+
+        self.frame_29 = QFrame(self.frame_28)
+        self.frame_29.setObjectName(u"frame_29")
+        self.frame_29.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_29.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_33 = QHBoxLayout(self.frame_29)
+        self.horizontalLayout_33.setObjectName(u"horizontalLayout_33")
+        self.perm_n = QRadioButton(self.frame_29)
+        self.perm_n.setObjectName(u"perm_n")
+
+        self.horizontalLayout_33.addWidget(self.perm_n)
+
+        self.perm_s = QRadioButton(self.frame_29)
+        self.perm_s.setObjectName(u"perm_s")
+
+        self.horizontalLayout_33.addWidget(self.perm_s)
+
+
+        self.verticalLayout_68.addWidget(self.frame_29)
+
+
+        self.gridLayout_3.addWidget(self.frame_28, 4, 1, 1, 1)
+
+        self.frame_26 = QFrame(self.layout_adc_usuario)
+        self.frame_26.setObjectName(u"frame_26")
+        self.frame_26.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_26.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_67 = QVBoxLayout(self.frame_26)
+        self.verticalLayout_67.setObjectName(u"verticalLayout_67")
+        self.txt_telefone = QLabel(self.frame_26)
+        self.txt_telefone.setObjectName(u"txt_telefone")
+
+        self.verticalLayout_67.addWidget(self.txt_telefone)
+
+        self.input_telefone_adc_usuario = QLineEdit(self.frame_26)
+        self.input_telefone_adc_usuario.setObjectName(u"input_telefone_adc_usuario")
+        self.input_telefone_adc_usuario.setMaximumSize(QSize(400, 16777215))
+        self.input_telefone_adc_usuario.setStyleSheet(u"")
+        self.input_telefone_adc_usuario.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.verticalLayout_67.addWidget(self.input_telefone_adc_usuario)
+
+
+        self.gridLayout_3.addWidget(self.frame_26, 4, 0, 1, 1)
 
 
         self.verticalLayout_36.addWidget(self.layout_adc_usuario)
+
+        self.frame_27 = QFrame(self.config_usuarios_2)
+        self.frame_27.setObjectName(u"frame_27")
+        self.frame_27.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_27.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_32 = QHBoxLayout(self.frame_27)
+        self.horizontalLayout_32.setObjectName(u"horizontalLayout_32")
+        self.btn_procurar_ft_adc_usuario = QPushButton(self.frame_27)
+        self.btn_procurar_ft_adc_usuario.setObjectName(u"btn_procurar_ft_adc_usuario")
+        self.btn_procurar_ft_adc_usuario.setMinimumSize(QSize(250, 0))
+        self.btn_procurar_ft_adc_usuario.setMaximumSize(QSize(200, 16777215))
+
+        self.horizontalLayout_32.addWidget(self.btn_procurar_ft_adc_usuario)
+
+        self.label_img_adc_usuario = QLabel(self.frame_27)
+        self.label_img_adc_usuario.setObjectName(u"label_img_adc_usuario")
+        self.label_img_adc_usuario.setMaximumSize(QSize(200, 200))
+
+        self.horizontalLayout_32.addWidget(self.label_img_adc_usuario)
+
+
+        self.verticalLayout_36.addWidget(self.frame_27)
+
+        self.btn_adc_usuario = QPushButton(self.config_usuarios_2)
+        self.btn_adc_usuario.setObjectName(u"btn_adc_usuario")
+
+        self.verticalLayout_36.addWidget(self.btn_adc_usuario)
 
         self.stackedWidget_4.addWidget(self.config_usuarios_2)
 
@@ -1811,15 +1932,15 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(4)
         self.stackedWidget_7.setCurrentIndex(0)
         self.stackedWidget_2.setCurrentIndex(2)
         self.stackedWidget_6.setCurrentIndex(0)
         self.stackedWidget_3.setCurrentIndex(2)
         self.input_categoria_produto.setCurrentIndex(-1)
         self.input_categoria_produto_2.setCurrentIndex(-1)
-        self.tabWidget.setCurrentIndex(1)
-        self.stackedWidget_4.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(0)
+        self.stackedWidget_4.setCurrentIndex(1)
         self.stackedWidget_5.setCurrentIndex(1)
 
 
@@ -1902,12 +2023,13 @@ class Ui_TelaPrincipal(object):
         self.txt_pdv_nome_2.setText("")
         self.txt_pdv_valor_2.setText("")
         self.input_pdv_quant_2.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"KG", None))
-        self.btn_adc_carrinho_2.setText(QCoreApplication.translate("TelaPrincipal", u"PushButton", None))
+        self.btn_adc_carrinho_2.setText(QCoreApplication.translate("TelaPrincipal", u"Adicionar ao Carrinho", None))
         ___qtreewidgetitem1 = self.tabela_carrinho.headerItem()
         ___qtreewidgetitem1.setText(3, QCoreApplication.translate("TelaPrincipal", u"Total", None));
         ___qtreewidgetitem1.setText(2, QCoreApplication.translate("TelaPrincipal", u"Pre\u00e7o Un.", None));
         ___qtreewidgetitem1.setText(1, QCoreApplication.translate("TelaPrincipal", u"Qtd.", None));
         ___qtreewidgetitem1.setText(0, QCoreApplication.translate("TelaPrincipal", u"Produto", None));
+        self.btn_remover_produto_carrinho.setText(QCoreApplication.translate("TelaPrincipal", u"Remover Produto do Carrinho", None))
         self.txt_valor_total_texto.setText(QCoreApplication.translate("TelaPrincipal", u"Valor Total", None))
         self.txt_valor_total.setText("")
         self.input_pdv_forma_pagamento.setItemText(0, QCoreApplication.translate("TelaPrincipal", u"Pix", None))
@@ -1959,21 +2081,30 @@ class Ui_TelaPrincipal(object):
         self.label_faturamento.setText("")
         self.label_4.setText(QCoreApplication.translate("TelaPrincipal", u"Formas de Pagamento Usadas", None))
         ___qtreewidgetitem3 = self.treeWidget_2.headerItem()
+        ___qtreewidgetitem3.setText(5, QCoreApplication.translate("TelaPrincipal", u"PERMISS\u00c3O", None));
         ___qtreewidgetitem3.setText(4, QCoreApplication.translate("TelaPrincipal", u"TELEFONE", None));
         ___qtreewidgetitem3.setText(3, QCoreApplication.translate("TelaPrincipal", u"CPF", None));
         ___qtreewidgetitem3.setText(2, QCoreApplication.translate("TelaPrincipal", u"EMAIL", None));
         ___qtreewidgetitem3.setText(1, QCoreApplication.translate("TelaPrincipal", u"NOME", None));
         ___qtreewidgetitem3.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
         self.btn_adc_user.setText(QCoreApplication.translate("TelaPrincipal", u"Adicionar Usuario", None))
-        self.btn_adc_usuario.setText(QCoreApplication.translate("TelaPrincipal", u"Criar Usuario", None))
+        self.txt_senha.setText(QCoreApplication.translate("TelaPrincipal", u"Senha", None))
         self.input_senha_adc_usuario.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Senha", None))
+        self.txt_nome.setText(QCoreApplication.translate("TelaPrincipal", u"Nome", None))
         self.input_nome_adc_usuario.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Nome", None))
-        self.btn_procurar_ft_adc_usuario.setText(QCoreApplication.translate("TelaPrincipal", u"Procurar Foto", None))
+        self.txt_email.setText(QCoreApplication.translate("TelaPrincipal", u"Email", None))
+        self.input_email_adc_usuario.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Email", None))
+        self.txt_cpf.setText(QCoreApplication.translate("TelaPrincipal", u"CPF", None))
+        self.input_cpf_adc_usuario.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"CPF", None))
+        self.txt_permissoes.setText(QCoreApplication.translate("TelaPrincipal", u"Permiss\u00f5es", None))
+        self.perm_n.setText(QCoreApplication.translate("TelaPrincipal", u"N\u00e3o", None))
+        self.perm_s.setText(QCoreApplication.translate("TelaPrincipal", u"Sim", None))
+        self.txt_telefone.setText(QCoreApplication.translate("TelaPrincipal", u"Telefone", None))
         self.input_telefone_adc_usuario.setInputMask("")
         self.input_telefone_adc_usuario.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Telefone", None))
-        self.input_email_adc_usuario.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Email", None))
-        self.input_cpf_adc_usuario.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"CPF", None))
+        self.btn_procurar_ft_adc_usuario.setText(QCoreApplication.translate("TelaPrincipal", u"Procurar Foto", None))
         self.label_img_adc_usuario.setText("")
+        self.btn_adc_usuario.setText(QCoreApplication.translate("TelaPrincipal", u"Criar Usuario", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tela_config_1), QCoreApplication.translate("TelaPrincipal", u"Tab 1", None))
         ___qtreewidgetitem4 = self.tabela_categoria.headerItem()
         ___qtreewidgetitem4.setText(1, QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None));
