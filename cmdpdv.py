@@ -440,6 +440,25 @@ class cmdPdv():
             cursor.execute(comando, valores)
             self.conexao.commit()
 
+# Update caixa - Fixed version
+        comando = "SELECT data_abertura FROM caixa WHERE id_user = %s ORDER BY data_abertura DESC LIMIT 1"
+        cursor.execute(comando, (id_user,))
+        data_abertura = cursor.fetchone()[0]  # Get single value instead of tuple
+
+        comando = "SELECT saldo_atual FROM caixa WHERE id_user = %s AND data_abertura = %s"
+        valores = (id_user, data_abertura)
+        cursor.execute(comando, valores)
+        saldo_atual = cursor.fetchone()[0]
+
+        if saldo_atual is None:
+            saldo_atual = 0
+
+        saldo_atual += self.total_geral
+        comando = "UPDATE caixa SET saldo_atual = %s WHERE id_user = %s AND data_abertura = %s"
+        valores = (saldo_atual, id_user, data_abertura)
+        cursor.execute(comando, valores)
+        self.conexao.commit()
+
         QMessageBox.information(None, "Sucesso", "Obrigado por Comprar no Mercado do Celsadas")
         self.tabela.clear()
         self.tela_principal.txt_valor_total.setText("R$ 00,00")

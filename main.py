@@ -48,8 +48,13 @@ class main(QMainWindow):
         self.tela_principal.btn_fechar_caixa.clicked.connect(self.telaprin.tela_fechar_caixa)
         self.tela_principal.btn_sangria.clicked.connect(self.telaprin.tela_sangria)
         self.tela_principal.btn_suprimento.clicked.connect(self.telaprin.tela_suprimento)
+        self.tela_principal.btn_cancelar_sangria.clicked.connect(self.telaprin.cancelar_acao)
+        self.tela_principal.btn_cancelar_suprimento.clicked.connect(self.telaprin.cancelar_acao)
 
-
+        self.tela_principal.btn_confirmar_abrir.clicked.connect(self.telaprin.abrir_caixa)
+        self.tela_principal.btn_confirmar_sangria.clicked.connect(self.telaprin.registrar_sangria)
+        self.tela_principal.btn_confirmar_suprimento.clicked.connect(self.telaprin.registrar_suprimento)
+        self.tela_principal.btn_confirmar_fechar.clicked.connect(self.telaprin.fechar_caixa)
 
     def telapdv(self):
         self.tela_principal.stackedWidget.setCurrentIndex(1)

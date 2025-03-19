@@ -9,9 +9,24 @@ CREATE TABLE usuarios (
     cpf VARCHAR(14) UNIQUE NOT NULL,
     telefone VARCHAR(15),
     senha VARCHAR(255) NOT NULL,
+    perm char(1),
     foto VARCHAR(255),
     data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
     ativo BOOLEAN DEFAULT TRUE
+);
+
+create table caixa(
+	id_caixa int primary key auto_increment,
+    id_user int,
+    foreign key (id_user) references usuarios(id_usuario),
+    saldo_ini float,
+    saldo_atual float,
+    saldo_final float,
+    data_abertura DATETIME,
+    data_fechar DATETIME,
+	valor_sangria float,
+    valor_suprimento float,
+    status char(1) default "0"
 );
 
 CREATE TABLE categorias (
@@ -27,6 +42,7 @@ CREATE TABLE estoque (
     quantidade INT NOT NULL DEFAULT 0,
     categoria INT NOT NULL,
     data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    imagem varchar(100),
     FOREIGN KEY (categoria) REFERENCES categorias(id_categorias) ON DELETE RESTRICT
 );
 
@@ -55,12 +71,19 @@ CREATE TABLE itens_venda (
     FOREIGN KEY (id_produto) REFERENCES estoque(id_produto) ON DELETE RESTRICT
 );
 
-INSERT INTO usuarios (nome, email, cpf, telefone, senha, foto, ativo) 
-VALUES ('Admin', 'admin@email.com', '000.000.000-00', '(00) 00000-0000', SHA2('admin', 256), NULL, true);
+INSERT INTO usuarios (nome, email, cpf, telefone, senha, perm, foto, ativo) 
+VALUES ('Admin', 'admin@email.com', '000.000.000-00', '(00) 00000-0000', SHA2('admin', 256), "1", NULL, true);
 
+INSERT INTO formapagamento (forma_pagamento) 
+VALUES 
+    ("Pix"), 
+    ("Débito"), 
+    ("Crédito"), 
+    ("Dinheiro");
 select * from categorias;
 select * from formapagamento;
 select * from estoque;
 select * from usuarios;
 select * from vendas;
 select * from itens_venda;
+select * from caixa;
