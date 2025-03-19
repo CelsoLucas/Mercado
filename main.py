@@ -70,6 +70,9 @@ class main(QMainWindow):
         self.tela_principal.btn_adc_produto_estoque.clicked.connect(self.estoque.tela_adc_produto)
         self.tela_principal.btn_adc_foto_produto.clicked.connect(self.estoque.open_image)
         self.tela_principal.btn_adc_produto.clicked.connect(self.estoque.adc_produto_estoque)
+        self.tela_principal.btn_editar_produto.clicked.connect(self.estoque.editar_produto)
+        self.tela_principal.btn_adc_produto_2.clicked.connect(self.estoque.confirmar_atualizacao)
+        self.tela_principal.btn_adc_foto_produto_2.clicked.connect(self.estoque.open_image)
 
     def telarelatorios(self):
         self.tela_principal.stackedWidget.setCurrentIndex(3)

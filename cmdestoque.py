@@ -4,6 +4,7 @@ from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap
 import os
 import shutil
+import re
 
 class cmdEstoque():
     def __init__(self, tela_principal):
@@ -104,7 +105,8 @@ class cmdEstoque():
             
         for id_cat, nome_cat in categorias:
             self.tela_principal.input_categoria_produto.addItem(nome_cat, id_cat)  
-            
+            self.tela_principal.input_categoria_produto_2.addItem(nome_cat, id_cat)  
+
         self.tela_principal.input_categoria_produto.setCurrentIndex(-1) 
             
         cursor.close()
@@ -203,6 +205,8 @@ class cmdEstoque():
             pixmap = QPixmap(absolute_path)
             self.tela_principal.img_produto_estoque.setPixmap(pixmap)
             self.tela_principal.img_produto_estoque.setScaledContents(True)
+            self.tela_principal.img_produto_estoque_2.setPixmap(pixmap)
+            self.tela_principal.img_produto_estoque_2.setScaledContents(True)
 
     def categoria(self):
         if self.tela_principal.input_categoria_produto.currentText() == "HortiFruti" or self.tela_principal.input_categoria_produto.currentText() == "Fruta":
@@ -210,3 +214,101 @@ class cmdEstoque():
             self.tela_principal.input_preco_produto.setPlaceholderText("KG")
             self.tela_principal.txt_quantidade_estoque.setText("Quantidade em KG")
             self.tela_principal.input_quantidade_produto.setPlaceholderText("KG")
+        
+    def editar_produto(self):
+        item_selecionado = self.tela_principal.treeWidget.currentItem()
+        if item_selecionado == None:
+            QMessageBox.warning(None, "error", "Selecione um Produto")
+            return
+        
+        self.id_produto = item_selecionado.text(0)
+        nome = item_selecionado.text(1)
+
+        cursor = self.conexao.get_cursor()
+        comando = "select preco from estoque where id_produto = %s"
+        cursor.execute(comando, (self.id_produto, ))
+        preco = cursor.fetchone()[0]
+
+        quantidade = item_selecionado.text(3)
+        categoria = item_selecionado.text(4)
+
+
+        self.tela_principal.input_nome_produto_2.setText(nome)
+        self.tela_principal.input_categoria_produto_2.setCurrentText(categoria)
+        self.tela_principal.input_quantidade_produto_2.setText(quantidade)
+        self.tela_principal.input_preco_produto_2.setText(f"{int(preco)}")
+
+        comando = "select imagem from estoque where id_produto = %s"
+        cursor.execute(comando, (self.id_produto, ))
+        self.absolute_path = cursor.fetchone()[0]
+        pixmap = QPixmap(self.absolute_path)
+        self.tela_principal.img_produto_estoque_2.setPixmap(pixmap)
+        self.tela_principal.img_produto_estoque_2.setScaledContents(True)
+
+        self.tela_principal.stackedWidget_3.setCurrentIndex(2)
+
+    def confirmar_atualizacao(self):
+
+        cursor = self.conexao.get_cursor()
+
+        self.nome = self.tela_principal.input_nome_produto_2.text()
+
+        
+        if self.nome and not self.nome.replace(" ", "").isalpha():
+            QMessageBox.warning(None, "Erro", "Apenas letras no Nome do Produto!")
+            return
+
+        categoria_index = self.tela_principal.input_categoria_produto_2.currentIndex() + 1
+        if not categoria_index:   
+            QMessageBox.warning(None, "Erro", "Selecione uma categoria!")
+            return
+
+        preco = self.tela_principal.input_preco_produto_2.text()
+        if preco and not preco.replace(" ", "").isdigit():
+            QMessageBox.warning(None, "Erro", "Valor Invalido!")
+            return
+        if not preco or float(preco) <= 0:
+            QMessageBox.warning(None, "Erro", "Digite um valor válido!")
+            return
+
+        quant = self.tela_principal.input_quantidade_produto_2.text()
+        if quant and not quant.replace(" ", "").isdigit():
+            QMessageBox.warning(None, "Erro", "Quantidade Invalida!")
+            return
+        if not quant or int(quant) <= 0:
+            QMessageBox.warning(None, "Erro", "Digite uma quantidade válida!")
+            return
+
+        comando = "SELECT id_categorias FROM categorias WHERE id_categorias = %s"
+        cursor.execute(comando, (categoria_index,)) 
+        resultado = cursor.fetchone()
+        if not resultado:
+            QMessageBox.warning(None, "Erro", "Categoria não encontrada!")
+            return
+        categoria_id = resultado[0] 
+        
+        if self.new_file_path != "" and self.new_file_path != None:
+            relative_path = os.path.relpath(self.new_file_path, os.getcwd()).replace("\\", "/")
+
+            if relative_path == None or relative_path == "":
+                comando = "select imagem from estoque where id_produto = %s"
+                cursor.execute(comando, (self.id_produto, ))
+                self.new_file_path = cursor.fetchone()[0]
+                relative_path = os.path.relpath(self.new_file_path, os.getcwd()).replace("\\", "/")
+        else:
+            relative_path = self.absolute_path
+
+        comando = """UPDATE estoque SET nome_produto = %s,
+                    categoria = %s, 
+                    preco = %s, 
+                    quantidade = %s, 
+                    imagem = %s
+                    WHERE id_produto = %s
+                """
+        
+        valores = (self.nome, categoria_id, preco, quant, relative_path, self.id_produto)
+        cursor.execute(comando, valores)
+        self.conexao.commit()
+
+        QMessageBox.information(None, "Sucesso", "Produto Atualizado com Sucesso!")
+        self.tela_principal.stackedWidget_3.setCurrentIndex(0)

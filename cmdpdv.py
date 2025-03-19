@@ -256,8 +256,13 @@ class cmdPdv():
         cursor.execute(comando, (nome_produto,))
         resultado = cursor.fetchone()
         self.id, self.nome, self.preco, self.quantidade, self.categoria = resultado
+
+        comando = "select nome_categoria from categorias where id_categorias = %s"
+        cursor.execute(comando, (self.categoria, ))
+        self.categoria = cursor.fetchone()[0]
+
         print(self.categoria)
-        if self.categoria == "HortiFruti" or self.categoria == 2:
+        if self.categoria == "HortiFruti":
             self.tela_principal.stackedWidget_2.setCurrentIndex(2)
             self.tela_principal.txt_pdv_nome_2.setText(f"{self.nome}")
             self.tela_principal.txt_pdv_valor_2.setText(f"R$ {self.preco} Kg")
@@ -287,6 +292,7 @@ class cmdPdv():
             self.tela_principal.input_pdv_quant.setText(f"{cont}")
     
     def adc_carrinho(self):
+
         if self.categoria == "HortiFruti":
             quantidade = float(self.tela_principal.input_pdv_quant_2.text())
         else:
