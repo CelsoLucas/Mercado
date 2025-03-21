@@ -448,16 +448,19 @@ class cmdPdv():
         comando = "SELECT saldo_atual FROM caixa WHERE id_user = %s AND data_abertura = %s"
         valores = (id_user, data_abertura)
         cursor.execute(comando, valores)
-        saldo_atual = cursor.fetchone()[0]
+        resultado = cursor.fetchone()
 
-        if saldo_atual is None:
+        if resultado[0] is None:
             saldo_atual = 0
-
+        else:
+            saldo_atual = resultado[0]
         saldo_atual += self.total_geral
-        comando = "UPDATE caixa SET saldo_atual = %s WHERE id_user = %s AND data_abertura = %s"
-        valores = (saldo_atual, id_user, data_abertura)
-        cursor.execute(comando, valores)
-        self.conexao.commit()
+        print(id_forma_pagamento)
+        if id_forma_pagamento == 4:
+            comando = "UPDATE caixa SET saldo_atual = %s WHERE id_user = %s AND status = 1"
+            valores = (saldo_atual, id_user)
+            cursor.execute(comando, valores)
+            self.conexao.commit()
 
         QMessageBox.information(None, "Sucesso", "Obrigado por Comprar no Mercado do Celsadas")
         self.tabela.clear()
@@ -496,7 +499,7 @@ class cmdPdv():
         if index != -1:  # Verifica se o item foi encontrado
             self.tela_principal.tabela_carrinho.takeTopLevelItem(index)
             self.carrinho.pop(index)
-            
+            self.mostrar_carrinho()
             QMessageBox.information(None, "Sucesso", "Item removido do carrinho!")
         else:
             QMessageBox.warning(None, "Erro", "Falha ao localizar o item no carrinho!")

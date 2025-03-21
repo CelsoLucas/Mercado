@@ -29,6 +29,17 @@ create table caixa(
     status char(1) default "0"
 );
 
+create table mov_caixa(
+	id int primary key auto_increment,
+    id_user int,
+    foreign key (id_user) references usuarios(id_usuario),
+    data_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
+    descricao varchar(25),
+    formapagamento varchar(15),
+    obs text,
+    valor float
+);
+
 CREATE TABLE categorias (
     id_categorias INT AUTO_INCREMENT PRIMARY KEY,
     nome_categoria VARCHAR(50) NOT NULL UNIQUE,
@@ -87,3 +98,4 @@ select * from usuarios;
 select * from vendas;
 select * from itens_venda;
 select * from caixa;
+select * from mov_caixa;
