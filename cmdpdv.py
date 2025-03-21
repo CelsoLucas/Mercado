@@ -425,7 +425,7 @@ class cmdPdv():
             cursor.execute(comando, (nome,))
             id_produto = cursor.fetchone()[0]
 
-            comando = """insert into itens_venda (id_venda, id_produto, quantidade, preco_unitario, subtotal)
+            comando = """insert into itens_venda (id_venda, id_produto_pedido, quantidade_pedido, preco_unitario, subtotal)
                          values (%s, %s, %s, %s, %s)"""
             valores = (int(id_venda), int(id_produto), float(quantidade), float(preco), float(float(quantidade) * float(preco)))
             cursor.execute(comando, valores)

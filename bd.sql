@@ -74,12 +74,12 @@ CREATE TABLE vendas (
 CREATE TABLE itens_venda (
     id_item INT AUTO_INCREMENT PRIMARY KEY,
     id_venda INT NOT NULL,
-    id_produto INT NOT NULL,
-    quantidade INT NOT NULL,
+    id_produto_pedido INT NOT NULL,
+    quantidade_pedido INT NOT NULL,
     preco_unitario DECIMAL(10, 2) NOT NULL,
-    subtotal DECIMAL(10, 2) AS (quantidade * preco_unitario) STORED,
+    subtotal DECIMAL(10, 2) AS (quantidade_pedido * preco_unitario) STORED,
     FOREIGN KEY (id_venda) REFERENCES vendas(id_venda) ON DELETE CASCADE,
-    FOREIGN KEY (id_produto) REFERENCES estoque(id_produto) ON DELETE RESTRICT
+    FOREIGN KEY (id_produto_pedido) REFERENCES estoque(id_produto) ON DELETE RESTRICT
 );
 
 INSERT INTO usuarios (nome, email, cpf, telefone, senha, perm, foto, ativo) 

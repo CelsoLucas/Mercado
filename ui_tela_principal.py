@@ -921,7 +921,7 @@ class Ui_TelaPrincipal(object):
         self.mostruario_cards2_2.setWidgetResizable(True)
         self.mostruario_cards = QWidget()
         self.mostruario_cards.setObjectName(u"mostruario_cards")
-        self.mostruario_cards.setGeometry(QRect(0, 0, 63, 16))
+        self.mostruario_cards.setGeometry(QRect(0, 0, 80, 16))
         self.mostruario_cards2_2.setWidget(self.mostruario_cards)
 
         self.verticalLayout_8.addWidget(self.mostruario_cards2_2)
@@ -1520,16 +1520,14 @@ class Ui_TelaPrincipal(object):
 
         self.verticalLayout_31.addWidget(self.txt_produtos_mais_vendidos, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
 
-        self.frame_produtos_mais_vendidos = QFrame(self.layout_relatorios_3)
-        self.frame_produtos_mais_vendidos.setObjectName(u"frame_produtos_mais_vendidos")
-        sizePolicy1.setHeightForWidth(self.frame_produtos_mais_vendidos.sizePolicy().hasHeightForWidth())
-        self.frame_produtos_mais_vendidos.setSizePolicy(sizePolicy1)
-        self.frame_produtos_mais_vendidos.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_produtos_mais_vendidos.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_41 = QVBoxLayout(self.frame_produtos_mais_vendidos)
-        self.verticalLayout_41.setObjectName(u"verticalLayout_41")
+        self.frame_estoque_alerta = QFrame(self.layout_relatorios_3)
+        self.frame_estoque_alerta.setObjectName(u"frame_estoque_alerta")
+        sizePolicy1.setHeightForWidth(self.frame_estoque_alerta.sizePolicy().hasHeightForWidth())
+        self.frame_estoque_alerta.setSizePolicy(sizePolicy1)
+        self.frame_estoque_alerta.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_estoque_alerta.setFrameShadow(QFrame.Shadow.Raised)
 
-        self.verticalLayout_31.addWidget(self.frame_produtos_mais_vendidos)
+        self.verticalLayout_31.addWidget(self.frame_estoque_alerta)
 
 
         self.gridLayout_2.addWidget(self.layout_relatorios_3, 3, 1, 1, 1)
@@ -1547,16 +1545,14 @@ class Ui_TelaPrincipal(object):
 
         self.verticalLayout_29.addWidget(self.txt_vendas_ultimos_6_meses, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
 
-        self.frame_vendas_ultimos_seis_meses = QFrame(self.layout_relatorios_1)
-        self.frame_vendas_ultimos_seis_meses.setObjectName(u"frame_vendas_ultimos_seis_meses")
-        sizePolicy1.setHeightForWidth(self.frame_vendas_ultimos_seis_meses.sizePolicy().hasHeightForWidth())
-        self.frame_vendas_ultimos_seis_meses.setSizePolicy(sizePolicy1)
-        self.frame_vendas_ultimos_seis_meses.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_vendas_ultimos_seis_meses.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_40 = QVBoxLayout(self.frame_vendas_ultimos_seis_meses)
-        self.verticalLayout_40.setObjectName(u"verticalLayout_40")
+        self.frame_produtos_mai_vendidos = QFrame(self.layout_relatorios_1)
+        self.frame_produtos_mai_vendidos.setObjectName(u"frame_produtos_mai_vendidos")
+        sizePolicy1.setHeightForWidth(self.frame_produtos_mai_vendidos.sizePolicy().hasHeightForWidth())
+        self.frame_produtos_mai_vendidos.setSizePolicy(sizePolicy1)
+        self.frame_produtos_mai_vendidos.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_produtos_mai_vendidos.setFrameShadow(QFrame.Shadow.Raised)
 
-        self.verticalLayout_29.addWidget(self.frame_vendas_ultimos_seis_meses)
+        self.verticalLayout_29.addWidget(self.frame_produtos_mai_vendidos)
 
 
         self.gridLayout_2.addWidget(self.layout_relatorios_1, 1, 0, 1, 3)
@@ -1575,12 +1571,14 @@ class Ui_TelaPrincipal(object):
 
         self.verticalLayout_30.addWidget(self.txt_lucro_prejuizo, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
 
-        self.label_faturamento = QLabel(self.layout_relatorios_2)
-        self.label_faturamento.setObjectName(u"label_faturamento")
-        sizePolicy1.setHeightForWidth(self.label_faturamento.sizePolicy().hasHeightForWidth())
-        self.label_faturamento.setSizePolicy(sizePolicy1)
+        self.top_5_operadores = QFrame(self.layout_relatorios_2)
+        self.top_5_operadores.setObjectName(u"top_5_operadores")
+        sizePolicy1.setHeightForWidth(self.top_5_operadores.sizePolicy().hasHeightForWidth())
+        self.top_5_operadores.setSizePolicy(sizePolicy1)
+        self.top_5_operadores.setFrameShape(QFrame.Shape.StyledPanel)
+        self.top_5_operadores.setFrameShadow(QFrame.Shadow.Raised)
 
-        self.verticalLayout_30.addWidget(self.label_faturamento, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
+        self.verticalLayout_30.addWidget(self.top_5_operadores)
 
 
         self.gridLayout_2.addWidget(self.layout_relatorios_2, 3, 0, 1, 1)
@@ -1932,7 +1930,7 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(3)
         self.stackedWidget_7.setCurrentIndex(0)
         self.stackedWidget_2.setCurrentIndex(2)
         self.stackedWidget_6.setCurrentIndex(0)
@@ -2075,11 +2073,10 @@ class Ui_TelaPrincipal(object):
         self.txt_categoria_estoque_2.setText(QCoreApplication.translate("TelaPrincipal", u"Categoria", None))
         self.input_categoria_produto_2.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None))
         self.btn_adc_produto_2.setText(QCoreApplication.translate("TelaPrincipal", u"Adicionar Produto", None))
-        self.txt_produtos_mais_vendidos.setText(QCoreApplication.translate("TelaPrincipal", u"Produtos mais Vendidos", None))
-        self.txt_vendas_ultimos_6_meses.setText(QCoreApplication.translate("TelaPrincipal", u"Vendas dos Ultimos 6 meses", None))
-        self.txt_lucro_prejuizo.setText(QCoreApplication.translate("TelaPrincipal", u"Faturamento", None))
-        self.label_faturamento.setText("")
-        self.label_4.setText(QCoreApplication.translate("TelaPrincipal", u"Formas de Pagamento Usadas", None))
+        self.txt_produtos_mais_vendidos.setText(QCoreApplication.translate("TelaPrincipal", u"Estoque em Alerta", None))
+        self.txt_vendas_ultimos_6_meses.setText(QCoreApplication.translate("TelaPrincipal", u"PRODUTOS MAIS VENDIDOS", None))
+        self.txt_lucro_prejuizo.setText(QCoreApplication.translate("TelaPrincipal", u"Desempenho por Operador (TOP 5)", None))
+        self.label_4.setText(QCoreApplication.translate("TelaPrincipal", u"Taxa de Pagamento por Forma", None))
         ___qtreewidgetitem3 = self.treeWidget_2.headerItem()
         ___qtreewidgetitem3.setText(5, QCoreApplication.translate("TelaPrincipal", u"PERMISS\u00c3O", None));
         ___qtreewidgetitem3.setText(4, QCoreApplication.translate("TelaPrincipal", u"TELEFONE", None));

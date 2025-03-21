@@ -356,7 +356,7 @@
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>4</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -1668,7 +1668,7 @@
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>63</width>
+                       <width>80</width>
                        <height>16</height>
                       </rect>
                      </property>
@@ -2727,12 +2727,12 @@ border-radius: 20px;</string>
                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
                      <widget class="QLabel" name="txt_produtos_mais_vendidos">
                       <property name="text">
-                       <string>Produtos mais Vendidos</string>
+                       <string>Estoque em Alerta</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="frame_produtos_mais_vendidos">
+                     <widget class="QFrame" name="frame_estoque_alerta">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                         <horstretch>0</horstretch>
@@ -2745,7 +2745,6 @@ border-radius: 20px;</string>
                       <property name="frameShadow">
                        <enum>QFrame::Shadow::Raised</enum>
                       </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_41"/>
                      </widget>
                     </item>
                    </layout>
@@ -2767,12 +2766,12 @@ border-radius: 20px;</string>
                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
                      <widget class="QLabel" name="txt_vendas_ultimos_6_meses">
                       <property name="text">
-                       <string>Vendas dos Ultimos 6 meses</string>
+                       <string>PRODUTOS MAIS VENDIDOS</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="frame_vendas_ultimos_seis_meses">
+                     <widget class="QFrame" name="frame_produtos_mai_vendidos">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                         <horstretch>0</horstretch>
@@ -2785,7 +2784,6 @@ border-radius: 20px;</string>
                       <property name="frameShadow">
                        <enum>QFrame::Shadow::Raised</enum>
                       </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_40"/>
                      </widget>
                     </item>
                    </layout>
@@ -2813,20 +2811,23 @@ border-radius: 20px;</string>
                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
                      <widget class="QLabel" name="txt_lucro_prejuizo">
                       <property name="text">
-                       <string>Faturamento</string>
+                       <string>Desempenho por Operador (TOP 5)</string>
                       </property>
                      </widget>
                     </item>
-                    <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-                     <widget class="QLabel" name="label_faturamento">
+                    <item>
+                     <widget class="QFrame" name="top_5_operadores">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                         <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
                       </property>
-                      <property name="text">
-                       <string/>
+                      <property name="frameShape">
+                       <enum>QFrame::Shape::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Shadow::Raised</enum>
                       </property>
                      </widget>
                     </item>
@@ -2855,7 +2856,7 @@ border-radius: 20px;</string>
                     <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
                      <widget class="QLabel" name="label_4">
                       <property name="text">
-                       <string>Formas de Pagamento Usadas</string>
+                       <string>Taxa de Pagamento por Forma</string>
                       </property>
                      </widget>
                     </item>
