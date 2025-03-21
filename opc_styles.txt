@@ -1,0 +1,1347 @@
+1.
+/* Estilo geral para a janela principal */
+QMainWindow {
+    background-color: #F5F6FA;
+}
+
+/* Menu superior */
+#menu {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E0E4E8;
+    padding: 10px;
+}
+
+#img_logo {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2D3748;
+}
+
+#txt_ola_user {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    color: #4A5568;
+}
+
+#btn_sair {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+}
+
+#btn_sair:hover {
+    background-color: #EDF2F7;
+    border-radius: 5px;
+}
+
+/* Menu lateral */
+#menu_lateral {
+    background-color: #2D3748;
+    border-right: 1px solid #E0E4E8;
+}
+
+#btn_tela_principal, #btn_pdv, #btn_estoque, #btn_relatorios, #btn_configuracoes {
+    background-color: #2D3748;
+    color: #E2E8F0;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 15px;
+    text-align: left;
+    border: none;
+    border-radius: 8px;
+    margin: 5px 10px;
+}
+
+#btn_tela_principal:hover, #btn_pdv:hover, #btn_estoque:hover, 
+#btn_relatorios:hover, #btn_configuracoes:hover {
+    background-color: #4A5568;
+    color: #FFFFFF;
+    transition: background-color 0.2s ease;
+}
+
+/* Área principal */
+#_info_principal {
+    background-color: #F5F6FA;
+    padding: 20px;
+}
+
+/* Botões gerais */
+QPushButton {
+    background-color: #4C51BF;
+    color: #FFFFFF;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+}
+
+QPushButton:hover {
+    background-color: #5A67D8;
+    transition: background-color 0.2s ease;
+}
+
+QPushButton:pressed {
+    background-color: #434190;
+}
+
+/* Inputs */
+QLineEdit, QTextEdit {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #2D3748;
+}
+
+QLineEdit:focus, QTextEdit:focus {
+    border: 1px solid #4C51BF;
+    box-shadow: 0 0 5px rgba(76, 81, 191, 0.3);
+}
+
+/* ComboBox */
+QComboBox {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #2D3748;
+}
+
+QComboBox:hover {
+    border: 1px solid #CBD5E0;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    selection-background-color: #4C51BF;
+    selection-color: #FFFFFF;
+}
+
+/* Frames */
+QFrame {
+    background-color: transparent;
+}
+
+#layout_dados_sem_tabela, #lado_esquerdo, #lado_direito {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Labels */
+QLabel {
+    font-family: "Segoe UI", sans-serif;
+    color: #2D3748;
+}
+
+#txt_resumo_mov, #txt_mov_gaveta, #txt_recebimento_vendas {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#txt_data, #txt_abertura_db, #txt_operador_db {
+    font-size: 14px;
+    color: #4A5568;
+}
+
+/* Tabelas */
+QTreeWidget {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 5px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+}
+
+QTreeWidget::item {
+    padding: 8px;
+}
+
+QTreeWidget::item:hover {
+    background-color: #EDF2F7;
+}
+
+QTreeWidget::item:selected {
+    background-color: #4C51BF;
+    color: #FFFFFF;
+}
+
+QHeaderView::section {
+    background-color: #E2E8F0;
+    padding: 8px;
+    border: none;
+    font-weight: bold;
+    color: #2D3748;
+}
+
+/* Scroll Area */
+QScrollArea {
+    background-color: transparent;
+    border: none;
+}
+
+QScrollBar:vertical {
+    background: #E2E8F0;
+    width: 10px;
+    margin: 0;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background: #A0AEC0;
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+/* Tab Widget */
+QTabWidget::pane {
+    border: 1px solid #E2E8F0;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+}
+
+QTabBar::tab {
+    background-color: #E2E8F0;
+    color: #4A5568;
+    padding: 10px 20px;
+    margin-right: 2px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+QTabBar::tab:selected {
+    background-color: #FFFFFF;
+    color: #2D3748;
+    border-bottom: 2px solid #4C51BF;
+}
+
+QTabBar::tab:hover:!selected {
+    background-color: #EDF2F7;
+}
+
+/* Estilo específico para relatórios */
+#layout_relatorios_1, #layout_relatorios_2, #layout_relatorios_3, #layout_relatorios_4 {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Botões de ação (ex.: Abrir Caixa, Fechar Caixa) */
+#btn_abrir_caixa, #btn_fechar_caixa, #btn_sangria, #btn_suprimento {
+    background-color: #38A169;
+}
+
+#btn_abrir_caixa:hover, #btn_fechar_caixa:hover, #btn_sangria:hover, #btn_suprimento:hover {
+    background-color: #48BB78;
+}
+
+/* Botões de cancelar */
+#btn_cancelar_sangria, #btn_cancelar_suprimento {
+    background-color: #E53E3E;
+}
+
+#btn_cancelar_sangria:hover, #btn_cancelar_suprimento:hover {
+    background-color: #F56565;
+}
+
+=-==-=--=--=-=-=-==-=-=-=-=-==-=-=-=-=-==-=-=-=-=-=-=-==-=-=-=-=-==-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+
+/* Estilo geral para a janela principal */
+QMainWindow {
+    background-color: #F7F4F9; /* Cinza claro com leve tom roxo */
+}
+
+/* Menu superior */
+#menu {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #D6D3D1;
+    padding: 10px;
+}
+
+#img_logo {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #4B3F72; /* Roxo escuro sofisticado */
+}
+
+#txt_ola_user {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    color: #6B7280; /* Cinza médio */
+}
+
+#btn_sair {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+}
+
+#btn_sair:hover {
+    background-color: #EDE9FE;
+    border-radius: 5px;
+}
+
+/* Menu lateral */
+#menu_lateral {
+    background-color: #4B3F72; /* Roxo escuro */
+    border-right: 1px solid #D6D3D1;
+}
+
+#btn_tela_principal, #btn_pdv, #btn_estoque, #btn_relatorios, #btn_configuracoes {
+    background-color: #4B3F72;
+    color: #EDE9FE; /* Roxo claro para texto */
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 15px;
+    text-align: left;
+    border: none;
+    border-radius: 8px;
+    margin: 5px 10px;
+}
+
+#btn_tela_principal:hover, #btn_pdv:hover, #btn_estoque:hover, 
+#btn_relatorios:hover, #btn_configuracoes:hover {
+    background-color: #6D597A; /* Roxo médio */
+    color: #FFFFFF;
+    transition: background-color 0.2s ease;
+}
+
+/* Área principal */
+#_info_principal {
+    background-color: #F7F4F9;
+    padding: 20px;
+}
+
+/* Botões gerais */
+QPushButton {
+    background-color: #7C3AED; /* Roxo vibrante */
+    color: #FFFFFF;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+}
+
+QPushButton:hover {
+    background-color: #9F67FA; /* Roxo mais claro */
+    transition: background-color 0.2s ease;
+}
+
+QPushButton:pressed {
+    background-color: #6D28D9; /* Roxo mais escuro */
+}
+
+/* Inputs */
+QLineEdit, QTextEdit {
+    background-color: #FFFFFF;
+    border: 1px solid #D6D3D1;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #4B3F72;
+}
+
+QLineEdit:focus, QTextEdit:focus {
+    border: 1px solid #7C3AED;
+    box-shadow: 0 0 5px rgba(124, 58, 237, 0.3);
+}
+
+/* ComboBox */
+QComboBox {
+    background-color: #FFFFFF;
+    border: 1px solid #D6D3D1;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #4B3F72;
+}
+
+QComboBox:hover {
+    border: 1px solid #B6BCCA;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    border: 1px solid #D6D3D1;
+    selection-background-color: #7C3AED;
+    selection-color: #FFFFFF;
+}
+
+/* Frames */
+QFrame {
+    background-color: transparent;
+}
+
+#layout_dados_sem_tabela, #lado_esquerdo, #lado_direito {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Labels */
+QLabel {
+    font-family: "Segoe UI", sans-serif;
+    color: #4B3F72;
+}
+
+#txt_resumo_mov, #txt_mov_gaveta, #txt_recebimento_vendas {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#txt_data, #txt_abertura_db, #txt_operador_db {
+    font-size: 14px;
+    color: #6B7280;
+}
+
+/* Tabelas */
+QTreeWidget {
+    background-color: #FFFFFF;
+    border: 1px solid #D6D3D1;
+    border-radius: 6px;
+    padding: 5px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+}
+
+QTreeWidget::item {
+    padding: 8px;
+}
+
+QTreeWidget::item:hover {
+    background-color: #EDE9FE;
+}
+
+QTreeWidget::item:selected {
+    background-color: #7C3AED;
+    color: #FFFFFF;
+}
+
+QHeaderView::section {
+    background-color: #D6D3D1;
+    padding: 8px;
+    border: none;
+    font-weight: bold;
+    color: #4B3F72;
+}
+
+/* Scroll Area */
+QScrollArea {
+    background-color: transparent;
+    border: none;
+}
+
+QScrollBar:vertical {
+    background: #D6D3D1;
+    width: 10px;
+    margin: 0;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background: #9CA3AF;
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+/* Tab Widget */
+QTabWidget::pane {
+    border: 1px solid #D6D3D1;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+}
+
+QTabBar::tab {
+    background-color: #D6D3D1;
+    color: #6B7280;
+    padding: 10px 20px;
+    margin-right: 2px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+QTabBar::tab:selected {
+    background-color: #FFFFFF;
+    color: #4B3F72;
+    border-bottom: 2px solid #7C3AED;
+}
+
+QTabBar::tab:hover:!selected {
+    background-color: #EDE9FE;
+}
+
+/* Estilo específico para relatórios */
+#layout_relatorios_1, #layout_relatorios_2, #layout_relatorios_3, #layout_relatorios_4 {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0„Das 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Botões de ação (ex.: Abrir Caixa, Fechar Caixa) */
+#btn_abrir_caixa, #btn_fechar_caixa, #btn_sangria, #btn_suprimento {
+    background-color: #06B6D4; /* Azul ciano */
+}
+
+#btn_abrir_caixa:hover, #btn_fechar_caixa:hover, #btn_sangria:hover, #btn_suprimento:hover {
+    background-color: #22D3EE; /* Azul ciano mais claro */
+}
+
+/* Botões de cancelar */
+#btn_cancelar_sangria, #btn_cancelar_suprimento {
+    background-color: #DC2626; /* Vermelho escuro */
+}
+
+#btn_cancelar_sangria:hover, #btn_cancelar_suprimento:hover {
+    background-color: #F87171; /* Vermelho mais claro */
+}
+
+=-==-=--=--=-=-=-==-=-=-=-=-==-=-=-=-=-==-=-=-=-=-=-=-==-=-=-=-=-==-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+
+/* Estilo geral para a janela principal */
+QMainWindow {
+    background-color: #F9FAFB; /* Cinza claro quase branco */
+}
+
+/* Menu superior */
+#menu {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E5E7EB;
+    padding: 10px;
+}
+
+#img_logo {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1E3A8A; /* Azul-marinho escuro */
+}
+
+#txt_ola_user {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    color: #6B7280; /* Cinza médio */
+}
+
+#btn_sair {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+}
+
+#btn_sair:hover {
+    background-color: #EFF6FF;
+    border-radius: 5px;
+}
+
+/* Menu lateral */
+#menu_lateral {
+    background-color: #1E3A8A; /* Azul-marinho escuro */
+    border-right: 1px solid #E5E7EB;
+}
+
+#btn_tela_principal, #btn_pdv, #btn_estoque, #btn_relatorios, #btn_configuracoes {
+    background-color: #1E3A8A;
+    color: #DBEAFE; /* Azul claro para texto */
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 15px;
+    text-align: left;
+    border: none;
+    border-radius: 8px;
+    margin: 5px 10px;
+}
+
+#btn_tela_principal:hover, #btn_pdv:hover, #btn_estoque:hover, 
+#btn_relatorios:hover, #btn_configuracoes:hover {
+    background-color: #3B82F6; /* Azul médio */
+    color: #FFFFFF;
+    transition: background-color 0.2s ease;
+}
+
+/* Área principal */
+#_info_principal {
+    background-color: #F9FAFB;
+    padding: 20px;
+}
+
+/* Botões gerais */
+QPushButton {
+    background-color: #3B82F6; /* Azul médio */
+    color: #FFFFFF;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+}
+
+QPushButton:hover {
+    background-color: #60A5FA; /* Azul mais claro */
+    transition: background-color 0.2s ease;
+}
+
+QPushButton:pressed {
+    background-color: #2563EB; /* Azul mais escuro */
+}
+
+/* Inputs */
+QLineEdit, QTextEdit {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #1E3A8A;
+}
+
+QLineEdit:focus, QTextEdit:focus {
+    border: 1px solid #3B82F6;
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+}
+
+/* ComboBox */
+QComboBox {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #1E3A8A;
+}
+
+QComboBox:hover {
+    border: 1px solid #BFDBFE;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    selection-background-color: #3B82F6;
+    selection-color: #FFFFFF;
+}
+
+/* Frames */
+QFrame {
+    background-color: transparent;
+}
+
+#layout_dados_sem_tabela, #lado_esquerdo, #lado_direito {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Labels */
+QLabel {
+    font-family: "Segoe UI", sans-serif;
+    color: #1E3A8A;
+}
+
+#txt_resumo_mov, #txt_mov_gaveta, #txt_recebimento_vendas {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#txt_data, #txt_abertura_db, #txt_operador_db {
+    font-size: 14px;
+    color: #6B7280;
+}
+
+/* Tabelas */
+QTreeWidget {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 5px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+}
+
+QTreeWidget::item {
+    padding: 8px;
+}
+
+QTreeWidget::item:hover {
+    background-color: #EFF6FF;
+}
+
+QTreeWidget::item:selected {
+    background-color: #3B82F6;
+    color: #FFFFFF;
+}
+
+QHeaderView::section {
+    background-color: #E5E7EB;
+    padding: 8px;
+    border: none;
+    font-weight: bold;
+    color: #1E3A8A;
+}
+
+/* Scroll Area */
+QScrollArea {
+    background-color: transparent;
+    border: none;
+}
+
+QScrollBar:vertical {
+    background: #E5E7EB;
+    width: 10px;
+    margin: 0;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background: #9CA3AF;
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+/* Tab Widget */
+QTabWidget::pane {
+    border: 1px solid #E5E7EB;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+}
+
+QTabBar::tab {
+    background-color: #E5E7EB;
+    color: #6B7280;
+    padding: 10px 20px;
+    margin-right: 2px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+QTabBar::tab:selected {
+    background-color: #FFFFFF;
+    color: #1E3A8A;
+    border-bottom: 2px solid #3B82F6;
+}
+
+QTabBar::tab:hover:!selected {
+    background-color: #EFF6FF;
+}
+
+/* Estilo específico para relatórios */
+#layout_relatorios_1, #layout_relatorios_2, #layout_relatorios_3, #layout_relatorios_4 {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Botões de ação (ex.: Abrir Caixa, Fechar Caixa) */
+#btn_abrir_caixa, #btn_fechar_caixa, #btn_sangria, #btn_suprimento {
+    background-color: #F97316; /* Laranja vibrante */
+}
+
+#btn_abrir_caixa:hover, #btn_fechar_caixa:hover, #btn_sangria:hover, #btn_suprimento:hover {
+    background-color: #FB923C; /* Laranja mais claro */
+}
+
+/* Botões de cancelar */
+#btn_cancelar_sangria, #btn_cancelar_suprimento {
+    background-color: #DC2626; /* Vermelho escuro */
+}
+
+#btn_cancelar_sangria:hover, #btn_cancelar_suprimento:hover {
+    background-color: #F87171; /* Vermelho mais claro */
+}
+
+=-==-=--=--=-=-=-==-=-=-=-=-==-=-=-=-=-==-=-=-=-=-=-=-==-=-=-=-=-==-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+
+/* Estilo geral para a janela principal */
+QMainWindow {
+    background-color: #1F2937; /* Cinza escuro */
+}
+
+/* Menu superior */
+#menu {
+    background-color: #111827; /* Preto acinzentado */
+    border-bottom: 1px solid #374151;
+    padding: 10px;
+}
+
+#img_logo {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #60A5FA; /* Azul claro para destaque */
+}
+
+#txt_ola_user {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    color: #9CA3AF; /* Cinza claro */
+}
+
+#btn_sair {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+}
+
+#btn_sair:hover {
+    background-color: #374151;
+    border-radius: 5px;
+}
+
+/* Menu lateral */
+#menu_lateral {
+    background-color: #111827; /* Preto acinzentado */
+    border-right: 1px solid #374151;
+}
+
+#btn_tela_principal, #btn_pdv, #btn_estoque, #btn_relatorios, #btn_configuracoes {
+    background-color: #111827;
+    color: #D1D5DB; /* Cinza claro para texto */
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 15px;
+    text-align: left;
+    border: none;
+    border-radius: 8px;
+    margin: 5px 10px;
+}
+
+#btn_tela_principal:hover, #btn_pdv:hover, #btn_estoque:hover, 
+#btn_relatorios:hover, #btn_configuracoes:hover {
+    background-color: #1E40AF; /* Azul escuro */
+    color: #FFFFFF;
+    transition: background-color 0.2s ease;
+}
+
+/* Área principal */
+#_info_principal {
+    background-color: #1F2937;
+    padding: 20px;
+}
+
+/* Botões gerais */
+QPushButton {
+    background-color: #1E40AF; /* Azul escuro */
+    color: #FFFFFF;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+}
+
+QPushButton:hover {
+    background-color: #3B82F6; /* Azul médio para hover */
+    transition: background-color 0.2s ease;
+}
+
+QPushButton:pressed {
+    background-color: #1E3A8A; /* Azul mais escuro */
+}
+
+/* Inputs */
+QLineEdit, QTextEdit {
+    background-color: #374151; /* Cinza médio escuro */
+    border: 1px solid #4B5563;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #D1D5DB; /* Cinza claro */
+}
+
+QLineEdit:focus, QTextEdit:focus {
+    border: 1px solid #1E40AF;
+    box-shadow: 0 0 5px rgba(30, 64, 175, 0.5);
+}
+
+/* ComboBox */
+QComboBox {
+    background-color: #374151;
+    border: 1px solid #4B5563;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #D1D5DB;
+}
+
+QComboBox:hover {
+    border: 1px solid #6B7280;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #374151;
+    border: 1px solid #4B5563;
+    selection-background-color: #1E40AF;
+    selection-color: #FFFFFF;
+}
+
+/* Frames */
+QFrame {
+    background-color: transparent;
+}
+
+#layout_dados_sem_tabela, #lado_esquerdo, #lado_direito {
+    background-color: #111827; /* Preto acinzentado */
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Labels */
+QLabel {
+    font-family: "Segoe UI", sans-serif;
+    color: #D1D5DB; /* Cinza claro */
+}
+
+#txt_resumo_mov, #txt_mov_gaveta, #txt_recebimento_vendas {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+#txt_data, #txt_abertura_db, #txt_operador_db {
+    font-size: 14px;
+    color: #9CA3AF; /* Cinza claro */
+}
+
+/* Tabelas */
+QTreeWidget {
+    background-color: #111827;
+    border: 1px solid #4B5563;
+    border-radius: 6px;
+    padding: 5px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #D1D5DB;
+}
+
+QTreeWidget::item {
+    padding: 8px;
+}
+
+QTreeWidget::item:hover {
+    background-color: #374151;
+}
+
+QTreeWidget::item:selected {
+    background-color: #1E40AF;
+    color: #FFFFFF;
+}
+
+QHeaderView::section {
+    background-color: #4B5563;
+    padding: 8px;
+    border: none;
+    font-weight: bold;
+    color: #D1D5DB;
+}
+
+/* Scroll Area */
+QScrollArea {
+    background-color: transparent;
+    border: none;
+}
+
+QScrollBar:vertical {
+    background: #4B5563;
+    width: 10px;
+    margin: 0;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background: #6B7280;
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+/* Tab Widget */
+QTabWidget::pane {
+    border: 1px solid #4B5563;
+    background-color: #111827;
+    border-radius: 6px;
+}
+
+QTabBar::tab {
+    background-color: #4B5563;
+    color: #9CA3AF;
+    padding: 10px 20px;
+    margin-right: 2px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+QTabBar::tab:selected {
+    background-color: #111827;
+    color: #FFFFFF;
+    border-bottom: 2px solid #1E40AF;
+}
+
+QTabBar::tab:hover:!selected {
+    background-color: #374151;
+}
+
+/* Estilo específico para relatórios */
+#layout_relatorios_1, #layout_relatorios_2, #layout_relatorios_3, #layout_relatorios_4 {
+    background-color: #111827;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Botões de ação (ex.: Abrir Caixa, Fechar Caixa) */
+#btn_abrir_caixa, #btn_fechar_caixa, #btn_sangria, #btn_suprimento {
+    background-color: #EF4444; /* Vermelho escuro */
+}
+
+#btn_abrir_caixa:hover, #btn_fechar_caixa:hover, #btn_sangria:hover, #btn_suprimento:hover {
+    background-color: #F87171; /* Vermelho mais claro */
+}
+
+/* Botões de cancelar */
+#btn_cancelar_sangria, #btn_cancelar_suprimento {
+    background-color: #991B1B; /* Vermelho bem escuro */
+}
+
+#btn_cancelar_sangria:hover, #btn_cancelar_suprimento:hover {
+    background-color: #B91C1C; /* Vermelho escuro menos intenso */
+}
+
+=-==-=--=--=-=-=-==-=-=-=-=-==-=-=-=-=-==-=-=-=-=-=-=-==-=-=-=-=-==-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+
+/* Estilo geral para a janela principal */
+QMainWindow {
+    background-color: #0F172A; /* Azul escuro profundo */
+}
+
+/* Menu superior */
+#menu {
+    background-color: #1E293B; /* Azul escuro acinzentado */
+    border-bottom: 1px solid #334155;
+    padding: 10px;
+}
+
+#img_logo {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #22D3EE; /* Ciano brilhante */
+}
+
+#txt_ola_user {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    color: #94A3B8; /* Cinza azulado claro */
+}
+
+#btn_sair {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+}
+
+#btn_sair:hover {
+    background-color: #334155;
+    border-radius: 5px;
+}
+
+/* Menu lateral */
+#menu_lateral {
+    background-color: #1E293B; /* Azul escuro acinzentado */
+    border-right: 1px solid #334155;
+}
+
+#btn_tela_principal, #btn_pdv, #btn_estoque, #btn_relatorios, #btn_configuracoes {
+    background-color: #1E293B;
+    color: #CBD5E1; /* Cinza azulado claro */
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 15px;
+    text-align: left;
+    border: none;
+    border-radius: 8px;
+    margin: 5px 10px;
+}
+
+#btn_tela_principal:hover, #btn_pdv:hover, #btn_estoque:hover, 
+#btn_relatorios:hover, #btn_configuracoes:hover {
+    background-color: #22D3EE; /* Ciano brilhante */
+    color: #0F172A; /* Azul escuro para contraste */
+    transition: background-color 0.2s ease;
+}
+
+/* Área principal */
+#_info_principal {
+    background-color: #0F172A;
+    padding: 20px;
+}
+
+/* Botões gerais */
+QPushButton {
+    background-color: #22D3EE; /* Ciano brilhante */
+    color: #0F172A; /* Azul escuro para contraste */
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+}
+
+QPushButton:hover {
+    background-color: #67E8F9; /* Ciano mais claro */
+    transition: background-color 0.2s ease;
+}
+
+QPushButton:pressed {
+    background-color: #0891B2; /* Ciano escuro */
+}
+
+/* Inputs */
+QLineEdit, QTextEdit {
+    background-color: #334155; /* Cinza azulado escuro */
+    border: 1px solid #475569;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #F1F5F9; /* Branco azulado */
+}
+
+QLineEdit:focus, QTextEdit:focus {
+    border: 1px solid #22D3EE;
+    box-shadow: 0 0 5px rgba(34, 211, 238, 0.5);
+}
+
+/* ComboBox */
+QComboBox {
+    background-color: #334155;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #F1F5F9;
+}
+
+QComboBox:hover {
+    border: 1px solid #67E8F9;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #334155;
+    border: 1px solid #475569;
+    selection-background-color: #22D3EE;
+    selection-color: #0F172A;
+}
+
+/* Frames */
+QFrame {
+    background-color: transparent;
+}
+
+#layout_dados_sem_tabela, #lado_esquerdo, #lado_direito {
+    background-color: #1E293B;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Labels */
+QLabel {
+    font-family: "Segoe UI", sans-serif;
+    color: #CBD5E1; /* Cinza azulado claro */
+}
+
+#txt_resumo_mov, #txt_mov_gaveta, #txt_recebimento_vendas {
+    font-size: 18px;
+    font-weight: bold;
+    color: #F1F5F9; /* Branco azulado */
+}
+
+#txt_data, #txt_abertura_db, #txt_operador_db {
+    font-size: 14px;
+    color: #94A3B8; /* Cinza azulado claro */
+}
+
+/* Tabelas */
+QTreeWidget {
+    background-color: #1E293B;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    padding: 5px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #CBD5E1;
+}
+
+QTreeWidget::item {
+    padding: 8px;
+}
+
+QTreeWidget::item:hover {
+    background-color: #334155;
+}
+
+QTreeWidget::item:selected {
+    background-color: #22D3EE;
+    color: #0F172A;
+}
+
+QHeaderView::section {
+    background-color: #475569;
+    padding: 8px;
+    border: none;
+    font-weight: bold;
+    color: #CBD5E1;
+}
+
+/* Scroll Area */
+QScrollArea {
+    background-color: transparent;
+    border: none;
+}
+
+QScrollBar:vertical {
+    background: #475569;
+    width: 10px;
+    margin: 0;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background: #64748B;
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+/* Tab Widget */
+QTabWidget::pane {
+    border: 1px solid #475569;
+    background-color: #1E293B;
+    border-radius: 6px;
+}
+
+QTabBar::tab {
+    background-color: #475569;
+    color: #94A3B8;
+    padding: 10px 20px;
+    margin-right: 2px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+QTabBar::tab:selected {
+    background-color: #1E293B;
+    color: #F1F5F9;
+    border-bottom: 2px solid #22D3EE;
+}
+
+QTabBar::tab:hover:!selected {
+    background-color: #334155;
+}
+
+/* Estilo específico para relatórios */
+#layout_relatorios_1, #layout_relatorios_2, #layout_relatorios_3, #layout_relatorios_4 {
+    background-color: #1E293B;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Botões de ação (ex.: Abrir Caixa, Fechar Caixa) */
+#btn_abrir_caixa, #btn_fechar_caixa, #btn_sangria, #btn_suprimento {
+    background-color: #A855F7; /* Roxo vibrante */
+    color: #0F172A; /* Azul escuro para contraste */
+}
+
+#btn_abrir_caixa:hover, #btn_fechar_caixa:hover, #btn_sangria:hover, #btn_suprimento:hover {
+    background-color: #C084FC; /* Roxo mais claro */
+}
+
+/* Botões de cancelar */
+#btn_cancelar_sangria, #btn_cancelar_suprimento {
+    background-color: #EF4444; /* Vermelho escuro */
+    color: #FFFFFF;
+}
+
+#btn_cancelar_sangria:hover, #btn_cancelar_suprimento:hover {
+    background-color: #F87171; /* Vermelho mais claro */
+}
+
+=-==-=--=--=-=-=-==-=-=-=-=-==-=-=-=-=-==-=-=-=-=-=-=-==-=-=-=-=-==-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=
+
