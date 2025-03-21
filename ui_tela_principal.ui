@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1260</width>
+    <width>1476</width>
     <height>835</height>
    </rect>
   </property>
@@ -20,7 +20,271 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">/* Estilo geral para a janela principal */
+QMainWindow {
+    background-color: #F5F6FA;
+}
+
+/* Menu superior */
+#menu {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E0E4E8;
+    padding: 10px;
+}
+
+#img_logo {
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2D3748;
+}
+
+#txt_ola_user {
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 16px;
+    color: #4A5568;
+}
+
+#btn_sair {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+}
+
+#btn_sair:hover {
+    background-color: #EDF2F7;
+    border-radius: 5px;
+}
+
+/* Menu lateral */
+#menu_lateral {
+    background-color: #2D3748;
+    border-right: 1px solid #E0E4E8;
+}
+
+#btn_tela_principal, #btn_pdv, #btn_estoque, #btn_relatorios, #btn_configuracoes {
+    background-color: #2D3748;
+    color: #E2E8F0;
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 15px;
+    text-align: left;
+    border: none;
+    border-radius: 8px;
+    margin: 5px 10px;
+}
+
+#btn_tela_principal:hover, #btn_pdv:hover, #btn_estoque:hover, 
+#btn_relatorios:hover, #btn_configuracoes:hover {
+    background-color: #4A5568;
+    color: #FFFFFF;
+    transition: background-color 0.2s ease;
+}
+
+/* Área principal */
+#_info_principal {
+    background-color: #F5F6FA;
+    padding: 20px;
+}
+
+/* Botões gerais */
+QPushButton {
+    background-color: #4C51BF;
+    color: #FFFFFF;
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+}
+
+QPushButton:hover {
+    background-color: #5A67D8;
+    transition: background-color 0.2s ease;
+}
+
+QPushButton:pressed {
+    background-color: #434190;
+}
+
+/* Inputs */
+QLineEdit, QTextEdit {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 14px;
+    color: #2D3748;
+}
+
+QLineEdit:focus, QTextEdit:focus {
+    border: 1px solid #4C51BF;
+    box-shadow: 0 0 5px rgba(76, 81, 191, 0.3);
+}
+
+/* ComboBox */
+QComboBox {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 14px;
+    color: #2D3748;
+}
+
+QComboBox:hover {
+    border: 1px solid #CBD5E0;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    selection-background-color: #4C51BF;
+    selection-color: #FFFFFF;
+}
+
+/* Frames */
+QFrame {
+    background-color: transparent;
+}
+
+#layout_dados_sem_tabela, #lado_esquerdo, #lado_direito {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Labels */
+QLabel {
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    color: #2D3748;
+}
+
+#txt_resumo_mov, #txt_mov_gaveta, #txt_recebimento_vendas {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#txt_data, #txt_abertura_db, #txt_operador_db {
+    font-size: 14px;
+    color: #4A5568;
+}
+
+/* Tabelas */
+QTreeWidget {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 5px;
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 14px;
+}
+
+QTreeWidget::item {
+    padding: 8px;
+}
+
+QTreeWidget::item:hover {
+    background-color: #EDF2F7;
+}
+
+QTreeWidget::item:selected {
+    background-color: #4C51BF;
+    color: #FFFFFF;
+}
+
+QHeaderView::section {
+    background-color: #E2E8F0;
+    padding: 8px;
+    border: none;
+    font-weight: bold;
+    color: #2D3748;
+}
+
+/* Scroll Area */
+QScrollArea {
+    background-color: transparent;
+    border: none;
+}
+
+QScrollBar:vertical {
+    background: #E2E8F0;
+    width: 10px;
+    margin: 0;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background: #A0AEC0;
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+/* Tab Widget */
+QTabWidget::pane {
+    border: 1px solid #E2E8F0;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+}
+
+QTabBar::tab {
+    background-color: #E2E8F0;
+    color: #4A5568;
+    padding: 10px 20px;
+    margin-right: 2px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+QTabBar::tab:selected {
+    background-color: #FFFFFF;
+    color: #2D3748;
+    border-bottom: 2px solid #4C51BF;
+}
+
+QTabBar::tab:hover:!selected {
+    background-color: #EDF2F7;
+}
+
+/* Estilo específico para relatórios */
+#layout_relatorios_1, #layout_relatorios_2, #layout_relatorios_3, #layout_relatorios_4 {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Botões de ação (ex.: Abrir Caixa, Fechar Caixa) */
+#btn_abrir_caixa, #btn_fechar_caixa, #btn_sangria, #btn_suprimento {
+    background-color: #38A169;
+}
+
+#btn_abrir_caixa:hover, #btn_fechar_caixa:hover, #btn_sangria:hover, #btn_suprimento:hover {
+    background-color: #48BB78;
+}
+
+/* Botões de cancelar */
+#btn_cancelar_sangria, #btn_cancelar_suprimento {
+    background-color: #E53E3E;
+}
+
+#btn_cancelar_sangria:hover, #btn_cancelar_suprimento:hover {
+    background-color: #F56565;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_42">
@@ -327,6 +591,29 @@
                    <iconset resource="imgs/icons.qrc">
                     <normaloff>:/icons/settings (1).png</normaloff>:/icons/settings (1).png</iconset>
                   </property>
+                 </widget>
+                </item>
+                <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                 <widget class="QComboBox" name="btn_modo_claro_escuro">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="currentIndex">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Modo Claro</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Modo Escuro</string>
+                   </property>
+                  </item>
                  </widget>
                 </item>
                </layout>
@@ -1668,7 +1955,7 @@
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>80</width>
+                       <width>72</width>
                        <height>16</height>
                       </rect>
                      </property>
@@ -2240,41 +2527,6 @@
                   <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
                    <widget class="QWidget" name="widget" native="true">
                     <layout class="QGridLayout" name="gridLayout_6">
-                     <item row="1" column="0">
-                      <widget class="QFrame" name="frame_3">
-                       <property name="frameShape">
-                        <enum>QFrame::Shape::StyledPanel</enum>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Shadow::Raised</enum>
-                       </property>
-                       <layout class="QVBoxLayout" name="verticalLayout_21">
-                        <item alignment="Qt::AlignmentFlag::AlignBottom">
-                         <widget class="QLabel" name="txt_nome_estoque">
-                          <property name="text">
-                           <string>Nome</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-                         <widget class="QLineEdit" name="input_nome_produto">
-                          <property name="minimumSize">
-                           <size>
-                            <width>400</width>
-                            <height>0</height>
-                           </size>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignmentFlag::AlignCenter</set>
-                          </property>
-                          <property name="placeholderText">
-                           <string>NOME</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
                      <item row="4" column="1" alignment="Qt::AlignmentFlag::AlignHCenter">
                       <widget class="QFrame" name="frame_8">
                        <property name="maximumSize">
@@ -2307,13 +2559,6 @@
                          </widget>
                         </item>
                        </layout>
-                      </widget>
-                     </item>
-                     <item row="4" column="0">
-                      <widget class="QPushButton" name="btn_adc_foto_produto">
-                       <property name="text">
-                        <string>Adicionar Foto</string>
-                       </property>
                       </widget>
                      </item>
                      <item row="2" column="0">
@@ -2349,6 +2594,13 @@
                          </widget>
                         </item>
                        </layout>
+                      </widget>
+                     </item>
+                     <item row="4" column="0">
+                      <widget class="QPushButton" name="btn_adc_foto_produto">
+                       <property name="text">
+                        <string>Adicionar Foto</string>
+                       </property>
                       </widget>
                      </item>
                      <item row="2" column="1">
@@ -2427,6 +2679,80 @@
                        </layout>
                       </widget>
                      </item>
+                     <item row="1" column="0">
+                      <widget class="QFrame" name="frame_3">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_21">
+                        <item alignment="Qt::AlignmentFlag::AlignBottom">
+                         <widget class="QLabel" name="txt_nome_estoque">
+                          <property name="text">
+                           <string>Nome</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+                         <widget class="QLineEdit" name="input_nome_produto">
+                          <property name="minimumSize">
+                           <size>
+                            <width>400</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignmentFlag::AlignCenter</set>
+                          </property>
+                          <property name="placeholderText">
+                           <string>NOME</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item row="1" column="2" alignment="Qt::AlignmentFlag::AlignRight">
+                      <widget class="QFrame" name="frame_30">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_40">
+                        <item>
+                         <widget class="QLabel" name="label">
+                          <property name="text">
+                           <string>Tipo de Valor</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QComboBox" name="input_tipo_valor">
+                          <property name="minimumSize">
+                           <size>
+                            <width>200</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <item>
+                           <property name="text">
+                            <string>Por Unidade</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>Por KG</string>
+                           </property>
+                          </item>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
                     </layout>
                    </widget>
                   </item>
@@ -2450,6 +2776,44 @@
                   <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
                    <widget class="QWidget" name="widget_2" native="true">
                     <layout class="QGridLayout" name="gridLayout_7">
+                     <item row="1" column="1">
+                      <widget class="QFrame" name="frame_21">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_61">
+                        <item>
+                         <widget class="QLabel" name="txt_categoria_estoque_2">
+                          <property name="text">
+                           <string>Categoria</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QComboBox" name="input_categoria_produto_2">
+                          <property name="minimumSize">
+                           <size>
+                            <width>400</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="editable">
+                           <bool>false</bool>
+                          </property>
+                          <property name="currentIndex">
+                           <number>-1</number>
+                          </property>
+                          <property name="placeholderText">
+                           <string>CATEGORIA</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
                      <item row="1" column="0">
                       <widget class="QFrame" name="frame_9">
                        <property name="frameShape">
@@ -2519,48 +2883,6 @@
                        </layout>
                       </widget>
                      </item>
-                     <item row="4" column="0">
-                      <widget class="QPushButton" name="btn_adc_foto_produto_2">
-                       <property name="text">
-                        <string>Adicionar Foto</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="0">
-                      <widget class="QFrame" name="frame_11">
-                       <property name="frameShape">
-                        <enum>QFrame::Shape::StyledPanel</enum>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Shadow::Raised</enum>
-                       </property>
-                       <layout class="QVBoxLayout" name="verticalLayout_59">
-                        <item alignment="Qt::AlignmentFlag::AlignBottom">
-                         <widget class="QLabel" name="txt_quantidade_estoque_2">
-                          <property name="text">
-                           <string>Quantidade</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-                         <widget class="QLineEdit" name="input_quantidade_produto_2">
-                          <property name="minimumSize">
-                           <size>
-                            <width>400</width>
-                            <height>0</height>
-                           </size>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignmentFlag::AlignCenter</set>
-                          </property>
-                          <property name="placeholderText">
-                           <string>QUANTIDADE</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
                      <item row="2" column="1">
                       <widget class="QFrame" name="frame_20">
                        <property name="frameShape">
@@ -2599,39 +2921,88 @@
                        </layout>
                       </widget>
                      </item>
-                     <item row="1" column="1">
-                      <widget class="QFrame" name="frame_21">
+                     <item row="2" column="0">
+                      <widget class="QFrame" name="frame_11">
                        <property name="frameShape">
                         <enum>QFrame::Shape::StyledPanel</enum>
                        </property>
                        <property name="frameShadow">
                         <enum>QFrame::Shadow::Raised</enum>
                        </property>
-                       <layout class="QVBoxLayout" name="verticalLayout_61">
-                        <item>
-                         <widget class="QLabel" name="txt_categoria_estoque_2">
+                       <layout class="QVBoxLayout" name="verticalLayout_59">
+                        <item alignment="Qt::AlignmentFlag::AlignBottom">
+                         <widget class="QLabel" name="txt_quantidade_estoque_2">
                           <property name="text">
-                           <string>Categoria</string>
+                           <string>Quantidade</string>
                           </property>
                          </widget>
                         </item>
-                        <item>
-                         <widget class="QComboBox" name="input_categoria_produto_2">
+                        <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+                         <widget class="QLineEdit" name="input_quantidade_produto_2">
                           <property name="minimumSize">
                            <size>
                             <width>400</width>
                             <height>0</height>
                            </size>
                           </property>
-                          <property name="editable">
-                           <bool>false</bool>
+                          <property name="alignment">
+                           <set>Qt::AlignmentFlag::AlignCenter</set>
+                          </property>
+                          <property name="placeholderText">
+                           <string>QUANTIDADE</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item row="4" column="0">
+                      <widget class="QPushButton" name="btn_adc_foto_produto_2">
+                       <property name="text">
+                        <string>Adicionar Foto</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="2">
+                      <widget class="QFrame" name="frame_31">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_41">
+                        <item>
+                         <widget class="QLabel" name="label_2">
+                          <property name="text">
+                           <string>Tipo de Valor</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QComboBox" name="input_tipo_valor_2">
+                          <property name="minimumSize">
+                           <size>
+                            <width>200</width>
+                            <height>0</height>
+                           </size>
                           </property>
                           <property name="currentIndex">
                            <number>-1</number>
                           </property>
                           <property name="placeholderText">
-                           <string>CATEGORIA</string>
+                           <string>Tipo de Valor</string>
                           </property>
+                          <item>
+                           <property name="text">
+                            <string>Por Unidade</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>Por KG</string>
+                           </property>
+                          </item>
                          </widget>
                         </item>
                        </layout>
@@ -2640,7 +3011,7 @@
                     </layout>
                    </widget>
                   </item>
-                  <item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
                    <widget class="QPushButton" name="btn_adc_produto_2">
                     <property name="minimumSize">
                      <size>
@@ -3076,6 +3447,8 @@ border-radius: 20px;</string>
                               </property>
                               <property name="font">
                                <font>
+                                <family>Segoe UI</family>
+                                <pointsize>-1</pointsize>
                                 <italic>false</italic>
                                 <fontweight>DemiBold</fontweight>
                                </font>

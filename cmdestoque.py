@@ -9,7 +9,7 @@ import re
 class cmdEstoque():
     def __init__(self, tela_principal):
         self.tela_principal = tela_principal
-        self.tela_principal.input_categoria_produto.currentTextChanged.connect(self.categoria)
+        self.tela_principal.input_tipo_valor.currentTextChanged.connect(self.tipo_valor)
         self.conexao = conexaoDB()
         self.new_file_path = ""
         self.mostrar_estoque()
@@ -17,18 +17,18 @@ class cmdEstoque():
 
     def mostrar_estoque(self):
         cursor = self.conexao.get_cursor()
-        cursor.execute("select id_produto, nome_produto, preco, quantidade, categorias.nome_categoria from estoque join categorias on estoque.categoria = categorias.id_categorias")
+        cursor.execute("select id_produto, nome_produto, preco, quantidade, categorias.nome_categoria, tipo_valor from estoque join categorias on estoque.categoria = categorias.id_categorias")
         resultado = cursor.fetchall()
 
         tree = self.tela_principal.treeWidget
         tree.clear()
 
         for i in resultado:
-            id, nome, preco, quantidade, categoria = i
+            id, nome, preco, quantidade, categoria, tipo_valor = i
             item = QTreeWidgetItem(tree)
             item.setText(0, str(id))  
             item.setText(1, nome)  
-            if categoria == "HortiFruti":
+            if tipo_valor == "1":
                 item.setText(2, f"R$ {str(preco)} KG")
             else:
                 item.setText(2, f"R$ {str(preco)} UN.")  
@@ -88,6 +88,7 @@ class cmdEstoque():
         self.tela_principal.input_categoria_produto.setCurrentIndex(-1)
         self.tela_principal.input_quantidade_produto.setText("")
         self.tela_principal.input_preco_produto.setText("")
+        self.tela_principal.input_tipo_valor.setCurrentIndex(0)
         pixmap = QPixmap()
         self.tela_principal.img_produto_estoque.setPixmap(pixmap)
         self.tela_principal.stackedWidget_3.setCurrentIndex(1)
@@ -161,14 +162,21 @@ class cmdEstoque():
         if not resultado:
             QMessageBox.warning(None, "Erro", "Categoria não encontrada!")
             return
-        categoria_id = resultado[0] 
+        categoria_id = resultado[0]
+
+        tipo_valor = self.tela_principal.input_tipo_valor.currentIndex()
+        print(tipo_valor)
+        if tipo_valor != 0 and tipo_valor != 1:
+            QMessageBox.warning(None, "error", "Adicione Um tipo de Valor Valido!")
+            return
+
         
         if self.new_file_path == "":
             QMessageBox.warning(None, "Erro", "Adicione uma Imagem!")
             return
         relative_path = os.path.relpath(self.new_file_path, os.getcwd()).replace("\\", "/")
-        query = "INSERT INTO estoque (nome_produto, preco, quantidade, categoria, imagem) VALUES (%s, %s, %s, %s, %s)"
-        valores = (self.nome, preco, quant, categoria_id, relative_path)
+        query = "INSERT INTO estoque (nome_produto, preco, quantidade, categoria, tipo_valor, imagem) VALUES (%s, %s, %s, %s, %s, %s)"
+        valores = (self.nome, preco, quant, categoria_id, tipo_valor, relative_path)
         cursor.execute(query, valores)
         self.conexao.commit()
 
@@ -208,13 +216,18 @@ class cmdEstoque():
             self.tela_principal.img_produto_estoque_2.setPixmap(pixmap)
             self.tela_principal.img_produto_estoque_2.setScaledContents(True)
 
-    def categoria(self):
-        if self.tela_principal.input_categoria_produto.currentText() == "HortiFruti" or self.tela_principal.input_categoria_produto.currentText() == "Fruta":
+    def tipo_valor(self):
+        if self.tela_principal.input_tipo_valor.currentIndex() == 1:
             self.tela_principal.txt_preco_estoque.setText("Valor do KG")
             self.tela_principal.input_preco_produto.setPlaceholderText("KG")
-            self.tela_principal.txt_quantidade_estoque.setText("Quantidade em KG")
+            self.tela_principal.txt_quantidade_estoque.setText("Quantidade em KG no Estoque")
             self.tela_principal.input_quantidade_produto.setPlaceholderText("KG")
-        
+        else:
+            self.tela_principal.txt_preco_estoque.setText("Valor da Unidade")
+            self.tela_principal.input_preco_produto.setPlaceholderText("Preço Un.")
+            self.tela_principal.txt_quantidade_estoque.setText("Quantidade de Unidades no Estoque")
+            self.tela_principal.input_quantidade_produto.setPlaceholderText("Un.")
+
     def editar_produto(self):
         item_selecionado = self.tela_principal.treeWidget.currentItem()
         if item_selecionado == None:
@@ -225,9 +238,12 @@ class cmdEstoque():
         nome = item_selecionado.text(1)
 
         cursor = self.conexao.get_cursor()
-        comando = "select preco from estoque where id_produto = %s"
+        comando = "select preco, tipo_valor from estoque where id_produto = %s"
         cursor.execute(comando, (self.id_produto, ))
-        preco = cursor.fetchone()[0]
+        resultado = cursor.fetchall()
+        print(resultado)
+        for i in resultado:
+            preco, tipo_valor = i
 
         quantidade = item_selecionado.text(3)
         categoria = item_selecionado.text(4)
@@ -236,12 +252,16 @@ class cmdEstoque():
         self.tela_principal.input_nome_produto_2.setText(nome)
         self.tela_principal.input_categoria_produto_2.setCurrentText(categoria)
         self.tela_principal.input_quantidade_produto_2.setText(quantidade)
-        self.tela_principal.input_preco_produto_2.setText(f"{int(preco)}")
+        self.tela_principal.input_preco_produto_2.setText(f"{float(preco)}")
+        self.tela_principal.input_tipo_valor_2.setCurrentIndex(int(tipo_valor))
 
         comando = "select imagem from estoque where id_produto = %s"
         cursor.execute(comando, (self.id_produto, ))
         self.absolute_path = cursor.fetchone()[0]
-        pixmap = QPixmap(self.absolute_path)
+        if self.absolute_path is None:
+            pixmap = QPixmap()
+        else:
+            pixmap = QPixmap(self.absolute_path)
         self.tela_principal.img_produto_estoque_2.setPixmap(pixmap)
         self.tela_principal.img_produto_estoque_2.setScaledContents(True)
 

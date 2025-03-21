@@ -203,9 +203,12 @@ class cmdPdv():
         layout.setAlignment(Qt.AlignCenter)
 
         imagem_label = QLabel()
-        pixmap = QPixmap(produto['imagem'])  
+        if produto['imagem'] is None:
+            pixmap = QPixmap("imgs/foto_produtos/produto_sem_imagem.png")
+        else:
+            pixmap = QPixmap(produto['imagem'])  
         if pixmap.isNull():
-            pixmap = QPixmap("default_image.png")  
+            pixmap = QPixmap("imgs/foto_produtos/produto_sem_imagem.png")  
 
         pixmap = pixmap.scaled(100, 100, Qt.KeepAspectRatio, Qt.SmoothTransformation)
         imagem_label.setPixmap(pixmap)
@@ -252,17 +255,16 @@ class cmdPdv():
 
     def escolher_quant(self, nome_produto):
         cursor = self.conexao.get_cursor()
-        comando = "select id_produto, nome_produto, preco, quantidade, categoria from estoque where nome_produto = %s"
+        comando = "select id_produto, nome_produto, preco, quantidade, categoria, tipo_valor from estoque where nome_produto = %s"
         cursor.execute(comando, (nome_produto,))
         resultado = cursor.fetchone()
-        self.id, self.nome, self.preco, self.quantidade, self.categoria = resultado
+        self.id, self.nome, self.preco, self.quantidade, self.categoria, self.tipo_valor = resultado
 
         comando = "select nome_categoria from categorias where id_categorias = %s"
         cursor.execute(comando, (self.categoria, ))
         self.categoria = cursor.fetchone()[0]
 
-        print(self.categoria)
-        if self.categoria == "HortiFruti":
+        if self.tipo_valor == "1":
             self.tela_principal.stackedWidget_2.setCurrentIndex(2)
             self.tela_principal.txt_pdv_nome_2.setText(f"{self.nome}")
             self.tela_principal.txt_pdv_valor_2.setText(f"R$ {self.preco} Kg")
@@ -293,7 +295,7 @@ class cmdPdv():
     
     def adc_carrinho(self):
 
-        if self.categoria == "HortiFruti":
+        if self.tipo_valor == "1":
             quantidade = float(self.tela_principal.input_pdv_quant_2.text())
         else:
             quantidade = int(self.tela_principal.input_pdv_quant.text())
@@ -440,7 +442,6 @@ class cmdPdv():
             cursor.execute(comando, valores)
             self.conexao.commit()
 
-# Update caixa - Fixed version
         comando = "SELECT data_abertura FROM caixa WHERE id_user = %s ORDER BY data_abertura DESC LIMIT 1"
         cursor.execute(comando, (id_user,))
         data_abertura = cursor.fetchone()[0]  # Get single value instead of tuple

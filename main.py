@@ -10,6 +10,7 @@ from cmdestoque import cmdEstoque
 from cmdrelatorios import cmdRelatorios
 from cmdconfiguracoes import cmdConfiguracoes
 from conexao_db import conexaoDB
+from cmdTemas import cmdTema
 
 class main(QMainWindow):
     def __init__(self):
@@ -26,21 +27,32 @@ class main(QMainWindow):
         self.tela_principal.txt_ola_user.setText(f"{self.user}")
 
         self.tela_principal.stackedWidget.setCurrentIndex(0)
-
         self.tela_principal.btn_sair.clicked.connect(self.init_tela_login)
         self.tela_principal.btn_tela_principal.clicked.connect(self.telaprincipal)
+        self.telaprincipal()
+
         self.tela_principal.btn_pdv.clicked.connect(self.telapdv)
         self.tela_principal.btn_estoque.clicked.connect(self.telaestoque)
         self.tela_principal.btn_relatorios.clicked.connect(self.telarelatorios)
         self.tela_principal.btn_configuracoes.clicked.connect(self.telaconfiguracoes)
+        self.tema = cmdTema(self.tela_principal)
 
-                
-        self.telaprin = cmdPaginaPrincipal(self.tela_principal)
-        self.tela_principal.btn_abrir_caixa.clicked.connect(self.telaprin.tela_abrir_caixa)
-        self.tela_principal.btn_fechar_caixa.clicked.connect(self.telaprin.tela_fechar_caixa)
-        self.tela_principal.btn_sangria.clicked.connect(self.telaprin.tela_sangria)
-        self.tela_principal.btn_suprimento.clicked.connect(self.telaprin.tela_suprimento)
+    def verificar_status(self):
+        cursor = self.conexao.get_cursor()
+        comando = "select id_usuario from usuarios where nome = %s"
+        cursor.execute(comando, (self.user,))
+        id_usuario = cursor.fetchone()[0]
 
+        comando = "Select * from caixa where id_user = %s and status = '1'"
+        cursor.execute(comando, (id_usuario,))
+        resultado = cursor.fetchall()
+        print(resultado)
+        if resultado == []:
+            resultado = False
+        else:
+            resultado = True
+        return resultado
+    
     def telaprincipal(self):
         self.tela_principal.stackedWidget.setCurrentIndex(0)
         self.telaprin = cmdPaginaPrincipal(self.tela_principal)
@@ -50,49 +62,65 @@ class main(QMainWindow):
         self.tela_principal.btn_suprimento.clicked.connect(self.telaprin.tela_suprimento)
         self.tela_principal.btn_cancelar_sangria.clicked.connect(self.telaprin.cancelar_acao)
         self.tela_principal.btn_cancelar_suprimento.clicked.connect(self.telaprin.cancelar_acao)
-
         self.tela_principal.btn_confirmar_abrir.clicked.connect(self.telaprin.abrir_caixa)
         self.tela_principal.btn_confirmar_sangria.clicked.connect(self.telaprin.registrar_sangria)
         self.tela_principal.btn_confirmar_suprimento.clicked.connect(self.telaprin.registrar_suprimento)
         self.tela_principal.btn_confirmar_fechar.clicked.connect(self.telaprin.fechar_caixa)
 
     def telapdv(self):
-        self.tela_principal.stackedWidget.setCurrentIndex(1)
-        self.pdv = cmdPdv(self.tela_principal)
-        self.tela_principal.stackedWidget_2.setCurrentIndex(0)
-        self.tela_principal.stackedWidget_6.setCurrentIndex(0)
-        self.tela_principal.btn_pdv_mais.clicked.connect(self.pdv.mais)
-        self.tela_principal.btn_pdv_menos.clicked.connect(self.pdv.menos)
-        self.tela_principal.btn_adc_carrinho.clicked.connect(self.pdv.adc_carrinho)
-        self.tela_principal.btn_adc_carrinho_2.clicked.connect(self.pdv.adc_carrinho)
-        self.tela_principal.btn_finaliza_compra.clicked.connect(self.pdv.finalizar_compra)
-        self.tela_principal.btn_remover_produto_carrinho.clicked.connect(self.pdv.remover_carrinho)
+        resultado = self.verificar_status()
+        print(resultado)
+        if resultado is False:
+            QMessageBox.information(None, "error", "Você deve abrir o caixa antes!")
+        else:
+            self.tela_principal.stackedWidget.setCurrentIndex(1)
+            self.pdv = cmdPdv(self.tela_principal)
+            self.tela_principal.stackedWidget_2.setCurrentIndex(0)
+            self.tela_principal.stackedWidget_6.setCurrentIndex(0)
+            self.tela_principal.btn_pdv_mais.clicked.connect(self.pdv.mais)
+            self.tela_principal.btn_pdv_menos.clicked.connect(self.pdv.menos)
+            self.tela_principal.btn_adc_carrinho.clicked.connect(self.pdv.adc_carrinho)
+            self.tela_principal.btn_adc_carrinho_2.clicked.connect(self.pdv.adc_carrinho)
+            self.tela_principal.btn_finaliza_compra.clicked.connect(self.pdv.finalizar_compra)
+            self.tela_principal.btn_remover_produto_carrinho.clicked.connect(self.pdv.remover_carrinho)
 
     def telaestoque(self):
-        self.tela_principal.stackedWidget.setCurrentIndex(2)
-        self.tela_principal.stackedWidget_3.setCurrentIndex(0)
-        self.estoque = cmdEstoque(self.tela_principal)
-        self.tela_principal.btn_pesquisar_produto_4.clicked.connect(self.estoque.procurar_produto)
-        self.tela_principal.btn_adc_produto_estoque.clicked.connect(self.estoque.tela_adc_produto)
-        self.tela_principal.btn_adc_foto_produto.clicked.connect(self.estoque.open_image)
-        self.tela_principal.btn_adc_produto.clicked.connect(self.estoque.adc_produto_estoque)
-        self.tela_principal.btn_editar_produto.clicked.connect(self.estoque.editar_produto)
-        self.tela_principal.btn_adc_produto_2.clicked.connect(self.estoque.confirmar_atualizacao)
-        self.tela_principal.btn_adc_foto_produto_2.clicked.connect(self.estoque.open_image)
+        resultado = self.verificar_status()
+        if resultado is False:
+            QMessageBox.information(None, "error", "VocÊ deve abrir o caixa antes!")
+        else:
+            self.tela_principal.stackedWidget.setCurrentIndex(2)
+            self.tela_principal.stackedWidget_3.setCurrentIndex(0)
+            self.estoque = cmdEstoque(self.tela_principal)
+            self.tela_principal.btn_pesquisar_produto_4.clicked.connect(self.estoque.procurar_produto)
+            self.tela_principal.btn_adc_produto_estoque.clicked.connect(self.estoque.tela_adc_produto)
+            self.tela_principal.btn_adc_foto_produto.clicked.connect(self.estoque.open_image)
+            self.tela_principal.btn_adc_produto.clicked.connect(self.estoque.adc_produto_estoque)
+            self.tela_principal.btn_editar_produto.clicked.connect(self.estoque.editar_produto)
+            self.tela_principal.btn_adc_produto_2.clicked.connect(self.estoque.confirmar_atualizacao)
+            self.tela_principal.btn_adc_foto_produto_2.clicked.connect(self.estoque.open_image)
 
     def telarelatorios(self):
-        self.tela_principal.stackedWidget.setCurrentIndex(3)
-        self.relatorios = cmdRelatorios(self.tela_principal)
+        resultado = self.verificar_status()
+        if resultado is False:
+            QMessageBox.information(None, "error", "VocÊ deve abrir o caixa antes!")
+        else:
+            self.tela_principal.stackedWidget.setCurrentIndex(3)
+            self.relatorios = cmdRelatorios(self.tela_principal)
 
 
     def telaconfiguracoes(self):
-        self.tela_principal.stackedWidget.setCurrentIndex(4)
-        self.config = cmdConfiguracoes(self.tela_principal.treeWidget_2, self.tela_principal)
-        self.tela_principal.btn_adc_user.clicked.connect(self.config.tela_adc_usuario)
-        self.tela_principal.btn_procurar_ft_adc_usuario.clicked.connect(self.config.open_image)
-        self.tela_principal.btn_adc_usuario.clicked.connect(self.config.adc_usuario)
-        self.tela_principal.btn_adc_categoria.clicked.connect(self.config.tela_adc_categoria)
-        self.tela_principal.btn_adc_categoria_2.clicked.connect(self.config.adc_categoria)
+        resultado = self.verificar_status()
+        if resultado is False:
+            QMessageBox.information(None, "error", "VocÊ deve abrir o caixa antes!")
+        else:
+            self.tela_principal.stackedWidget.setCurrentIndex(4)
+            self.config = cmdConfiguracoes(self.tela_principal.treeWidget_2, self.tela_principal)
+            self.tela_principal.btn_adc_user.clicked.connect(self.config.tela_adc_usuario)
+            self.tela_principal.btn_procurar_ft_adc_usuario.clicked.connect(self.config.open_image)
+            self.tela_principal.btn_adc_usuario.clicked.connect(self.config.adc_usuario)
+            self.tela_principal.btn_adc_categoria.clicked.connect(self.config.tela_adc_categoria)
+            self.tela_principal.btn_adc_categoria_2.clicked.connect(self.config.adc_categoria)
 
     def init_tela_login(self):
         self.tela_login.setupUi(self)

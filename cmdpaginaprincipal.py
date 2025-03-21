@@ -127,13 +127,14 @@ class cmdPaginaPrincipal():
 
         #Tabela =-=-=-=-=-=-=-=-=-=-=-=-=
         data_hora = datetime.date.today()
+        print(data_hora)
 
-        comando = "select * from mov_caixa where data_hora = %s and id_user = %s"
+        comando = "SELECT * FROM mov_caixa WHERE DATE(data_hora) = %s AND id_user = %s"        
         cursor.execute(comando, (data_hora, self.id_user))
         resultado = cursor.fetchall()
-        if resultado is None:
+        if resultado is None or not resultado:
             pass
-
+        print(resultado)
         tree = self.tela_principal.tabela_hist_mov
         tree.clear()
 
@@ -154,9 +155,6 @@ class cmdPaginaPrincipal():
             item.setTextAlignment(4, Qt.AlignCenter)
 
             tree.addTopLevelItem(item)
-
-
-        
 
     def tela_abrir_caixa(self):
         cursor = self.conexao.get_cursor()
@@ -307,9 +305,9 @@ class cmdPaginaPrincipal():
 
 
         cursor = self.conexao.get_cursor()
-        comando = """insert into mov_caixa (descricao, formapagamento, obs, valor)
-                    values ('Sangria de Caixa', 'Dinheiro', %s, %s)"""
-        valores = (obs_sangria, float(valor_sangria))
+        comando = """insert into mov_caixa (id_user, descricao, formapagamento, obs, valor)
+                    values (%s,'Sangria de Caixa', 'Dinheiro', %s, %s)"""
+        valores = (self.id_user, obs_sangria, float(valor_sangria))
         cursor.execute(comando, valores)
         self.conexao.commit()
 
@@ -398,9 +396,9 @@ class cmdPaginaPrincipal():
         self.conexao.commit()
 
 
-        comando = """insert into mov_caixa (descricao, formapagamento, obs, valor)
-                    values ('Suprimento de Caixa', 'Dinheiro', %s, %s)"""
-        valores = (obs_suprimento, float(valor_suprimeto))
+        comando = """insert into mov_caixa (id_user, descricao, formapagamento, obs, valor)
+                    values (%s,'Suprimento de Caixa', 'Dinheiro', %s, %s)"""
+        valores = (self.id_user, obs_suprimento, float(valor_suprimeto))
         cursor.execute(comando, valores)
         self.conexao.commit()
 
