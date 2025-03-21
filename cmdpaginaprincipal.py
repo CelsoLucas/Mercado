@@ -211,8 +211,8 @@ class cmdPaginaPrincipal():
             QMessageBox.warning(None, "error", "Quantidade Menor que Total no Caixa!")
             return
         
-        comando = "insert into caixa (id_user, saldo_ini, data_abertura, status) values (%s, %s, %s, %s)"
-        valores = (self.id_user, quant_init, self.hoje, "1")
+        comando = "insert into caixa (id_user, saldo_ini, saldo_atual, data_abertura, status) values (%s, %s, %s, %s, %s)"
+        valores = (self.id_user, quant_init, quant_init, self.hoje, "1")
         cursor.execute(comando, valores)
         self.conexao.commit()
         QMessageBox.information(None, "Sucesso", "Caixa Aberto!")
