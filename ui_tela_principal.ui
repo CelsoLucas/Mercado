@@ -507,10 +507,6 @@ QTabBar::tab:hover:!selected {
                   <property name="text">
                    <string>TELA PRINCIPAL</string>
                   </property>
-                  <property name="icon">
-                   <iconset resource="imgs/icons.qrc">
-                    <normaloff>:/icons/home.png</normaloff>:/icons/home.png</iconset>
-                  </property>
                  </widget>
                 </item>
                 <item>
@@ -526,10 +522,6 @@ QTabBar::tab:hover:!selected {
                   </property>
                   <property name="text">
                    <string>PDV</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="imgs/icons.qrc">
-                    <normaloff>:/icons/dollar.png</normaloff>:/icons/dollar.png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -547,10 +539,6 @@ QTabBar::tab:hover:!selected {
                   <property name="text">
                    <string>ESTOQUE</string>
                   </property>
-                  <property name="icon">
-                   <iconset resource="imgs/icons.qrc">
-                    <normaloff>:/icons/box-open.png</normaloff>:/icons/box-open.png</iconset>
-                  </property>
                  </widget>
                 </item>
                 <item>
@@ -567,10 +555,6 @@ QTabBar::tab:hover:!selected {
                   <property name="text">
                    <string>RELATORIOS</string>
                   </property>
-                  <property name="icon">
-                   <iconset resource="imgs/icons.qrc">
-                    <normaloff>:/icons/analytics.png</normaloff>:/icons/analytics.png</iconset>
-                  </property>
                  </widget>
                 </item>
                 <item>
@@ -586,10 +570,6 @@ QTabBar::tab:hover:!selected {
                   </property>
                   <property name="text">
                    <string>CONFIGURAÇÕES</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="imgs/icons.qrc">
-                    <normaloff>:/icons/settings (1).png</normaloff>:/icons/settings (1).png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -643,7 +623,7 @@ QTabBar::tab:hover:!selected {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>3</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -844,8 +824,20 @@ QTabBar::tab:hover:!selected {
                               </property>
                               <item>
                                <widget class="QLabel" name="icon_recebimento_vendas">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>100</width>
+                                  <height>100</height>
+                                 </size>
+                                </property>
                                 <property name="text">
-                                 <string>icon</string>
+                                 <string/>
+                                </property>
+                                <property name="pixmap">
+                                 <pixmap resource="imgs/icons.qrc">:/icons/salary_477833.png</pixmap>
+                                </property>
+                                <property name="scaledContents">
+                                 <bool>true</bool>
                                 </property>
                                </widget>
                               </item>
@@ -1158,8 +1150,20 @@ QTabBar::tab:hover:!selected {
                              <layout class="QVBoxLayout" name="verticalLayout_55">
                               <item>
                                <widget class="QLabel" name="icon_mov_gaveta">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>100</width>
+                                  <height>100</height>
+                                 </size>
+                                </property>
                                 <property name="text">
-                                 <string>img</string>
+                                 <string/>
+                                </property>
+                                <property name="pixmap">
+                                 <pixmap resource="imgs/icons.qrc">:/icons/cash-register_3467857.png</pixmap>
+                                </property>
+                                <property name="scaledContents">
+                                 <bool>true</bool>
                                 </property>
                                </widget>
                               </item>
@@ -1274,16 +1278,35 @@ QTabBar::tab:hover:!selected {
                                  </property>
                                  <item>
                                   <widget class="QLabel" name="icon_adc">
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>20</width>
+                                     <height>20</height>
+                                    </size>
+                                   </property>
                                    <property name="styleSheet">
                                     <string notr="true"/>
                                    </property>
                                    <property name="text">
-                                    <string>icon</string>
+                                    <string/>
+                                   </property>
+                                   <property name="pixmap">
+                                    <pixmap resource="imgs/icons.qrc">:/icons/circle_14034453.png</pixmap>
+                                   </property>
+                                   <property name="scaledContents">
+                                    <bool>true</bool>
                                    </property>
                                   </widget>
                                  </item>
                                  <item>
                                   <widget class="QLabel" name="txt_adicoes">
+                                   <property name="font">
+                                    <font>
+                                     <family>Segoe UI</family>
+                                     <pointsize>12</pointsize>
+                                     <bold>true</bold>
+                                    </font>
+                                   </property>
                                    <property name="text">
                                     <string>Adições</string>
                                    </property>
@@ -1427,15 +1450,40 @@ QTabBar::tab:hover:!selected {
                                  <property name="bottomMargin">
                                   <number>0</number>
                                  </property>
-                                 <item>
+                                 <item alignment="Qt::AlignmentFlag::AlignLeft">
                                   <widget class="QLabel" name="icnon_retirada">
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>20</width>
+                                     <height>20</height>
+                                    </size>
+                                   </property>
                                    <property name="text">
-                                    <string>icon</string>
+                                    <string/>
+                                   </property>
+                                   <property name="pixmap">
+                                    <pixmap resource="imgs/icons.qrc">:/icons/Red_Arrow_Down-512.webp</pixmap>
+                                   </property>
+                                   <property name="scaledContents">
+                                    <bool>true</bool>
                                    </property>
                                   </widget>
                                  </item>
                                  <item>
                                   <widget class="QLabel" name="txt_retiradas">
+                                   <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                     <horstretch>0</horstretch>
+                                     <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <family>Segoe UI</family>
+                                     <pointsize>12</pointsize>
+                                     <bold>true</bold>
+                                    </font>
+                                   </property>
                                    <property name="text">
                                     <string>Retiradas</string>
                                    </property>

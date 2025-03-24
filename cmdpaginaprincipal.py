@@ -80,8 +80,8 @@ class cmdPaginaPrincipal():
         self.tela_principal.txt_total_venda_dinheiro_db.setText(f"R$ {float(vendas_dinheiro):.2f}")
 
         #lado direito =-=-=-=-=-=-=-=-=
-        comando = "select sum(saldo_atual) from caixa"
-        cursor.execute(comando)
+        comando = "select saldo_atual from caixa where id_user = %s and status = '1'"
+        cursor.execute(comando, (self.id_user,))
         resultado = cursor.fetchone()
         if resultado is None or resultado[0] is None:
             total_gaveta = 0
@@ -98,8 +98,9 @@ class cmdPaginaPrincipal():
             saldo_ini = resultado[0]
         self.tela_principal.txt_saldo_inicial_db.setText(f"R$ {float(saldo_ini):.2f}")
 
-        comando = "select sum(valor_total) from vendas where id_forma_pagamento = '4' and data_venda = %s"
-        cursor.execute(comando, (hoje,))
+        comando = "select sum(valor_total) from vendas where id_forma_pagamento = '4' and data_venda = %s and id_usuario = %s"
+        valores = (hoje, self.id_user)
+        cursor.execute(comando, valores)
         resultado = cursor.fetchone()
         if resultado is None or resultado[0] is None:
             saldo_atual = 0
@@ -427,7 +428,7 @@ class cmdPaginaPrincipal():
             return
         
         elif float(quant_final) > float(self.total_vendas_dia):
-            QMessageBox.warning(None, "error", "Quantidade Menor que Total no Caixa!")
+            QMessageBox.warning(None, "error", "Quantidade maior que Total no Caixa!")
             return
         
         comando = "update caixa set saldo_final = %s, status = '0', data_fechar = %s where id_user = %s and status = 1"

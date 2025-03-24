@@ -395,9 +395,6 @@ class Ui_TelaPrincipal(object):
         self.btn_tela_principal.setObjectName(u"btn_tela_principal")
         self.btn_tela_principal.setMinimumSize(QSize(200, 50))
         self.btn_tela_principal.setStyleSheet(u"")
-        icon1 = QIcon()
-        icon1.addFile(u":/icons/home.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.btn_tela_principal.setIcon(icon1)
 
         self.verticalLayout_4.addWidget(self.btn_tela_principal)
 
@@ -405,9 +402,6 @@ class Ui_TelaPrincipal(object):
         self.btn_pdv.setObjectName(u"btn_pdv")
         self.btn_pdv.setMinimumSize(QSize(200, 50))
         self.btn_pdv.setStyleSheet(u"")
-        icon2 = QIcon()
-        icon2.addFile(u":/icons/dollar.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.btn_pdv.setIcon(icon2)
 
         self.verticalLayout_4.addWidget(self.btn_pdv)
 
@@ -415,9 +409,6 @@ class Ui_TelaPrincipal(object):
         self.btn_estoque.setObjectName(u"btn_estoque")
         self.btn_estoque.setMinimumSize(QSize(200, 50))
         self.btn_estoque.setStyleSheet(u"")
-        icon3 = QIcon()
-        icon3.addFile(u":/icons/box-open.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.btn_estoque.setIcon(icon3)
 
         self.verticalLayout_4.addWidget(self.btn_estoque)
 
@@ -425,9 +416,6 @@ class Ui_TelaPrincipal(object):
         self.btn_relatorios.setObjectName(u"btn_relatorios")
         self.btn_relatorios.setMinimumSize(QSize(200, 50))
         self.btn_relatorios.setStyleSheet(u"")
-        icon4 = QIcon()
-        icon4.addFile(u":/icons/analytics.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.btn_relatorios.setIcon(icon4)
 
         self.verticalLayout_4.addWidget(self.btn_relatorios)
 
@@ -435,9 +423,6 @@ class Ui_TelaPrincipal(object):
         self.btn_configuracoes.setObjectName(u"btn_configuracoes")
         self.btn_configuracoes.setMinimumSize(QSize(200, 50))
         self.btn_configuracoes.setStyleSheet(u"")
-        icon5 = QIcon()
-        icon5.addFile(u":/icons/settings (1).png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.btn_configuracoes.setIcon(icon5)
 
         self.verticalLayout_4.addWidget(self.btn_configuracoes)
 
@@ -585,6 +570,9 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_52.setContentsMargins(0, 0, 0, 0)
         self.icon_recebimento_vendas = QLabel(self.lado_esquerdo_2)
         self.icon_recebimento_vendas.setObjectName(u"icon_recebimento_vendas")
+        self.icon_recebimento_vendas.setMaximumSize(QSize(100, 100))
+        self.icon_recebimento_vendas.setPixmap(QPixmap(u":/icons/salary_477833.png"))
+        self.icon_recebimento_vendas.setScaledContents(True)
 
         self.verticalLayout_52.addWidget(self.icon_recebimento_vendas)
 
@@ -729,6 +717,9 @@ class Ui_TelaPrincipal(object):
         self.verticalLayout_55.setObjectName(u"verticalLayout_55")
         self.icon_mov_gaveta = QLabel(self.lado_direito_2)
         self.icon_mov_gaveta.setObjectName(u"icon_mov_gaveta")
+        self.icon_mov_gaveta.setMaximumSize(QSize(100, 100))
+        self.icon_mov_gaveta.setPixmap(QPixmap(u":/icons/cash-register_3467857.png"))
+        self.icon_mov_gaveta.setScaledContents(True)
 
         self.verticalLayout_55.addWidget(self.icon_mov_gaveta)
 
@@ -772,12 +763,20 @@ class Ui_TelaPrincipal(object):
         self.horizontalLayout_26.setContentsMargins(0, 0, 0, 0)
         self.icon_adc = QLabel(self.layout_titulo)
         self.icon_adc.setObjectName(u"icon_adc")
+        self.icon_adc.setMaximumSize(QSize(20, 20))
         self.icon_adc.setStyleSheet(u"")
+        self.icon_adc.setPixmap(QPixmap(u":/icons/circle_14034453.png"))
+        self.icon_adc.setScaledContents(True)
 
         self.horizontalLayout_26.addWidget(self.icon_adc)
 
         self.txt_adicoes = QLabel(self.layout_titulo)
         self.txt_adicoes.setObjectName(u"txt_adicoes")
+        font = QFont()
+        font.setFamilies([u"Segoe UI"])
+        font.setPointSize(12)
+        font.setBold(True)
+        self.txt_adicoes.setFont(font)
 
         self.horizontalLayout_26.addWidget(self.txt_adicoes)
 
@@ -853,11 +852,17 @@ class Ui_TelaPrincipal(object):
         self.horizontalLayout_30.setContentsMargins(0, 0, 0, 0)
         self.icnon_retirada = QLabel(self.layout_titulo_sangria)
         self.icnon_retirada.setObjectName(u"icnon_retirada")
+        self.icnon_retirada.setMaximumSize(QSize(20, 20))
+        self.icnon_retirada.setPixmap(QPixmap(u":/icons/Red_Arrow_Down-512.webp"))
+        self.icnon_retirada.setScaledContents(True)
 
-        self.horizontalLayout_30.addWidget(self.icnon_retirada)
+        self.horizontalLayout_30.addWidget(self.icnon_retirada, 0, Qt.AlignmentFlag.AlignLeft)
 
         self.txt_retiradas = QLabel(self.layout_titulo_sangria)
         self.txt_retiradas.setObjectName(u"txt_retiradas")
+        sizePolicy.setHeightForWidth(self.txt_retiradas.sizePolicy().hasHeightForWidth())
+        self.txt_retiradas.setSizePolicy(sizePolicy)
+        self.txt_retiradas.setFont(font)
 
         self.horizontalLayout_30.addWidget(self.txt_retiradas)
 
@@ -1180,9 +1185,9 @@ class Ui_TelaPrincipal(object):
 
         self.btn_pesquisar_produto = QPushButton(self.frame_2)
         self.btn_pesquisar_produto.setObjectName(u"btn_pesquisar_produto")
-        icon6 = QIcon()
-        icon6.addFile(u":/icons/search.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.btn_pesquisar_produto.setIcon(icon6)
+        icon1 = QIcon()
+        icon1.addFile(u":/icons/search.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.btn_pesquisar_produto.setIcon(icon1)
 
         self.horizontalLayout_6.addWidget(self.btn_pesquisar_produto)
 
@@ -1242,9 +1247,9 @@ class Ui_TelaPrincipal(object):
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.btn_pdv_menos = QPushButton(self.layout_btn_menos)
         self.btn_pdv_menos.setObjectName(u"btn_pdv_menos")
-        icon7 = QIcon()
-        icon7.addFile(u":/icons/minus-circle.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.btn_pdv_menos.setIcon(icon7)
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/minus-circle.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.btn_pdv_menos.setIcon(icon2)
 
         self.horizontalLayout_9.addWidget(self.btn_pdv_menos)
 
@@ -1264,9 +1269,9 @@ class Ui_TelaPrincipal(object):
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.btn_pdv_mais = QPushButton(self.layout_btn_mais)
         self.btn_pdv_mais.setObjectName(u"btn_pdv_mais")
-        icon8 = QIcon()
-        icon8.addFile(u":/icons/add.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.btn_pdv_mais.setIcon(icon8)
+        icon3 = QIcon()
+        icon3.addFile(u":/icons/add.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.btn_pdv_mais.setIcon(icon3)
 
         self.horizontalLayout_10.addWidget(self.btn_pdv_mais)
 
@@ -1462,9 +1467,9 @@ class Ui_TelaPrincipal(object):
         self.btn_pesquisar_produto_4.setObjectName(u"btn_pesquisar_produto_4")
         self.btn_pesquisar_produto_4.setMaximumSize(QSize(50, 16777215))
         self.btn_pesquisar_produto_4.setStyleSheet(u"background-color: none;")
-        icon9 = QIcon()
-        icon9.addFile(u":/icons/search.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
-        self.btn_pesquisar_produto_4.setIcon(icon9)
+        icon4 = QIcon()
+        icon4.addFile(u":/icons/search.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
+        self.btn_pesquisar_produto_4.setIcon(icon4)
         self.btn_pesquisar_produto_4.setIconSize(QSize(25, 25))
 
         self.horizontalLayout_12.addWidget(self.btn_pesquisar_produto_4, 0, Qt.AlignmentFlag.AlignRight)
@@ -1472,9 +1477,9 @@ class Ui_TelaPrincipal(object):
         self.btn_adc_produto_estoque = QPushButton(self.layout_pesquisar_produto_estoque_2)
         self.btn_adc_produto_estoque.setObjectName(u"btn_adc_produto_estoque")
         self.btn_adc_produto_estoque.setStyleSheet(u"background-color: none;")
-        icon10 = QIcon()
-        icon10.addFile(u":/icons/add.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
-        self.btn_adc_produto_estoque.setIcon(icon10)
+        icon5 = QIcon()
+        icon5.addFile(u":/icons/add.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
+        self.btn_adc_produto_estoque.setIcon(icon5)
         self.btn_adc_produto_estoque.setIconSize(QSize(25, 25))
         self.btn_adc_produto_estoque.setCheckable(False)
 
@@ -1482,9 +1487,9 @@ class Ui_TelaPrincipal(object):
 
         self.btn_editar_produto = QPushButton(self.layout_pesquisar_produto_estoque_2)
         self.btn_editar_produto.setObjectName(u"btn_editar_produto")
-        icon11 = QIcon()
-        icon11.addFile(u":/icons/pencil.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.btn_editar_produto.setIcon(icon11)
+        icon6 = QIcon()
+        icon6.addFile(u":/icons/pencil.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.btn_editar_produto.setIcon(icon6)
         self.btn_editar_produto.setIconSize(QSize(25, 25))
 
         self.horizontalLayout_12.addWidget(self.btn_editar_produto)
@@ -2025,11 +2030,11 @@ class Ui_TelaPrincipal(object):
         self.input_nome_adc_usuario = QLineEdit(self.frame_22)
         self.input_nome_adc_usuario.setObjectName(u"input_nome_adc_usuario")
         self.input_nome_adc_usuario.setMaximumSize(QSize(400, 16777215))
-        font = QFont()
-        font.setFamilies([u"Segoe UI"])
-        font.setWeight(QFont.DemiBold)
-        font.setItalic(False)
-        self.input_nome_adc_usuario.setFont(font)
+        font1 = QFont()
+        font1.setFamilies([u"Segoe UI"])
+        font1.setWeight(QFont.DemiBold)
+        font1.setItalic(False)
+        self.input_nome_adc_usuario.setFont(font1)
         self.input_nome_adc_usuario.setStyleSheet(u"")
         self.input_nome_adc_usuario.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -2254,7 +2259,7 @@ class Ui_TelaPrincipal(object):
         self.retranslateUi(TelaPrincipal)
 
         self.btn_modo_claro_escuro.setCurrentIndex(0)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
         self.stackedWidget_7.setCurrentIndex(0)
         self.stackedWidget_2.setCurrentIndex(2)
         self.stackedWidget_6.setCurrentIndex(0)
@@ -2291,7 +2296,7 @@ class Ui_TelaPrincipal(object):
         self.txt_data.setText(QCoreApplication.translate("TelaPrincipal", u"Data:", None))
         self.txt_abertura_db.setText(QCoreApplication.translate("TelaPrincipal", u"Abertura:", None))
         self.txt_operador_db.setText(QCoreApplication.translate("TelaPrincipal", u"Operador:", None))
-        self.icon_recebimento_vendas.setText(QCoreApplication.translate("TelaPrincipal", u"icon", None))
+        self.icon_recebimento_vendas.setText("")
         self.txt_recebimento_vendas.setText(QCoreApplication.translate("TelaPrincipal", u"Recebimentos de Vendas", None))
         self.txt_total_vendas_db.setText(QCoreApplication.translate("TelaPrincipal", u"Total de Vendas: R$ 0,00", None))
         self.txt_pix.setText(QCoreApplication.translate("TelaPrincipal", u"Pix", None))
@@ -2302,10 +2307,10 @@ class Ui_TelaPrincipal(object):
         self.txt_total_vendas_credito_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$0,00", None))
         self.txt_dinheiro.setText(QCoreApplication.translate("TelaPrincipal", u"Dinheiro", None))
         self.txt_total_venda_dinheiro_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$0,00", None))
-        self.icon_mov_gaveta.setText(QCoreApplication.translate("TelaPrincipal", u"img", None))
+        self.icon_mov_gaveta.setText("")
         self.txt_mov_gaveta.setText(QCoreApplication.translate("TelaPrincipal", u"Movimenta\u00e7\u00e3o da Gaveta", None))
         self.txt_total_gaveta_db.setText(QCoreApplication.translate("TelaPrincipal", u"Total em Gaveta: R$ 0,00", None))
-        self.icon_adc.setText(QCoreApplication.translate("TelaPrincipal", u"icon", None))
+        self.icon_adc.setText("")
         self.txt_adicoes.setText(QCoreApplication.translate("TelaPrincipal", u"Adi\u00e7\u00f5es", None))
         self.txt_saldo_inicial.setText(QCoreApplication.translate("TelaPrincipal", u"Saldo Incial", None))
         self.txt_saldo_inicial_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$ 0,00", None))
@@ -2313,7 +2318,7 @@ class Ui_TelaPrincipal(object):
         self.txt_vendas_dinheiro_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$ 0,00", None))
         self.txt_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Suprimento", None))
         self.txt_suprimento_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$ 0,00", None))
-        self.icnon_retirada.setText(QCoreApplication.translate("TelaPrincipal", u"icon", None))
+        self.icnon_retirada.setText("")
         self.txt_retiradas.setText(QCoreApplication.translate("TelaPrincipal", u"Retiradas", None))
         self.txt_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Sangria", None))
         self.txt_total_sangria_db.setText(QCoreApplication.translate("TelaPrincipal", u"R$ 0,00", None))

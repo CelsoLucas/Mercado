@@ -15,7 +15,7 @@ from cmdTemas import cmdTema
 class main(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.conexao = conexaoDB()
+        conexao = conexaoDB()
         self.tela_login = Ui_TelaLogin()
         self.tela_login.setupUi(self)
         self.tela_login.btn_login.clicked.connect(self.check_login)
@@ -38,7 +38,8 @@ class main(QMainWindow):
         self.tema = cmdTema(self.tela_principal)
 
     def verificar_status(self):
-        cursor = self.conexao.get_cursor()
+        conexao = conexaoDB()
+        cursor = conexao.get_cursor()
         comando = "select id_usuario from usuarios where nome = %s"
         cursor.execute(comando, (self.user,))
         id_usuario = cursor.fetchone()[0]
@@ -46,11 +47,12 @@ class main(QMainWindow):
         comando = "Select * from caixa where id_user = %s and status = '1'"
         cursor.execute(comando, (id_usuario,))
         resultado = cursor.fetchall()
-        print(resultado)
         if resultado == []:
             resultado = False
         else:
             resultado = True
+        cursor.close()
+        conexao.conexao.close()
         return resultado
     
     def telaprincipal(self):
@@ -69,7 +71,6 @@ class main(QMainWindow):
 
     def telapdv(self):
         resultado = self.verificar_status()
-        print(resultado)
         if resultado is False:
             QMessageBox.information(None, "error", "Você deve abrir o caixa antes!")
         else:
@@ -87,7 +88,7 @@ class main(QMainWindow):
     def telaestoque(self):
         resultado = self.verificar_status()
         if resultado is False:
-            QMessageBox.information(None, "error", "VocÊ deve abrir o caixa antes!")
+            QMessageBox.information(None, "error", "Você deve abrir o caixa antes!")
         else:
             self.tela_principal.stackedWidget.setCurrentIndex(2)
             self.tela_principal.stackedWidget_3.setCurrentIndex(0)
@@ -103,7 +104,7 @@ class main(QMainWindow):
     def telarelatorios(self):
         resultado = self.verificar_status()
         if resultado is False:
-            QMessageBox.information(None, "error", "VocÊ deve abrir o caixa antes!")
+            QMessageBox.information(None, "error", "Você deve abrir o caixa antes!")
         else:
             self.tela_principal.stackedWidget.setCurrentIndex(3)
             self.relatorios = cmdRelatorios(self.tela_principal)
@@ -112,7 +113,7 @@ class main(QMainWindow):
     def telaconfiguracoes(self):
         resultado = self.verificar_status()
         if resultado is False:
-            QMessageBox.information(None, "error", "VocÊ deve abrir o caixa antes!")
+            QMessageBox.information(None, "error", "Você deve abrir o caixa antes!")
         else:
             self.tela_principal.stackedWidget.setCurrentIndex(4)
             self.config = cmdConfiguracoes(self.tela_principal.treeWidget_2, self.tela_principal)
@@ -129,7 +130,8 @@ class main(QMainWindow):
     def check_login(self):
 
         self.user = self.tela_login.input_user.text()
-        cursor = self.conexao.get_cursor()
+        conexao = conexaoDB()
+        cursor = conexao.get_cursor()
         
         comando = "SELECT senha, foto FROM usuarios WHERE nome = %s"
         cursor.execute(comando, (self.user,))
@@ -162,6 +164,7 @@ class main(QMainWindow):
             self.init_tela_principal()
             
         cursor.close()
+        conexao.conexao.close()
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)
