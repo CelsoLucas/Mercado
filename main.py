@@ -24,7 +24,7 @@ class main(QMainWindow):
         self.tela_principal = Ui_TelaPrincipal()
         self.tela_principal.setupUi(self)
         self.setWindowTitle("MERCADO DO CELSADAS")
-        self.setWindowIcon("imgs/icon (1).png")
+        self.setWindowIcon(QIcon("imgs/icon (1).png"))
 
         self.tela_principal.txt_ola_user.setText(f"{self.user}")
 
@@ -72,6 +72,7 @@ class main(QMainWindow):
         self.tela_principal.btn_confirmar_fechar.clicked.connect(self.telaprin.fechar_caixa)
 
     def telapdv(self):
+        print("foiiiiasdifaida")
         resultado = self.verificar_status()
         if resultado is False:
             QMessageBox.information(None, "error", "Você deve abrir o caixa antes!")
