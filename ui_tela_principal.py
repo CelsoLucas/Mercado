@@ -325,11 +325,15 @@ class Ui_TelaPrincipal(object):
         self.horizontalLayout_2.setContentsMargins(20, 0, 0, 0)
         self.img_logo = QLabel(self.layout_menu_lado_direito)
         self.img_logo.setObjectName(u"img_logo")
+        self.img_logo.setMinimumSize(QSize(300, 55))
+        self.img_logo.setMaximumSize(QSize(300, 16777215))
+        self.img_logo.setPixmap(QPixmap(u":/icons/Design sem nome (8).png"))
+        self.img_logo.setScaledContents(True)
 
         self.horizontalLayout_2.addWidget(self.img_logo)
 
 
-        self.horizontalLayout.addWidget(self.layout_menu_lado_direito)
+        self.horizontalLayout.addWidget(self.layout_menu_lado_direito, 0, Qt.AlignmentFlag.AlignLeft)
 
         self.laout_menu_lado_esquerdo = QFrame(self.menu)
         self.laout_menu_lado_esquerdo.setObjectName(u"laout_menu_lado_esquerdo")
@@ -2260,7 +2264,7 @@ class Ui_TelaPrincipal(object):
 
         self.btn_modo_claro_escuro.setCurrentIndex(0)
         self.stackedWidget.setCurrentIndex(0)
-        self.stackedWidget_7.setCurrentIndex(0)
+        self.stackedWidget_7.setCurrentIndex(3)
         self.stackedWidget_2.setCurrentIndex(2)
         self.stackedWidget_6.setCurrentIndex(0)
         self.stackedWidget_3.setCurrentIndex(2)
@@ -2277,7 +2281,7 @@ class Ui_TelaPrincipal(object):
 
     def retranslateUi(self, TelaPrincipal):
         TelaPrincipal.setWindowTitle(QCoreApplication.translate("TelaPrincipal", u"MainWindow", None))
-        self.img_logo.setText(QCoreApplication.translate("TelaPrincipal", u"Mercado do Celsadas", None))
+        self.img_logo.setText("")
         self.txt_ola_user.setText("")
         self.btn_sair.setText("")
         self.btn_tela_principal.setText(QCoreApplication.translate("TelaPrincipal", u"TELA PRINCIPAL", None))
@@ -2334,13 +2338,13 @@ class Ui_TelaPrincipal(object):
         self.btn_confirmar_fechar.setText(QCoreApplication.translate("TelaPrincipal", u"Confirmar", None))
         self.txt_sangria_titulo.setText(QCoreApplication.translate("TelaPrincipal", u"Registrar Sangria (retirada de dinheiro do caixa)", None))
         self.txt_valor_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Valor da Sangria*", None))
-        self.txt_vendedor_responsavel_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Vendedor Respons\u00e1vel*", None))
+        self.txt_vendedor_responsavel_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"ID do Vendedor Respons\u00e1vel*", None))
         self.txt_obs_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Observa\u00e7\u00e3o", None))
         self.btn_cancelar_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Cancelar", None))
         self.btn_confirmar_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Confirmar", None))
         self.txt_tirulo_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Registrar Suprimento (adi\u00e7\u00e3o de dinheiro ao Caixa)", None))
         self.txt_valor_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Valor do Suprimento*", None))
-        self.txt_vendedor_responsavel_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Vendedor Responsavel*", None))
+        self.txt_vendedor_responsavel_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"ID do Vendedor Responsavel*", None))
         self.txt_obs_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Observa\u00e7\u00e3o", None))
         self.btn_cancelar_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Cancelar", None))
         self.btn_confirmar_suprimento.setText(QCoreApplication.translate("TelaPrincipal", u"Confirmar", None))

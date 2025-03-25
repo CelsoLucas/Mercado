@@ -479,21 +479,58 @@ class cmdPdv():
             QMessageBox.warning(None, "Erro", "Selecione um Produto")
             return
             
-        # Popup para pedir a senha com eco de senha (asteriscos)
-        senha, ok = QInputDialog.getText(
+        # Solicita o ID do usuário
+        id_usuario, ok1 = QInputDialog.getText(
+            None,
+            "Confirmação de Remoção",
+            "Digite um ID com Permissão:",
+            QLineEdit.Normal
+        )
+
+        if not ok1 or not id_usuario:
+            QMessageBox.warning(None, "Erro", "ID não fornecido!")
+            return
+
+        # Verifica permissão e senha no banco
+        cursor = self.conexao.get_cursor()
+        comando = "SELECT perm, senha FROM usuarios WHERE id_usuario = %s"
+        cursor.execute(comando, (id_usuario,))
+        resultado = cursor.fetchone()
+
+        if resultado is None:
+            QMessageBox.warning(None, "Erro", "Usuário não encontrado! Chame um supervisor")
+            cursor.close()
+            return
+
+        permisao, senha_armazenada = resultado
+
+        if permisao == "0":
+            QMessageBox.warning(None, "Erro", "Usuário não tem permissão para remover itens do carrinho!")
+            cursor.close()
+            return
+
+        # Solicita a senha
+        senha, ok2 = QInputDialog.getText(
             None,
             "Confirmação de Remoção",
             "Digite a senha para remover o item:",
-            echo=QLineEdit.Password  # Correção: Usa QLineEdit.Password
+            QLineEdit.Password
         )
-        
-        if not ok or not senha:
+
+        if not ok2 or not senha:
             QMessageBox.warning(None, "Erro", "Senha não fornecida!")
+            cursor.close()
             return
-        
-        senha_correta = "1234"  # Substitua pela sua lógica de validação
-        if senha != senha_correta:
+
+        # Calcula o hash da senha digitada
+        comando_senha = "SELECT SHA2(%s, 256)"
+        cursor.execute(comando_senha, (senha,))
+        senha_digitada_hash = cursor.fetchone()[0]
+
+        # Compara com a senha armazenada (hash)
+        if senha_digitada_hash != senha_armazenada:
             QMessageBox.warning(None, "Erro", "Senha incorreta!")
+            cursor.close()
             return
 
         index = self.tela_principal.tabela_carrinho.indexOfTopLevelItem(item_selecionado)

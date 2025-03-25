@@ -170,22 +170,36 @@ class cmdPaginaPrincipal():
     
     def tela_fechar_caixa(self):
         cursor = self.conexao.get_cursor()
-        comando = "select id_user from caixa where id_user = %s and status = '0'"
+        comando = "select id_user from caixa where id_user = %s and status = '1'"
         cursor.execute(comando, (self.id_user,))
         resultado = cursor.fetchone()
-        if resultado:
+        if resultado is None:
             QMessageBox.warning(None, "error", "Nenhum Caixa Aberto!")
             return
         self.tela_principal.stackedWidget_7.setCurrentIndex(2)
         self.tela_principal.input_quantidade_caixa_fechar.setText("")
 
     def tela_sangria(self):
+        cursor = self.conexao.get_cursor()
+        comando = "select id_user from caixa where id_user = %s and status = '1'"
+        cursor.execute(comando, (self.id_user,))
+        resultado = cursor.fetchone()
+        if resultado is None:
+            QMessageBox.warning(None, "error", "Nenhum Caixa Aberto!")
+            return
         self.tela_principal.stackedWidget_7.setCurrentIndex(3)
         self.tela_principal.input_valor_sangria.setText("")
         self.tela_principal.input_vendedor_responsavel_sangria.setText("")
         self.tela_principal.input_obs_sangria.setText("")
 
     def tela_suprimento(self):
+        cursor = self.conexao.get_cursor()
+        comando = "select id_user from caixa where id_user = %s and status = '1'"
+        cursor.execute(comando, (self.id_user,))
+        resultado = cursor.fetchone()
+        if resultado is None:
+            QMessageBox.warning(None, "error", "Nenhum Caixa Aberto!")
+            return
         self.tela_principal.stackedWidget_7.setCurrentIndex(4)
         self.tela_principal.input_valor_suprimento.setText("")
         self.tela_principal.input_vendedor_responsavel_suprimento.setText("")
@@ -283,10 +297,11 @@ class cmdPaginaPrincipal():
         cursor.execute(comando, (self.id_user,))
         self.total_vendas_dia = cursor.fetchone()[0]
         cursor.close()
+        print(self.total_vendas_dia, "fjasikdjfaskjjfa")
         if self.total_vendas_dia is None:
             self.total_vendas_dia = 0
 
-        if self.total_vendas_dia <= 100:
+        if float(valor_sangria) - self.total_vendas_dia <= 100 and float(valor_sangria) >= self.total_vendas_dia:
             QMessageBox.warning(None, "error", "Você não pode fazer uma sangria! Quantidade mínima no caixa deve ser R$100")
             return
         

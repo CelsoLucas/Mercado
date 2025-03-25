@@ -1,7 +1,7 @@
 from ui_tela_login import Ui_TelaLogin
 from ui_tela_principal import Ui_TelaPrincipal
 from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QVBoxLayout
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import QPixmap, QIcon
 import sys
 import mysql.connector
 from cmdpaginaprincipal import cmdPaginaPrincipal
@@ -15,15 +15,17 @@ from cmdTemas import cmdTema
 class main(QMainWindow):
     def __init__(self):
         super().__init__()
-        conexao = conexaoDB()
         self.tela_login = Ui_TelaLogin()
         self.tela_login.setupUi(self)
+        self.setWindowTitle("LOGIN")
+        self.setWindowIcon(QIcon("imgs/icon (1).png"))
         self.tela_login.btn_login.clicked.connect(self.check_login)
-
     def init_tela_principal(self):
         self.tela_principal = Ui_TelaPrincipal()
         self.tela_principal.setupUi(self)
-        
+        self.setWindowTitle("MERCADO DO CELSADAS")
+        self.setWindowIcon("imgs/icon (1).png")
+
         self.tela_principal.txt_ola_user.setText(f"{self.user}")
 
         self.tela_principal.stackedWidget.setCurrentIndex(0)
