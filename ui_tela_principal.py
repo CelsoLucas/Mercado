@@ -93,7 +93,6 @@ class Ui_TelaPrincipal(object):
 "#btn_relatorios:hover, #btn_configuracoes:hover {\n"
 "    background-color: #4A5568;\n"
 "    color: #FFFFFF;\n"
-"    transition: background-color 0.2s ease;\n"
 "}\n"
 "\n"
 "/* \u00c1rea principal */\n"
@@ -116,17 +115,16 @@ class Ui_TelaPrincipal(object):
 "\n"
 "QPushButton:hover {\n"
 "    background-color: #5A67D8;\n"
-"    transition: background-color 0.2s ease;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-""
-                        "    background-color: #434190;\n"
+"    background-color: #434190;\n"
 "}\n"
 "\n"
 "/* Inputs */\n"
 "QLineEdit, QTextEdit {\n"
-"    background-color: #FFFFFF;\n"
+"    ba"
+                        "ckground-color: #FFFFFF;\n"
 "    border: 1px solid #E2E8F0;\n"
 "    border-radius: 6px;\n"
 "    padding: 8px;\n"
@@ -137,7 +135,6 @@ class Ui_TelaPrincipal(object):
 "\n"
 "QLineEdit:focus, QTextEdit:focus {\n"
 "    border: 1px solid #4C51BF;\n"
-"    box-shadow: 0 0 5px rgba(76, 81, 191, 0.3);\n"
 "}\n"
 "\n"
 "/* ComboBox */\n"
@@ -164,8 +161,7 @@ class Ui_TelaPrincipal(object):
 "    background-color: #FFFFFF;\n"
 "    border: 1px solid #E2E8F0;\n"
 "    selection-background-color: #4C51BF;\n"
-"    selecti"
-                        "on-color: #FFFFFF;\n"
+"    selection-color: #FFFFFF;\n"
 "}\n"
 "\n"
 "/* Frames */\n"
@@ -173,11 +169,11 @@ class Ui_TelaPrincipal(object):
 "    background-color: transparent;\n"
 "}\n"
 "\n"
-"#layout_dados_sem_tabela, #lado_esquerdo, #lado_direito {\n"
+"#layout_dados_sem_tabela, #lado_es"
+                        "querdo, #lado_direito {\n"
 "    background-color: #FFFFFF;\n"
 "    border-radius: 10px;\n"
 "    padding: 15px;\n"
-"    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);\n"
 "}\n"
 "\n"
 "/* Labels */\n"
@@ -211,8 +207,7 @@ class Ui_TelaPrincipal(object):
 "}\n"
 "\n"
 "QTreeWidget::item:hover {\n"
-"    background-color: #"
-                        "EDF2F7;\n"
+"    background-color: #EDF2F7;\n"
 "}\n"
 "\n"
 "QTreeWidget::item:selected {\n"
@@ -222,7 +217,8 @@ class Ui_TelaPrincipal(object):
 "\n"
 "QHeaderView::section {\n"
 "    background-color: #E2E8F0;\n"
-"    padding: 8px;\n"
+"    padding"
+                        ": 8px;\n"
 "    border: none;\n"
 "    font-weight: bold;\n"
 "    color: #2D3748;\n"
@@ -262,8 +258,7 @@ class Ui_TelaPrincipal(object):
 "    background-color: #E2E8F0;\n"
 "    color: #4A5568;\n"
 "    padding: 10px 20px;\n"
-" "
-                        "   margin-right: 2px;\n"
+"    margin-right: 2px;\n"
 "    border-top-left-radius: 6px;\n"
 "    border-top-right-radius: 6px;\n"
 "}\n"
@@ -271,7 +266,8 @@ class Ui_TelaPrincipal(object):
 "QTabBar::tab:selected {\n"
 "    background-color: #FFFFFF;\n"
 "    color: #2D3748;\n"
-"    border-bottom: 2px solid #4C51BF;\n"
+""
+                        "    border-bottom: 2px solid #4C51BF;\n"
 "}\n"
 "\n"
 "QTabBar::tab:hover:!selected {\n"
@@ -283,7 +279,6 @@ class Ui_TelaPrincipal(object):
 "    background-color: #FFFFFF;\n"
 "    border-radius: 10px;\n"
 "    padding: 15px;\n"
-"    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);\n"
 "}\n"
 "\n"
 "/* Bot\u00f5es de a\u00e7\u00e3o (ex.: Abrir Caixa, Fechar Caixa) */\n"
@@ -296,8 +291,7 @@ class Ui_TelaPrincipal(object):
 "}\n"
 "\n"
 "/* Bot\u00f5es de cancelar */\n"
-"#btn_cancelar_sangria, #btn"
-                        "_cancelar_suprimento {\n"
+"#btn_cancelar_sangria, #btn_cancelar_suprimento {\n"
 "    background-color: #E53E3E;\n"
 "}\n"
 "\n"
@@ -1541,7 +1535,7 @@ class Ui_TelaPrincipal(object):
         self.img_produto_estoque = QLabel(self.frame_8)
         self.img_produto_estoque.setObjectName(u"img_produto_estoque")
         self.img_produto_estoque.setMaximumSize(QSize(200, 200))
-        self.img_produto_estoque.setStyleSheet(u"boder: 1px solid;")
+        self.img_produto_estoque.setStyleSheet(u"border: 1px solid;")
 
         self.verticalLayout_28.addWidget(self.img_produto_estoque)
 
@@ -1729,7 +1723,7 @@ class Ui_TelaPrincipal(object):
         self.img_produto_estoque_2 = QLabel(self.frame_10)
         self.img_produto_estoque_2.setObjectName(u"img_produto_estoque_2")
         self.img_produto_estoque_2.setMaximumSize(QSize(200, 200))
-        self.img_produto_estoque_2.setStyleSheet(u"boder: 1px solid;")
+        self.img_produto_estoque_2.setStyleSheet(u"border: 1px solid;")
 
         self.verticalLayout_58.addWidget(self.img_produto_estoque_2)
 

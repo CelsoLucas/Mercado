@@ -165,7 +165,6 @@ class cmdEstoque():
         categoria_id = resultado[0]
 
         tipo_valor = self.tela_principal.input_tipo_valor.currentIndex()
-        print(tipo_valor)
         if tipo_valor != 0 and tipo_valor != 1:
             QMessageBox.warning(None, "error", "Adicione Um tipo de Valor Valido!")
             return
@@ -203,7 +202,6 @@ class cmdEstoque():
            
             # Define the new file path using only save_dir
             self.new_file_path = os.path.join(save_dir, original_filename)
-            print(f"Copying from {file_path} to {self.new_file_path}")  # Debug print
                 
             # Copy the image
             shutil.copy(file_path, self.new_file_path)
@@ -241,7 +239,6 @@ class cmdEstoque():
         comando = "select preco, tipo_valor from estoque where id_produto = %s"
         cursor.execute(comando, (self.id_produto, ))
         resultado = cursor.fetchall()
-        print(resultado)
         for i in resultado:
             preco, tipo_valor = i
 

@@ -79,7 +79,6 @@ QMainWindow {
 #btn_relatorios:hover, #btn_configuracoes:hover {
     background-color: #4A5568;
     color: #FFFFFF;
-    transition: background-color 0.2s ease;
 }
 
 /* Área principal */
@@ -102,7 +101,6 @@ QPushButton {
 
 QPushButton:hover {
     background-color: #5A67D8;
-    transition: background-color 0.2s ease;
 }
 
 QPushButton:pressed {
@@ -122,7 +120,6 @@ QLineEdit, QTextEdit {
 
 QLineEdit:focus, QTextEdit:focus {
     border: 1px solid #4C51BF;
-    box-shadow: 0 0 5px rgba(76, 81, 191, 0.3);
 }
 
 /* ComboBox */
@@ -161,7 +158,6 @@ QFrame {
     background-color: #FFFFFF;
     border-radius: 10px;
     padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 /* Labels */
@@ -265,7 +261,6 @@ QTabBar::tab:hover:!selected {
     background-color: #FFFFFF;
     border-radius: 10px;
     padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 /* Botões de ação (ex.: Abrir Caixa, Fechar Caixa) */

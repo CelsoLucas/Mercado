@@ -24,8 +24,7 @@
     background-color: #F5F6FA;
 }
 
-#layout{
-	
+#layout {
     background-color: #FFFFFF;
 }
 
@@ -42,7 +41,6 @@ QPushButton {
 
 QPushButton:hover {
     background-color: #5A67D8;
-    transition: background-color 0.2s ease;
 }
 
 QPushButton:pressed {
@@ -62,7 +60,6 @@ QLineEdit {
 
 QLineEdit:focus {
     border: 1px solid #4C51BF;
-    box-shadow: 0 0 5px rgba(76, 81, 191, 0.3);
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">

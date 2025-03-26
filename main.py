@@ -72,7 +72,6 @@ class main(QMainWindow):
         self.tela_principal.btn_confirmar_fechar.clicked.connect(self.telaprin.fechar_caixa)
 
     def telapdv(self):
-        print("foiiiiasdifaida")
         resultado = self.verificar_status()
         if resultado is False:
             QMessageBox.information(None, "error", "Você deve abrir o caixa antes!")

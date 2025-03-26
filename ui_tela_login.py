@@ -33,8 +33,7 @@ class Ui_TelaLogin(object):
 "    background-color: #F5F6FA;\n"
 "}\n"
 "\n"
-"#layout{\n"
-"	\n"
+"#layout {\n"
 "    background-color: #FFFFFF;\n"
 "}\n"
 "\n"
@@ -51,7 +50,6 @@ class Ui_TelaLogin(object):
 "\n"
 "QPushButton:hover {\n"
 "    background-color: #5A67D8;\n"
-"    transition: background-color 0.2s ease;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
@@ -71,7 +69,6 @@ class Ui_TelaLogin(object):
 "\n"
 "QLineEdit:focus {\n"
 "    border: 1px solid #4C51BF;\n"
-"    box-shadow: 0 0 5px rgba(76, 81, 191, 0.3);\n"
 "}")
         self.centralwidget = QWidget(TelaLogin)
         self.centralwidget.setObjectName(u"centralwidget")

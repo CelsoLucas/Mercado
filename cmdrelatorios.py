@@ -51,19 +51,14 @@ class cmdRelatorios:
         resultados = cursor.fetchall()
 
         # Depuração: imprime os resultados no terminal
-        print(f"Data usada na query: {hoje}")
-        print(f"Resultados da query: {resultados}")
 
         # Preparando os dados para o gráfico
         if not resultados:
             nomes_produtos = ["Nenhum dado"]
             quantidades = [0]
-            print("Nenhum resultado encontrado na query.")
         else:
             nomes_produtos = [row[0] for row in resultados]
             quantidades = [row[1] for row in resultados]
-            print(f"Produtos encontrados: {nomes_produtos}")
-            print(f"Quantidades: {quantidades}")
 
         cursor.close()
 

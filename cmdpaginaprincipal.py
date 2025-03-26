@@ -33,7 +33,6 @@ class cmdPaginaPrincipal():
             vendas_total = 0
         else:
             vendas_total = resultado[0]
-        print(vendas_total)
         self.tela_principal.txt_total_vendas_db.setText(f"Total de Vendas: R$ {float(vendas_total):.2f}")
 
         comando = "select sum(valor_total) from vendas where id_usuario = %s and data_venda = %s and id_forma_pagamento = 1"
@@ -128,14 +127,12 @@ class cmdPaginaPrincipal():
 
         #Tabela =-=-=-=-=-=-=-=-=-=-=-=-=
         data_hora = datetime.date.today()
-        print(data_hora)
 
         comando = "SELECT * FROM mov_caixa WHERE DATE(data_hora) = %s AND id_user = %s"        
         cursor.execute(comando, (data_hora, self.id_user))
         resultado = cursor.fetchall()
         if resultado is None or not resultado:
             pass
-        print(resultado)
         tree = self.tela_principal.tabela_hist_mov
         tree.clear()
 
@@ -297,7 +294,6 @@ class cmdPaginaPrincipal():
         cursor.execute(comando, (self.id_user,))
         self.total_vendas_dia = cursor.fetchone()[0]
         cursor.close()
-        print(self.total_vendas_dia, "fjasikdjfaskjjfa")
         if self.total_vendas_dia is None:
             self.total_vendas_dia = 0
 

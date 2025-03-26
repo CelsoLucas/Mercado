@@ -310,7 +310,6 @@ class cmdPdv():
         self.suporte_carrinho.append(self.nome)
         self.suporte_carrinho.append(self.preco)
         self.suporte_carrinho.append(quantidade)
-        print(self.carrinho)
         self.tela_principal.stackedWidget_2.setCurrentIndex(0)
         self.mostrar_carrinho()
 
@@ -322,7 +321,6 @@ class cmdPdv():
         self.tabela.clear()
         
         if self.tabela.columnCount() != 4:
-            print("Erro: O QTreeWidget deve ter 4 colunas (Nome, Preço, Quantidade, Total)")
             return
         
         self.total_geral = 0
@@ -456,7 +454,6 @@ class cmdPdv():
         else:
             saldo_atual = resultado[0]
         saldo_atual += self.total_geral
-        print(id_forma_pagamento)
         if id_forma_pagamento == 4:
             comando = "UPDATE caixa SET saldo_atual = %s WHERE id_user = %s AND status = 1"
             valores = (saldo_atual, id_user)
@@ -541,5 +538,4 @@ class cmdPdv():
             QMessageBox.information(None, "Sucesso", "Item removido do carrinho!")
         else:
             QMessageBox.warning(None, "Erro", "Falha ao localizar o item no carrinho!")
-        print(self.carrinho)
         
