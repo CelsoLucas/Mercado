@@ -1,17 +1,20 @@
+
 class cmdTema():
-    def __init__(self, tela_principal):
-        self.tela_principal = tela_principal
-        self.tela_principal.btn_modo_claro_escuro.currentTextChanged.connect(self.status)    
-    def status(self):
-        status = self.tela_principal.btn_modo_claro_escuro.currentIndex()
-        if status == "Modo Claro":
+    def __init__(self, window):
+        self.window = window
+        self.window.tela_principal.btn_modo_claro_escuro.currentIndexChanged.connect(self.status)    
+    
+    def status(self, index):
+        if index == 0:  # Modo Claro
+            print("Switching to Light Mode")
             self.tema_claro()
-        elif status == "Modo Escuro":
+        elif index == 1:  # Modo Escuro
+            print("Switching to Dark Mode")
             self.tema_escuro()
 
 
     def tema_claro(self):
-        self.tela_principal.TelaPrincipal.setStyleSheet(u"/* Estilo geral para a janela principal */\n"
+        self.window.setStyleSheet(u"/* Estilo geral para a janela principal */\n"
 "QMainWindow {\n"
 "    background-color: #F5F6FA;\n"
 "}\n"
@@ -284,7 +287,7 @@ class cmdTema():
 "}")
         
     def tema_escuro(self):
-        self.tela_principal.TelaPrincipal.setStyleSheet(u"/* Estilo geral para a janela principal */\n"
+        self.window.setStyleSheet(u"/* Estilo geral para a janela principal */\n"
 "QMainWindow {\n"
 "    background-color: #0F172A; /* Azul escuro profundo */\n"
 "}\n"

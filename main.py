@@ -37,7 +37,7 @@ class main(QMainWindow):
         self.tela_principal.btn_estoque.clicked.connect(self.telaestoque)
         self.tela_principal.btn_relatorios.clicked.connect(self.telarelatorios)
         self.tela_principal.btn_configuracoes.clicked.connect(self.telaconfiguracoes)
-        self.tema = cmdTema(self.tela_principal)
+        self.tema = cmdTema(self)
 
     def verificar_status(self):
         conexao = conexaoDB()
