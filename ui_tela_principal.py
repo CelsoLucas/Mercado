@@ -113,18 +113,21 @@ class Ui_TelaPrincipal(object):
 "    border-radius: 6px;\n"
 "}\n"
 "\n"
+"#stackedWidget_6{\n"
+"	background-color: rgb(255, 222, 34);\n"
+"}\n"
 "QPushButton:hover {\n"
 "    background-color: #5A67D8;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: #434190;\n"
+"    background-color: #434"
+                        "190;\n"
 "}\n"
 "\n"
 "/* Inputs */\n"
 "QLineEdit, QTextEdit {\n"
-"    ba"
-                        "ckground-color: #FFFFFF;\n"
+"    background-color: #FFFFFF;\n"
 "    border: 1px solid #E2E8F0;\n"
 "    border-radius: 6px;\n"
 "    padding: 8px;\n"
@@ -166,11 +169,11 @@ class Ui_TelaPrincipal(object):
 "\n"
 "/* Frames */\n"
 "QFrame {\n"
-"    background-color: transparent;\n"
+"    background"
+                        "-color: transparent;\n"
 "}\n"
 "\n"
-"#layout_dados_sem_tabela, #lado_es"
-                        "querdo, #lado_direito {\n"
+"#layout_dados_sem_tabela, #lado_esquerdo, #lado_direito {\n"
 "    background-color: #FFFFFF;\n"
 "    border-radius: 10px;\n"
 "    padding: 15px;\n"
@@ -215,10 +218,10 @@ class Ui_TelaPrincipal(object):
 "    color: #FFFFFF;\n"
 "}\n"
 "\n"
-"QHeaderView::section {\n"
+"QHe"
+                        "aderView::section {\n"
 "    background-color: #E2E8F0;\n"
-"    padding"
-                        ": 8px;\n"
+"    padding: 8px;\n"
 "    border: none;\n"
 "    font-weight: bold;\n"
 "    color: #2D3748;\n"
@@ -263,11 +266,11 @@ class Ui_TelaPrincipal(object):
 "    border-top-right-radius: 6px;\n"
 "}\n"
 "\n"
-"QTabBar::tab:selected {\n"
+"QTabBar::tab:sele"
+                        "cted {\n"
 "    background-color: #FFFFFF;\n"
 "    color: #2D3748;\n"
-""
-                        "    border-bottom: 2px solid #4C51BF;\n"
+"    border-bottom: 2px solid #4C51BF;\n"
 "}\n"
 "\n"
 "QTabBar::tab:hover:!selected {\n"
@@ -1335,7 +1338,7 @@ class Ui_TelaPrincipal(object):
         self.stackedWidget_6.setObjectName(u"stackedWidget_6")
         self.stackedWidget_6.setMinimumSize(QSize(300, 0))
         self.stackedWidget_6.setMaximumSize(QSize(350, 16777215))
-        self.stackedWidget_6.setStyleSheet(u"background-color: rgb(57, 192, 255);")
+        self.stackedWidget_6.setStyleSheet(u"")
         self.lado_direito_pdv_1 = QWidget()
         self.lado_direito_pdv_1.setObjectName(u"lado_direito_pdv_1")
         self.verticalLayout_15 = QVBoxLayout(self.lado_direito_pdv_1)
@@ -1535,7 +1538,7 @@ class Ui_TelaPrincipal(object):
         self.img_produto_estoque = QLabel(self.frame_8)
         self.img_produto_estoque.setObjectName(u"img_produto_estoque")
         self.img_produto_estoque.setMaximumSize(QSize(200, 200))
-        self.img_produto_estoque.setStyleSheet(u"border: 1px solid;")
+        self.img_produto_estoque.setStyleSheet(u"boder: 1px solid;")
 
         self.verticalLayout_28.addWidget(self.img_produto_estoque)
 
@@ -1723,7 +1726,7 @@ class Ui_TelaPrincipal(object):
         self.img_produto_estoque_2 = QLabel(self.frame_10)
         self.img_produto_estoque_2.setObjectName(u"img_produto_estoque_2")
         self.img_produto_estoque_2.setMaximumSize(QSize(200, 200))
-        self.img_produto_estoque_2.setStyleSheet(u"border: 1px solid;")
+        self.img_produto_estoque_2.setStyleSheet(u"boder: 1px solid;")
 
         self.verticalLayout_58.addWidget(self.img_produto_estoque_2)
 
@@ -2257,9 +2260,9 @@ class Ui_TelaPrincipal(object):
         self.retranslateUi(TelaPrincipal)
 
         self.btn_modo_claro_escuro.setCurrentIndex(0)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         self.stackedWidget_7.setCurrentIndex(3)
-        self.stackedWidget_2.setCurrentIndex(2)
+        self.stackedWidget_2.setCurrentIndex(1)
         self.stackedWidget_6.setCurrentIndex(0)
         self.stackedWidget_3.setCurrentIndex(2)
         self.input_categoria_produto.setCurrentIndex(-1)

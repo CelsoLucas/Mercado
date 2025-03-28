@@ -2,8 +2,8 @@ from ui_tela_login import Ui_TelaLogin
 from ui_tela_principal import Ui_TelaPrincipal
 from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QVBoxLayout
 from PySide6.QtGui import QPixmap, QIcon
+from PySide6.QtCore import Qt
 import sys
-import mysql.connector
 from cmdpaginaprincipal import cmdPaginaPrincipal
 from cmdpdv import cmdPdv
 from cmdestoque import cmdEstoque
@@ -20,11 +20,19 @@ class main(QMainWindow):
         self.setWindowTitle("LOGIN")
         self.setWindowIcon(QIcon("imgs/icon (1).png"))
         self.tela_login.btn_login.clicked.connect(self.check_login)
+
     def init_tela_principal(self):
+
+        self.setWindowState(Qt.WindowMaximized)
+
         self.tela_principal = Ui_TelaPrincipal()
         self.tela_principal.setupUi(self)
         self.setWindowTitle("MERCADO DO CELSADAS")
         self.setWindowIcon(QIcon("imgs/icon (1).png"))
+
+        self.setFixedSize(0, 0)  # Remove tamanho fixo
+        self.setMinimumSize(0, 0)  # Permite qualquer tamanho mínimo
+        self.setMaximumSize(16777215, 16777215)
 
         self.tela_principal.txt_ola_user.setText(f"{self.user}")
 
@@ -38,6 +46,12 @@ class main(QMainWindow):
         self.tela_principal.btn_relatorios.clicked.connect(self.telarelatorios)
         self.tela_principal.btn_configuracoes.clicked.connect(self.telaconfiguracoes)
         self.tema = cmdTema(self)
+
+        self.setWindowState(Qt.WindowMaximized)
+        self.showMaximized()
+        self.adjustSize()  # Ajusta o tamanho ao conteúdo, mas respeitando o estado maximizado
+        self.update()
+        self.repaint()
 
     def verificar_status(self):
         conexao = conexaoDB()
@@ -171,5 +185,5 @@ class main(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = main()
-    window.show()
+    window.showMaximized()
     sys.exit(app.exec())

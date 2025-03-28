@@ -403,7 +403,12 @@ class cmdPdv():
         cursor = self.conexao.get_cursor()
         comando = "select id_forma_pagamento from formapagamento where forma_pagamento = %s"
         cursor.execute(comando, (self.tela_principal.input_pdv_forma_pagamento.currentText(), ))
-        id_forma_pagamento = cursor.fetchone()[0]
+        id_forma_pagamento = cursor.fetchone()
+        if id_forma_pagamento is None:
+            QMessageBox.warning(None, "error", "Selecione uma Forma de Pagamento!")
+            return
+        else:
+            id_forma_pagamento = id_forma_pagamento[0]
 
         comando = """insert into vendas (id_usuario, valor_total, id_forma_pagamento)
                      values (%s, %s, %s)"""
