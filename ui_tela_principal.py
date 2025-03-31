@@ -114,7 +114,7 @@ class Ui_TelaPrincipal(object):
 "}\n"
 "\n"
 "#stackedWidget_6{\n"
-"	background-color: rgb(255, 222, 34);\n"
+"	background-color: rgb(223, 232, 239);\n"
 "}\n"
 "QPushButton:hover {\n"
 "    background-color: #5A67D8;\n"

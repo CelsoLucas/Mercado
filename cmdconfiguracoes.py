@@ -210,7 +210,7 @@ class cmdConfiguracoes():
 
     def mostrar_categoria(self):
         cursor = self.conexao.get_cursor()
-        cursor.execute("select id_categorias, nome_categoria from categorias")
+        cursor.execute("select id_categorias, nome_categoria from categorias ORDER BY id_categorias ASC")
         resultado = cursor.fetchall()
 
         tree = self.tela_principal.tabela_categoria

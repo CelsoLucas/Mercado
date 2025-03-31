@@ -210,6 +210,9 @@ class cmdPaginaPrincipal():
     
         quant_init = self.tela_principal.input_quantidade_caixa_abrir.text()
         
+        if float(quant_init) <= 0:
+            QMessageBox.warning(None, "error", "Digite um valor maior que R$0,00")
+            return
         self.hoje = datetime.datetime.today()
 
         cursor = self.conexao.get_cursor()
