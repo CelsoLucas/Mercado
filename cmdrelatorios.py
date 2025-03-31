@@ -126,7 +126,9 @@ class cmdRelatorios:
         ax.barh(nomes_operadores, totais_vendas, color='lightgreen')
         ax.set_xlabel('Total de Vendas (R$)')
         ax.set_ylabel('Operadores')
+        plt.yticks(rotation=90)
         plt.tight_layout()
+        
 
         # Integrando o gráfico ao layout
         canvas = FigureCanvas(fig)
@@ -180,6 +182,8 @@ class cmdRelatorios:
         ax.barh(nomes_produtos, quantidades, color='salmon')
         ax.set_xlabel('Quantidade em Estoque')
         ax.set_ylabel('Produtos')
+        plt.yticks(rotation=90)
+
         plt.tight_layout()
 
         # Integrando o gráfico ao layout
