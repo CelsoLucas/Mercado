@@ -143,7 +143,7 @@ class cmdPaginaPrincipal():
             item.setText(1, desc)  
             item.setText(2, str(formapagamento))  
             item.setText(3, str(obs))  
-            item.setText(4, str(valor))
+            item.setText(4, f"R$ {float(valor):.2f}")
 
 
             item.setTextAlignment(0, Qt.AlignCenter)
