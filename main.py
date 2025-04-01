@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QVBoxLayou
 from PySide6.QtGui import QPixmap, QIcon
 from PySide6.QtCore import Qt
 import sys
+from cmdTelaLogin import CmdTelaLogin
 from cmdpaginaprincipal import cmdPaginaPrincipal
 from cmdpdv import cmdPdv
 from cmdestoque import cmdEstoque
@@ -20,6 +21,7 @@ class main(QMainWindow):
         self.setWindowTitle("LOGIN")
         self.setWindowIcon(QIcon("imgs/icon (1).png"))
         self.tela_login.btn_login.clicked.connect(self.check_login)
+        self.tela_login.btn_esqueci_senha.clicked.connect(self.tela_recuperar_senha)
 
     def init_tela_principal(self):
 
@@ -141,7 +143,16 @@ class main(QMainWindow):
 
     def init_tela_login(self):
         self.tela_login.setupUi(self)
+        self.showMaximized()
         self.tela_login.btn_login.clicked.connect(self.check_login)
+        self.tela_login.btn_esqueci_senha.clicked.connect(self.tela_recuperar_senha)
+
+    def tela_recuperar_senha(self):
+        self.recuperar_senha = CmdTelaLogin(self.tela_login)
+        self.tela_login.stackedWidget.setCurrentIndex(1)
+        self.tela_login.btn_enviar_codigo.clicked.connect(self.recuperar_senha.enviar_email_recuperacao)
+        self.tela_login.btn_redefinir_senha.clicked.connect(self.recuperar_senha.verificar_e_mudar_senha)
+        self.tela_login.btn_voltar.clicked.connect(self.recuperar_senha.voltar)
 
     def check_login(self):
 
