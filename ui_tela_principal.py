@@ -114,17 +114,17 @@ class Ui_TelaPrincipal(object):
 "}\n"
 "\n"
 "#stackedWidget_6{\n"
-"	background-color: rgb(255, 222, 34);\n"
+"color: rgb(211, 211, 211);\n"
 "}\n"
 "QPushButton:hover {\n"
 "    background-color: #5A67D8;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: #434"
-                        "190;\n"
+"    background-color: #434190;\n"
 "}\n"
-"\n"
+""
+                        "\n"
 "/* Inputs */\n"
 "QLineEdit, QTextEdit {\n"
 "    background-color: #FFFFFF;\n"
@@ -169,8 +169,8 @@ class Ui_TelaPrincipal(object):
 "\n"
 "/* Frames */\n"
 "QFrame {\n"
-"    background"
-                        "-color: transparent;\n"
+"    background-color: transpa"
+                        "rent;\n"
 "}\n"
 "\n"
 "#layout_dados_sem_tabela, #lado_esquerdo, #lado_direito {\n"
@@ -218,8 +218,8 @@ class Ui_TelaPrincipal(object):
 "    color: #FFFFFF;\n"
 "}\n"
 "\n"
-"QHe"
-                        "aderView::section {\n"
+"QHeaderView::secti"
+                        "on {\n"
 "    background-color: #E2E8F0;\n"
 "    padding: 8px;\n"
 "    border: none;\n"
@@ -266,9 +266,9 @@ class Ui_TelaPrincipal(object):
 "    border-top-right-radius: 6px;\n"
 "}\n"
 "\n"
-"QTabBar::tab:sele"
-                        "cted {\n"
-"    background-color: #FFFFFF;\n"
+"QTabBar::tab:selected {\n"
+"    "
+                        "background-color: #FFFFFF;\n"
 "    color: #2D3748;\n"
 "    border-bottom: 2px solid #4C51BF;\n"
 "}\n"
@@ -1817,13 +1817,67 @@ class Ui_TelaPrincipal(object):
         self.widget_3.setObjectName(u"widget_3")
         self.gridLayout_2 = QGridLayout(self.widget_3)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.verticalSpacer_10 = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        self.layout_relatorios_2 = QFrame(self.widget_3)
+        self.layout_relatorios_2.setObjectName(u"layout_relatorios_2")
+        self.layout_relatorios_2.setMaximumSize(QSize(300, 300))
+        self.layout_relatorios_2.setStyleSheet(u"background-color: rgb(219, 219, 219);\n"
+"border-radius: 20px;")
+        self.layout_relatorios_2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_relatorios_2.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_30 = QVBoxLayout(self.layout_relatorios_2)
+        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
+        self.txt_lucro_prejuizo = QLabel(self.layout_relatorios_2)
+        self.txt_lucro_prejuizo.setObjectName(u"txt_lucro_prejuizo")
 
-        self.gridLayout_2.addItem(self.verticalSpacer_10, 4, 1, 1, 1)
+        self.verticalLayout_30.addWidget(self.txt_lucro_prejuizo, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
+
+        self.top_5_operadores = QFrame(self.layout_relatorios_2)
+        self.top_5_operadores.setObjectName(u"top_5_operadores")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.top_5_operadores.sizePolicy().hasHeightForWidth())
+        self.top_5_operadores.setSizePolicy(sizePolicy2)
+        self.top_5_operadores.setFrameShape(QFrame.Shape.StyledPanel)
+        self.top_5_operadores.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_70 = QVBoxLayout(self.top_5_operadores)
+        self.verticalLayout_70.setSpacing(0)
+        self.verticalLayout_70.setObjectName(u"verticalLayout_70")
+        self.verticalLayout_70.setContentsMargins(0, 0, 0, 0)
+
+        self.verticalLayout_30.addWidget(self.top_5_operadores)
+
+
+        self.gridLayout_2.addWidget(self.layout_relatorios_2, 3, 0, 1, 1)
 
         self.verticalSpacer_9 = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
 
         self.gridLayout_2.addItem(self.verticalSpacer_9, 0, 1, 1, 1)
+
+        self.layout_relatorios_1 = QFrame(self.widget_3)
+        self.layout_relatorios_1.setObjectName(u"layout_relatorios_1")
+        self.layout_relatorios_1.setStyleSheet(u"background-color: rgb(219, 219, 219);\n"
+"border-radius: 20px;")
+        self.layout_relatorios_1.setFrameShape(QFrame.Shape.StyledPanel)
+        self.layout_relatorios_1.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_29 = QVBoxLayout(self.layout_relatorios_1)
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
+        self.verticalLayout_29.setContentsMargins(0, 0, 0, 0)
+        self.frame_produtos_mai_vendidos = QFrame(self.layout_relatorios_1)
+        self.frame_produtos_mai_vendidos.setObjectName(u"frame_produtos_mai_vendidos")
+        sizePolicy2.setHeightForWidth(self.frame_produtos_mai_vendidos.sizePolicy().hasHeightForWidth())
+        self.frame_produtos_mai_vendidos.setSizePolicy(sizePolicy2)
+        self.frame_produtos_mai_vendidos.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_produtos_mai_vendidos.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_69 = QVBoxLayout(self.frame_produtos_mai_vendidos)
+        self.verticalLayout_69.setSpacing(0)
+        self.verticalLayout_69.setObjectName(u"verticalLayout_69")
+        self.verticalLayout_69.setContentsMargins(0, 0, 0, 0)
+
+        self.verticalLayout_29.addWidget(self.frame_produtos_mai_vendidos)
+
+
+        self.gridLayout_2.addWidget(self.layout_relatorios_1, 1, 0, 1, 3)
 
         self.layout_relatorios_3 = QFrame(self.widget_3)
         self.layout_relatorios_3.setObjectName(u"layout_relatorios_3")
@@ -1842,66 +1896,27 @@ class Ui_TelaPrincipal(object):
 
         self.frame_estoque_alerta = QFrame(self.layout_relatorios_3)
         self.frame_estoque_alerta.setObjectName(u"frame_estoque_alerta")
-        sizePolicy1.setHeightForWidth(self.frame_estoque_alerta.sizePolicy().hasHeightForWidth())
-        self.frame_estoque_alerta.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.frame_estoque_alerta.sizePolicy().hasHeightForWidth())
+        self.frame_estoque_alerta.setSizePolicy(sizePolicy2)
         self.frame_estoque_alerta.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_estoque_alerta.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_71 = QVBoxLayout(self.frame_estoque_alerta)
+        self.verticalLayout_71.setSpacing(0)
+        self.verticalLayout_71.setObjectName(u"verticalLayout_71")
+        self.verticalLayout_71.setContentsMargins(0, 0, 0, 0)
 
         self.verticalLayout_31.addWidget(self.frame_estoque_alerta)
 
 
         self.gridLayout_2.addWidget(self.layout_relatorios_3, 3, 1, 1, 1)
 
-        self.layout_relatorios_1 = QFrame(self.widget_3)
-        self.layout_relatorios_1.setObjectName(u"layout_relatorios_1")
-        self.layout_relatorios_1.setStyleSheet(u"background-color: rgb(219, 219, 219);\n"
-"border-radius: 20px;")
-        self.layout_relatorios_1.setFrameShape(QFrame.Shape.StyledPanel)
-        self.layout_relatorios_1.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_29 = QVBoxLayout(self.layout_relatorios_1)
-        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
-        self.txt_vendas_ultimos_6_meses = QLabel(self.layout_relatorios_1)
-        self.txt_vendas_ultimos_6_meses.setObjectName(u"txt_vendas_ultimos_6_meses")
+        self.verticalSpacer_11 = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
 
-        self.verticalLayout_29.addWidget(self.txt_vendas_ultimos_6_meses, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
+        self.gridLayout_2.addItem(self.verticalSpacer_11, 2, 1, 1, 1)
 
-        self.frame_produtos_mai_vendidos = QFrame(self.layout_relatorios_1)
-        self.frame_produtos_mai_vendidos.setObjectName(u"frame_produtos_mai_vendidos")
-        sizePolicy1.setHeightForWidth(self.frame_produtos_mai_vendidos.sizePolicy().hasHeightForWidth())
-        self.frame_produtos_mai_vendidos.setSizePolicy(sizePolicy1)
-        self.frame_produtos_mai_vendidos.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_produtos_mai_vendidos.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalSpacer_10 = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
 
-        self.verticalLayout_29.addWidget(self.frame_produtos_mai_vendidos)
-
-
-        self.gridLayout_2.addWidget(self.layout_relatorios_1, 1, 0, 1, 3)
-
-        self.layout_relatorios_2 = QFrame(self.widget_3)
-        self.layout_relatorios_2.setObjectName(u"layout_relatorios_2")
-        self.layout_relatorios_2.setMaximumSize(QSize(300, 300))
-        self.layout_relatorios_2.setStyleSheet(u"background-color: rgb(219, 219, 219);\n"
-"border-radius: 20px;")
-        self.layout_relatorios_2.setFrameShape(QFrame.Shape.StyledPanel)
-        self.layout_relatorios_2.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_30 = QVBoxLayout(self.layout_relatorios_2)
-        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
-        self.txt_lucro_prejuizo = QLabel(self.layout_relatorios_2)
-        self.txt_lucro_prejuizo.setObjectName(u"txt_lucro_prejuizo")
-
-        self.verticalLayout_30.addWidget(self.txt_lucro_prejuizo, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
-
-        self.top_5_operadores = QFrame(self.layout_relatorios_2)
-        self.top_5_operadores.setObjectName(u"top_5_operadores")
-        sizePolicy1.setHeightForWidth(self.top_5_operadores.sizePolicy().hasHeightForWidth())
-        self.top_5_operadores.setSizePolicy(sizePolicy1)
-        self.top_5_operadores.setFrameShape(QFrame.Shape.StyledPanel)
-        self.top_5_operadores.setFrameShadow(QFrame.Shadow.Raised)
-
-        self.verticalLayout_30.addWidget(self.top_5_operadores)
-
-
-        self.gridLayout_2.addWidget(self.layout_relatorios_2, 3, 0, 1, 1)
+        self.gridLayout_2.addItem(self.verticalSpacer_10, 4, 1, 1, 1)
 
         self.layout_relatorios_4 = QFrame(self.widget_3)
         self.layout_relatorios_4.setObjectName(u"layout_relatorios_4")
@@ -1919,19 +1934,19 @@ class Ui_TelaPrincipal(object):
 
         self.frame_formas_pagamento = QFrame(self.layout_relatorios_4)
         self.frame_formas_pagamento.setObjectName(u"frame_formas_pagamento")
-        sizePolicy1.setHeightForWidth(self.frame_formas_pagamento.sizePolicy().hasHeightForWidth())
-        self.frame_formas_pagamento.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.frame_formas_pagamento.sizePolicy().hasHeightForWidth())
+        self.frame_formas_pagamento.setSizePolicy(sizePolicy2)
         self.frame_formas_pagamento.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_formas_pagamento.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_72 = QVBoxLayout(self.frame_formas_pagamento)
+        self.verticalLayout_72.setSpacing(0)
+        self.verticalLayout_72.setObjectName(u"verticalLayout_72")
+        self.verticalLayout_72.setContentsMargins(0, 0, 0, 0)
 
         self.verticalLayout_32.addWidget(self.frame_formas_pagamento)
 
 
         self.gridLayout_2.addWidget(self.layout_relatorios_4, 3, 2, 1, 1)
-
-        self.verticalSpacer_11 = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_2.addItem(self.verticalSpacer_11, 2, 1, 1, 1)
 
 
         self.verticalLayout_7.addWidget(self.widget_3)
@@ -2251,7 +2266,7 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
         self.stackedWidget_7.setCurrentIndex(0)
         self.stackedWidget_2.setCurrentIndex(1)
         self.stackedWidget_6.setCurrentIndex(0)
@@ -2404,9 +2419,8 @@ class Ui_TelaPrincipal(object):
 
         self.input_tipo_valor_2.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Tipo de Valor", None))
         self.btn_adc_produto_2.setText(QCoreApplication.translate("TelaPrincipal", u"Adicionar Produto", None))
-        self.txt_produtos_mais_vendidos.setText(QCoreApplication.translate("TelaPrincipal", u"Estoque em Alerta", None))
-        self.txt_vendas_ultimos_6_meses.setText(QCoreApplication.translate("TelaPrincipal", u"PRODUTOS MAIS VENDIDOS", None))
         self.txt_lucro_prejuizo.setText(QCoreApplication.translate("TelaPrincipal", u"Desempenho por Operador (TOP 5)", None))
+        self.txt_produtos_mais_vendidos.setText(QCoreApplication.translate("TelaPrincipal", u"Estoque em Alerta", None))
         self.label_4.setText(QCoreApplication.translate("TelaPrincipal", u"Taxa de Pagamento por Forma", None))
         ___qtreewidgetitem3 = self.treeWidget_2.headerItem()
         ___qtreewidgetitem3.setText(5, QCoreApplication.translate("TelaPrincipal", u"PERMISS\u00c3O", None));

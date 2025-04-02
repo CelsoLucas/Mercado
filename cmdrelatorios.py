@@ -50,8 +50,6 @@ class cmdRelatorios:
         cursor.execute(comando, (hoje,))
         resultados = cursor.fetchall()
 
-        # Depuração: imprime os resultados no terminal
-
         # Preparando os dados para o gráfico
         if not resultados:
             nomes_produtos = ["Nenhum dado"]
@@ -62,13 +60,19 @@ class cmdRelatorios:
 
         cursor.close()
 
-        # Criando o gráfico de barras
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.bar(nomes_produtos, quantidades, color='skyblue')
-        ax.set_xlabel('Produtos')
-        ax.set_ylabel('Quantidade Vendida')
-        plt.xticks(rotation=45, ha='right')
-        plt.grid(True)
+        # Criando o gráfico de barras com estilo compatível
+        fig, ax = plt.subplots(figsize=(10, 6), facecolor='#dbdbdb')  # Fundo da figura igual ao QMainWindow
+        ax.set_facecolor('#FFFFFF')  # Fundo do gráfico igual aos frames
+        ax.bar(nomes_produtos, quantidades, color='#4C51BF', edgecolor='#2D3748', linewidth=0.5)  # Azul principal com borda cinza escura
+        ax.set_title("Produtos mais vendidos", fontsize=20, fontfamily='Segoe UI', color='#2D3748')
+        ax.set_ylabel('Quantidade Vendida', fontsize=14, fontfamily='Segoe UI', color='#2D3748')
+        ax.tick_params(axis='x', labelsize=12, labelfontfamily='Segoe UI', color='#4A5568', labelcolor='#4A5568')
+        ax.tick_params(axis='y', labelsize=12, labelfontfamily='Segoe UI', color='#4A5568', labelcolor='#4A5568')
+        ax.grid(True, linestyle='--', alpha=0.7, color='#E2E8F0')  # Grid com estilo suave
+        ax.spines['top'].set_visible(False)  # Remove borda superior
+        ax.spines['right'].set_visible(False)  # Remove borda direita
+        ax.spines['left'].set_color('#E2E8F0')  # Borda esquerda cinza claro
+        ax.spines['bottom'].set_color('#E2E8F0')  # Borda inferior cinza claro
         plt.tight_layout()
 
         # Integrando o gráfico ao layout

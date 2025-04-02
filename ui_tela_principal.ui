@@ -100,7 +100,7 @@ QPushButton {
 }
 
 #stackedWidget_6{
-	background-color: rgb(255, 222, 34);
+color: rgb(211, 211, 211);
 }
 QPushButton:hover {
     background-color: #5A67D8;
@@ -616,7 +616,7 @@ QTabBar::tab:hover:!selected {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>0</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -3079,21 +3079,67 @@ QTabBar::tab:hover:!selected {
               <item>
                <widget class="QWidget" name="widget_3" native="true">
                 <layout class="QGridLayout" name="gridLayout_2">
-                 <item row="4" column="1">
-                  <spacer name="verticalSpacer_10">
-                   <property name="orientation">
-                    <enum>Qt::Orientation::Vertical</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Policy::Minimum</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
+                 <item row="3" column="0">
+                  <widget class="QFrame" name="layout_relatorios_2">
+                   <property name="maximumSize">
                     <size>
-                     <width>20</width>
-                     <height>20</height>
+                     <width>300</width>
+                     <height>300</height>
                     </size>
                    </property>
-                  </spacer>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(219, 219, 219);
+border-radius: 20px;</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::Shape::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Shadow::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_30">
+                    <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
+                     <widget class="QLabel" name="txt_lucro_prejuizo">
+                      <property name="text">
+                       <string>Desempenho por Operador (TOP 5)</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="top_5_operadores">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::Shape::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Shadow::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_70">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
                  </item>
                  <item row="0" column="1">
                   <spacer name="verticalSpacer_9">
@@ -3110,6 +3156,67 @@ QTabBar::tab:hover:!selected {
                     </size>
                    </property>
                   </spacer>
+                 </item>
+                 <item row="1" column="0" colspan="3">
+                  <widget class="QFrame" name="layout_relatorios_1">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(219, 219, 219);
+border-radius: 20px;</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::Shape::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Shadow::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_29">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QFrame" name="frame_produtos_mai_vendidos">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::Shape::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Shadow::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_69">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
                  </item>
                  <item row="3" column="1">
                   <widget class="QFrame" name="layout_relatorios_3">
@@ -3146,7 +3253,7 @@ border-radius: 20px;</string>
                     <item>
                      <widget class="QFrame" name="frame_estoque_alerta">
                       <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                         <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
@@ -3157,94 +3264,59 @@ border-radius: 20px;</string>
                       <property name="frameShadow">
                        <enum>QFrame::Shadow::Raised</enum>
                       </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_71">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                      </layout>
                      </widget>
                     </item>
                    </layout>
                   </widget>
                  </item>
-                 <item row="1" column="0" colspan="3">
-                  <widget class="QFrame" name="layout_relatorios_1">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(219, 219, 219);
-border-radius: 20px;</string>
+                 <item row="2" column="1">
+                  <spacer name="verticalSpacer_11">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Vertical</enum>
                    </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::StyledPanel</enum>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Policy::Minimum</enum>
                    </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Raised</enum>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_29">
-                    <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
-                     <widget class="QLabel" name="txt_vendas_ultimos_6_meses">
-                      <property name="text">
-                       <string>PRODUTOS MAIS VENDIDOS</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="frame_produtos_mai_vendidos">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::Shape::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Shadow::Raised</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item row="3" column="0">
-                  <widget class="QFrame" name="layout_relatorios_2">
-                   <property name="maximumSize">
+                   <property name="sizeHint" stdset="0">
                     <size>
-                     <width>300</width>
-                     <height>300</height>
+                     <width>20</width>
+                     <height>20</height>
                     </size>
                    </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(219, 219, 219);
-border-radius: 20px;</string>
+                  </spacer>
+                 </item>
+                 <item row="4" column="1">
+                  <spacer name="verticalSpacer_10">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Vertical</enum>
                    </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Shape::StyledPanel</enum>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Policy::Minimum</enum>
                    </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Shadow::Raised</enum>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>20</height>
+                    </size>
                    </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_30">
-                    <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
-                     <widget class="QLabel" name="txt_lucro_prejuizo">
-                      <property name="text">
-                       <string>Desempenho por Operador (TOP 5)</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="top_5_operadores">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::Shape::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Shadow::Raised</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
+                  </spacer>
                  </item>
                  <item row="3" column="2">
                   <widget class="QFrame" name="layout_relatorios_4">
@@ -3275,7 +3347,7 @@ border-radius: 20px;</string>
                     <item>
                      <widget class="QFrame" name="frame_formas_pagamento">
                       <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                         <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
@@ -3286,26 +3358,27 @@ border-radius: 20px;</string>
                       <property name="frameShadow">
                        <enum>QFrame::Shadow::Raised</enum>
                       </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_72">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                      </layout>
                      </widget>
                     </item>
                    </layout>
                   </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <spacer name="verticalSpacer_11">
-                   <property name="orientation">
-                    <enum>Qt::Orientation::Vertical</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Policy::Minimum</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
                  </item>
                 </layout>
                </widget>
