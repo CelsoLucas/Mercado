@@ -35,7 +35,7 @@ class cmdPaginaPrincipal():
             vendas_total = resultado[0]
         self.tela_principal.txt_total_vendas_db.setText(f"Total de Vendas: R$ {float(vendas_total):.2f}")
 
-        comando = "select sum(valor_total) from vendas where id_usuario = %s and data_venda = %s and id_forma_pagamento = 1"
+        comando = "select sum(valor_pix) from vendas where id_usuario = %s and data_venda = %s"
         valores = (self.id_user, hoje)
         cursor.execute(comando, valores)
         resultado = cursor.fetchone()
@@ -46,7 +46,7 @@ class cmdPaginaPrincipal():
         self.tela_principal.txt_total_vendas_pix_db.setText(f"R$ {float(vendas_pix):.2f}")
 
         
-        comando = "select sum(valor_total) from vendas where id_usuario = %s and data_venda = %s and id_forma_pagamento = 2"
+        comando = "select sum(valor_credito) from vendas where id_usuario = %s and data_venda = %s"
         valores = (self.id_user, hoje)
         cursor.execute(comando, valores)
         resultado = cursor.fetchone()
@@ -57,7 +57,7 @@ class cmdPaginaPrincipal():
         self.tela_principal.txt_total_vendas_debito_db.setText(f"R$ {float(vendas_debito):.2f}")
 
         
-        comando = "select sum(valor_total) from vendas where id_usuario = %s and data_venda = %s and id_forma_pagamento = 3"
+        comando = "select sum(valor_debito) from vendas where id_usuario = %s and data_venda = %s"
         valores = (self.id_user, hoje)
         cursor.execute(comando, valores)
         resultado = cursor.fetchone()
@@ -68,7 +68,7 @@ class cmdPaginaPrincipal():
         self.tela_principal.txt_total_vendas_credito_db.setText(f"R$ {float(vendas_credito):.2f}")
 
         
-        comando = "select sum(valor_total) from vendas where id_usuario = %s and data_venda = %s and id_forma_pagamento = 4"
+        comando = "select sum(valor_dinheiro) from vendas where id_usuario = %s and data_venda = %s"
         valores = (self.id_user, hoje)
         cursor.execute(comando, valores)
         resultado = cursor.fetchone()
@@ -97,7 +97,7 @@ class cmdPaginaPrincipal():
             saldo_ini = resultado[0]
         self.tela_principal.txt_saldo_inicial_db.setText(f"R$ {float(saldo_ini):.2f}")
 
-        comando = "select sum(valor_total) from vendas where id_forma_pagamento = '4' and data_venda = %s and id_usuario = %s"
+        comando = "select sum(valor_total) from vendas where forma_dinheiro = '1' and data_venda = %s and id_usuario = %s"
         valores = (hoje, self.id_user)
         cursor.execute(comando, valores)
         resultado = cursor.fetchone()
@@ -216,7 +216,7 @@ class cmdPaginaPrincipal():
         self.hoje = datetime.datetime.today()
 
         cursor = self.conexao.get_cursor()
-        comando = "select sum(valor_total) from vendas where data_venda = %s and id_forma_pagamento = 4"
+        comando = "select sum(valor_total) from vendas where data_venda = %s and forma_dinheiro = '1'"
         cursor.execute(comando, (self.hoje, ))
         self.total_vendas_dia = cursor.fetchone()[0]
         if self.total_vendas_dia is None:

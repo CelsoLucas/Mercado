@@ -616,7 +616,7 @@ QTabBar::tab:hover:!selected {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>3</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -2297,6 +2297,13 @@ QTabBar::tab:hover:!selected {
                      <enum>QFrame::Shadow::Raised</enum>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_18"/>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btn_processar_pagamento">
+                    <property name="text">
+                     <string>Processar Pagamento</string>
+                    </property>
                    </widget>
                   </item>
                   <item>

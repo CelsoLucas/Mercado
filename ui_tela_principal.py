@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'ui_tela_principal.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.3
+## Created by: Qt User Interface Compiler version 6.8.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -1396,6 +1396,11 @@ class Ui_TelaPrincipal(object):
 
         self.verticalLayout_15.addWidget(self.frame_pagamento)
 
+        self.btn_processar_pagamento = QPushButton(self.lado_direito_pdv_1)
+        self.btn_processar_pagamento.setObjectName(u"btn_processar_pagamento")
+
+        self.verticalLayout_15.addWidget(self.btn_processar_pagamento)
+
         self.btn_finaliza_compra = QPushButton(self.lado_direito_pdv_1)
         self.btn_finaliza_compra.setObjectName(u"btn_finaliza_compra")
 
@@ -2266,7 +2271,7 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(1)
         self.stackedWidget_7.setCurrentIndex(0)
         self.stackedWidget_2.setCurrentIndex(1)
         self.stackedWidget_6.setCurrentIndex(0)
@@ -2373,6 +2378,7 @@ class Ui_TelaPrincipal(object):
         self.input_pdv_forma_pagamento.setItemText(3, QCoreApplication.translate("TelaPrincipal", u"Dinheiro", None))
 
         self.input_pdv_forma_pagamento.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Forma de Pagamento", None))
+        self.btn_processar_pagamento.setText(QCoreApplication.translate("TelaPrincipal", u"Processar Pagamento", None))
         self.btn_finaliza_compra.setText(QCoreApplication.translate("TelaPrincipal", u"Finalizar Compra", None))
         self.label_6.setText(QCoreApplication.translate("TelaPrincipal", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt;\">Compra Realizada! </span></p><p align=\"center\"><span style=\" font-size:16pt;\">Obrigado Por Comprar no Mercado do Celsadas</span></p></body></html>", None))
         self.input_pesquisar_produto_4.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Procurar Produto", None))

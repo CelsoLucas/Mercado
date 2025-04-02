@@ -98,6 +98,7 @@ class main(QMainWindow):
             self.tela_principal.btn_pdv_menos.clicked.connect(self.pdv.menos)
             self.tela_principal.btn_adc_carrinho.clicked.connect(self.pdv.adc_carrinho)
             self.tela_principal.btn_adc_carrinho_2.clicked.connect(self.pdv.adc_carrinho)
+            self.tela_principal.btn_processar_pagamento.clicked.connect(self.pdv.processar_pagamento)
             self.tela_principal.btn_finaliza_compra.clicked.connect(self.pdv.finalizar_compra)
             self.tela_principal.btn_remover_produto_carrinho.clicked.connect(self.pdv.remover_carrinho)
 

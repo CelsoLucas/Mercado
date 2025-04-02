@@ -324,13 +324,14 @@ class cmdPdv():
             return
         
         self.total_geral = 0
-        
+        self.total = 0
         for item in self.carrinho:
             nome = item[0]
             preco = float(item[1]) 
             quantidade = float(item[2])  
             total_item = preco * quantidade  
-            self.total_geral += total_item  
+            self.total_geral += total_item 
+            self.total += total_item 
             
             linha = QTreeWidgetItem([nome, str(quantidade), f"R$ {preco:.2f}", f"R$ {total_item:.2f}"])
             self.tabela.addTopLevelItem(linha)
@@ -342,7 +343,7 @@ class cmdPdv():
     
     def forma_pagamento(self):
 
-        forma = self.tela_principal.input_pdv_forma_pagamento.currentText()
+        self.forma = self.tela_principal.input_pdv_forma_pagamento.currentText()
         frame = self.tela_principal.frame_pagamento
         
         while frame.layout() and frame.layout().count():
@@ -350,21 +351,40 @@ class cmdPdv():
             if item.widget():
                 item.widget().deleteLater()
 
-        if forma == "Pix":
+        if self.forma == "Pix":
             qr_label = QLabel()
             pixmap = QPixmap("imgs/qrcode.png")
             pixmap = pixmap.scaled(200, 200, Qt.KeepAspectRatio, Qt.SmoothTransformation)
             qr_label.setPixmap(pixmap)
             qr_label.setAlignment(Qt.AlignCenter)
             frame.layout().addWidget(qr_label)
-        elif forma == "Dinheiro":
+        else:
             self.dinheiro_input = QLineEdit()
-            self.dinheiro_input.setPlaceholderText("Digite o valor em dinheiro")
+            self.dinheiro_input.setPlaceholderText("Digite o valor que deseja pagar")
             self.dinheiro_input.setStyleSheet("font-size: 14px; padding: 5px;")
             self.dinheiro_input.setMaximumWidth(200) 
             
             frame.layout().addWidget(self.dinheiro_input)
 
+
+    def processar_pagamento(self):
+        self.valores_formas_pagamento = {"Pix":"", "Débito":"", "Crédito":"", "Dinheiro":""}
+        self.forma_pagamento_true = {"Pix":"", "Débito":"", "Crédito":"", "Dinheiro":""}
+        
+        if self.carrinho == []:
+            QMessageBox.warning(None, "error", "Carrinho está vazio!")
+            return
+
+        self.novo_valor = self.total_geral - float(self.dinheiro_input.text())
+
+        self.valores_formas_pagamento[self.forma] = float(self.dinheiro_input.text())
+        self.total_geral = self.novo_valor
+        if self.total_geral == -0:
+            self.total_geral = 0
+
+        self.tela_principal.txt_valor_total.setText(f"R$ {self.total_geral:.2f}")
+
+        
     def finalizar_compra(self):
 
         if self.carrinho == []:
@@ -373,7 +393,7 @@ class cmdPdv():
 
         if self.tela_principal.input_pdv_forma_pagamento.currentText() == "Dinheiro":
             if float(self.dinheiro_input.text()) < self.total_geral:
-                QMessageBox.warning(None, "error", "Quantidade de dinheiro menor que o total")
+                QMessageBox.warning(None, "error", "Quantidade de dinheiro menor que o total, processe o pagamento para prosseguir!")
                 return
                 
             elif float(self.dinheiro_input.text()) > self.total_geral:
@@ -384,23 +404,12 @@ class cmdPdv():
                 self.dinheiro_txt.setMaximumWidth(200) 
                 frame = self.tela_principal.frame_pagamento
                 frame.layout().addWidget(self.dinheiro_txt)
-
-            else:
-                troco = float(self.dinheiro_input.text()) - self.total_geral
-                self.dinheiro_txt = QLabel()
-                self.dinheiro_txt.setText(f"Troco: R$ {troco:.2f}")
-                self.dinheiro_txt.setStyleSheet("font-size: 14px; padding: 5px;")
-                self.dinheiro_txt.setMaximumWidth(200) 
-                frame = self.tela_principal.frame_pagamento
-                frame.layout().addWidget(self.dinheiro_txt)
-
-
         
         cursor = self.conexao.get_cursor()
         comando = "select id_usuario from usuarios where nome = %s"
         cursor.execute(comando, (self.tela_principal.txt_ola_user.text(), ))
         id_user = cursor.fetchone()[0]
-        cursor = self.conexao.get_cursor()
+
         comando = "select id_forma_pagamento from formapagamento where forma_pagamento = %s"
         cursor.execute(comando, (self.tela_principal.input_pdv_forma_pagamento.currentText(), ))
         id_forma_pagamento = cursor.fetchone()
@@ -410,9 +419,18 @@ class cmdPdv():
         else:
             id_forma_pagamento = id_forma_pagamento[0]
 
-        comando = """insert into vendas (id_usuario, valor_total, id_forma_pagamento)
-                     values (%s, %s, %s)"""
-        valores = (int(id_user), float(self.total_geral), int(id_forma_pagamento))
+        for k, i in self.valores_formas_pagamento.items():
+            print(f"Forma: {k}, Valor: {i}")  # Mostra a chave e o valor
+            if self.forma_pagamento_true[k] == "":
+                self.forma_pagamento_true[k] = 0  # Atribui 0 se for vazio
+            else:
+                self.forma_pagamento_true[k] = 1
+
+        comando = """insert into vendas (id_usuario, valor_total, forma_pix, forma_credito, forma_debito, forma_dinheiro, valor_pix, valor_credito, valor_debito, valor_dinheiro) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+
+        valores = (int(id_user), float(self.total), 
+                   self.forma_pagamento_true["Pix"], self.forma_pagamento_true["Crédito"], self.forma_pagamento_true["Débito"], self.forma_pagamento_true["Dinheiro"], 
+                   self.valores_formas_pagamento["Pix"], self.valores_formas_pagamento["Crédito"], self.valores_formas_pagamento["Débito"], self.valores_formas_pagamento["Dinheiro"])
         cursor.execute(comando, valores)
         self.conexao.commit()
 
