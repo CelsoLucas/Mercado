@@ -589,29 +589,6 @@ QTabBar::tab:hover:!selected {
                   </property>
                  </widget>
                 </item>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QComboBox" name="btn_modo_claro_escuro">
-                  <property name="minimumSize">
-                   <size>
-                    <width>150</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                  <property name="currentIndex">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>Modo Claro</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Modo Escuro</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
                </layout>
               </widget>
              </item>
@@ -639,7 +616,7 @@ QTabBar::tab:hover:!selected {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -649,7 +626,7 @@ QTabBar::tab:hover:!selected {
               <item>
                <widget class="QStackedWidget" name="stackedWidget_7">
                 <property name="currentIndex">
-                 <number>3</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="tela_principal_opcs">
                  <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -3343,11 +3320,11 @@ border-radius: 20px;</string>
               <item>
                <widget class="QTabWidget" name="tabWidget">
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="tela_config_1">
                  <attribute name="title">
-                  <string>Tab 1</string>
+                  <string>Usuários</string>
                  </attribute>
                  <layout class="QVBoxLayout" name="verticalLayout_33">
                   <item>
@@ -3755,7 +3732,7 @@ border-radius: 20px;</string>
                 </widget>
                 <widget class="QWidget" name="tela_config_2">
                  <attribute name="title">
-                  <string>Page</string>
+                  <string>Categorias</string>
                  </attribute>
                  <layout class="QVBoxLayout" name="verticalLayout">
                   <item>

@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'ui_tela_principal.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.1
+## Created by: Qt User Interface Compiler version 6.8.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -114,7 +114,7 @@ class Ui_TelaPrincipal(object):
 "}\n"
 "\n"
 "#stackedWidget_6{\n"
-"	background-color: rgb(223, 232, 239);\n"
+"	background-color: rgb(255, 222, 34);\n"
 "}\n"
 "QPushButton:hover {\n"
 "    background-color: #5A67D8;\n"
@@ -426,14 +426,6 @@ class Ui_TelaPrincipal(object):
         self.btn_configuracoes.setStyleSheet(u"")
 
         self.verticalLayout_4.addWidget(self.btn_configuracoes)
-
-        self.btn_modo_claro_escuro = QComboBox(self.frame)
-        self.btn_modo_claro_escuro.addItem("")
-        self.btn_modo_claro_escuro.addItem("")
-        self.btn_modo_claro_escuro.setObjectName(u"btn_modo_claro_escuro")
-        self.btn_modo_claro_escuro.setMinimumSize(QSize(150, 0))
-
-        self.verticalLayout_4.addWidget(self.btn_modo_claro_escuro, 0, Qt.AlignmentFlag.AlignHCenter)
 
 
         self.verticalLayout_3.addWidget(self.frame)
@@ -2259,16 +2251,15 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.btn_modo_claro_escuro.setCurrentIndex(0)
-        self.stackedWidget.setCurrentIndex(1)
-        self.stackedWidget_7.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget_7.setCurrentIndex(0)
         self.stackedWidget_2.setCurrentIndex(1)
         self.stackedWidget_6.setCurrentIndex(0)
         self.stackedWidget_3.setCurrentIndex(2)
         self.input_categoria_produto.setCurrentIndex(-1)
         self.input_categoria_produto_2.setCurrentIndex(-1)
         self.input_tipo_valor_2.setCurrentIndex(-1)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         self.stackedWidget_4.setCurrentIndex(1)
         self.stackedWidget_5.setCurrentIndex(1)
 
@@ -2286,9 +2277,6 @@ class Ui_TelaPrincipal(object):
         self.btn_estoque.setText(QCoreApplication.translate("TelaPrincipal", u"ESTOQUE", None))
         self.btn_relatorios.setText(QCoreApplication.translate("TelaPrincipal", u"RELATORIOS", None))
         self.btn_configuracoes.setText(QCoreApplication.translate("TelaPrincipal", u"CONFIGURA\u00c7\u00d5ES", None))
-        self.btn_modo_claro_escuro.setItemText(0, QCoreApplication.translate("TelaPrincipal", u"Modo Claro", None))
-        self.btn_modo_claro_escuro.setItemText(1, QCoreApplication.translate("TelaPrincipal", u"Modo Escuro", None))
-
         self.btn_abrir_caixa.setText(QCoreApplication.translate("TelaPrincipal", u"Abrir Caixa", None))
         self.btn_fechar_caixa.setText(QCoreApplication.translate("TelaPrincipal", u"Fechar Caixa", None))
         self.btn_sangria.setText(QCoreApplication.translate("TelaPrincipal", u"Registrar Sangria", None))
@@ -2445,7 +2433,7 @@ class Ui_TelaPrincipal(object):
         self.btn_procurar_ft_adc_usuario.setText(QCoreApplication.translate("TelaPrincipal", u"Procurar Foto", None))
         self.label_img_adc_usuario.setText("")
         self.btn_adc_usuario.setText(QCoreApplication.translate("TelaPrincipal", u"Criar Usuario", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tela_config_1), QCoreApplication.translate("TelaPrincipal", u"Tab 1", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tela_config_1), QCoreApplication.translate("TelaPrincipal", u"Usu\u00e1rios", None))
         ___qtreewidgetitem4 = self.tabela_categoria.headerItem()
         ___qtreewidgetitem4.setText(1, QCoreApplication.translate("TelaPrincipal", u"CATEGORIA", None));
         ___qtreewidgetitem4.setText(0, QCoreApplication.translate("TelaPrincipal", u"ID", None));
@@ -2454,6 +2442,6 @@ class Ui_TelaPrincipal(object):
         self.input_nome_adc_categoria.setText("")
         self.input_nome_adc_categoria.setPlaceholderText(QCoreApplication.translate("TelaPrincipal", u"Nome da Categoria", None))
         self.btn_adc_categoria_2.setText(QCoreApplication.translate("TelaPrincipal", u"Criar Categoria", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tela_config_2), QCoreApplication.translate("TelaPrincipal", u"Page", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tela_config_2), QCoreApplication.translate("TelaPrincipal", u"Categorias", None))
     # retranslateUi
 

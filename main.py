@@ -11,7 +11,6 @@ from cmdestoque import cmdEstoque
 from cmdrelatorios import cmdRelatorios
 from cmdconfiguracoes import cmdConfiguracoes
 from conexao_db import conexaoDB
-from cmdTemas import cmdTema
 
 class main(QMainWindow):
     def __init__(self):
@@ -47,7 +46,6 @@ class main(QMainWindow):
         self.tela_principal.btn_estoque.clicked.connect(self.telaestoque)
         self.tela_principal.btn_relatorios.clicked.connect(self.telarelatorios)
         self.tela_principal.btn_configuracoes.clicked.connect(self.telaconfiguracoes)
-        self.tema = cmdTema(self)
 
         self.setWindowState(Qt.WindowMaximized)
         self.showMaximized()
