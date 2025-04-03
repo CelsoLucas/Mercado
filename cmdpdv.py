@@ -18,7 +18,10 @@ class cmdPdv():
         self.adc_card_cat()
         self.mostrar_carrinho()
         self.carregar_categorias()
+        self.forma_pagamento_true = {"Pix": 0, "Débito": 0, "Crédito": 0, "Dinheiro": 0}
+        self.forma_pagamento_valor = {"Pix": 0, "Débito": 0, "Crédito": 0, "Dinheiro": 0}
         self.tela_principal.input_pdv_produto.setText("")
+        self.tela_principal.txt_valor_pagar.setText("R$ 0.00")
         self.tela_principal.input_pdv_forma_pagamento.currentTextChanged.connect(self.forma_pagamento)
 
     def carregar_categorias(self):
@@ -339,6 +342,7 @@ class cmdPdv():
         for i in range(4):
             self.tabela.resizeColumnToContents(i)
         
+        self.tela_principal.txt_valor_pagar.setText(f"R$ {self.total_geral:.2f}")
         self.tela_principal.txt_valor_total.setText(f"R$ {self.total_geral:.2f}")
     
     def forma_pagamento(self):
@@ -366,71 +370,81 @@ class cmdPdv():
             
             frame.layout().addWidget(self.dinheiro_input)
 
-
     def processar_pagamento(self):
-        self.valores_formas_pagamento = {"Pix":"", "Débito":"", "Crédito":"", "Dinheiro":""}
-        self.forma_pagamento_true = {"Pix":"", "Débito":"", "Crédito":"", "Dinheiro":""}
-        
-        if self.carrinho == []:
-            QMessageBox.warning(None, "error", "Carrinho está vazio!")
-            return
-
-        self.novo_valor = self.total_geral - float(self.dinheiro_input.text())
-
-        self.valores_formas_pagamento[self.forma] = float(self.dinheiro_input.text())
-        self.total_geral = self.novo_valor
-        if self.total_geral == -0:
-            self.total_geral = 0
-
-        self.tela_principal.txt_valor_total.setText(f"R$ {self.total_geral:.2f}")
-
-        
-    def finalizar_compra(self):
 
         if self.carrinho == []:
             QMessageBox.warning(None, "error", "Carrinho está Vazio!")
             return
+        if self.tela_principal.input_pdv_forma_pagamento.currentIndex() == -1:
+            QMessageBox.warning(None, "error", "Selecione uma forma de pagamento!")
+            return
 
-        if self.tela_principal.input_pdv_forma_pagamento.currentText() == "Dinheiro":
-            if float(self.dinheiro_input.text()) < self.total_geral:
-                QMessageBox.warning(None, "error", "Quantidade de dinheiro menor que o total, processe o pagamento para prosseguir!")
-                return
-                
-            elif float(self.dinheiro_input.text()) > self.total_geral:
-                troco = float(self.dinheiro_input.text()) - self.total_geral
-                self.dinheiro_txt = QLabel()
-                self.dinheiro_txt.setText(f"Troco: R$ {troco:.2f}")
-                self.dinheiro_txt.setStyleSheet("font-size: 14px; padding: 5px;")
-                self.dinheiro_txt.setMaximumWidth(200) 
-                frame = self.tela_principal.frame_pagamento
-                frame.layout().addWidget(self.dinheiro_txt)
+        if self.tela_principal.input_pdv_forma_pagamento.currentText() == "Pix":
+            paga = self.total_geral
+        else:
+            paga = self.dinheiro_input.text()
+
+        if self.total_geral == 0:
+            QMessageBox.warning(None, "Erro", "Finalize a compra, pagamento já realizado!")
+            return
+
+        if paga == "":
+            QMessageBox.warning(None, "error", "Digite um valor para o pagamento!")
+            return
+        else:
+            paga = float(paga)
+
+        if paga <= 0:
+            QMessageBox.warning(None, "Erro", "Valor mínimo: R$ 1,00")
+            return
+
+        if paga >= self.total_geral:
+            troco = paga - self.total_geral
+            self.total_geral = 0 
+            
+            self.forma_pagamento_true[self.forma] = 1
+            self.forma_pagamento_valor[self.forma] += paga
+
+            for i in reversed(range(self.tela_principal.frame_pagamento.layout().count())):
+                widget = self.tela_principal.frame_pagamento.layout().itemAt(i).widget()
+                if isinstance(widget, QLabel):
+                    widget.deleteLater()
+            if self.forma == "Dinheiro":
+                if troco > 0:
+                    self.dinheiro_txt = QLabel(f"Troco: R$ {troco:.2f}")
+                    self.dinheiro_txt.setStyleSheet("font-size: 14px; padding: 5px;")
+                    self.dinheiro_txt.setMaximumWidth(200)
+                    self.tela_principal.frame_pagamento.layout().addWidget(self.dinheiro_txt)
+        else:
+            self.total_geral -= paga
+            self.forma_pagamento_true[self.forma] = 1
+            self.forma_pagamento_valor[self.forma] += paga
+            self.tela_principal.txt_valor_pagar.setText(f"R$ {self.total_geral:.2f}")
+        print(self.forma_pagamento_true)
+        print(self.forma_pagamento_valor)
+        if self.total_geral == 0:
+            self.tela_principal.txt_valor_pagar.setText(f"R$ {self.total_geral:.2f}")
+            QMessageBox.information(None, "Sucesso", "Pagamento concluído!")
+
+    def finalizar_compra(self):
+        if self.carrinho == []:
+            QMessageBox.warning(None, "error", "Carrinho está Vazio!")
+            return
+        
+        if self.total_geral != 0:
+            QMessageBox.warning(None, "error", "Termine de Processar o Pagamento!")
+            return
         
         cursor = self.conexao.get_cursor()
         comando = "select id_usuario from usuarios where nome = %s"
         cursor.execute(comando, (self.tela_principal.txt_ola_user.text(), ))
         id_user = cursor.fetchone()[0]
 
-        comando = "select id_forma_pagamento from formapagamento where forma_pagamento = %s"
-        cursor.execute(comando, (self.tela_principal.input_pdv_forma_pagamento.currentText(), ))
-        id_forma_pagamento = cursor.fetchone()
-        if id_forma_pagamento is None:
-            QMessageBox.warning(None, "error", "Selecione uma Forma de Pagamento!")
-            return
-        else:
-            id_forma_pagamento = id_forma_pagamento[0]
-
-        for k, i in self.valores_formas_pagamento.items():
-            print(f"Forma: {k}, Valor: {i}")  # Mostra a chave e o valor
-            if self.forma_pagamento_true[k] == "":
-                self.forma_pagamento_true[k] = 0  # Atribui 0 se for vazio
-            else:
-                self.forma_pagamento_true[k] = 1
-
         comando = """insert into vendas (id_usuario, valor_total, forma_pix, forma_credito, forma_debito, forma_dinheiro, valor_pix, valor_credito, valor_debito, valor_dinheiro) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
 
         valores = (int(id_user), float(self.total), 
                    self.forma_pagamento_true["Pix"], self.forma_pagamento_true["Crédito"], self.forma_pagamento_true["Débito"], self.forma_pagamento_true["Dinheiro"], 
-                   self.valores_formas_pagamento["Pix"], self.valores_formas_pagamento["Crédito"], self.valores_formas_pagamento["Débito"], self.valores_formas_pagamento["Dinheiro"])
+                   self.forma_pagamento_valor["Pix"], self.forma_pagamento_valor["Crédito"], self.forma_pagamento_valor["Débito"], self.forma_pagamento_valor["Dinheiro"])
         cursor.execute(comando, valores)
         self.conexao.commit()
 
@@ -463,12 +477,8 @@ class cmdPdv():
             cursor.execute(comando, valores)
             self.conexao.commit()
 
-        comando = "SELECT data_abertura FROM caixa WHERE id_user = %s ORDER BY data_abertura DESC LIMIT 1"
-        cursor.execute(comando, (id_user,))
-        data_abertura = cursor.fetchone()[0]  # Get single value instead of tuple
-
-        comando = "SELECT saldo_atual FROM caixa WHERE id_user = %s AND data_abertura = %s"
-        valores = (id_user, data_abertura)
+        comando = "SELECT saldo_atual FROM caixa WHERE id_user = %s AND status = '1'"
+        valores = (id_user,)
         cursor.execute(comando, valores)
         resultado = cursor.fetchone()
 
@@ -476,19 +486,15 @@ class cmdPdv():
             saldo_atual = 0
         else:
             saldo_atual = resultado[0]
-        saldo_atual += self.total_geral
-        if id_forma_pagamento == 4:
-            comando = "UPDATE caixa SET saldo_atual = %s WHERE id_user = %s AND status = 1"
-            valores = (saldo_atual, id_user)
-            cursor.execute(comando, valores)
-            self.conexao.commit()
+        saldo_atual += self.total
 
-        QMessageBox.information(None, "Sucesso", "Obrigado por Comprar no Mercado do Celsadas")
-        self.tabela.clear()
-        self.tela_principal.txt_valor_total.setText("R$ 00,00")
-        self.tela_principal.input_pdv_forma_pagamento.setCurrentIndex(-1)
-        self.carrinho = []
+        comando = "UPDATE caixa SET saldo_atual = %s WHERE id_user = %s AND status = 1"
+        valores = (saldo_atual, id_user)
+        cursor.execute(comando, valores)
+        self.conexao.commit()
 
+        QMessageBox.information(None, "Sucesso", "Compra Finalizada com sucesso!")
+        
     def remover_carrinho(self):
         if not self.carrinho:
             QMessageBox.warning(None, "Erro", "Carrinho Vazio!")

@@ -62,13 +62,20 @@ create table formapagamento(
 	id_forma_pagamento int primary key auto_increment,
     forma_pagamento varchar(50) unique not null
 );
+
 CREATE TABLE vendas (
     id_venda INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
     data_venda DATETIME DEFAULT current_date,
     valor_total DECIMAL(10, 2) NOT NULL,
-	id_forma_pagamento int,
-    foreign key (id_forma_pagamento) references formapagamento(id_forma_pagamento),
+	forma_pix char(1),
+    forma_credito char(1),
+    forma_debito char(1),
+    forma_dinheiro char(1),
+    valor_pix float,
+    valor_credito float,
+    valor_debito float,
+    valor_dinheiro float,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE RESTRICT
 );
 

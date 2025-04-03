@@ -1375,6 +1375,25 @@ class Ui_TelaPrincipal(object):
 
         self.verticalLayout_16.addWidget(self.frame_4)
 
+        self.label_3 = QLabel(self.layout_valor_total)
+        self.label_3.setObjectName(u"label_3")
+
+        self.verticalLayout_16.addWidget(self.label_3)
+
+        self.frame_32 = QFrame(self.layout_valor_total)
+        self.frame_32.setObjectName(u"frame_32")
+        self.frame_32.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_32.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_34 = QHBoxLayout(self.frame_32)
+        self.horizontalLayout_34.setObjectName(u"horizontalLayout_34")
+        self.txt_valor_pagar = QLabel(self.frame_32)
+        self.txt_valor_pagar.setObjectName(u"txt_valor_pagar")
+
+        self.horizontalLayout_34.addWidget(self.txt_valor_pagar)
+
+
+        self.verticalLayout_16.addWidget(self.frame_32)
+
 
         self.verticalLayout_15.addWidget(self.layout_valor_total, 0, Qt.AlignmentFlag.AlignVCenter)
 
@@ -2372,6 +2391,8 @@ class Ui_TelaPrincipal(object):
         self.btn_remover_produto_carrinho.setText(QCoreApplication.translate("TelaPrincipal", u"Remover Produto do Carrinho", None))
         self.txt_valor_total_texto.setText(QCoreApplication.translate("TelaPrincipal", u"Valor Total", None))
         self.txt_valor_total.setText("")
+        self.label_3.setText(QCoreApplication.translate("TelaPrincipal", u"Valor a Pagar", None))
+        self.txt_valor_pagar.setText("")
         self.input_pdv_forma_pagamento.setItemText(0, QCoreApplication.translate("TelaPrincipal", u"Pix", None))
         self.input_pdv_forma_pagamento.setItemText(1, QCoreApplication.translate("TelaPrincipal", u"D\u00e9bito", None))
         self.input_pdv_forma_pagamento.setItemText(2, QCoreApplication.translate("TelaPrincipal", u"Cr\u00e9dito", None))
