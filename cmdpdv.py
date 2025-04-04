@@ -493,6 +493,9 @@ class cmdPdv():
         cursor.execute(comando, valores)
         self.conexao.commit()
 
+        self.carrinho = []
+        self.tela_principal.input_pdv_forma_pagamento.setCurrentIndex(-1)
+        self.mostrar_carrinho()
         QMessageBox.information(None, "Sucesso", "Compra Finalizada com sucesso!")
         
     def remover_carrinho(self):

@@ -13,6 +13,7 @@ class cmdEstoque():
         self.conexao = conexaoDB()
         self.new_file_path = ""
         self.mostrar_estoque()
+        self.tela_principal.input_pesquisar_produto_4.textChanged.connect(self.procurar_produto)
         self.carregar_categorias()
 
     def mostrar_estoque(self):
@@ -45,41 +46,61 @@ class cmdEstoque():
 
         cursor.close()
 
-    def procurar_produto(self):
+    def procurar_produto(self, texto=None):
+        # Se texto for None, pega o valor do campo de entrada
+        if texto is None:
+            self.resultado_busca_produto = self.tela_principal.input_pesquisar_produto_4.text()
+        else:
+            self.resultado_busca_produto = texto
 
-        self.resultado_busca_produto = self.tela_principal.input_pesquisar_produto_4.text()
-        
-        if not self.resultado_busca_produto:
-            self.tela_principal.txt_caso_produto_nao_encontra_estoque.setText("Digite um produto para buscar.")
-            return
-
-        cursor = self.conexao.get_cursor()
-
-        valores = (self.resultado_busca_produto, self.resultado_busca_produto)
-        cursor.execute("select id_produto, nome_produto, preco, quantidade, categorias.nome_categoria from estoque join categorias on estoque.categoria = categorias.id_categorias where nome_produto = %s or id_produto = %s", valores)
-
-        resultado = cursor.fetchone()
-
+        # Limpa a árvore antes de buscar
         tree = self.tela_principal.treeWidget
         tree.clear()
 
-        if not resultado:
+        cursor = self.conexao.get_cursor()
+
+        if not self.resultado_busca_produto:
+            # Query para buscar todos os produtos quando o campo está vazio
+            comando = """
+                SELECT id_produto, nome_produto, preco, quantidade, categorias.nome_categoria 
+                FROM estoque 
+                JOIN categorias ON estoque.categoria = categorias.id_categorias
+            """
+            cursor.execute(comando)
+            resultados = cursor.fetchall()
+            self.tela_principal.txt_caso_produto_nao_encontra_estoque.setText("")  # Limpa a mensagem
+        else:
+            # Query ajustada para busca incremental com LIKE
+            valores = (f"%{self.resultado_busca_produto}%", f"%{self.resultado_busca_produto}%")
+            comando = """
+                SELECT id_produto, nome_produto, preco, quantidade, categorias.nome_categoria 
+                FROM estoque 
+                JOIN categorias ON estoque.categoria = categorias.id_categorias 
+                WHERE nome_produto LIKE %s OR id_produto LIKE %s
+            """
+            cursor.execute(comando, valores)
+            resultados = cursor.fetchall()
+
+        if not resultados:
             self.tela_principal.txt_caso_produto_nao_encontra_estoque.setText("Produto não encontrado!")
         else:
-            id, nome, preco, quantidade, categoria, imagem = resultado                
-            item = QTreeWidgetItem(tree)
-            item.setText(0, str(id))  
-            item.setText(1, nome)  
-            item.setText(2, str(preco))  
-            item.setText(3, str(quantidade))  
-            item.setText(4, str(categoria))
+            self.tela_principal.txt_caso_produto_nao_encontra_estoque.setText("")  # Limpa a mensagem se encontrar resultados
+            for resultado in resultados:
+                id_produto, nome, preco, quantidade, categoria = resultado
+                item = QTreeWidgetItem(tree)
+                item.setText(0, str(id_produto))
+                item.setText(1, nome)
+                item.setText(2, str(preco))
+                item.setText(3, str(quantidade))
+                item.setText(4, categoria)
 
-            item.setTextAlignment(0, Qt.AlignCenter)
-            item.setTextAlignment(1, Qt.AlignCenter)
-            item.setTextAlignment(2, Qt.AlignCenter)
-            item.setTextAlignment(3, Qt.AlignCenter)
-            item.setTextAlignment(4, Qt.AlignCenter)
-            tree.addTopLevelItem(item)
+                # Alinhamento centralizado
+                item.setTextAlignment(0, Qt.AlignCenter)
+                item.setTextAlignment(1, Qt.AlignCenter)
+                item.setTextAlignment(2, Qt.AlignCenter)
+                item.setTextAlignment(3, Qt.AlignCenter)
+                item.setTextAlignment(4, Qt.AlignCenter)
+                tree.addTopLevelItem(item)
 
         cursor.close()
     

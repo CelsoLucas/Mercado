@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'ui_tela_principal.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.1
+## Created by: Qt User Interface Compiler version 6.8.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -1197,7 +1197,7 @@ class Ui_TelaPrincipal(object):
         self.mostruario_cards2_2.setWidgetResizable(True)
         self.mostruario_cards = QWidget()
         self.mostruario_cards.setObjectName(u"mostruario_cards")
-        self.mostruario_cards.setGeometry(QRect(0, 0, 72, 16))
+        self.mostruario_cards.setGeometry(QRect(0, 0, 734, 553))
         self.mostruario_cards2_2.setWidget(self.mostruario_cards)
 
         self.verticalLayout_8.addWidget(self.mostruario_cards2_2)
@@ -1554,7 +1554,7 @@ class Ui_TelaPrincipal(object):
         self.img_produto_estoque = QLabel(self.frame_8)
         self.img_produto_estoque.setObjectName(u"img_produto_estoque")
         self.img_produto_estoque.setMaximumSize(QSize(200, 200))
-        self.img_produto_estoque.setStyleSheet(u"boder: 1px solid;")
+        self.img_produto_estoque.setStyleSheet(u"")
 
         self.verticalLayout_28.addWidget(self.img_produto_estoque)
 
@@ -1742,7 +1742,7 @@ class Ui_TelaPrincipal(object):
         self.img_produto_estoque_2 = QLabel(self.frame_10)
         self.img_produto_estoque_2.setObjectName(u"img_produto_estoque_2")
         self.img_produto_estoque_2.setMaximumSize(QSize(200, 200))
-        self.img_produto_estoque_2.setStyleSheet(u"boder: 1px solid;")
+        self.img_produto_estoque_2.setStyleSheet(u"")
 
         self.verticalLayout_58.addWidget(self.img_produto_estoque_2)
 
@@ -2290,9 +2290,9 @@ class Ui_TelaPrincipal(object):
 
         self.retranslateUi(TelaPrincipal)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
         self.stackedWidget_7.setCurrentIndex(0)
-        self.stackedWidget_2.setCurrentIndex(1)
+        self.stackedWidget_2.setCurrentIndex(0)
         self.stackedWidget_6.setCurrentIndex(0)
         self.stackedWidget_3.setCurrentIndex(2)
         self.input_categoria_produto.setCurrentIndex(-1)

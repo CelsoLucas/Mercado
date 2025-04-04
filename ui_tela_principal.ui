@@ -616,7 +616,7 @@ QTabBar::tab:hover:!selected {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>1</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="telaprincipal">
              <property name="styleSheet">
@@ -1949,7 +1949,7 @@ QTabBar::tab:hover:!selected {
                  <string notr="true"/>
                 </property>
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="lado_esquerdo_pdv_1">
                  <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1996,8 +1996,8 @@ QTabBar::tab:hover:!selected {
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>72</width>
-                       <height>16</height>
+                       <width>734</width>
+                       <height>553</height>
                       </rect>
                      </property>
                     </widget>
@@ -2625,7 +2625,7 @@ QTabBar::tab:hover:!selected {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">boder: 1px solid;</string>
+                           <string notr="true"/>
                           </property>
                           <property name="text">
                            <string/>
@@ -2947,7 +2947,7 @@ QTabBar::tab:hover:!selected {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">boder: 1px solid;</string>
+                           <string notr="true"/>
                           </property>
                           <property name="text">
                            <string/>
