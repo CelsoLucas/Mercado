@@ -328,8 +328,7 @@ class cmdPdv:
             self.forma_pagamento_true[self.forma] = 1
             self.forma_pagamento_valor[self.forma] += paga
             self.tela_principal.txt_valor_pagar.setText(f"R$ {self.total_geral:.2f}")
-        print(self.forma_pagamento_true)
-        print(self.forma_pagamento_valor)
+
         if self.total_geral == 0:
             self.tela_principal.txt_valor_pagar.setText(f"R$ {self.total_geral:.2f}")
             QMessageBox.information(None, "Sucesso", "Pagamento concluído!")
@@ -394,7 +393,7 @@ class cmdPdv:
             saldo_atual = 0
         else:
             saldo_atual = resultado[0]
-        saldo_atual += self.total
+        saldo_atual += self.forma_pagamento_valor["Dinheiro"]
 
         comando = "UPDATE caixa SET saldo_atual = %s WHERE id_user = %s AND status = 1"
         valores = (saldo_atual, id_user)
@@ -416,22 +415,21 @@ class cmdPdv:
             QMessageBox.warning(None, "Erro", "Selecione um Produto")
             return
             
-        # Solicita o ID do usuário
         id_usuario, ok1 = QInputDialog.getText(
             None,
             "Confirmação de Remoção",
-            "Digite um ID com Permissão:",
+            "Digite um Código com Permissão:",
             QLineEdit.Normal
         )
 
         if not ok1 or not id_usuario:
-            QMessageBox.warning(None, "Erro", "ID não fornecido!")
+            QMessageBox.warning(None, "Erro", "Código não fornecido!")
             return
 
         # Verifica permissão e senha no banco
         cursor = self.conexao.get_cursor()
-        comando = "SELECT perm, senha FROM usuarios WHERE id_usuario = %s"
-        cursor.execute(comando, (id_usuario,))
+        comando = "SELECT perm, senha FROM usuarios WHERE cod = %s"
+        cursor.execute(comando, (float(id_usuario),))
         resultado = cursor.fetchone()
 
         if resultado is None:

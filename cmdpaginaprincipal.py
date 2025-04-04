@@ -97,7 +97,7 @@ class cmdPaginaPrincipal():
             saldo_ini = resultado[0]
         self.tela_principal.txt_saldo_inicial_db.setText(f"R$ {float(saldo_ini):.2f}")
 
-        comando = "select sum(valor_total) from vendas where forma_dinheiro = '1' and data_venda = %s and id_usuario = %s"
+        comando = "select sum(valor_dinheiro) from vendas where data_venda = %s and id_usuario = %s"
         valores = (hoje, self.id_user)
         cursor.execute(comando, valores)
         resultado = cursor.fetchone()
@@ -249,7 +249,7 @@ class cmdPaginaPrincipal():
         
         cursor = self.conexao.get_cursor()
             # Verifica permissão do usuário
-        comando = "SELECT perm, senha FROM usuarios WHERE id_usuario = %s"
+        comando = "SELECT perm, senha FROM usuarios WHERE cod = %s"
         cursor.execute(comando, (vendedor_resp,))
         resultado = cursor.fetchone()
         if resultado is None:
@@ -347,7 +347,7 @@ class cmdPaginaPrincipal():
         cursor = self.conexao.get_cursor()
             # Verifica permissão do usuário
             
-        comando = "SELECT perm, senha FROM usuarios WHERE id_usuario = %s"
+        comando = "SELECT perm, senha FROM usuarios WHERE cod = %s"
         cursor.execute(comando, (vendedor_resp,))
         resultado = cursor.fetchone()
         if resultado is None:
