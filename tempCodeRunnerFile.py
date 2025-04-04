@@ -1,1 +1,1 @@
-Bo
+from cmdpaginaprincipal import cmdPaginaPrincipal
